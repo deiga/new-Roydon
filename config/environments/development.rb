@@ -27,4 +27,6 @@ Roydon::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:7f0d92cde7c8e39e84413fe58285b0dd@viperfish.redistogo.com:9763/'
 end
