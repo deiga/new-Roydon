@@ -6,23 +6,32 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
+gem 'rake', ">= 0.9"
 
 # Gem for NoSQL DB
 gem 'redis'
-gem 'system_timer'
 
 # Gem for Webserver
 gem 'thin'
 
-group :develpoment do
+group :develpoment, :test, :cucumber do
+	gem 'rspec'
     gem 'rspec-rails'
 end
 
 group :test do
-    gem 'rspec-rails'
     gem 'webrat'
 end
 
+group :cucumber do
+	gem 'capybara'
+  	gem 'database_cleaner'
+  	gem 'cucumber-rails'
+  	gem 'cucumber', '0.7.3'
+  	gem 'spork'
+  	gem 'launchy'    # So you can do Then show me the page
+end
+  
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
