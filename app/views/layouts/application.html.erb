@@ -7,6 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<section>
+			<h1>roydon</h1>
+			<p>Koiratarvikkeita tunteella ja taidolla jo vuodesta 1988</p>
+		</section>
+		<nav>
+			<ul id="navilist">
+				<li id="index" class="rounded-top">
+					<%= link_to 'Etusivu', 'home', :title => 'Homepage' %>
+				</li>
+				<li id="products" class="rounded-top">
+					<%= link_to 'Tuotteet', 'products', :title => 'Products' %>
+				</li>
+				<li id="shows" class="rounded-top">
+					<%= link_to 'Näyttelyt', 'shows', :title => 'Shows' %>
+				</li>
+				<li id="contact" class="rounded-top">
+					<%= link_to 'Yhteystiedot', 'contact', :title => 'Contact Us' %>
+				</li>
+			</ul>
+		</nav>
+	</header>
 
 	<%= yield %>
 	<footer>
