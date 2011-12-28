@@ -21,6 +21,10 @@ end
 
 group :test do
     gem 'webrat'
+    gem 'autotest'
+    gem 'autotest-rails-pure'
+    gem 'autotest-fsevent'
+    gem 'autotest-growl'
 end
 
 group :cucumber do
