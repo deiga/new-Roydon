@@ -6,7 +6,7 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'json'
-gem 'rake', ">= 0.9"
+gem 'rake'
 
 # Gem for NoSQL DB
 gem 'redis'
@@ -27,7 +27,7 @@ group :cucumber do
 	gem 'capybara'
   	gem 'database_cleaner'
   	gem 'cucumber-rails'
-  	gem 'cucumber', '0.7.3'
+  	gem 'cucumber'
   	gem 'spork'
   	gem 'launchy'    # So you can do Then show me the page
 end
