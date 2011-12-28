@@ -9,9 +9,19 @@ gem 'json'
 
 # Gem for NoSQL DB
 gem 'redis'
+gem 'system_timer'
 
 # Gem for Webserver
 gem 'thin'
+
+group :develpoment do
+    gem 'rspec-rails'
+end
+
+group :test do
+    gem 'rspec-rails'
+    gem 'webrat'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
