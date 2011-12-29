@@ -1,8 +1,21 @@
 Roydon::Application.routes.draw do
-  get "pages/home"
 
-  get "pages/contact"
-  get "pages/about"
+  get "shows/index"
+
+  get "shows/create"
+
+  get "shows/edit"
+
+  get "shows/update"
+
+  get "shows/destroy"
+
+  match '/contact', :to => 'pages#contact'
+  match '/home', :to => 'pages#home'
+  match '/about', :to => 'pages#about'
+  match '/shows', :to => 'pages#shows'
+
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
