@@ -42,4 +42,17 @@ describe PagesController do
     end
   end
 
+  describe "GET 'shows'" do
+    it "returns http success" do
+      get 'shows'
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get 'shows'
+      response.should have_selector("title", 
+        :content => "Roydon | Shows")
+    end
+  end
+
 end
