@@ -1,45 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Roydon | <%= @title %> </title>
+  <title><%= title %> </title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<section>
-			<h1>roydon</h1>
-			<p>Koiratarvikkeita tunteella ja taidolla jo vuodesta 1988</p>
-		</section>
-		<nav>
-			<ul id="navilist">
-				<li id="index" class="rounded-top">
-					<%= link_to 'Etusivu', 'home', :title => 'Homepage' %>
-				</li>
-				<li id="products" class="rounded-top">
-					<%= link_to 'Tuotteet', 'products', :title => 'Products' %>
-				</li>
-				<li id="shows" class="rounded-top">
-					<%= link_to 'Näyttelyt', 'shows', :title => 'Shows' %>
-				</li>
-				<li id="contact" class="rounded-top">
-					<%= link_to 'Yhteystiedot', 'contact', :title => 'Contact Us' %>
-				</li>
-			</ul>
-		</nav>
-	</header>
-
-	<%= yield %>
-	<footer>
-		Sivuihin liittyvät kysymykset ja kommentit 
-		<%= mail_to 'webmaster@roydon.fi', nil, :class => 'email', :encode => 'javascript' %> 
-		<%= link_to 'Ylläpito', '/login', :class => 'robots-nocontent' %>
-		<address>
-			Kuninkaantie 752 <br /> FI 07110 HINTHAARA
-	 		<br />+358 (0)40 020 0521
-	 	</address>
-	 	Copyright &copy;2011 Roydon Ky
-	 </footer>
+	<%= render 'layouts/header' %>
+	<section>
+		<%= yield %>
+	</section>
+	<%= render 'layouts/footer' %>
 </body>
 </html>
