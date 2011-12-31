@@ -1,15 +1,10 @@
-source 'http://rubygems.org'
+source :rubygems
 
 gem 'rails', '3.1.3'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'json'
-gem 'rake'
-
 # Gem for NoSQL DB
-gem 'redis'
+gem 'mongo_mapper'
+gem 'bson_ext'
 
 # Gem for Webserver
 gem 'thin'
@@ -51,9 +46,6 @@ gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
