@@ -1,4 +1,4 @@
-credentials = YAML.load_file('config/db.credentials.yml')
+credentials = YAML.load_file('config/db.credentials.yml')['Development']
 user = credentials['user']
 pwd = credentials['password']
 MongoMapper.config = { 
