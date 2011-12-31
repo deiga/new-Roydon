@@ -1,9 +1,25 @@
 <h1>Shows</h1>
-<p>This is the show page for new Roydon</p>
-<ul>
-<% if !@shows.blank? %>
-  	<% for item in @shows %>
-    	<li><%= "#{item.title}, #{item.location}" %>
+<table>
+	<caption>Seuraavista näyttelyistä löydät meidät vuonna 2011 - 2012 </caption>
+	<thead>
+		<tr>
+			<th scope="col" id="show_time">Aika</th>
+			<th scope="col" id="show_name">Nimi</th>
+			<th scope="col" id="show_place">Paikka</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if !@shows.blank? %>
+  	<% for show in @shows %>
+  		<% date = Time.parse(show.date.to_s) %>
+    	<tr id="<%= date.strftime('%Y-%m-%d') %>">
+    		<td headers="show_time"><%= date.strftime('%d.%m.') %></td>
+			<td headers="show_name">
+				<a href="<%= show.url %>"><%= show.title %></a>
+			</td>
+			<td headers="show_place"><%= show.location %></td>
+		</tr>
   	<% end %>
 <% end %>
-<ul>
+	</tbody>
+</table>
