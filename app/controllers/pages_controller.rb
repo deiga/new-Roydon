@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
   	@title = 'Home'
+    @nextShow = nil
+    @news = nil
   end
 
   def contact
@@ -13,7 +15,7 @@ class PagesController < ApplicationController
 
   def shows
   	@title = 'Shows'
-  	
+  	@shows = nil
   end
 
 end
