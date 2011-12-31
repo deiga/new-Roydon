@@ -1,2 +1,9 @@
 <h1>Shows</h1>
 <p>This is the show page for new Roydon</p>
+<ul>
+<% if !@shows.blank? %>
+  	<% for item in @shows %>
+    	<li><%= "#{item.title}, #{item.location}" %>
+  	<% end %>
+<% end %>
+<ul>
