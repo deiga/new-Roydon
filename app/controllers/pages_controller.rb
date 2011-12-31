@@ -15,7 +15,8 @@ class PagesController < ApplicationController
 
   def shows
   	@title = 'Shows'
-  	@shows = Show.all
+  	@earlier_shows = Show.all( :date.lt => Date.today.to_mongo )
+    @upcoming_shows = Show.all( :date.gte => Date.today.to_mongo )
   end
 
 end
