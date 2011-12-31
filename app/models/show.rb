@@ -9,5 +9,9 @@ class Show
 	timestamps!
 
 	# Validations
-	validates_presence_of :title, :url, :location, :date
+	validates :title, :url, :location, :date, :presence => true
+	validates :duration, :numericality => { :interger_only => true, 
+		:greater_than_or_equal_to => 1 }
+	validates :url , :format => { 
+		:with => /^http\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?$/i}
 end
