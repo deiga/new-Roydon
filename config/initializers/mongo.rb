@@ -1,6 +1,9 @@
+credentials = YAML.load_file('config/db.credentials.yml')
+user = credentials['user']
+pwd = credentials['password']
 MongoMapper.config = { 
   Rails.env => { 'uri' => ENV['MONGOHQ_URL'] || 
-                          'mongodb://heroku_app2248510@ds029267.mongolab.com:29267/heroku_app2248510' } }
+                          "mongodb://#{user}:#{pwd}@ds029267.mongolab.com:29267/heroku_app2248510" } }
 
 MongoMapper.connect(Rails.env)
 
