@@ -9,17 +9,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% if !@shows.blank? %>
-  	<% for show in @shows %>
-  		<% date = Time.parse(show.date.to_s) %>
-    	<tr id="<%= date.strftime('%Y-%m-%d') %>">
-    		<td headers="show_time"><%= date.strftime('%d.%m.') %></td>
-			<td headers="show_name">
-				<a href="<%= show.url %>"><%= show.title %></a>
+		<%= display_show_rows(@earlier_shows) %>
+		<tr>
+			<td headers="show_name" colspan="4">
+				<strong>Menneet näyttelyt tältä vuodelta</strong>
 			</td>
-			<td headers="show_place"><%= show.location %></td>
 		</tr>
-  	<% end %>
-<% end %>
+		<%= display_show_rows(@upcoming_shows) %>
 	</tbody>
 </table>
