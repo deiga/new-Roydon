@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
   def shows
   	@title = 'Shows'
-  	@shows = nil
+  	@shows = Show.all
   end
 
 end
