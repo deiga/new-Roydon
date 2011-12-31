@@ -1,5 +1,5 @@
 env = 'Development'
-if Rails.env.test? #NV["RAILS_ENV"] == 'test'
+if Rails.env.test?
 	env = 'Test'
 end
 
