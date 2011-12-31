@@ -12,7 +12,7 @@ MongoMapper.config = {
   Rails.env => { 'uri' => ENV['MONGOHQ_URL'] || 
                           "mongodb://#{user}:#{pwd}@#{url}/#{db}" } }
 
-MongoMapper.connect(Rails.env)
+MongoMapper.connect(Rails.env, :logger => Rails.logger)
 
 if defined?(PhusionPassenger)
    PhusionPassenger.on_event(:starting_worker_process) do |forked|
