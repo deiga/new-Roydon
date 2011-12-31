@@ -8,7 +8,12 @@ describe Show do
 	end
 
 	it "should create a new Show given valid attributes" do
-		Show.create!(@attr)
+		created = Show.create!(@attr)
+	end
+
+	it "should contain documents" do
+		allShows = Show.all
+		allShows.should_not be_empty
 	end
 
 	it "should require a title" do
@@ -17,37 +22,32 @@ describe Show do
 	end
 
 	it "should require a url" do
-		no_title_show = Show.new(@attr.merge(:url => ""))
-		no_title_show.should_not be_valid
+		no_url_show = Show.new(@attr.merge(:url => ""))
+		no_url_show.should_not be_valid
 	end
 
 	it "should require a location" do
-		no_title_show = Show.new(@attr.merge(:location => ""))
-		no_title_show.should_not be_valid
+		no_location_show = Show.new(@attr.merge(:location => ""))
+		no_location_show.should_not be_valid
 	end
 
 	it "should require a date" do
-		no_title_show = Show.new(@attr.merge(:date => ""))
-		no_title_show.should_not be_valid
-	end
-
-	it "should require a date" do
-		no_title_show = Show.new(@attr.merge(:date => ""))
-		no_title_show.should_not be_valid
+		no_date_show = Show.new(@attr.merge(:date => ""))
+		no_date_show.should_not be_valid
 	end
 
 	it "should require a numerical duration" do
-		no_title_show = Show.new(@attr.merge(:duration => "kaksi"))
-		no_title_show.should_not be_valid
+		non_numerical_duration_show = Show.new(@attr.merge(:duration => "kaksi"))
+		non_numerical_duration_show.should_not be_valid
 	end
 
 	it "should require a duration greater than 0" do
-		no_title_show = Show.new(@attr.merge(:duration => -1))
-		no_title_show.should_not be_valid
+		negative_duration_show = Show.new(@attr.merge(:duration => -1))
+		negative_duration_show.should_not be_valid
 	end
 
 	it "should require a valid URL" do
-		no_title_show = Show.new(@attr.merge(:url => 'foo.bar'))
-		no_title_show.should_not be_valid
+		invalid_url_show = Show.new(@attr.merge(:url => 'foo.bar'))
+		invalid_url_show.should_not be_valid
 	end
 end
