@@ -16,8 +16,6 @@ class Show
 	validates :url , :format => { :with => url_regex }
 
 	def format_date
-		# d.m.
-		# d.-d.m.
 		time = Time.parse(self.date.to_s)
 		unless self.duration > 1
 			date_string = time.strftime('%d.%m.')
