@@ -1,0 +1,15 @@
+footer {
+	color:gray;
+	font-size: small;
+	margin: 5px auto 0;
+	width: 100%;
+	background-color: inherit;
+	position: relative;
+	text-align: center;
+
+	> a {
+		&:active , &:visited , & {
+			color: #A9A9A9  !important;
+		}
+	}
+}
