@@ -1,0 +1,22 @@
+section {
+	#left {
+		background-color: $main-gray;
+		color: inherit;
+		float:left;
+		width: 70.9%;
+		min-height: 25em;
+		position: absolute;
+		text-align: center;
+	}
+
+	#right {
+		background-color: $main-gray;
+		color: inherit;
+		min-height:25em;
+		height: auto !important;
+		height: 25em;
+		position: absolute;
+		left: 71.01%;
+		width: 29%;
+	}
+}
