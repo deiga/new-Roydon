@@ -6,9 +6,8 @@ module PagesHelper
 		unless collection.blank?
 			html = ''
 		  	for show in collection
-		  		date = Time.parse(show.date.to_s)
-		    	html << "<tr id='#{date.strftime('%Y-%m-%d')}'>"
-		    	html << "	<td headers='show_time'>#{date.strftime('%d.%m.')}</td>"
+		    	html << "<tr id='#{show.date}'>"
+		    	html << "	<td headers='show_time'>#{show.format_date}</td>"
 				html << "	<td headers='show_name'>"
 				html << "		<a href='#{show.url}'>#{show.title}</a>"
 				html << "	</td>"
