@@ -40,3 +40,18 @@ legend {
 .rounded-top {
   @include rounded-corners-top(0.5em);
 }
+
+body {
+  > section {
+    position: relative;
+    min-height: 25em;
+    height: auto !important;
+    height: 25em;
+    padding-top: 0;
+    margin-top: 0;
+    margin-right: 0;
+    border-bottom: 1px solid $dark-green;
+    border-left: 1px solid $dark-green;
+    border-right: 1px solid $dark-green;
+  }
+}
