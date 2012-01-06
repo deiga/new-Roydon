@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
   	@title = 'Home'
-    @nextShow = nil
+    @next_show = Show.first( :order => :date.desc )
     @news = nil
   end
 
