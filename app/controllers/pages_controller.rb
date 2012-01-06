@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
   	@title = 'Home'
     @next_show = Show.first( :order => :date.desc )
-    @news = nil
+    @news = Story.all( :date.gte => Date.today.prev_month(3).to_mongo)
   end
 
   def contact
