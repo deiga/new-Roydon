@@ -1,9 +1,17 @@
-#navi {
+nav {
 	font-size: 1.2em;
 	padding-bottom: 0;
 	margin-bottom: 0;
 	text-align: left;
 	background-color: inherit;
+
+	.currpage {
+		a { 
+			&:link ,  &:visited {
+  				color: $dark-green;
+  			}
+  		}
+	}
 }
 
 #navilist {
@@ -13,7 +21,7 @@
 	
 	li {
 	  	display: inline;
-		padding: 5px 10px 5px 10px;
+		padding: 5px 10px 0 10px;
 		border-top: 1px solid $dark-green;
 		border-left: 1px solid $dark-green;
 		border-right: 1px solid $dark-green;
@@ -34,7 +42,6 @@
 		}
 	}
 
-
 	a:hover {
   		text-decoration: none;
 	}
@@ -47,8 +54,4 @@
 			text-decoration: none;
 		}
 	}
-}
-
-#navi .currpage a:link , #navi .currpage a:visited {
-  color: $dark-green;
 }
