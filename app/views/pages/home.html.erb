@@ -1,10 +1,24 @@
 <div id="left">
 	<section id="content">
-			<section id="short-introduction">
+		<section id="short-introduction">
 			<h2>Tervetuola sivuillemme!</h2>
 			<p>Olemme koiratarvikkeisiin erikoistunut yritys. Valikoimastamme löydät myös koulutustarvikkeita moneen tarpeeseen. Koko valikoimaamme pääset tutustumaan koiranäyttelyissä.
 			</p>
 		</section>
+		<% unless @news.blank? %>
+		<section id="news">
+			<fieldset>
+				<legend>Uutiset</legend>
+				<% for news in @news %>
+				<p class="news">
+					<%= news.format_date %> <%= news.title %> 
+					<br /> <%= news.content %>
+				</p>
+				<% end %>
+			</fieldset>
+			<%= link_to 'Lisää uutisia...', '/news' %>
+		</section>
+		<% end %>
 	</section>
 </div>
 <div id="right">
