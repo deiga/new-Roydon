@@ -26,7 +26,21 @@
 			<span><%= @next_show.format_date %> <%= @next_show.location %> <br /> <%= link_to @next_show.title, @next_show.url %></span>
 			<p><%= link_to 'Lisää näyttelyitä...', shows_path %></p>
 		</section>
-		<section id="links"></section>
+		<section id="links">
+			<h4>Linkkejä:</h4>
+			<ul>
+				<li>
+					<%= link_to 'Suomen Kennelliitto', 
+						'http://www.kennelliitto.fi/fi', 
+						:title => 'Suomen Kennelliitto' %>
+				</li>
+				<li>
+					<%= link_to 'Suomen Terrierijärjestö Ry', 
+						'http://www.terrierijarjesto.fi/', 
+						:title => 'STJ Ry' %>
+				</li>
+			</ul>
+		</section>
 	</aside>
 </div>
 
