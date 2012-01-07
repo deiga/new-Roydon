@@ -1,4 +1,4 @@
-section {
+#content {
 	#left {
 		background-color: $main-gray;
 		color: inherit;
@@ -7,6 +7,13 @@ section {
 		min-height: 25em;
 		position: absolute;
 		text-align: center;
+		height: auto;
+
+		#short-introduction {
+			text-align: center;
+			padding-left: 5%;
+			width: 80%;
+		}
 	}
 
 	#right {
@@ -18,5 +25,58 @@ section {
 		position: absolute;
 		left: 71.01%;
 		width: 29%;
+		height: auto;
+
+		aside {
+			margin: 0;
+			padding: 1em 1em 0;
+			overflow: auto;
+			height: 100%;
+
+			#next-show {
+				p {
+					margin-top: 1px;
+					text-align: right;
+				}
+				h3 {
+					margin-bottom: 0;
+				}
+				span {
+					padding: 3% 0 0 1%;
+					display: block;
+					font-size: medium;
+				}
+			}
+		}
+	}
+}
+
+#news {
+	height: auto;
+	margin: 0 5%;
+	padding: 1% 0 0;
+	height: 14em;
+	overflow-y: auto;
+
+	> fieldset {
+		height: 90%;
+		border: 1px solid green;
+		margin: 0;
+		line-height: 1.5em;
+	}
+
+	legend {
+		font-size: 1.2em;
+	}
+
+	.news {
+		text-align: left;
+		overflow: inherit;
+		padding-left: 3%;
+		margin-bottom: 0;
+
+		&:first-line {
+			font-weight: bold;
+		}
 	}
 }
