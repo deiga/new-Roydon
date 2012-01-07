@@ -5,9 +5,21 @@
  *= require_self
 */
 
+$dark-green: #006400;
+$main-gray: #d4d4d4;
 
-@import "layout.css.scss";
+@mixin rounded-corners-top($radius) {
+  -moz-border-radius: $radius $radius 0 0;
+  -webkit-border-radius: $radius $radius 0 0;
+  /* for old Konqueror browsers */
+  -khtml-border-radius: $radius $radius 0 0;
+  /* future proofing */
+  border-radius: $radius $radius 0 0;
+}
+
+@import "home.css.scss";
 @import "header.css.scss";
 @import "navigation.css.scss";
 @import "footer.css.scss";
-@import "home.css.scss";
+@import "layout.css.scss";
+
