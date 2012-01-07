@@ -1,0 +1,40 @@
+a {
+	text-decoration: none;
+	font-weight: bold;
+
+	&:active {
+		background-color: inherit;
+		color: white;
+	}
+
+	&:hover {
+	  background-color: inherit;
+	  text-decoration: UNDERline;
+	  color: #006400;
+	}
+
+	&:visited {
+	  background-color: inherit;
+	  color: green;
+	}
+
+	&:link {
+		background-color: inherit;
+		color: green;
+	}
+}
+
+#links {
+	h4 {
+		margin-bottom: 2%;
+	}
+
+	ul {
+		margin-top: 0;
+		margin-left: -5%;
+	}
+
+	li {
+		font-size: smaller;
+	}
+}

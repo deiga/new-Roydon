@@ -1,0 +1,21 @@
+/** Webkit haxes begin */
+
+@media screen and (-widthebkit-min-device-pixel-ratio:0) {
+
+  #oikea {
+    width: 29.1%;
+  }
+}
+
+/** Opera haxes begin */
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+
+  #oikea {
+    left: 71.1%;
+  }
+
+  #vasen {
+    width: 71%;
+  }
+
+}
