@@ -5,7 +5,7 @@ html, body {
 }
 
 ul {
-  list-style-image: url('/images/button15.gif');
+  list-style-image: url('/assets/button15.gif');
 }
 
 legend {
@@ -30,7 +30,7 @@ legend {
 }
 
 body {
-  > section {
+  > #content {
     position: relative;
     min-height: 25em;
     height: auto !important;
@@ -43,7 +43,7 @@ body {
     border-right: 1px solid $dark-green;
   }
   > {
-    header, section, footer { 
+    header, #content, footer { 
       width: 80%;
       min-width: 45em;
       margin: 0 auto;
