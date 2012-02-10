@@ -9,6 +9,8 @@
 	<body>
 		<%= render 'layouts/header' %>
 		<div id="content" class="shadow">
+			<div class="notice"><%= notice %></div>
+			<div class="alert"><%= alert %></div>
 			<%= yield %>
 		</div>
 		<%= render 'layouts/footer' %>
