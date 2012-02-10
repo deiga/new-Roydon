@@ -3,8 +3,8 @@ source :rubygems
 gem 'rails', '3.1.3'
 
 # Gem for NoSQL DB
-gem 'mongo_mapper'
-gem 'bson_ext'
+gem "mongoid", "~> 2.4"
+gem "bson_ext", "~> 1.5"
 
 # Gem for Webserver
 gem 'thin'

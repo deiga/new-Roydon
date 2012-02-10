@@ -1,10 +1,10 @@
 class Story
-	include MongoMapper::Document
+	include Mongoid::Document
+	include Mongoid::Timestamps
 
-	key :title, String
-	key :date, Date, :default => Date.today
-	key :content, String
-	timestamps!
+	field :title, type: String
+	field :date, type: Date, default: Date.today
+	field :content, type: String
 
 	# Validations
 	validates :title, :content, :presence => true

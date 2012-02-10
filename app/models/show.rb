@@ -1,12 +1,12 @@
 class Show
-	include MongoMapper::Document
+	include Mongoid::Document
+	include Mongoid::Timestamps
 
-	key :title, String
-	key :url, String
-	key :location, String
-	key :duration, Integer, :default => 1
-	key :date, Date
-	timestamps!
+	field :title, type: String
+	field :url, type: String
+	field :location, type: String
+	field :duration, type: Integer, default: 1
+	field :date, type: Date
 
 	# Validations
 	url_regex = /\Ahttp\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\z/i
