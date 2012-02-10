@@ -1,6 +1,6 @@
 #content {
 	#left {
-		background-color: $main-gray;
+		border-right: 1px solid white;
 		color: inherit;
 		float:left;
 		width: 70.9%;
@@ -17,7 +17,7 @@
 	}
 
 	#right {
-		background-color: $main-gray;
+		border-left: 1px solid white;
 		color: inherit;
 		min-height:25em;
 		height: auto !important;
