@@ -8,6 +8,7 @@ Roydon::Application.routes.draw do
 
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
+  match '/news', :to => 'pages#news'
   match '/shows(/:year)', :to => 'pages#shows', 
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',

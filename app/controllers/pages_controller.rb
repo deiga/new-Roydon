@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
   	@title = 'Home'
     @next_show = Show.desc(:date).first()
-    @news = Story.where( :date.gte => Date.today.prev_month(3) )
+    @index_news = Story.where( :date.gte => Date.today.prev_month(3) )
   end
 
   def contact
@@ -27,6 +27,11 @@ class PagesController < ApplicationController
     else
       @upcoming_shows = Show.where( :date.gte => today )
     end
+  end
+
+  def news
+    @title = 'News'
+    @all_news = Story.desc(:Date).all();
   end
 
 end
