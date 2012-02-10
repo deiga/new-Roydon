@@ -5,6 +5,8 @@ header {
 	position: relative;
 	text-align: center;
 	height: auto;
+	border-left: 1px solid green;
+	border-right: 1px solid green;
 
 	@include rounded-corners-top(1em);
 	
