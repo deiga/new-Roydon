@@ -4,16 +4,11 @@
 		<p>Olemme koiratarvikkeisiin erikoistunut yritys. Valikoimastamme löydät myös koulutustarvikkeita moneen tarpeeseen. Koko valikoimaamme pääset tutustumaan koiranäyttelyissä.
 		</p>
 	</section>
-	<% unless @news.blank? %>
+	<% unless @index_news.blank? %>
 		<section id="news">
 			<fieldset>
 				<legend>Uutiset</legend>
-				<% for news in @news %>
-				<p class="news">
-					<%= news.format_date %> <%= news.title %> 
-					<br /> <%= news.content %>
-				</p>
-				<% end %>
+				<%= display_news_items(@index_news) %>
 			</fieldset>
 			<%= link_to 'Lisää uutisia...', '/news' %>
 		</section>
