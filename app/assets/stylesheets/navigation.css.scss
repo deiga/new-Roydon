@@ -47,12 +47,17 @@ nav {
   		text-decoration: none;
 	}
 
-	.currpage {
+	.selected {
   		background-color: $main-gray;
+  		padding-bottom: 1%;
 
   		&:hover {
 			background-color: $main-gray;
 			text-decoration: none;
+		}
+
+		> a:link , a:visited {
+			color: $dark-green;
 		}
 	}
 }
