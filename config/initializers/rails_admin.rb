@@ -1,13 +1,11 @@
-require 'i18n'
-I18n.default_locale = :fi
 # RailsAdmin config file. Generated on February 20, 2012 04:43
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
 
   # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
-  # require 'i18n'
-  # I18n.default_locale = :de
+  require 'i18n'
+  I18n.default_locale = :fi
 
   config.current_user_method { current_user } # auto-generated
   
