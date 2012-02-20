@@ -7,6 +7,7 @@
 
 $dark-green: #006400;
 $main-gray: #d4d4d4;
+$height: 25em;
 
 @mixin rounded-corners-top($radius) {
   -moz-border-radius: $radius $radius 0 0;
