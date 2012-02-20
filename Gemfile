@@ -6,6 +6,9 @@ gem 'rails', '3.1.3'
 gem "mongoid", "~> 2.4"
 gem "bson_ext", "~> 1.5"
 
+# Admin view
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 # Gem for Webserver
 gem 'thin'
 
@@ -50,3 +53,5 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
+
+gem "devise"
