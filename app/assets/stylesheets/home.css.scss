@@ -1,13 +1,18 @@
 #content {
+
+	#left , #right {
+		min-height: $height;
+		height: auto !important;
+		position: absolute;
+		color: inherit;
+
+	}
+
 	#left {
 		border-right: 1px solid white;
-		color: inherit;
-		float:left;
-		width: 70.9%;
-		min-height: 25em;
-		position: absolute;
+		float: left;
+		width: 71%;
 		text-align: center;
-		height: auto;
 
 		#short-introduction {
 			text-align: center;
@@ -23,14 +28,8 @@
 
 	#right {
 		border-left: 1px solid white;
-		color: inherit;
-		min-height:25em;
-		height: auto !important;
-		height: 25em;
-		position: absolute;
-		left: 71.01%;
+		left: 71%;
 		width: 29%;
-		height: auto;
 
 		aside {
 			margin: 0;
