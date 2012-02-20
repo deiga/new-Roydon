@@ -1,7 +1,7 @@
 <footer>
 	Sivuihin liittyvät kysymykset ja kommentit 
 	<%= mail_to 'webmaster@roydon.fi', nil, :replace_at => "_at_", :class => 'email', :encode => 'javascript' %> 
-	<%= link_to 'Ylläpito', '/login', :class => 'robots-nocontent' %>
+	<%= link_to 'Ylläpito', rails_admin_path, :class => 'robots-nocontent' %>
 	<address>
 		Kuninkaantie 752 <br /> FI 07110 HINTHAARA
 		<br />+358 (0)40 020 0521
