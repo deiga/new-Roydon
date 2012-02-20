@@ -2,9 +2,9 @@ class Story
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
-	field :title, type: String
-	field :date, type: Date, default: Date.today
-	field :content, type: String
+	field :title, 	:type => String
+	field :date, 	:type => Date, :default => Date.today
+	field :content, :type => String
 
 	# Validations
 	validates :title, :content, :presence => true

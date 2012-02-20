@@ -2,11 +2,11 @@ class Show
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
-	field :title, type: String
-	field :url, type: String
-	field :location, type: String
-	field :duration, type: Integer, default: 1
-	field :date, type: Date
+	field :title, 		:type => String
+	field :url, 		:type => String
+	field :location, 	:type => String
+	field :duration, 	:type => Integer, :default => 1
+	field :date, 		:type => Date
 
 	# Validations
 	url_regex = /\Ahttp\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\z/i
