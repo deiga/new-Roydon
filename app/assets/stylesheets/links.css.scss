@@ -1,0 +1,45 @@
+a {
+	text-decoration: none;
+	font-weight: bold;
+
+	&:link {
+		background-color: inherit;
+		color: green;
+	}
+
+	&:active {
+		background-color: inherit;
+		color: white;
+	}
+
+	&:visited {
+	  background-color: inherit;
+	  color: green;
+	}
+
+	&:hover {
+	  background-color: inherit;
+	  text-decoration: UNDERline;
+	  color: $dark-green;
+	  -webkit-transform: scale(1.1,1.1);
+	  -moz-transform: scale(1.1,1.1);
+	  -ms-transform: scale(1.1,1.1);
+	  -o-transform: scale(1.1,1.1);
+	  transform: scale(1.1,1.1);
+	}
+}
+
+#links {
+	h4 {
+		margin-bottom: 2%;
+	}
+
+	ul {
+		margin-top: 0;
+		margin-left: -5%;
+	}
+
+	li {
+		font-size: smaller;
+	}
+}

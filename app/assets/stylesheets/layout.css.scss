@@ -1,0 +1,68 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+
+  background-repeat: no-repeat;
+}
+
+html, body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: auto;
+}
+
+ul {
+  list-style-image: url('/assets/button15.gif');
+}
+
+legend {
+  font-weight: bold;
+}
+
+.shadow {
+  -moz-box-shadow: 5px 5px 1px #A9A9A9;
+  -webkit-box-shadow: 5px 5px 1px #A9A9A9;
+  box-shadow: 5px 5px 1px #A9A9A9;
+}
+
+.rounded {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  border-radius: 10px; /* future proofing */
+}
+
+.rounded-top {
+  @include rounded-corners-top(0.5em);
+}
+
+body {
+  > #content {
+    position: relative;
+    min-height: $height+0.1em;
+    height: auto !important;
+    height: $height;
+    padding-top: 0;
+    margin-top: 0;
+    margin-right: 0;
+    border-bottom: 1px solid $dark-green;
+    border-left: 1px solid $dark-green;
+    border-right: 1px solid $dark-green;
+    background-color: $main-gray;
+  }
+  > {
+    header, #content, footer { 
+      width: 80%;
+      min-width: 45em;
+      margin: 0 auto;
+      position: relative;
+    }
+  }
+}

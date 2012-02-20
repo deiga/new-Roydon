@@ -1,19 +1,20 @@
-<fieldset>
-	<legend>Meihin saat yhteyden:</legend>
-		<address>
-			Yleiset kysymykset: 
-				<%= mail_to "roydon@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
-			<br />
-			Tuote-, saatavuus- ja hintakyselyt: 
-            	<%= mail_to "myynti@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
-            </span>
-            <br />
-           	Sivuihin liittyvät kysymykset ja kommentit: 
-				<%= mail_to "webmaster@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
-       		<br />
-            Postitse: <span>Roydon Ky, Kuninkaantie 752, 07110 HINTHAARA</span>
-            <br />
-            Puhelimitse: <span>+358 (0)40 020 0521</span>
-            <br />
-		</address>
-</fieldset>
+<section id="contact">
+      <fieldset id="contactfield">
+            <legend>Meihin saat yhteyden:</legend>
+            <address>
+                  Yleiset kysymykset: 
+                        <%= mail_to "roydon@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
+                  <br />
+                  Tuote-, saatavuus- ja hintakyselyt: 
+                  <%= mail_to "myynti@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
+                  <br />
+                  Sivuihin liittyvät kysymykset ja kommentit: 
+                              <%= mail_to "webmaster@roydon.fi", nil, :replace_at => "_at_", :class => 'email',  :encode => 'javascript' %>
+                        <br />
+                  Postitse: <span>Roydon Ky, Kuninkaantie 752, 07110 HINTHAARA</span>
+                  <br />
+                  Puhelimitse: <span>+358 (0)40 020 0521</span>
+                  <br />
+            </address>
+      </fieldset>
+</section> 
