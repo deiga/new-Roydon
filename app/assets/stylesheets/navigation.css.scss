@@ -33,14 +33,23 @@ nav {
 			text-decoration: none;
 		}
 
-		a:active {
-			color: green;
+		a {
+
+			&:active {
+				color: green;
+			}
+
+			&:link , &:visited {
+				color: white;
+		 		font-weight: normal;
+			}
+
+			&:hover {
+				background-color: transparent;
+			}
 		}
 		
-		a:link , a:visited {
-			color: white;
-		 	font-weight: normal;
-		}
+		
 	}
 
 	a:hover {
