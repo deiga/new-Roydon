@@ -1,5 +1,9 @@
 Roydon::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
   get "shows/index"
   get "shows/create"
   get "shows/edit"
