@@ -1,5 +1,9 @@
+<% if ENV['RAILS_ENV'] != 'production'
+    credentials = YAML.load_file('config/db.credentials.yml') 
+  end
+%>
+
 development:
-  <% credentials = YAML.load_file('config/db.credentials.yml') %>
   username: <%= credentials['development']['user'] %>
   password: <%= credentials['development']['password'] %>
   port: <%= credentials['development']['port'] %>
@@ -7,7 +11,6 @@ development:
   database: <%= credentials['development']['database'] %>
 
 test:
-  <% credentials = YAML.load_file('config/db.credentials.yml') %>
   username: <%= credentials['test']['user'] %>
   password: <%= credentials['test']['password'] %>
   port: <%= credentials['test']['port'] %>
