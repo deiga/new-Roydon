@@ -27,11 +27,11 @@ end
 
 group :cucumber do
 	gem 'capybara'
-  	gem 'database_cleaner'
-  	gem 'cucumber-rails'
-  	gem 'cucumber'
-  	gem 'spork'
-  	gem 'launchy'    # So you can do Then show me the page
+	gem 'database_cleaner'
+	gem 'cucumber-rails'
+	gem 'cucumber'
+	gem 'spork'
+	gem 'launchy'    # So you can do Then show me the page
 end
   
 # Gems used only for assets and not required
