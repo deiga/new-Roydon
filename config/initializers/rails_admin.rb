@@ -16,9 +16,9 @@ RailsAdmin.config do |config|
   # config.audit_with :paper_trail, User
   
   # Set the admin name here (optional second array element will appear in a beautiful RailsAdmin red ©)
-  config.main_app_name = ['Roydon', 'Admin']
+  # config.main_app_name = ['Roydon', 'Admin']
   # or for a dynamic name:
-  # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
+  config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
 
   #  ==> Global show view settings
@@ -31,10 +31,10 @@ RailsAdmin.config do |config|
 
   #  ==> Included models
   # Add all excluded models here:
-  # config.excluded_models = []
+  # config.excluded_models = [Show, Story, User]
 
   # Add models here if you want to go 'whitelist mode':
-  # config.included_models = []
+  # config.included_models = [Show, Story, User]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -79,4 +79,64 @@ RailsAdmin.config do |config|
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
 
+  # config.model Show do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :_type, :mongoid_type         # Hidden 
+  #     configure :_id, :bson_object_id         # Hidden 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :title, :string 
+  #     configure :url, :string 
+  #     configure :location, :string 
+  #     configure :duration, :integer 
+  #     configure :date, :date   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model Story do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :_type, :mongoid_type         # Hidden 
+  #     configure :_id, :bson_object_id         # Hidden 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :title, :string 
+  #     configure :date, :date 
+  #     configure :content, :string   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
+  # config.model User do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :_type, :mongoid_type         # Hidden 
+  #     configure :_id, :bson_object_id         # Hidden 
+  #     configure :email, :string 
+  #     configure :password, :password         # Hidden 
+  #     configure :password_confirmation, :password         # Hidden 
+  #     configure :reset_password_token, :string         # Hidden 
+  #     configure :reset_password_sent_at, :datetime 
+  #     configure :remember_created_at, :datetime 
+  #     configure :sign_in_count, :integer 
+  #     configure :current_sign_in_at, :datetime 
+  #     configure :last_sign_in_at, :datetime 
+  #     configure :current_sign_in_ip, :string 
+  #     configure :last_sign_in_ip, :string 
+  #     configure :admin, :boolean   #   # Sections:
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  # end
 end
