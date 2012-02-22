@@ -62,7 +62,7 @@ Roydon::Application.configure do
   config.assets.precompile += ["rails_admin/rails_admin.js", "rails_admin/rails_admin.css", "rails_admin/jquery.colorpicker.js", "rails_admin/jquery.colorpicker.css"]
 
   # ActionMailer Config
-  # config.action_mailer.default_url_options = { :host => 'yourhost.com' }
+   config.action_mailer.default_url_options = { :host => 'roydon.fi' }
 
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
