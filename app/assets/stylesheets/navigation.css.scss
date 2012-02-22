@@ -1,0 +1,72 @@
+nav {
+	font-size: 1.2em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	text-align: left;
+	background-color: inherit;
+
+	.currpage {
+		a { 
+			&:link ,  &:visited {
+  				color: $dark-green;
+  			}
+  		}
+	}
+}
+
+#navilist {
+	list-style: none;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	
+	li {
+	  	display: inline;
+		padding: 5px 7.5px 0 7.5px;
+		margin: 0 3px;
+		border-top: 1px solid $dark-green;
+		border-left: 1px solid $dark-green;
+		border-right: 1px solid $dark-green;
+
+		&:hover {
+			background-color: $dark-green;
+			color: Green;
+			text-decoration: none;
+		}
+
+		a {
+
+			&:active {
+				color: green;
+			}
+
+			&:link , &:visited {
+				color: white;
+		 		font-weight: normal;
+			}
+
+			&:hover {
+				background-color: transparent;
+			}
+		}
+		
+		
+	}
+
+	a:hover {
+  		text-decoration: none;
+	}
+
+	.selected {
+  		background-color: $main-gray;
+  		padding-bottom: 1%;
+
+  		&:hover {
+			background-color: $main-gray;
+			text-decoration: none;
+		}
+
+		> a:link , a:visited {
+			color: $dark-green;
+		}
+	}
+}

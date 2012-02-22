@@ -1,0 +1,28 @@
+<% credentials = YAML.load_file('config/db.credentials.yml') %>
+
+development:
+  username: <%= credentials['development']['user'] %>
+  password: <%= credentials['development']['password'] %>
+  port: <%= credentials['development']['port'] %>
+  host: <%= credentials['development']['url'] %>
+  database: <%= credentials['development']['database'] %>
+
+test:
+  username: <%= credentials['test']['user'] %>
+  password: <%= credentials['test']['password'] %>
+  port: <%= credentials['test']['port'] %>
+  host: <%= credentials['test']['url'] %>
+  database: <%= credentials['test']['database'] %>
+
+# set these environment variables on your prod server
+production:
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019

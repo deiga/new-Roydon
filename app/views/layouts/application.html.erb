@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Roydon</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+		<title><%= title %> </title>
+	  	<%= stylesheet_link_tag    "application" %>
+	  	<%= javascript_include_tag "application" %>
+	  	<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<% if flash[:notice] %>
+				<div class="notice rounded"><%= notice %></div>
+			<% elsif flash[:alert] %>
+				<div class="alert rounded"><%= alert %></div>
+			<% end %>
+		<%= render 'layouts/header' %>
+		<div id="content" class="shadow">
+			
+			<%= yield %>
+		</div>
+		<%= render 'layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
+	</body>
 </html>
