@@ -7,10 +7,14 @@
 	  	<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<% if flash[:notice] %>
+				<div class="notice rounded"><%= notice %></div>
+			<% elsif flash[:alert] %>
+				<div class="alert rounded"><%= alert %></div>
+			<% end %>
 		<%= render 'layouts/header' %>
 		<div id="content" class="shadow">
-			<div class="notice"><%= notice %></div>
-			<div class="alert"><%= alert %></div>
+			
 			<%= yield %>
 		</div>
 		<%= render 'layouts/footer' %>
