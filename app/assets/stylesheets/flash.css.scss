@@ -1,0 +1,17 @@
+.notice , .alert {
+	text-align: center;
+	width: auto;
+	margin: 0 30%;
+	padding: 1%;
+	font-weight: bolder;
+	color: black;
+	background-color: white;
+}
+
+.notice {
+	border: 2px dotted green;
+}
+
+.alert {
+	border: 2px dotted red;
+}
