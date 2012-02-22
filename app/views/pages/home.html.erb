@@ -18,7 +18,11 @@
 	<aside class="content">
 		<section id="next-show">
 			<h3>Seuraavaksi löydät meidät:</h3>
-			<span><%= @next_show.format_date %> <%= @next_show.location %> <br /> <%= link_to @next_show.title, @next_show.url %></span>
+			<% unless @next_show.blank? %>
+				<span><%= @next_show.format_date %> <%= @next_show.location %> <br /> <%= link_to @next_show.title, @next_show.url %></span>
+			<% else %>
+				<span>Ei tulevia näyttelyitä ilmoitettu</span>
+			<% end %>
 			<p><%= link_to 'Lisää näyttelyitä...', shows_path %></p>
 		</section>
 		<section id="links">
