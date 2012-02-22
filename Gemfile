@@ -4,7 +4,7 @@ gem 'rails', '3.1.3'
 
 # Gem for NoSQL DB
 gem "mongoid", "~> 2.4"
-gem "bson_ext", "~> 1.5.2"
+gem "bson_ext", "~> 1.5"
 
 # Admin view
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
