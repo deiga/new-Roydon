@@ -5,9 +5,14 @@
 #content {
 	#shows {
 		padding-top: 3%;
+
+		p ,  #shows_table {
+			margin: 0 auto;
+			text-align: center;
+		}
+
 		#shows_table {
 			border-collapse: collapse;
-			margin: 0 auto;
 
 			caption {
 				padding: 0 0 1% 1%;
@@ -38,6 +43,7 @@
 			}
 		}
 	}
+
 	#years {
 		margin: 0 auto;
 		text-align: center;
