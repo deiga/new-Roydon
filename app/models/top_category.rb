@@ -3,7 +3,9 @@ class TopCategory
   include Mongoid::Timestamps
 
   field :name, :type => String
-  field :passive, :type => Boolean
-  
+  field :passive, :type => Boolean, :default => false
+
   embeds_many :categories
+
+  validates :name, :presence => true
 end
