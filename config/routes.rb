@@ -1,10 +1,8 @@
 Roydon::Application.routes.draw do
 
-  get "shop/home"
+  match "/shop/", :to => 'shop::Shop#home'
 
-  get "products/index"
-
-  get "products/show"
+  resources :products, :only => [:index, :show]
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
