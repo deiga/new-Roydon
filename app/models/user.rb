@@ -23,8 +23,13 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  ## Name
   field :first_name,  :type => String
   field :last_name,   :type => String
+
+  ## Status
+  field :groomer, :type => Boolean, :default => false
+  field :breeder, :type => Boolean, :default => false
 
   ## Encryptable
   # field :password_salt, :type => String
