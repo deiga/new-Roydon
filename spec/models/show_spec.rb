@@ -17,6 +17,11 @@ describe Show do
       allShows.should_not be_empty
     end
 
+    it "should be empty" do
+      allShows = Show.all
+      allShows.should be_empty
+    end
+
     it "should require a title" do
       no_title_show = Show.new(@attr.merge(:title => ""))
       no_title_show.should_not be_valid
