@@ -12,6 +12,7 @@ describe Show do
     end
 
     it "should contain documents" do
+      Show.create!(@attr)
       allShows = Show.all
       allShows.should_not be_empty
     end
