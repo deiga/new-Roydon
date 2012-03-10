@@ -23,6 +23,9 @@ class Admin
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  field :first_name,  :type => String
+  field :last_name,   :type => String
+
   ## Encryptable
   # field :password_salt, :type => String
 
