@@ -1,9 +1,11 @@
 Roydon::Application.routes.draw do
 
-  match "/shop/", :to => 'shop::Shop#home'
+  namespace :shop do
+    resources :products, :only => [:index, :show]
+  end
 
-  resources :products, :only => [:index, :show]
-
+  match '/shop', :to => 'shop/shop#home'
+  
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
