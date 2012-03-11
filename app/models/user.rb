@@ -27,9 +27,8 @@ class User
   field :first_name,  :type => String
   field :last_name,   :type => String
 
-  ## Status
-  field :groomer, :type => Boolean, :default => false
-  field :breeder, :type => Boolean, :default => false
+  ## Relations
+  has_and_belongs_to_many :user_groups
 
   ## Encryptable
   # field :password_salt, :type => String
