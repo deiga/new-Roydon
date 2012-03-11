@@ -1,5 +1,7 @@
 Roydon::Application.routes.draw do
 
+  resources :stories, :only => [:index], :path => :news
+
   namespace :shop do
     resources :products, :only => [:index, :show]
   end
@@ -17,7 +19,6 @@ Roydon::Application.routes.draw do
 
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
-  match '/news', :to => 'pages#news'
 
   root :to => 'pages#home'
 

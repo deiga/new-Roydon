@@ -13,9 +13,4 @@ class PagesController < ApplicationController
   	@title = 'About'
   end
 
-  def news
-    @title = 'News'
-    @all_news = Story.desc(:Date).all();
-  end
-
 end
