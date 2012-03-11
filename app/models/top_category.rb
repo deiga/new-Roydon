@@ -5,7 +5,7 @@ class TopCategory
   field :name, :type => String
   field :passive, :type => Boolean, :default => false
 
-  embeds_many :categories
+  has_many :categories
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :length => { :minimum => 1 }
 end
