@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Shop::ShopController do
+  render_views
 
   describe "GET 'home'" do
     it "returns http success" do
