@@ -13,5 +13,7 @@ class Product
     return self.stock > 0
   end
 
-  validate :name, :presence => true
+  validates :name, :presence => true, :length => { :minimum => 1 }
+  validates :price, :numericality => { :greater_than_or_equal_to => 0.0}
+  validates :stock, :numericality => { :only_integer => true }
 end
