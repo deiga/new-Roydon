@@ -49,16 +49,37 @@ def create_stories
     Story.create!(:date => date, :title => line[3],
       :content => line[4], :language => 'en')
   end
+  Story.create!(:date => Date.today, :title => 'Test news',
+    :content => 'Testing. 1 2 3. <br /> BÖÖ!!\n Return')
 end
 
-UserGroup.create( :name => 'Breeder' )
-UserGroup.create( :name => 'Groomer' )
+breeder = UserGroup.create!( :name => 'Breeder' )
+groomer = UserGroup.create!( :name => 'Groomer' )
 
 if Rails.env.development? 
   admins = YAML.load_file('db/seed/admin.credentials.yml')
   Admin.create!(admins['Timo'])
-  #Admin.create!(:email => 'webmaster@roydon.fi', :password => '')
 end
+
+User.create!(:email => 'test@tester.com', :password => 'foofoo',
+  :password_confirmation => 'foofoo', :first_name => 'Tester',
+  :last_name => 'Test')
+
+breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoo',
+  :password_confirmation => 'foofoo', :first_name => 'Tester',
+  :last_name => 'Test')
+
+breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoo',
+  :password_confirmation => 'foofoo', :first_name => 'Tester',
+  :last_name => 'Test')
+
+groomer.users.create!(:email => '1test@tester.com', :password => 'foofoo',
+  :password_confirmation => 'foofoo', :first_name => 'Tester',
+  :last_name => 'Test')
+
+groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
+  :password_confirmation => 'foofoo', :first_name => 'Tester',
+  :last_name => 'Test')
 
 create_categories()
 create_shows()
