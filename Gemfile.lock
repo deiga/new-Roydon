@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mshibuya/rails_admin.git
-  revision: 5c4e6eb4b1ce36142dab41ef639b3dac6af031d6
+  revision: 069819944cc964b96c80adc74e5d398322b2c2ba
   branch: mongoid
   specs:
     rails_admin (0.0.1)
@@ -19,7 +19,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.2)
+    ZenTest (4.7.0)
     actionmailer (3.1.3)
       actionpack (= 3.1.3)
       mail (~> 2.3.0)
@@ -70,6 +70,7 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    ccsv (0.1.2)
     childprocess (0.3.1)
       ffi (~> 1.0.6)
     coffee-rails (3.1.1)
@@ -102,7 +103,7 @@ GEM
     execjs (1.3.0)
       multi_json (~> 1.0)
     ffi (1.0.11)
-    gherkin (2.9.0)
+    gherkin (2.9.1)
       json (>= 1.4.6)
     haml (3.1.4)
     hike (1.2.1)
@@ -118,7 +119,7 @@ GEM
       railties (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    mail (2.3.2)
+    mail (2.3.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -143,7 +144,7 @@ GEM
       rack (>= 0.4)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
-    rack-pjax (0.5.8)
+    rack-pjax (0.5.9)
       hpricot (~> 0.8.6)
       rack (~> 1.3)
     rack-ssl (1.3.2)
@@ -169,19 +170,19 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
-    rspec (2.8.0)
-      rspec-core (~> 2.8.0)
-      rspec-expectations (~> 2.8.0)
-      rspec-mocks (~> 2.8.0)
-    rspec-core (2.8.0)
-    rspec-expectations (2.8.0)
-      diff-lcs (~> 1.1.2)
-    rspec-mocks (2.8.0)
-    rspec-rails (2.8.1)
+    rspec (2.9.0)
+      rspec-core (~> 2.9.0)
+      rspec-expectations (~> 2.9.0)
+      rspec-mocks (~> 2.9.0)
+    rspec-core (2.9.0)
+    rspec-expectations (2.9.0)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.9.0)
+    rspec-rails (2.9.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec (~> 2.8.0)
+      rspec (~> 2.9.0)
     rubyzip (0.9.6.1)
     sass (3.1.15)
     sass-rails (3.1.5)
@@ -234,6 +235,7 @@ DEPENDENCIES
   autotest-rails-pure
   bson_ext (~> 1.5)
   capybara
+  ccsv
   coffee-rails (~> 3.1.1)
   cucumber
   cucumber-rails

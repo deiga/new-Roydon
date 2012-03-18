@@ -14,6 +14,9 @@ gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch 
 # Gem for Webserver
 gem 'thin'
 
+# Gem for reading seed data
+gem 'ccsv'
+
 group :develpoment, :test, :cucumber do
 	gem 'rspec'
     gem 'rspec-rails'
