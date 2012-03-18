@@ -41,8 +41,10 @@ Ccsv.foreach('db/seed/shows.csv') do |line|
 end
 
 Ccsv.foreach('db/seed/news.csv') do |line|
-  line.each { |str| str.gsub!(/\"/,'') }
+  line.each { |str| str.gsub!(/\"/,'').gsub!(/;/,',') }
   date = Date.strptime(line[0])
   Story.create!(:date => date, :title => line[1],
     :content => line[2])
+  Story.create!(:date => date, :title => line[3],
+    :content => line[4], :language => 'en')
 end
