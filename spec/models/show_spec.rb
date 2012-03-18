@@ -56,4 +56,9 @@ describe Show do
     invalid_url_show = Show.new(@attr.merge(:url => 'foo.bar'))
     invalid_url_show.should_not be_valid
   end
+
+  it "should return the correct date, when starting date is last of month" do
+    foo = Show.new(@attr.merge(:date => Date.new(2012,01,31), :duration => 3))
+    foo.format_date.should == "31.01.-02.02."
+  end
 end
