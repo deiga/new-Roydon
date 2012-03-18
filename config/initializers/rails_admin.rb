@@ -7,7 +7,7 @@ RailsAdmin.config do |config|
   require 'i18n'
   I18n.default_locale = :fi
 
-  config.current_user_method { current_user } # auto-generated
+  config.current_user_method { current_admin } # auto-generated
   
   # If you want to track changes on your models:
   # config.audit_with :history, User

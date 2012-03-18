@@ -6,7 +6,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :email,              :type => String, :null => false, :default => ""
+  field :email,              :type => String, :null => false
   field :encrypted_password, :type => String, :null => false, :default => ""
 
   ## Recoverable
@@ -23,8 +23,12 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  ## Admin
-  field :admin, :type => Boolean, :default => false
+  ## Name
+  field :first_name,  :type => String
+  field :last_name,   :type => String
+
+  ## Relations
+  has_and_belongs_to_many :user_groups
 
   ## Encryptable
   # field :password_salt, :type => String
