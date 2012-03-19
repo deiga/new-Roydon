@@ -3,7 +3,7 @@ class Discount
   include Mongoid::Timestamps
   
   field :name, :type => String
-  field :amount, :type => Float
+  field :discount, :type => Float
 
   has_many :products
   has_many :categories

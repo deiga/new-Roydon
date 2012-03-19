@@ -8,6 +8,11 @@ class Product
   field :price, :type => BigDecimal, :default => 0.0
   field :stock, :type => Integer, :default => 0
   field :passive, :type => Boolean, :default => false
+  field :suggestion, :type => Boolean, :default => false
+  field :description, :type => String
+  field :image, :type => String
+
+  has_many :options
 
   def in_stock?
     return self.stock > 0
