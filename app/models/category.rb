@@ -11,7 +11,7 @@ class Category
 
   validates :name, :presence => true, :length => { :minimum => 2 }
 
-  def top_categories
-    Category.all(:ancestry => nil)
+  def self.top_categories
+    self.where(:ancestry => nil)
   end
 end
