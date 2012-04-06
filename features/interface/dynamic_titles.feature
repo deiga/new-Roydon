@@ -6,12 +6,12 @@ Feature: Pages have dynamic titles
 
 Scenario: Home page has a title
 	When I go to the home page
-	Then the title should be "Home | Roydon"
+	Then the "title" should be "Home | Roydon"
 
 Scenario: Contact page has a title
 	When I go to the home page
-	Then the title should be "Contact | Roydon"
+	Then the "title" should be "Contact | Roydon"
 
 Scenario: About page has a title
 	When I go to the home page
-	Then the title should be "About | Roydon"
+	Then the "title" should be "About | Roydon"
