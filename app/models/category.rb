@@ -19,7 +19,7 @@ class Category
     self.name.downcase.gsub(/\s/,'_')
   end
 
-  def self.match_formatted_name(formatted_name)
+  def self.find_by_formatted_name(formatted_name)
     self.where(:name => /#{formatted_name.split('_').first}/i).first
   end
 end
