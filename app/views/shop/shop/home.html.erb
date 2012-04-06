@@ -7,5 +7,19 @@
 	</ul>
 	<% end %>
 </nav>
-<h1>Shop::Shop#home</h1>
-<p>Find me in app/views/shop/shop/home.html.erb</p>
+<section id="sub-navigation-sidebar">
+	<%= render 'shop/layouts/search' %>
+	<%= render 'shop/layouts/category_menu' %>
+</section>
+<section id="product-view" class="">
+	<%= link_to @product.name, shop_product_path(@product.id) unless @product.nil? %>
+</section>
+<section id="sidebar">
+	<section id="advertisement">
+		
+	</section>
+	<section id="shopping_cart">
+		
+	</section>
+	
+</section>
