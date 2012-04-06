@@ -10,12 +10,12 @@
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
-    parent = TopCategory.new(:name => top_category)
+    parent = Category.new(:name => top_category)
     parent.save!
 
     unless category_list.nil?
       category_list.each do |category|
-        parent.categories.create!(:name => category)
+        parent.children.create(:name => category)
       end
     end
   end
