@@ -23,4 +23,14 @@ describe Category do
     no_name_category = Category.new
     no_name_category.should_not be_valid
   end
+
+  it "should have replaced spaces with nbsps" do
+    test_category = Category.create!(@attr)
+    test_category.name.should include("nbsp")
+  end
+
+  it "name should have no whitespaces" do
+    test_category = Category.create!(@attr)
+    test_category.name.should_not match(/\s/)
+  end
 end
