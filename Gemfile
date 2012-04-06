@@ -20,6 +20,9 @@ gem 'ccsv'
 # Gem for pagination
 gem 'kaminari'
 
+# Gem for tree structure of categories
+gem 'mongoid-ancestry'
+
 group :development, :test, :cucumber do
 	gem 'rspec'
   gem 'rspec-rails'
