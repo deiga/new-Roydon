@@ -88,5 +88,5 @@ create_stories()
 test_product = Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description => 
   "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
   :image => "http://www.tujomakauppa.net/kuvat/TU4135.jpg")
-test_product.categories << Category.find_by_name('Häkit')
+test_product.categories << Category.any_in(:name => ['Häkit'])
 
