@@ -1,7 +1,9 @@
 <% unless @categories.nil? %>
 	<nav id="category-menu">
-		<% @categories.each do |category| %>
-			<%= link_to category.name %>
-		<% end %>
+		<ul>
+			<% @categories.each do |category| %>
+				<li><%= category_link(category, :category) %></li>
+			<% end %>
+		</ul>
 	</nav>
 <% end %>

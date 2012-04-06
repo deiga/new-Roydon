@@ -2,7 +2,7 @@
 	<% unless @top_categories.nil? %>
 	<ul>
 		<% @top_categories.each do |top_category| %>
-			<li><a href='#'><%= top_category.name %></a></li>
+			<li><%= category_link(top_category, :top_category) %></li>
 		<% end %>
 	</ul>
 	<% end %>
