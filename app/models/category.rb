@@ -14,4 +14,12 @@ class Category
   def self.top_categories
     self.where(:ancestry => nil)
   end
+
+  def format_name
+    self.name.downcase.gsub(/\s/,'_')
+  end
+
+  def self.match_formatted_name(formatted_name)
+    self.where(:name => /#{formatted_name.split('_').first}/i).first
+  end
 end
