@@ -8,4 +8,8 @@ class TopCategory
   has_many :categories
 
   validates :name, :presence => true, :length => { :minimum => 1 }
+
+  before_save do |top_category|
+    top_category.name.gsub!(/\s/,'&nbsp;')
+  end
 end
