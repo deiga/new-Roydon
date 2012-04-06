@@ -6,7 +6,8 @@ describe Category do
   end
 
   it "should create a new Category given valid attributes" do
-    created = Category.create!(@attr)  
+    created = Category.create(@attr)  
+    created.should_not be_nil
   end
 
   it "should be empty" do
