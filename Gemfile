@@ -17,9 +17,12 @@ gem 'thin'
 # Gem for reading seed data
 gem 'ccsv'
 
-group :develpoment, :test, :cucumber do
+# Gem for pagination
+gem 'kaminari'
+
+group :development, :test, :cucumber do
 	gem 'rspec'
-    gem 'rspec-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
