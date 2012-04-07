@@ -12,12 +12,13 @@
 	<%= render 'shop/layouts/category_menu' %>
 </section>
 <section id="product-view" class="">
-	<%= link_to @product.name, shop_product_path(@product.id) unless @product.nil? %>
+	<% unless @products.nil? %>
+		<% @products.each do |product| %>
+			<%= link_to product.name, shop_product_path(product.id) %>
+		<% end %>
+	<% end %>
 </section>
 <section id="sidebar">
-	<section id="advertisement">
-		
-	</section>
 	<%= render 'shop/layouts/shopping_cart' %>
-
+	<%= render 'shop/layouts/advertisement' %>
 </section>
