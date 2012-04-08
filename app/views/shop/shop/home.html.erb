@@ -13,9 +13,8 @@
 </section>
 <section id="product-view" class="">
 	<% unless @products.nil? %>
-		<% @products.each do |product| %>
-			<%= link_to product.name, shop_product_path(product.id) %>
-		<% end %>
+		<%= paginate @products %>
+		<%= render @products %>
 	<% end %>
 </section>
 <section id="sidebar">
