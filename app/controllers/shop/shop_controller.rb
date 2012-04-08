@@ -6,9 +6,9 @@ class Shop::ShopController < ApplicationController
     @category = Category.find_by_formatted_name params[:category] unless params[:category].nil?
     
     unless @category.nil?
-      @products = @category.products
+      @products = @category.products.page(params[:page])
     else
-      @products = @top_category.products unless @top_category.nil?
+      @products = @top_category.products.page(params[:page]) unless @top_category.nil?
     end
   end
 
