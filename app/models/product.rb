@@ -2,6 +2,8 @@ class Product
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  paginates_per 9
+
   has_and_belongs_to_many :categories
 
   field :name, :type => String
