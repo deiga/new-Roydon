@@ -5,6 +5,8 @@ class Product
   paginates_per 9
 
   has_and_belongs_to_many :categories
+  belongs_to :shopping_cart
+  has_many :options
 
   field :name, :type => String
   field :price, :type => BigDecimal, :default => 0.0
@@ -13,8 +15,6 @@ class Product
   field :suggestion, :type => Boolean, :default => false
   field :description, :type => String
   field :image, :type => String
-
-  has_many :options
 
   def in_stock?
     return self.stock > 0
