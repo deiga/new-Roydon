@@ -78,10 +78,13 @@ groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
   :password_confirmation => 'foofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
+logger.info "Creating categories"
 create_categories()
+logger.info "Creating shows"
 create_shows()
+logger.info "Creating stories"
 create_stories()
-
+logger.info "Creating dummy products"
 1.upto(15) do |i|
   test_product = Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description => 
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
@@ -89,4 +92,4 @@ create_stories()
   test_product.categories << Category.any_in(:name => ['Häkit'])
 end
 
-
+logger.info "All done!"
