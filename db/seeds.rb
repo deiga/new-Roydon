@@ -3,6 +3,8 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
+puts "Seeding for env '#{Rails.env}'"
+
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
@@ -78,13 +80,13 @@ groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
   :password_confirmation => 'foofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-logger.info "Creating categories"
+p "Creating categories"
 create_categories()
-logger.info "Creating shows"
+p "Creating shows"
 create_shows()
-logger.info "Creating stories"
+p "Creating stories"
 create_stories()
-logger.info "Creating dummy products"
+p "Creating dummy products"
 1.upto(15) do |i|
   test_product = Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description => 
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
@@ -92,4 +94,4 @@ logger.info "Creating dummy products"
   test_product.categories << Category.any_in(:name => ['Häkit'])
 end
 
-logger.info "All done!"
+p "All done!"
