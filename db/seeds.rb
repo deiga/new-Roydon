@@ -2,20 +2,16 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
-    parent = TopCategory.new(:name => top_category)
+    parent = Category.new(:name => top_category)
     parent.save!
 
     unless category_list.nil?
       category_list.each do |category|
-        parent.categories.create!(:name => category)
+        parent.children.create(:name => category)
       end
     end
   end
@@ -84,4 +80,12 @@ groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
 create_categories()
 create_shows()
 create_stories()
+
+1.upto(15) do |i|
+  test_product = Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description => 
+    "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
+    :image => "http://www.tujomakauppa.net/kuvat/TU4135.jpg")
+  test_product.categories << Category.any_in(:name => ['Häkit'])
+end
+
 

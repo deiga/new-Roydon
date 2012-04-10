@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "products/index.html.erb" do
+describe GroupDiscount do
   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -1,3 +1,115 @@
 // Place all the styles related to the Shop::Shop controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#content {
+	#shop_navi {
+		width: 80%;
+		margin: 0 auto;
+		padding-top: 2%;
+		padding: 10px;
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+
+			li {
+				display: inline;
+				z-index:10;
+	            text-align: center;
+				padding: 1px 7.5px;
+				margin: 0;
+				border: 1px solid white;
+				background-color: $dark-green;
+				color: white;
+				line-height: 1.6em;
+				@include rounded-corners(5px);
+
+				&:hover {
+					background-color: white;
+					color: $dark-green !important;
+					text-decoration: none;
+					border-color: $dark-green;
+
+					a {
+						background-color: white !important;
+						color: $dark-green !important;
+					}
+				}
+
+				a {
+	            	text-align: center;
+	            	width: 100%;
+
+					&:active {
+						color: green;
+					}
+
+					&:link , &:visited {
+						color: white;
+						font-weight: normal;
+					}
+				}
+			
+			
+			}
+
+			a:hover {
+				text-decoration: none;
+			}
+
+			.selected {
+				background-color: $main-gray;
+				padding-bottom: 1%;
+
+				&:hover {
+					background-color: $main-gray;
+					text-decoration: none;
+				}
+
+				> a:link , a:visited {
+					color: $dark-green;
+				}
+			}
+		}
+	}
+
+	#sub-navigation-sidebar {
+		padding-left: 1%;
+		padding-top: 10px;
+		position: absolute;
+		top: 100px;
+		left: 0px;
+		width: 20%;
+
+		nav {
+			font-size: 1em;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+	}
+
+	#product-view {
+		margin: 20px 20%;
+		padding: 10px;
+		width: 60%;
+		overflow: auto;
+
+		.pagination {
+			text-align: right;
+			margin-right: 8%;
+		}
+	}
+
+	#sidebar {
+		position: absolute;
+		padding-top: 10px;
+		padding-left: 1%;
+		top: 100px;
+		right: 0px;
+		width: 20%;
+	}
+}

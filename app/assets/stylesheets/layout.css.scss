@@ -33,10 +33,7 @@ legend {
 }
 
 .rounded {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -khtml-border-radius: 10px; /* for old Konqueror browsers */
-  border-radius: 10px; /* future proofing */
+  @include rounded-corners(10px);
 }
 
 .rounded-top {
