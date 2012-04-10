@@ -13,4 +13,12 @@ class ShoppingCart
   def add(product)
     self.products << product
   end
+
+  def price
+    price = 0.0
+    self.products.each do |product|
+      price += product.price
+    end
+    price
+  end
 end
