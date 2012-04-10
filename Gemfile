@@ -23,25 +23,22 @@ gem 'kaminari'
 # Gem for tree structure of categories
 gem 'mongoid-ancestry'
 
-group :development, :test, :cucumber do
+group :development, :test do
 	gem 'rspec'
   gem 'rspec-rails'
 end
 
 group :test do
-    gem 'webrat'
-    gem 'autotest'
-    gem 'autotest-rails-pure'
-    gem 'autotest-fsevent'
-    gem 'autotest-growl'
-end
-
-group :cucumber do
-	gem 'capybara'
-	gem 'database_cleaner'
-	gem 'cucumber-rails'
-	gem 'cucumber'
-	gem 'spork'
+  gem 'webrat'
+  gem 'autotest'
+  gem 'autotest-rails-pure'
+  gem 'autotest-fsevent'
+  gem 'autotest-growl'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber'
+  gem 'spork'
 	gem 'launchy'    # So you can do Then show me the page
 end
   
