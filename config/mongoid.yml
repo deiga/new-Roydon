@@ -1,11 +1,15 @@
-<%if ENV['RAILS_ENV'] != 'production'
+<% begin
     credentials = YAML.load_file('config/db.credentials.yml')[ENV['RAILS_ENV']]
     username = credentials['user']
     password = credentials['password']
     port = credentials['port']
     host = credentials['url']
     database = credentials['database']
+  rescue Exception => e
+    
   end
+    
+  
 %>
 
 development:
@@ -24,8 +28,8 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['MONGOID_HOST'] %>
-  port: <%= ENV['MONGOID_PORT'] %>
-  username: <%= ENV['MONGOID_USERNAME'] %>
-  password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: <%= ENV['MONGOID_DATABASE'] %>
+  host: <%= host || ENV['MONGOID_HOST'] %>
+  port: <%= port || ENV['MONGOID_PORT'] %>
+  username: <%= username || ENV['MONGOID_USERNAME'] %>
+  password: <%= password || ENV['MONGOID_PASSWORD'] %>
+  database: <%= database || ENV['MONGOID_DATABASE'] %>
