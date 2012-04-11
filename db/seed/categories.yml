@@ -43,7 +43,7 @@ Syötävät:
 - Makupalat
 - Puruluut
 - Herkut
-Ruokakupit:
+Ruokakupit: []
 Taluttimet:
 - Nahka
 - Nylon
@@ -52,19 +52,19 @@ Taluttimet:
 - Noutajaremmit
 Pannat:
 - Ketjut
-- Snake-ketjut
+- 'Snake-ketjut'
 - Puolikuristavat
 - Täyskuristavat
 - Solkipannat
 - Klipsipannat
 - Erikoispannat
-Valjaat & liivit:
-Häkit:
+'Valjaat & liivit':
+Häkit: []
 Makuualustat:
 - Patjat
 - 'Pedit & kodat'
 - Karva-alustat
-Aitaukset & portit:
+'Aitaukset & portit':
 Lelut:
 - Pehmolelut
 - 'Vinyyli- & lateksilelut'
@@ -72,4 +72,4 @@ Lelut:
 - 'Naru-, köysi- ja pallolelut'
 - Kongit
 - Kelluvat lelut
-Muut tuotteet:
+Muut tuotteet: []
