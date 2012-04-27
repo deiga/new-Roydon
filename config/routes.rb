@@ -1,22 +1,23 @@
 Roydon::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  resources :stories, :only => [:index], :path => :news
 
+  namespace :shop do
+    resources :products, :only => [:index, :show]
+    root :to => 'shop#index'
+  end
+
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
 
-  get "shows/index"
-  get "shows/create"
-  get "shows/edit"
-  get "shows/update"
-  get "shows/destroy"
-
-  match '/contact', :to => 'pages#contact'
-  match '/about', :to => 'pages#about'
-  match '/news', :to => 'pages#news'
-  match '/shows(/:year)', :to => 'pages#shows', 
+  match "/shows(/:year)", :to => 'shows#index',
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',
     :defaults => {:year => 2012}
+
+  match '/contact', :to => 'pages#contact'
+  match '/about', :to => 'pages#about'
 
   root :to => 'pages#home'
 

@@ -1,0 +1,8 @@
+<section id="shopping_cart">
+	<% unless @shopping_cart.nil? || @shopping_cart.empty? %>
+		<strong><%= link_to 'Ostoskori' %>:</strong><br />
+		Hinta: <%= @shopping_cart.price %> €
+	<% else %>
+		Ostoskori on tyhjä
+	<% end %>
+</section>
