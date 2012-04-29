@@ -9,7 +9,7 @@ gem "mongoid_rails_migrations"
 
 # Admin view
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
-gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
+gem 'rails_admin'#, :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
 
 # Gem for Webserver
 gem 'thin'
@@ -24,7 +24,7 @@ gem 'kaminari'
 gem 'mongoid-ancestry'
 
 group :development, :test do
-	gem 'rspec'
+  gem 'rspec'
   gem 'rspec-rails'
 end
 
@@ -39,7 +39,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber'
   gem 'spork'
-	gem 'launchy'    # So you can do Then show me the page
+  gem 'launchy'    # So you can do Then show me the page
+  gem 'therubyracer', :platform => :ruby
 end
   
 # Gems used only for assets and not required
