@@ -5,6 +5,11 @@
     port = credentials['port']
     host = credentials['url']
     database = credentials['database']
+    ENV['MONGOID_DATABASE'] ||= database
+    ENV['MONGOID_PASSWORD'] ||= password
+    ENV['MONGOID_USERNAME'] ||= user
+    ENV['MONGOID_PORT'] ||= port
+    ENV['MONGOID_HOST'] ||= host
   rescue Exception => e
     
   end
@@ -13,23 +18,23 @@
 %>
 
 development:
-  username: <%= username %>
-  password: <%= password %>
-  port: <%= port %>
-  host: <%= host %>
-  database: <%= database %>
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
 
 test:
-  username: <%= username %>
-  password: <%= password %>
-  port: <%= port %>
-  host: <%= host %>
-  database: <%= database %>
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
 
 # set these environment variables on your prod server
 production:
-  host: <%= host || ENV['MONGOID_HOST'] %>
-  port: <%= port || ENV['MONGOID_PORT'] %>
-  username: <%= username || ENV['MONGOID_USERNAME'] %>
-  password: <%= password || ENV['MONGOID_PASSWORD'] %>
-  database: <%= database || ENV['MONGOID_DATABASE'] %>
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
