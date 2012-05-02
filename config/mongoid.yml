@@ -1,5 +1,5 @@
 <% begin
-    credentials = YAML.load_file('config/db.credentials.yml')[ENV['RAILS_ENV']]
+    credentials = YAML.load_file('config/db.credentials.yml')[Rails.env]
     username = credentials['user']
     password = credentials['password']
     port = credentials['port']
@@ -7,7 +7,7 @@
     database = credentials['database']
     ENV['MONGOID_DATABASE'] ||= database
     ENV['MONGOID_PASSWORD'] ||= password
-    ENV['MONGOID_USERNAME'] ||= user
+    ENV['MONGOID_USERNAME'] ||= username
     ENV['MONGOID_PORT'] ||= port
     ENV['MONGOID_HOST'] ||= host
   rescue Exception => e
