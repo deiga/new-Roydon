@@ -57,7 +57,6 @@ groomer = UserGroup.create!( :name => 'Groomer' )
 if Rails.env.development? 
   admins = YAML.load_file('db/seed/admin.credentials.yml')
   Admin.create!(admins['Timo'])
-  Admin.create!(admins['Lotta'])
 end
 
 User.create!(:email => 'test@tester.com', :password => 'foofoo',
