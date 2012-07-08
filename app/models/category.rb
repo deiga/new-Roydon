@@ -4,11 +4,14 @@ class Category
   include Mongoid::Timestamps
   include Mongoid::Ancestry
 
+  before_save :generate_permalink
+
   has_ancestry
   has_and_belongs_to_many :products
 
   field :name, :type => String
   field :passive, :type => Boolean, :default => false
+  field :permalink, :type => String, :unique => true
 
   validates :name, :presence => true, :length => { :minimum => 2 }
 
@@ -29,4 +32,12 @@ class Category
        list << child.products
     end
   end
+
+  private
+
+    def generate_permalink
+      if self.permalink.nil?
+        self.permalink = self.name.parameterize.downcase
+      end
+    end
 end
