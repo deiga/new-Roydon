@@ -3,9 +3,13 @@ Roydon::Application.routes.draw do
   resources :stories, :only => [:index], :path => :news
 
   namespace :shop do
-    resources :products, :only => [:index, :show]
+    resources :products, :only => [:index, :show] do
+      collection do 
+        get ':category', :action => :index, :as => 'category'
+        get 'page/:page', :action => :index
+      end
+    end
     match '/', :to => 'shop#index'
-    match '/:top_category(/:category)', :to => 'shop#index'
   end
 
   devise_for :admins
