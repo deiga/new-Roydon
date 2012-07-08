@@ -1,0 +1,13 @@
+.product.box
+  %strong= product.name
+  %img.product-image{:src => product.image}
+  %br
+  = product.price 
+  &euro;
+  %br
+  = raw(product.description)
+  - unless product.options.nil?
+    Vaihtoehtoja: 
+    = product.options.map(&:name).to_sentence
+    %br
+    = link_to 'Lisää ostoskoriin'

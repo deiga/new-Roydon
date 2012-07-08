@@ -1,0 +1,15 @@
+%nav#shop_navi
+	- unless @top_categories.nil?
+		%ul
+			- @top_categories.each do |top_category|
+				%li= category_link(top_category)
+%section#sub-navigation-sidebar
+	= render 'shop/layouts/search'
+	= render 'shop/layouts/category_menu'
+%section#product-view
+	- unless @products.nil? 
+		= paginate @products
+		= render @products
+%section#sidebar
+	= render 'shop/layouts/shopping_cart'
+	= render 'shop/layouts/advertisement'

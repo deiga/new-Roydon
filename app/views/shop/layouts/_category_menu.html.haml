@@ -1,0 +1,5 @@
+- unless @categories.nil?
+  %nav#category-menu
+    %ul
+      - @categories.each do |category|
+        %li= category_link(params[:top_category], category)

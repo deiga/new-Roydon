@@ -1,0 +1,10 @@
+%section#shopping_cart.box
+  %strong= link_to 'Ostoskori:'
+  %br
+  - unless @shopping_cart.nil? || @shopping_cart.empty?
+    %span#price= @shopping_cart.price
+    €
+  - else
+    Ei tuotteita
+    %br
+    %span#price 0.0 &euro;
