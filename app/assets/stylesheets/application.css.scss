@@ -10,12 +10,7 @@ $main-gray: #d4d4d4;
 $height: 25em;
 
 @mixin rounded-corners-top($radius) {
-	-moz-border-radius: $radius $radius 0 0;
-	-webkit-border-radius: $radius $radius 0 0;
-	/* for old Konqueror browsers */
-	-khtml-border-radius: $radius $radius 0 0;
-	/* future proofing */
-	border-radius: $radius $radius 0 0;
+	@include rounded-corners($radius $radius 0 0);
 }
 
 @mixin rounded-corners($radius) {
@@ -23,6 +18,26 @@ $height: 25em;
 	-webkit-border-radius: $radius;
 	-khtml-border-radius: $radius; /* for old Konqueror browsers */
 	border-radius: $radius; /* future proofing */
+}
+
+@mixin box-shadow($shadow) {
+	-moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin box-sizing($sizing) {
+	-moz-box-sizing: $sizing;
+  -webkit-box-sizing: $sizing;
+  box-sizing: $sizing;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
 }
 
 @import "home.css.scss";
