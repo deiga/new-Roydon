@@ -1,0 +1,15 @@
+- content_for :content do
+  %nav#shop_navi
+    - unless @top_categories.nil?
+      %ul
+        - @top_categories.each do |top_category|
+          %li= category_link(top_category)
+  %section#sub-navigation-sidebar
+    = render 'shop/layouts/search'
+    = render 'shop/layouts/category_menu'
+  %section#product-view
+    = content_for?(:shop_content) ? yield(:shop_content) : yield
+  %section#sidebar
+    = render 'shop/layouts/shopping_cart'
+    = render 'shop/layouts/advertisement'
+= render :template => 'layouts/application'
