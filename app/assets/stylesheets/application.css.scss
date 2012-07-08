@@ -49,6 +49,11 @@ $height: 25em;
 	@include box-shadow(2px 2px 2px 0px #A9A9A9);
 }
 
+.first-box {
+	margin-top: 0;
+}
+
+
 @import "home.css.scss";
 @import "shows.css.scss";
 @import "contact.css.scss";
