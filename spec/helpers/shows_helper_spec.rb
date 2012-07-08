@@ -2,12 +2,8 @@ require 'spec_helper'
 
 describe ShowsHelper do
 
-  it "should return nil on empty collection" do
-    display_show_rows({}).should be nil
-  end
-
   it "should return correct year for input" do
-    display_show_year(2012).should be 2012
+    display_show_year(2011).should be 2011
   end
 
   it "should return year range, if month >= 6" do

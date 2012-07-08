@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe Shop::ShopController do
@@ -14,6 +15,7 @@ describe Shop::ShopController do
 			@shopping_cart.add Product.create(:price => 5.3)
 			@shopping_cart.should_receive(:price)
 			get 'index'
+			# page.should have_css('span#price', :content => "5.3 €")
 		end
 	end
 
