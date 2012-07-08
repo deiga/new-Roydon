@@ -1,6 +1,11 @@
 fi:
   home:
     name: Home
+  views:
+    pagination:
+      previous: "&laquo; Prev"
+      next: "Next &raquo;"
+      truncate: "…"
   admin:
     misc:
       search: "Search"
