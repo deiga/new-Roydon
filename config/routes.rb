@@ -4,7 +4,8 @@ Roydon::Application.routes.draw do
 
   namespace :shop do
     resources :products, :only => [:index, :show]
-    root :to => 'shop#index'
+    match '/', :to => 'shop#index'
+    match '/:top_category(/:category)', :to => 'shop#index'
   end
 
   devise_for :admins

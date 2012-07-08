@@ -2,7 +2,7 @@
 	<nav id="category-menu">
 		<ul>
 			<% @categories.each do |category| %>
-				<li><%= category_link(category, :category) %></li>
+				<li><%= category_link(params[:top_category], category) %></li>
 			<% end %>
 		</ul>
 	</nav>
