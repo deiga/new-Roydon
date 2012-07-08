@@ -9,23 +9,6 @@ module ShowsHelper
   def time=(value)
     @@time = value if value.kind_of? Date
   end
-  
-  def display_show_rows(collection)
-    unless collection.blank?
-      html = ''
-      for show in collection
-        html << "<tr id='#{show.date}'>"
-        html << " <td headers='show_time'>#{show.format_date}</td>"
-        html << " <td headers='show_name'>"
-        html << "   <a href='#{show.url}'>#{show.title}</a>"
-        html << " </td>"
-        html << " <td headers='show_place'>#{show.location}</td>"
-        html << "</tr>"
-      end
-
-      return html.html_safe
-    end
-  end
 
   # Output the year range for the displayed shows
   # * If the given year is a past year, then return given
