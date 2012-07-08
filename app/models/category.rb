@@ -29,7 +29,15 @@ class Category
 
   def all_products
     self.children.reduce(self.products) do |list, child|
-       list << child.products
+      list << child.products
+    end
+  end
+
+  def to_param
+    if self.ancestry.nil?
+      permalink
+    else
+      self.ancestors.first.permalink+'-'+permalink
     end
   end
 
