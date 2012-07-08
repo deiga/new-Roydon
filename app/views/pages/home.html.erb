@@ -8,7 +8,7 @@
 		<section id="news">
 			<fieldset>
 				<legend>Uutiset</legend>
-				<%= display_news_items(@index_news) %>
+				<%= render @index_news %>
 			</fieldset>
 			<%= link_to 'Lisää uutisia...', stories_path %>
 		</section>
