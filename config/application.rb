@@ -52,7 +52,10 @@ module Roydon
     config.assets.initialize_on_precompile = false
 
     config.generators do |g|
-      g.test_framework  :rspec
+      g.template_engine :haml
+      g.test_framework :rspec
+      g.view_specs false
+      g.controller_specs false
     end
   end
 end
