@@ -6,7 +6,7 @@ class Product
 
   has_and_belongs_to_many :categories
   belongs_to :shopping_cart
-  has_many :options
+  has_and_belongs_to_many :options
 
   field :name,        :type => String
   field :price,       :type => BigDecimal,  :default => 0.0
