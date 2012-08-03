@@ -8,7 +8,15 @@ begin
   database = credentials['database']
   host = "#{url}:#{port}"
 rescue Exception => e
-  p 'Error with reading db credentials!', e
+  p 'Error while reading db credentials!'
+  require 'uri'
+  uri = URI.parse(ENV['MONGOLAB_URI'])
+  username = uri.user
+  password = uri.password
+  url = uri.host
+  port = uri.port
+  host = "#{url}:#{port}"
+  database = uri.path[1..-1]
 end
 %>
 
