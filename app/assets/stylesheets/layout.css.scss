@@ -3,12 +3,6 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-
   background-repeat: no-repeat;
 }
 
@@ -56,6 +50,9 @@ body {
     border-left: 1px solid $dark-green;
     border-right: 1px solid $dark-green;
     background-color: $main-gray;
+    > * {
+      margin-left: 1%;
+    }
   }
   > {
     header, #content, footer { 
