@@ -4,11 +4,7 @@ Roydon::Application.routes.draw do
 
   devise_for :users
 
-  get "shows/index"
-  get "shows/create"
-  get "shows/edit"
-  get "shows/update"
-  get "shows/destroy"
+  resources :shows
 
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
@@ -17,6 +13,7 @@ Roydon::Application.routes.draw do
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',
     :defaults => {:year => 2012}
+  match '/shop', :to => 'pages#shop'
 
   root :to => 'pages#home'
 
