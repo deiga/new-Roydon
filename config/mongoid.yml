@@ -80,3 +80,13 @@ test:
         - <%= host %>
       options:
         consistency: :strong
+production:
+  sessions:
+    default:
+      database: <%= database %>
+      username: <%= username %>
+      password: <%= password %>
+      hosts:
+        - <%= host %>
+      options:
+        consistency: :strong
