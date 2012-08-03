@@ -1,4 +1,5 @@
 class Shop::ShopController < ApplicationController
+  layout 'shop'
   
   def index
     @top_categories = Category.top_categories
