@@ -11,7 +11,9 @@ gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 # gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
 
 # Gem for Webserver
-gem 'thin'
+group :production do
+  gem 'thin'
+end
 
 group :develpoment, :test, :cucumber do
 	gem 'rspec'
