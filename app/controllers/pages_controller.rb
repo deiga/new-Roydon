@@ -34,4 +34,8 @@ class PagesController < ApplicationController
     @all_news = Story.desc(:Date).all();
   end
 
+  def shop
+    @title = 'Shop'
+  end
+
 end
