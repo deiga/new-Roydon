@@ -1,2 +1,33 @@
-<h1>Shows#index</h1>
-<p>Find me in app/views/shows/index.html.erb</p>
+<section id="shows">
+  <% unless @upcoming_shows.blank? %>
+    <table id="shows_table">
+      <caption>Seuraavista näyttelyistä löydät meidät vuonna <%= display_show_years(@year) %>:</caption>
+      <thead>
+        <tr>
+          <th scope="col" id="show_time">Aika</th>
+          <th scope="col" id="show_name">Nimi</th>
+          <th scope="col" id="show_place">Paikka</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= display_show_rows(@upcoming_shows) %>
+        <% unless @earlier_shows.blank? %>
+        <tr>
+          <td headers="show_name" colspan="4">
+            <strong>Menneet näyttelyt tältä vuodelta</strong>
+          </td>
+        </tr>
+        <%= display_show_rows(@earlier_shows) %>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Vuodelle <%= @year %> ei ole yhtään näyttelyä lisätty</p>
+  <% end %>
+</section>
+  
+<section id="years">
+  <%= display_year_list %>
+  <p>Lisätietoja Suomen koiranäyttelyistä:
+  <%= link_to 'Suomen Kennelliitto', "http://www.kennelliitto.fi/FI/toiminta/nayttelyt/kvkr#{Time.now.year}/", :title => "SKL näyttelysivusto" %></p>
+</section>
