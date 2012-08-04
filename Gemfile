@@ -40,7 +40,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails', '!= 3.1.6'
   gem 'coffee-rails'
   gem 'uglifier'
 end
