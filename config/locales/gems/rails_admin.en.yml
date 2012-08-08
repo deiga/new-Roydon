@@ -1,12 +1,12 @@
 en:
-  home:
-    name: Home
   views:
     pagination:
       previous: "&laquo; Prev"
       next: "Next &raquo;"
       truncate: "…"
   admin:
+    home:
+      name: Home
     misc:
       search: "Search"
       filter: "Filter"
