@@ -10,14 +10,14 @@
         </tr>
       </thead>
       <tbody>
-        <%= display_show_rows(@upcoming_shows) %>
+        <%= render @upcoming_shows %>
         <% unless @earlier_shows.blank? %>
         <tr>
           <td headers="show_name" colspan="4">
             <strong>Menneet näyttelyt tältä vuodelta</strong>
           </td>
         </tr>
-        <%= display_show_rows(@earlier_shows) %>
+        <%= render @earlier_shows %>
         <% end %>
       </tbody>
     </table>
