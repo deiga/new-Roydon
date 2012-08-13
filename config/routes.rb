@@ -4,7 +4,7 @@ Roydon::Application.routes.draw do
 
   devise_for :users
 
-  resources :shows, except: [:index]
+  resources :shows, except: [:index, :show]
   get '/shows(/:year)', :to => 'shows#index', 
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',

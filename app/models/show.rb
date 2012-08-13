@@ -8,6 +8,8 @@ class Show
 	field :duration, 	:type => Integer, :default => 1
 	field :date, 		:type => Date
 
+	default_scope asc(:date)
+
 	# Validations
 	url_regex = /\Ahttp\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\z/i
 	validates :title, :url, :location, :date, :presence => true
