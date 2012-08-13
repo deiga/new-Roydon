@@ -13,65 +13,81 @@
 			margin: 0;
 			padding: 0;
 			width: 100%;
+			text-align: justify;
 
-			li {
-				display: inline;
-				z-index:10;
-	            text-align: center;
-				padding: 1px 7.5px;
-				margin: 0;
-				border: 1px solid white;
-				background-color: $dark-green;
-				color: white;
-				line-height: 1.6em;
-				@include rounded-corners(5px);
+			.stretch {
+				border: none;
+				padding: 0;
+				background: none;
+				display: inline-block;
+				width: 100%;
+				line-height: 0;
+				@include rounded-corners(0);
 
-				&:hover {
-					background-color: white;
-					color: $dark-green !important;
-					text-decoration: none;
-					border-color: $dark-green;
+		    /* if you need IE6/7 support */
+		    *display: inline;
+		    zoom: 1
+		  }
 
-					a {
-						background-color: white !important;
-						color: $dark-green !important;
-					}
-				}
+		  li {
+		  	display: inline;
+		  	z-index:10;
+		  	text-align: center;
+		  	padding: 1px 7.5px;
+		  	margin: 0;
+		  	border: 1px solid white;
+		  	background-color: $dark-green;
+		  	color: white;
+		  	line-height: 1.6em;
+		  	@include rounded-corners(5px);
 
-				a {
-	            	text-align: center;
-	            	width: 100%;
+		  	&:hover {
+		  		background-color: white;
+		  		color: $dark-green !important;
+		  		text-decoration: none;
+		  		border-color: $dark-green;
 
-					&:active {
-						color: green;
-					}
+		  		a {
+		  			background-color: white !important;
+		  			color: $dark-green !important;
+		  		}
+		  	}
 
-					&:link , &:visited {
-						color: white;
-						font-weight: normal;
-					}
-				}
-			
-			
-			}
+		  	a {
+		  		text-align: center;
+		  		display: inline-block;
+		  		line-height: 1em;
 
-			a:hover {
-				text-decoration: none;
-			}
+		  		&:active {
+		  			color: green;
+		  		}
 
-			.selected {
-				background-color: $main-gray;
-				padding-bottom: 1%;
+		  		&:link , &:visited {
+		  			color: white;
+		  			font-weight: normal;
+		  		}
+		  	}
 
-				&:hover {
-					background-color: $main-gray;
-					text-decoration: none;
-				}
 
-				> a:link , a:visited {
-					color: $dark-green;
-				}
-			}
+		  }
+
+		  a:hover {
+		  	text-decoration: none;
+		  }
+
+		  .selected {
+		  	background-color: $main-gray;
+		  	padding-bottom: 1%;
+
+		  	&:hover {
+		  		background-color: $main-gray;
+		  		text-decoration: none;
+		  	}
+
+		  	> a:link , a:visited {
+		  		color: $dark-green;
+		  	}
+		  }
 		}
 	}
 
@@ -89,7 +105,7 @@
 			list-style: none;
 			padding: 0;
 		}
-		
+
 		input {
 			padding: 0;
 			margin:0;

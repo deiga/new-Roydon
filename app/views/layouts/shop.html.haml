@@ -4,6 +4,7 @@
       %ul
         - @top_categories.each do |top_category|
           %li= category_link(top_category)
+        %li.stretch
   %section#sub-navigation-sidebar
     = render 'shop/layouts/search'
     = render 'shop/layouts/category_menu'
