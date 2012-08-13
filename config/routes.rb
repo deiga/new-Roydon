@@ -16,6 +16,7 @@ Roydon::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
 
+  resources :shows, except: [:index, :show]
   match "/shows(/:year)", :to => 'shows#index',
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',
