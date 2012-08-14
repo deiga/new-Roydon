@@ -1,2 +1,13 @@
-%h1 ShoppingCarts#show
-%p Find me in app/views/shopping_carts/show.html.haml
+%h1 Ostoskori
+- unless @cart.products.empty?
+  %table
+    %thead
+      %tr
+        %td Tuote
+        %td Hinta
+    %tbody
+      - @cart.products.each do |product|
+        %tr
+          %td= link_to product.name, shop_product_path(product)
+          %td= " #{product.price} €"
+%span#price= "Yhteensä: #{@cart.price} €"

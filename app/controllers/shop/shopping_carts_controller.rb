@@ -1,5 +1,6 @@
 class Shop::ShoppingCartsController < Shop::ShopController
   def show
+    @cart = ShoppingCart.find(params[:id])
   end
 
   def edit
