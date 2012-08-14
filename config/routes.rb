@@ -1,17 +1,5 @@
 Roydon::Application.routes.draw do
 
-  get "shopping_carts/show"
-
-  get "shopping_carts/edit"
-
-  get "shopping_carts/update"
-
-  get "shopping_carts/destroy"
-
-  get "shopping_carts/create"
-
-  get "shopping_carts/new"
-
   resources :stories, :only => [:index], :path => :news, constraints: { id: /[0-9a-f]{24}/i}
 
   namespace :shop do
