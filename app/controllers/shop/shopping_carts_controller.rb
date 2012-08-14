@@ -1,4 +1,4 @@
-class ShoppingCartsController < ApplicationController
+class Shop::ShoppingCartsController < Shop::ShopController
   def show
   end
 
