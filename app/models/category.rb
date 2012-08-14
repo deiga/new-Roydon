@@ -11,12 +11,13 @@ class Category
 
   field :name, :type => String
   field :passive, :type => Boolean, :default => false
-  field :permalink, :type => String, :unique => true
+  field :permalink, :type => String
 
   validates :name, :presence => true, :length => { :minimum => 2 }
+  validates :permalink, uniqueness: true
 
   def self.top_categories
-    self.where(:ancestry => nil)
+    self.where(:ancestry => nil).cache
   end
 
   def format_name
