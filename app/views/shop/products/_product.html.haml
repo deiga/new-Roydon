@@ -10,4 +10,4 @@
     Vaihtoehtoja: 
     = product.options.map(&:name).to_sentence
     %br
-    = link_to 'Lisää ostoskoriin'
+    = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(product), remote: true
