@@ -9,6 +9,7 @@ Roydon::Application.routes.draw do
         get 'page/:page', :action => :index
       end
     end
+    resources :shopping_carts, except: [:index]
     match '/add_to_cart/:product', to: 'shop#add_to_cart', as: 'add_to_cart'
     match '/', :to => 'shop#index'
   end
