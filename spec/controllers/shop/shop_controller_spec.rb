@@ -12,7 +12,7 @@ describe Shop::ShopController do
 
 		it "should call the model price calculation" do
 			@shopping_cart = ShoppingCart.find_or_create_by(session[:shopping_cart_id])
-			session[:shopping_cart_id] = @shopping_cart.id
+			session[:shopping_cart_id] = @shopping_cart.id.to_s
 			@shopping_cart.add Product.create(:price => 5.3)
 			@shopping_cart.should_receive(:price)
 			get 'index'
