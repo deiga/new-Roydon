@@ -4,9 +4,8 @@
 
 $ -> 
 	url = location.href
-	name = url.substring(url.lastIndexOf('/')+1)
-	nameArr = name.split('.')
-	name = nameArr[0]
+	nameArr = url.split('/')
+	name = nameArr[3]
 	if name.length > 0
 		element = document.getElementById(name)
 		if element != null 
