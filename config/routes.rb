@@ -12,16 +12,16 @@ Roydon::Application.routes.draw do
 
   get "shopping_carts/new"
 
-  resources :stories, :only => [:index], :path => :news
+  resources :stories, :only => [:index], :path => :news, constraints: { id: /[0-9a-f]{24}/i}
 
   namespace :shop do
-    resources :products, :only => [:index, :show] do
+    resources :products, :only => [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
       collection do 
         get ':category', :action => :index, :as => 'category'
         get 'page/:page', :action => :index
       end
     end
-    resources :shopping_carts, except: [:index]
+    resources :shopping_carts, constraints: { id: /[0-9a-f]{24}/i}
     match '/add_to_cart/:product', to: 'shop#add_to_cart', as: 'add_to_cart'
     match '/', :to => 'shop#index'
   end
@@ -30,7 +30,7 @@ Roydon::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
 
-  resources :shows, except: [:index, :show]
+  resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i}
   match "/shows(/:year)", :to => 'shows#index',
     :constraints => { :year => /(\d\d\d\d)/ },
     :as => 'shows',
