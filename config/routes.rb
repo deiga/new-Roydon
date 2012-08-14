@@ -14,7 +14,6 @@ Roydon::Application.routes.draw do
     match '/', :to => 'shop#index'
   end
 
-  devise_for :admins
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
 
