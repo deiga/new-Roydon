@@ -21,4 +21,8 @@ class ShoppingCart
     end
     price
   end
+
+  def latest_products
+    self.products.sort_by(&:updated_at).take(5)
+  end
 end
