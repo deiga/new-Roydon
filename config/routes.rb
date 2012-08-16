@@ -4,11 +4,11 @@ Roydon::Application.routes.draw do
 
   devise_for :users
 
-  resources :shows, except: [:index, :show]
-  get '/shows(/:year)', :to => 'shows#index', 
-    :constraints => { :year => /(\d\d\d\d)/ },
-    :as => 'shows',
-    :defaults => {:year => 2012}
+  resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i, :year => /\d{4}/ } do
+    collection do
+      get '(:year)', action: 'index', defaults: { year: 2012 }, as: 'year'
+    end
+  end
 
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
