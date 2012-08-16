@@ -24,13 +24,13 @@ class Shop::ShopController < ApplicationController
 
   private
 
-    def set_cart
-      begin
+  def set_cart
+    begin
       @shopping_cart = (session[:shopping_cart_id].nil? && ShoppingCart.create) || ShoppingCart.find(session[:shopping_cart_id])
     rescue Mongoid::Errors::DocumentNotFound => e
       @shopping_cart = ShoppingCart.create
     end
     session[:shopping_cart_id] = @shopping_cart.id.to_s
-    end
+  end
 
 end
