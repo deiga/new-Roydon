@@ -4,7 +4,7 @@ class Shop::ShopController < ApplicationController
   before_filter :set_cart
 
   def index
-    session[:top_category_ids] = Category.top_categories.map(&:id).map(&:to_s)
+    session[:top_category_ids] = Category.top_category_ids
     @top_category = Category.find_by id: params[:top_category_id] unless params[:top_category_id].nil?
     @categories = @top_category.children unless @top_category.nil?
     @category = Category.find_by_formatted_name params[:category] unless params[:category].nil?

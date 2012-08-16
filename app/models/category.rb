@@ -16,9 +16,10 @@ class Category
   validates :name, :presence => true, :length => { :minimum => 2 }
   validates :permalink, uniqueness: true
 
-  def self.top_categories
-    self.where(:ancestry => nil).cache
+  def self.top_category_ids
+    self.where(:ancestry => nil).map(&:id).map(&:to_s)
   end
+
 
   def format_name
     self.name.downcase.gsub(/\s/,'_')
