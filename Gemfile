@@ -44,6 +44,7 @@ group :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'therubyracer', :platform => :ruby
+  gem 'factory_girl'
 end
 
 # Gems used only for assets and not required

@@ -80,6 +80,8 @@ GEM
     eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.0.0)
+      activesupport (>= 3.0.0)
     ffi (1.1.5)
     gherkin (2.11.1)
       json (>= 1.4.6)
@@ -246,6 +248,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
+  factory_girl
   haml-rails
   jquery-rails
   kaminari
