@@ -2,8 +2,15 @@
   %strong= link_to 'Ostoskori:', shop_shopping_cart_path(session[:shopping_cart_id])
   %br
   - unless @shopping_cart.nil? || @shopping_cart.empty?
-    %span#price= @shopping_cart.price
-    €
+    %table
+      %tbody
+        - @shopping_cart.latest_products.each do |product|
+          %tr
+            %td= product.name
+            %td= " #{product.price} €"
+    %span#price>
+      = @shopping_cart.price
+      €
   - else
     Ei tuotteita
     %br
