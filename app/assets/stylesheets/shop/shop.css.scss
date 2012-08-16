@@ -135,5 +135,14 @@
 		right: 0px;
 		width: 19%;
 		margin-right: 1%;
+
+		#shopping_cart {
+			#price {
+				display: inline-block;
+				width: 95%;
+				text-align: right;
+				border-top: 1px solid black;
+			}
+		}
 	}
 }
