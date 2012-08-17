@@ -7,6 +7,7 @@ Roydon::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  config.action_controller.page_cache_directory = RAILS_ROOT + '/public/cache/'
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
@@ -50,6 +51,8 @@ Roydon::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+
+  config.static_cache_control = "public, max-age=3600"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
