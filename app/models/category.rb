@@ -4,6 +4,9 @@ class Category
   include Mongoid::Timestamps
   include Mongoid::Ancestry
 
+  after_create :clear_cache
+  after_update :clear_cache
+  before_destroy :clear_cache
   before_save :generate_permalink
 
   has_ancestry
@@ -52,5 +55,9 @@ class Category
       if self.permalink.nil?
         self.permalink = self.name.parameterize.downcase
       end
+    end
+
+    def clear_cache
+      ActionController::Base.new.expire_fragment(:shop_navigation)
     end
 end

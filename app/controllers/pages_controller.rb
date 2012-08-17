@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  caches_page :index, :contact, :about
+
   def home
   	@title = 'Home'
     # TODO: Add filtering by current language
