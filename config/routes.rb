@@ -6,7 +6,6 @@ Roydon::Application.routes.draw do
     resources :products, :only => [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
       collection do 
         get ':category', :action => :index, :as => 'category'
-        get 'page/:page', :action => :index
       end
     end
     resources :shopping_carts, constraints: { id: /[0-9a-f]{24}/i}
