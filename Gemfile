@@ -13,6 +13,7 @@ gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 # Gem for Webserver
 group :production do
   gem 'thin'
+  gem 'newrelic_rpm'
 end
 
 group :develpoment, :test, :cucumber do
