@@ -16,6 +16,7 @@ group :production do
   # Gem for Webserver
   gem 'thin'
   gem 'newrelic_rpm'
+  gem 'dalli'
 end
 
 # Gem for reading seed data

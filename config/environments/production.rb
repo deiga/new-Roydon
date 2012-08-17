@@ -7,7 +7,6 @@ Roydon::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.action_controller.page_cache_directory = RAILS_ROOT + '/public/cache/'
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
@@ -38,7 +37,16 @@ Roydon::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :mem_cache_store, "roydon.fi"
+  config.cache_store = :dalli_store
+
+  config.action_dispatch.rack_cache = {
+    :metastore    => Dalli::Client.new,
+    :entitystore  => 'file:tmp/cache/rack/body',
+    :allow_reload => false
+  }
+
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=2592000"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -52,8 +60,6 @@ Roydon::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
-  config.static_cache_control = "public, max-age=3600"
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
@@ -65,7 +71,7 @@ Roydon::Application.configure do
   config.assets.precompile += ["rails_admin/rails_admin.js", "rails_admin/rails_admin.css", "rails_admin/jquery.colorpicker.js", "rails_admin/jquery.colorpicker.css"]
 
   # ActionMailer Config
-   config.action_mailer.default_url_options = { :host => 'roydon.fi' }
+  config.action_mailer.default_url_options = { :host => 'roydon.fi' }
 
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
