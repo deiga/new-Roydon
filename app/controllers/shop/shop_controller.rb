@@ -2,13 +2,10 @@
 class Shop::ShopController < ApplicationController
   layout 'shop'
   before_filter :set_cart
+  before_filter :load_top_menu
+  before_filter :load_side_menu
 
   def index
-    session[:top_category_ids] = Category.top_category_ids
-    @top_category = Category.find_by id: params[:top_category_id] unless params[:top_category_id].nil?
-    @categories = @top_category.children unless @top_category.nil?
-    @category = Category.find_by_formatted_name params[:category] unless params[:category].nil?
-    
   end
 
   def add_to_cart
@@ -24,13 +21,25 @@ class Shop::ShopController < ApplicationController
 
   private
 
-  def set_cart
-    begin
-      @shopping_cart = (session[:shopping_cart_id].nil? && ShoppingCart.create) || ShoppingCart.find(session[:shopping_cart_id])
-    rescue Mongoid::Errors::DocumentNotFound => e
-      @shopping_cart = ShoppingCart.create
+    def set_cart
+      begin
+        @shopping_cart = (session[:shopping_cart_id].nil? && ShoppingCart.create) || ShoppingCart.find(session[:shopping_cart_id])
+      rescue Mongoid::Errors::DocumentNotFound => e
+        @shopping_cart = ShoppingCart.create
+      end
+      session[:shopping_cart_id] = @shopping_cart.id.to_s
     end
-    session[:shopping_cart_id] = @shopping_cart.id.to_s
-  end
+
+    def load_top_menu
+      @top_categories = Category.top_categories
+    end
+
+    def load_side_menu
+      unless params[:category].nil?
+        @category = Category.find_by_formatted_name params[:category] 
+        @top_category = Category.find_by_formatted_name params[:category].split('-').first
+        @categories = @top_category.children unless @top_category.nil?
+      end
+    end
 
 end

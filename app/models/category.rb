@@ -42,6 +42,10 @@ class Category
     end
   end
 
+  def top_category?
+    self.ancestry.nil?
+  end
+
   private
 
     def generate_permalink
