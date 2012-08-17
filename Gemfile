@@ -15,6 +15,7 @@ gem 'rails_admin'
 group :production do
   # Gem for Webserver
   gem 'thin'
+  gem 'newrelic_rpm'
 end
 
 # Gem for reading seed data
