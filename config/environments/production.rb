@@ -38,6 +38,16 @@ Roydon::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store
+
+  config.action_dispatch.rack_cache = {
+    :metastore    => Dalli::Client.new,
+    :entitystore  => 'file:tmp/cache/rack/body',
+    :allow_reload => false
+  }
+
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=2592000"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -63,7 +73,7 @@ Roydon::Application.configure do
   config.assets.precompile += ["rails_admin/rails_admin.js", "rails_admin/rails_admin.css", "rails_admin/jquery.colorpicker.js", "rails_admin/jquery.colorpicker.css"]
 
   # ActionMailer Config
-   config.action_mailer.default_url_options = { :host => 'roydon.fi' }
+  config.action_mailer.default_url_options = { :host => 'roydon.fi' }
 
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp

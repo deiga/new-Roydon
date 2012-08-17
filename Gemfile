@@ -14,6 +14,7 @@ gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 group :production do
   gem 'thin'
   gem 'newrelic_rpm'
+  gem 'dalli'
 end
 
 group :develpoment, :test, :cucumber do
