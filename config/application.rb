@@ -55,7 +55,6 @@ module Roydon
       g.template_engine :haml
       g.test_framework :rspec
       g.view_specs false
-      g.controller_specs false
     end
   end
 end
