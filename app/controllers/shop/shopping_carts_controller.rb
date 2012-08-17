@@ -1,6 +1,13 @@
+# encoding: UTF-8
 class Shop::ShoppingCartsController < Shop::ShopController
   def show
-    @cart = ShoppingCart.find(params[:id])
+    begin
+      @cart = ShoppingCart.find(params[:id])
+    rescue Mongoid::Errors::DocumentNotFound => e
+      flash[:error] = "Ostoskoria ei löytynyt"
+      not_found
+    end
+    
   end
 
   def edit

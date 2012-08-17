@@ -11,7 +11,7 @@ describe Shop::ProductsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => 1
+      get 'show', :id => Moped::BSON::ObjectId.new
       response.should be_success
     end
   end

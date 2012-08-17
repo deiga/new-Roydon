@@ -27,12 +27,12 @@ describe Category do
   end
 
   it "should have zero top categories" do
-    Category.top_categories.count.should be 0
+    Category.top_category_ids.count.should be 0
   end
 
   it "should have a top category" do
     Category.create @attr
-    Category.top_categories.count.should be 1
+    Category.top_category_ids.count.should be 1
   end
 
   describe "all products" do
