@@ -1,9 +1,9 @@
 - content_for :content do
   %nav#shop_navi
-    - unless session[:top_category_ids].nil?
+    - unless @top_categories.nil?
       %ul
-        - session[:top_category_ids].each do |top_category_id|
-          %li= category_link(top_category_id)
+        - @top_categories.each do |top_category|
+          %li= category_link(top_category)
         %li.stretch
   %section#sub-navigation-sidebar
     = render 'shop/layouts/search'
