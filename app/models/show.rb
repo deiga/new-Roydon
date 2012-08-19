@@ -37,6 +37,7 @@ class Show
 	private
 
 		def clear_cache
-			ActionController::Base.new.expire_page controller: %(pages, shows), action: 'index'
+			ActionController::Base.new.expire_page '/'
+			ActionController::Base.new.expire_page '/shows'
 		end
 end
