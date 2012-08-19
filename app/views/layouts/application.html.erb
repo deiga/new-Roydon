@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf8" />
-		<title><%= title %> </title>
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= csrf_meta_tags %>
-  	<%= favicon_link_tag %>
-	</head>
-	<body>
-		<% if flash[:notice] %>
-				<div class="notice rounded"><%= notice %></div>
-			<% elsif flash[:alert] %>
-				<div class="alert rounded"><%= alert %></div>
-			<% end %>
-		<%= render 'layouts/header' %>
-		<div id="content" class="shadow">
-			
-			<%= yield %>
-		</div>
-		<%= render 'layouts/footer' %>
-		<%= debug(params) if Rails.env.development? %>
-		<%= javascript_include_tag "application" %>
-		<%= analytics_init if Rails.env.production? || Rails.env.staging? %>
-	</body>
+  <head>
+    <meta charset="utf8" />
+    <title><%= title %> </title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+  </head>
+  <body>
+    <% if flash[:notice] %>
+    <div class="notice rounded"><%= notice %></div>
+    <% elsif flash[:alert] %>
+    <div class="alert rounded"><%= alert %></div>
+    <% end %>
+    <%= render 'layouts/header' %>
+    <div id="content" class="shadow">
+      
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
+    <%= javascript_include_tag "application" %>
+    <%= analytics_init if Rails.env.production? || Rails.env.staging? %>
+  </body>
 </html>
