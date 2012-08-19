@@ -40,11 +40,13 @@ group :cucumber do
 	gem 'launchy'    # So you can do Then show me the page
 end
   
+# Asset gems
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'yui-compressor'
 gem 'jquery-rails'
+gem 'haml-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
