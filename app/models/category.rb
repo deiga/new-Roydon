@@ -1,4 +1,3 @@
-# encoding: UTF-8
 class Category
   include Mongoid::Document
   include Mongoid::Timestamps

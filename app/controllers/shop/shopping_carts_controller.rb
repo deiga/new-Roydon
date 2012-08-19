@@ -4,7 +4,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
     begin
       @cart = ShoppingCart.find(params[:id])
     rescue Mongoid::Errors::DocumentNotFound => e
-      flash[:error] = "Ostoskoria ei löytynyt"
+      flash[:error] = t 'shop.cart.errors.not_found'
       not_found
     end
     

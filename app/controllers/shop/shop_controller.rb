@@ -1,4 +1,3 @@
-# encoding: UTF-8
 class Shop::ShopController < ApplicationController
   layout 'shop'
   before_filter :set_cart
@@ -14,8 +13,8 @@ class Shop::ShopController < ApplicationController
     @shopping_cart.add(product)
 
     respond_to do |format|
-      format.html { flash[:notice] = 'Tuote lisätty onnistuneesti'; redirect_to(request.referer ||shop_path) }
-      format.json  {render :json => { message: 'Tuote lisätty onnistuneesti' } }
+      format.html { flash[:notice] = I18n.t 'shop.cart.add.success'; redirect_to(request.referer ||shop_path) }
+      format.json  {render :json => { message: I18n.t 'shop.cart.add.success' } }
     end
   end
 

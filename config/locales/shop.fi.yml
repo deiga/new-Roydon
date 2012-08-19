@@ -1,0 +1,8 @@
+fi:
+  shop:
+    cart:
+      errors:
+        not_found: 'Ostoskoria ei löytynyt'
+      add:
+        success: 'Tuote lisätty onnistuneesti'
+        failure: 'Tuotteen lisäys epäonnistui'
