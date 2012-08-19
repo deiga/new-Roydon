@@ -10,7 +10,7 @@ gem 'mongoid'
 gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 # gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
 
-group :production do
+group :production, :staging do
   # Gem for Webserver
   gem 'thin'
   gem 'newrelic_rpm'
