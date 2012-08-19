@@ -38,7 +38,7 @@ Roydon::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
+  # Use a different cache store in staging
   config.cache_store = :dalli_store
 
   config.action_dispatch.rack_cache = {
@@ -75,7 +75,7 @@ Roydon::Application.configure do
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'roydon.fi' }
 
-  # Setup for production - deliveries, no errors raised
+  # Setup for staging - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false

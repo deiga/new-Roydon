@@ -10,8 +10,8 @@ gem 'mongoid'
 gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 # gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
 
-# Gem for Webserver
-group :production do
+group :production, :staging do
+  # Gem for Webserver
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'dalli'
@@ -40,15 +40,10 @@ group :cucumber do
 	gem 'launchy'    # So you can do Then show me the page
 end
   
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails', '!= 3.1.6'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'yui-compressor'
-end
-
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'yui-compressor'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
