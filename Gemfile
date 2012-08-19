@@ -10,7 +10,7 @@ gem 'mongoid'
 gem 'rails_admin'#, :git => 'git://github.com/sferik/rails_admin.git'
 # gem 'rails_admin', :git => 'git://github.com/mshibuya/rails_admin.git', :branch => 'mongoid'
 
-group :production, :staging do
+group :production do
   # Gem for Webserver
   gem 'thin'
   gem 'newrelic_rpm'
@@ -39,9 +39,9 @@ group :cucumber do
 	gem 'spork'
 	gem 'launchy'    # So you can do Then show me the page
 end
-  
+
 # Asset gems
-gem 'sass-rails'
+gem 'sass-rails', '!= 3.1.6'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'yui-compressor'
