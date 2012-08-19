@@ -2,7 +2,7 @@
 	<% unless @all_news.blank? %>
 		<fieldset>
 			<legend>Uutiset</legend>
-			<%= display_news_items(@all_news) %>
+			<%= render @all_news %>
 		</fieldset>
 	<% else %>
 		<p>Ei yhtään uutista järjestelmässä!</p>
