@@ -15,6 +15,7 @@ group :production do
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'dalli'
+  gem 'google-analytics-rails'
 end
 
 group :develpoment, :test, :cucumber do
@@ -45,6 +46,7 @@ group :assets do
   gem 'sass-rails', '!= 3.1.6'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'yui-compressor'
 end
 
 gem 'jquery-rails'
