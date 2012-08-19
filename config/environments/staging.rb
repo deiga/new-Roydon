@@ -43,7 +43,7 @@ Roydon::Application.configure do
 
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
+    :entitystore  => URI.encode("file:#{Rails.root}/tmp/cache/rack/body"),
     :allow_reload => false
   }
 
