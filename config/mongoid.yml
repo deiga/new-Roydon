@@ -98,3 +98,13 @@ production:
         - <%= host %>
       options:
         consistency: :strong
+staging:
+  sessions:
+    default:
+      database: <%= database %>
+      username: <%= username %>
+      password: <%= password %>
+      hosts:
+        - <%= host %>
+      options:
+        consistency: :strong
