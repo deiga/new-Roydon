@@ -1,3 +1,5 @@
+require 'dalli'
+
 Roydon::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -43,7 +45,7 @@ Roydon::Application.configure do
 
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
+    :entitystore  => URI.encode("file:#{Rails.root}/tmp/cache/rack/body"),
     :allow_reload => false
   }
 
