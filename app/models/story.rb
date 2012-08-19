@@ -21,7 +21,7 @@ class Story
 	private
 
 		def clear_cache
-			ActionController::Base.new.expire_page controller: 'pages', action: 'index'
+			ActionController::Base.new.expire_page '/'
 			# ActionController::Base.new.expire_page controller: 'stories', action: 'index'
 		end
 

@@ -6,7 +6,6 @@ class Show
 	after_update :clear_cache
 	before_destroy :clear_cache
 
-
 	field :title, 		:type => String
 	field :url, 		:type => String
 	field :location, 	:type => String
@@ -35,7 +34,7 @@ class Show
 	private
 
 		def clear_cache
-			ActionController::Base.new.expire_page controller: 'pages', action: 'index'
-			ActionController::Base.new.expire_page controller: 'shows', action: 'index'
+			ActionController::Base.new.expire_page '/'
+			ActionController::Base.new.expire_page '/shows'
 		end
 end
