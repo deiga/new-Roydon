@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  caches_page :index, :contact, :about
+
   def home
   	@title = 'Home'
     @next_show = Show.where( :date.gte => Date.today ).asc(:date).first()

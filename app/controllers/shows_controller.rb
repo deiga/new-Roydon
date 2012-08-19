@@ -1,4 +1,7 @@
 class ShowsController < ApplicationController
+
+  caches_page :index
+  
   def index
     @title = 'Shows'
     @year = params[:year].to_i
