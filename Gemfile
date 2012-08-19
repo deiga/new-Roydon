@@ -12,7 +12,7 @@ gem 'mongoid-ancestry'
 # Admin view
 gem 'rails_admin'
 
-group :production do
+group :production, :staging do
   # Gem for Webserver
   gem 'thin'
   gem 'newrelic_rpm'
@@ -50,15 +50,10 @@ group :test do
   gem 'factory_girl'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'yui-compressor'
-end
-
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'yui-compressor'
 gem 'jquery-rails'
 gem 'haml-rails'
 # To use ActiveModel has_secure_password
