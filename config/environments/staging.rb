@@ -69,9 +69,6 @@ Roydon::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # rails_admin assets precompile for heroku
-  config.assets.precompile += ["rails_admin/rails_admin.js", "rails_admin/rails_admin.css", "rails_admin/jquery.colorpicker.js", "rails_admin/jquery.colorpicker.css"]
-
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'roydon.fi' }
 

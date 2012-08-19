@@ -51,7 +51,7 @@ group :test do
 end
 
 # Asset gems
-gem 'sass-rails'
+gem 'sass-rails', '!= 3.1.6'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'yui-compressor'
