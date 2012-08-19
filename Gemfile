@@ -50,12 +50,14 @@ group :test do
   gem 'factory_girl'
 end
 
+# Asset gems
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'yui-compressor'
 gem 'jquery-rails'
 gem 'haml-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

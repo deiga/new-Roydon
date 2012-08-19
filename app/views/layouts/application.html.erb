@@ -20,6 +20,6 @@
 		<%= debug(params) if Rails.env.development? %>
 		<%= debug(session) if Rails.env.development? %>
 		<%= javascript_include_tag "application" %>
-		<%= analytics_init if Rails.env.production? || Rails.env.staging? %>
+		<%= analytics_init if Rails.env.production? || Rails.env.staging? %>
 	</body>
 </html>
