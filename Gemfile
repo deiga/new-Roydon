@@ -17,6 +17,7 @@ group :production do
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'dalli'
+  gem 'google-analytics-rails'
 end
 
 # Gem for reading seed data
@@ -55,6 +56,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'yui-compressor'
 end
 
 gem 'jquery-rails'
