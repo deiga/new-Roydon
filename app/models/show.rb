@@ -2,10 +2,6 @@ class Show
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
-	after_create :clear_cache
-	after_update :clear_cache
-	before_destroy :clear_cache
-
 	field :title, 		:type => String
 	field :url, 		:type => String
 	field :location, 	:type => String
@@ -30,11 +26,4 @@ class Show
 			date_string << time.next_day(self.duration).strftime('%d.%m.')
 		end
 	end
-
-	private
-
-		def clear_cache
-			ActionController::Base.new.expire_page '/'
-			ActionController::Base.new.expire_page '/shows'
-		end
 end
