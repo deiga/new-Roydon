@@ -1,13 +1,15 @@
 %h1 Ostoskori
-- unless @cart.products.empty?
+- unless @cart.empty?
   %table
     %thead
       %tr
         %td Tuote
+        %td lkm
         %td Hinta
     %tbody
-      - @cart.products.each do |product|
+      - @cart.items.each do |item|
         %tr
-          %td= link_to product.name, shop_product_path(product)
-          %td= " #{product.price} €"
+          %td= link_to item.product.name, shop_product_path(item.product)
+          %td= item.quantity
+          %td= " #{item.price} €"
 %span#price= "Yhteensä: #{@cart.price} €"

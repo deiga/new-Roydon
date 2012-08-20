@@ -4,10 +4,10 @@
   - unless @shopping_cart.nil? || @shopping_cart.empty?
     %table
       %tbody
-        - @shopping_cart.latest_products.each do |product|
+        - @shopping_cart.latest_items.each do |item|
           %tr
-            %td= product.name
-            %td= " #{product.price} €"
+            %td= item.product.name
+            %td= " #{item.price} €"
     %span#price>
       = @shopping_cart.price
       €
