@@ -12,9 +12,10 @@ class Shop::ShopController < ApplicationController
     product = Product.find(params[:product])
     @shopping_cart.add(product)
 
+    success_msg = I18n.t 'shop.cart.add.success'
     respond_to do |format|
-      format.html { flash[:notice] = I18n.t 'shop.cart.add.success'; redirect_to(request.referer ||shop_path) }
-      format.json  {render :json => { message: I18n.t 'shop.cart.add.success' } }
+      format.html { flash[:notice] = success_msg; redirect_to(request.referer ||shop_path) }
+      format.json { render :json => { message: success_msg } }
     end
   end
 
