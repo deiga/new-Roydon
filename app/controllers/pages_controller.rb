@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  caches_page :home, cache_path: proc { |c|
+  caches_action :home, cache_path: proc { |c|
     show = Show.where( :date.gte => Date.today ).asc(:date).first()
     { tag: show.updated_at.to_i }
   }
