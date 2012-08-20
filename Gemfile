@@ -32,6 +32,7 @@ gem 'devise'
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'bullet'
 end
 
 group :test do
