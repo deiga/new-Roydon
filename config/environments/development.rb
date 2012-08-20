@@ -20,7 +20,7 @@ Roydon::Application.configure do
   config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-  
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
@@ -32,5 +32,15 @@ Roydon::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.growl = true
+    Bullet.rails_logger = true
+    Bullet.disable_browser_cache = true
+  end
 
 end
