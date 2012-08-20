@@ -1,12 +1,14 @@
 class ShowsController < ApplicationController
 
-  caches_page :index
-  
+  caches_page :index, cache_path: proc { |c|
+    show = Show.desc(:updated_at).limit(1).first
+    { tag: show.updated_at.to_i }
+  }
+
   def index
     @title = 'Shows'
     @year = params[:year].to_i
     today = Date.today
-    
 
     if @year < today.year
       p "Past years"
