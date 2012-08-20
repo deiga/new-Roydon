@@ -5,7 +5,7 @@ class Product
   paginates_per 9
 
   has_and_belongs_to_many :categories
-  belongs_to :shopping_cart
+  has_one :cart_item, as: 'item'
   has_and_belongs_to_many :options
 
   field :name,        :type => String
