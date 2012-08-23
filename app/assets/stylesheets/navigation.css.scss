@@ -2,15 +2,16 @@ nav {
 	font-size: 1.2em;
 	padding-bottom: 0;
 	margin-bottom: 0;
+	margin-left: 2em;
 	text-align: left;
 	background-color: inherit;
 
 	.currpage {
 		a { 
 			&:link ,  &:visited {
-  				color: $dark-green;
-  			}
-  		}
+				color: $dark-green;
+			}
+		}
 	}
 }
 
@@ -20,8 +21,8 @@ nav {
 	margin-bottom: 0;
 	
 	li {
-	  	display: inline;
-		padding: 5px 7.5px 0 7.5px;
+		display: inline;
+		padding: 5px 7.5px 2px 7.5px;
 		margin: 0 3px;
 		border-top: 1px solid $dark-green;
 		border-left: 1px solid $dark-green;
@@ -41,7 +42,7 @@ nav {
 
 			&:link , &:visited {
 				color: white;
-		 		font-weight: normal;
+				font-weight: normal;
 			}
 
 			&:hover {
@@ -53,14 +54,14 @@ nav {
 	}
 
 	a:hover {
-  		text-decoration: none;
+		text-decoration: none;
 	}
 
 	.selected {
-  		background-color: $main-gray;
-  		padding-bottom: 1%;
+		background-color: $main-gray;
+		padding-bottom: 1%;
 
-  		&:hover {
+		&:hover {
 			background-color: $main-gray;
 			text-decoration: none;
 		}
