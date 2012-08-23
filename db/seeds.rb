@@ -58,7 +58,8 @@ admin = UserGroup.create! name: :admin
 if Rails.env.development?
   p "Creating admins"
   admins = YAML.load_file('db/seed/admin.credentials.yml')
-  admins.each { |user| admin.users.create!(users)}
+  # admins.each { |user| admin.users.create!(user)}
+  admin.users.create!(admins['Timo'])
 end
 
 User.create!(:email => 'test@tester.com', :password => 'foofoo',
