@@ -41,11 +41,17 @@ group :cucumber do
 end
 
 # Asset gems
-gem 'sass-rails', '!= 3.1.6'
-gem 'coffee-rails'
-gem 'uglifier'
-gem 'yui-compressor'
+group :assets do
+  gem 'sass-rails', '!= 3.1.6'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'compass-rails'
+  gem 'compass-h5bp'
+  gem 'yui-compressor'
+end
+
 gem 'jquery-rails'
+gem 'html5-rails'
 gem 'haml-rails'
 
 # To use ActiveModel has_secure_password
