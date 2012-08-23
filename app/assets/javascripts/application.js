@@ -7,3 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require h5bp
+//= require pages
+//= require shows
