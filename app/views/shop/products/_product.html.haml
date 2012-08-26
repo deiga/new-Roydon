@@ -2,12 +2,12 @@
   %strong= product.name
   %img.product-image{:src => product.image}
   %br
-  = product.price 
+  = product.price
   &euro;
   %br
   = raw(product.description)
   - unless product.options.nil?
-    Vaihtoehtoja: 
+    Vaihtoehtoja:
     = product.options.map(&:name).to_sentence
     %br
-    = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(product), remote: true
+    = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(product), remote: true, class: 'add-to-cart'
