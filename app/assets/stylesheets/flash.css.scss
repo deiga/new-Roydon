@@ -4,22 +4,30 @@
   left: 5%;
   width: 90%;
   top: 0%;
+  pointer-events: none;
+  z-index: 9001;
+
+  .wrapper {
+    margin: 0 15%;
+
+    > * {
+      text-align: center;
+      padding: 1%;
+      font-weight: bolder;
+      color: black;
+      background-color: white;
+      border-width: 2px;
+      border-style: dotted;
+    }
+
+    .notice {
+      border-color: green;
+    }
+
+    .alert {
+      border-color: red;
+    }
+
+  }
 }
 
-.notice , .alert {
-	text-align: center;
-	width: auto;
-	margin: 0 20%;
-	padding: 1%;
-	font-weight: bolder;
-	color: black;
-	background-color: white;
-}
-
-.notice {
-	border: 2px dotted green;
-}
-
-.alert {
-	border: 2px dotted red;
-}
