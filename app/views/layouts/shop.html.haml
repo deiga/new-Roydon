@@ -1,11 +1,5 @@
 - content_for :content do
-  %nav#shop_navi
-    - unless @top_categories.nil?
-      %ul
-        - cache :shop_navigation do
-          - @top_categories.each do |top_category|
-            %li= category_link(top_category)
-        %li.stretch
+  = render 'shop/layouts/top_menu'
   %section#sub-navigation-sidebar
     = render 'shop/layouts/search'
     = render 'shop/layouts/category_menu'
