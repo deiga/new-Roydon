@@ -13,7 +13,8 @@ class Shop::ShopController < ApplicationController
 
     success_msg = I18n.t 'shop.cart.add.success'
     respond_to do |format|
-      format.html { flash[:notice] = success_msg; redirect_to(request.referer ||shop_path) }
+      flash[:notice] = success_msg
+      format.html { redirect_to(request.referer ||shop_path) }
       format.json { render :json => { message: success_msg } }
     end
   end
@@ -35,7 +36,7 @@ class Shop::ShopController < ApplicationController
 
     def load_side_menu
       unless params[:category].nil?
-        @category = Category.find_by_formatted_name params[:category] 
+        @category = Category.find_by_formatted_name params[:category]
         @top_category = Category.find_by_formatted_name params[:category].split('-').first
         @categories = @top_category.children unless @top_category.nil?
       end
