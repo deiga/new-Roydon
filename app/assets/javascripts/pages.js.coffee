@@ -11,3 +11,8 @@ $ ->
     $('#navilist > li').removeClass 'selected'
     if element != null
       element.className += ' selected'
+  else
+    $('#index').addClass 'selected'
+
+$ ->
+  $('#flash').fadeOut 2000
