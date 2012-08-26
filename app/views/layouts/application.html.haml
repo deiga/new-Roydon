@@ -4,10 +4,6 @@
   = render "head"
 
   %body{ :class => "#{ controller.controller_name }" }
-    - if flash[:notice]
-      %div.notice.rounded= notice
-    - elsif flash[:alert]
-      %div.alert.rounded= alert
     = render "chromeframe"
     = render "header"
 
