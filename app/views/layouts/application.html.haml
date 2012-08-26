@@ -9,7 +9,8 @@
 
     #content.shadow{ :role => "main" }
       = render "flashes"
-      = yield
+      = content_for?(:content) ? yield(:content) : yield
+
 
     = render "footer"
 
