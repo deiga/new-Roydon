@@ -4,12 +4,12 @@ require 'spec_helper'
 describe Shop::ShopController do
 
 	shared_examples "set_cart" do
-		it "should call set_cart" do 
+		it "should call set_cart" do
 			controller.should_receive(:set_cart)
 			get :index
 		end
 
-		it "should create a shopping cart" do			
+		it "should create a shopping cart" do
 			get :index
 			@shopping_cart = assigns(:shopping_cart)
 			@shopping_cart.should be_a(ShoppingCart)
@@ -39,7 +39,7 @@ describe Shop::ShopController do
 		it "should have one product in cart" do
 			do_add_to_cart
 			@shopping_cart = assigns(:shopping_cart)
-			@shopping_cart.products.size.should be 1
+			@shopping_cart.items.size.should be 1
 		end
 	end
 

@@ -11,7 +11,6 @@ class ShowsController < ApplicationController
     today = Date.today
 
     if @year < today.year
-      p "Past years"
       queried_year = Date.new(@year)
       @upcoming_shows = Show.where( :date.gte => queried_year,
         :date.lt => queried_year.next_year )
