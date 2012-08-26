@@ -10,7 +10,9 @@ gem 'mongoid_rails_migrations'
 gem 'mongoid-ancestry'
 
 # Admin view
-gem 'rails_admin'
+gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
+# WYSIWYG for admin view
+gem 'bootstrap-wysihtml5-rails'
 
 group :production, :staging do
   # Gem for Webserver
