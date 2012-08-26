@@ -98,23 +98,29 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model Story do
-  #   # Found associations:
-  #   # Found columns:
-  #     configure :_type, :mongoid_type         # Hidden 
-  #     configure :_id, :bson_object_id         # Hidden 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :title, :string 
-  #     configure :date, :date 
-  #     configure :content, :string   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
+  config.model Story do
+    #   # Found associations:
+    # Found columns:
+    #     configure :_type, :mongoid_type         # Hidden
+    #     configure :_id, :bson_object_id         # Hidden
+    #     configure :created_at, :datetime
+    #     configure :updated_at, :datetime
+    #   configure :title, :string
+    #   configure :date, :date
+      configure :content, :text   #   # Sections:
+    #   list do; end
+    #   export do; end
+    #   show do; end
+    edit do
+      field :title, :string
+      field :date, :date
+      field :content, :text do
+        bootstrap_wysihtml5 true
+      end
+    end
+    #   create do; end
+    #   update do; end
+  end
   # config.model User do
   #   # Found associations:
   #   # Found columns:
