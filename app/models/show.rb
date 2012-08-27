@@ -29,4 +29,8 @@ class Show
 		end
 		date_string
 	end
+
+	def self.next_show
+		where( :date.gte => Date.today ).first()
+	end
 end
