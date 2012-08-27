@@ -18,5 +18,6 @@ $ ->
 $ ->
   $('.add-to-cart')
     .on 'ajax:success', (event, data, status, xhr) =>
-      $(this).parents('div.article').find('.details').html('<div>Title: ' + data.title + '</div>' +'<div>Body: ' + data.body + '</div>')
-      $('#shopping_cart').load(' #shopping_cart > *')
+        $('#shopping_cart').load(' #shopping_cart > *')
+        flash(data.message, xhr.getResponseHeader('X-Message-Type'))
+
