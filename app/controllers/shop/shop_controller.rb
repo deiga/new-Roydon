@@ -15,7 +15,7 @@ class Shop::ShopController < ApplicationController
     respond_to do |format|
       flash[:notice] = success_msg
       format.html { redirect_to(request.referer ||shop_path) }
-      format.json { render :json => { message: success_msg } }
+      format.js { render :json => { message: success_msg } }
     end
   end
 
