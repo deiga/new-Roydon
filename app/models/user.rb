@@ -48,4 +48,8 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  def admin?
+    user_groups.map(&:name).include?('admin')
+  end
 end
