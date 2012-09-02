@@ -15,4 +15,5 @@ $ ->
     $('#index').addClass 'selected'
 
 $ ->
-  $('#flash').fadeOut 2000
+  if $('#flash').contents.length > 2
+    $('#flash').fadeOut 2500
