@@ -2,6 +2,10 @@ class Show
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
+	after_create :clear_cache
+  after_update :clear_cache
+  before_destroy :clear_cache
+
 	field :title, 		:type => String
 	field :url, 			:type => String
 	field :location, 	:type => String
@@ -33,4 +37,10 @@ class Show
 	def self.next_show
 		where( :date.gte => Date.today ).first()
 	end
+
+	private
+
+		def clear_cache
+			ActionController::Base.new.expire_fragment controller: 'Shows', action: :index
+		end
 end
