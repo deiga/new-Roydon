@@ -6,7 +6,8 @@ class CartItem
   belongs_to :product
 
   default_scope includes(:product)
-  
+
+  field :selected_option, type: String
   field :quantity, type: Integer, default: 1
 
   def price
