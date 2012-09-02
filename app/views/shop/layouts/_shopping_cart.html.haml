@@ -6,8 +6,10 @@
       %tbody
         - @shopping_cart.latest_items.each do |item|
           %tr
-            %td= item.product.name
-            %td= " #{item.price} €"
+            %td
+              %small= item.product.name
+            %td
+              %small= " #{item.price} €"
     %span#price>
       = @shopping_cart.price
       €
