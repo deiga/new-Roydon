@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # RailsAdmin config file. Generated on February 20, 2012 04:43
 # See github.com/sferik/rails_admin for more informations
 
@@ -7,14 +8,14 @@ RailsAdmin.config do |config|
   require 'i18n'
   I18n.default_locale = :fi
 
-  config.current_user_method { current_admin } # auto-generated
-  
+  config.current_user_method { current_user.admin? } # auto-generated
+
   # If you want to track changes on your models:
   # config.audit_with :history, User
-  
+
   # Or with a PaperTrail: (you need to install it first)
   # config.audit_with :paper_trail, User
-  
+
   # Set the admin name here (optional second array element will appear in a beautiful RailsAdmin red ©)
   # config.main_app_name = ['Roydon', 'Admin']
   # or for a dynamic name:
@@ -79,36 +80,42 @@ RailsAdmin.config do |config|
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
 
-  # config.model Show do
-  #   # Found associations:
-  #   # Found columns:
-  #     configure :_type, :mongoid_type         # Hidden 
-  #     configure :_id, :bson_object_id         # Hidden 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :title, :string 
-  #     configure :url, :string 
-  #     configure :location, :string 
-  #     configure :duration, :integer 
-  #     configure :date, :date   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
-  config.model Story do
-    #   # Found associations:
+  config.model Show do
+    # Found associations:
+    # Found columns:
+      # configure :_type, :mongoid_type         # Hidden
+      # configure :_id, :bson_object_id         # Hidden
+      # configure :title, :string
+      # configure :url, :string
+      # configure :location, :string
+      # configure :duration, :integer
+      # configure :date, :date
+      # configure :created_at, :datetime
+      # configure :updated_at, :datetime
+    # Sections:
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+      # export do; end
+      # show do; end
+      # edit do; end
+      # create do; end
+      # update do; end
+    end
+    config.model Story do
+    # Found associations:
     # Found columns:
     #     configure :_type, :mongoid_type         # Hidden
     #     configure :_id, :bson_object_id         # Hidden
     #     configure :created_at, :datetime
     #     configure :updated_at, :datetime
-    #   configure :title, :string
-    #   configure :date, :date
-      configure :content, :text   #   # Sections:
-    #   list do; end
+    #     configure :title, :string
+    #     configure :date, :date
+    configure :content, :text
+    # Sections:
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
     #   export do; end
     #   show do; end
     edit do
@@ -121,28 +128,271 @@ RailsAdmin.config do |config|
     #   create do; end
     #   update do; end
   end
-  # config.model User do
+  config.model CartItem do
   #   # Found associations:
-  #   # Found columns:
-  #     configure :_type, :mongoid_type         # Hidden 
-  #     configure :_id, :bson_object_id         # Hidden 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :admin, :boolean   #   # Sections:
-  #   list do; end
+  #     configure :cart, :belongs_to_association
+  #     configure :product, :belongs_to_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :cart_id, :bson_object_id         # Hidden
+  #     configure :product_id, :bson_object_id         # Hidden
+  #     configure :quantity, :integer
+      # Sections:
+      list do
+        exclude_fields :_type, :_id, :created_at, :updated_at
+      end
   #   export do; end
   #   show do; end
   #   edit do; end
   #   create do; end
   #   update do; end
-  # end
+end
+config.model Category do
+  # Found associations:
+  #     configure :products, :has_and_belongs_to_many_association
+  # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  configure :ancestry, :enum do
+    label 'Parent'
+    enum do
+      Category.where(:id.ne => bindings[:object].id).map { |c| [c.name, c.id]}
+    end
+  end
+  #     configure :product_ids, :serialized         # Hidden
+  #     configure :name, :string
+  #     configure :passive, :boolean
+  #     configure :permalink, :text   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  # edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Discount do
+  #   # Found associations:
+  #     configure :user_group, :belongs_to_association
+  #     configure :promotion, :belongs_to_association
+  #     configure :products, :has_many_association
+  #     configure :categories, :has_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :discount, :float
+  #     configure :user_group_id, :bson_object_id         # Hidden
+  #     configure :promotion_id, :bson_object_id         # Hidden   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model GroupDiscount do
+  #   # Found associations:
+  #     configure :user, :belongs_to_association
+  #     configure :promotion, :belongs_to_association
+  #     configure :products, :has_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :discount, :float
+  #     configure :amount_needed, :integer
+  #     configure :user_id, :bson_object_id         # Hidden
+  #     configure :promotion_id, :bson_object_id         # Hidden   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Option do
+  #   # Found associations:
+  #     configure :products, :has_and_belongs_to_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :product_ids, :serialized         # Hidden
+  #     configure :name, :string
+  #     configure :values, :serialized   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Order do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Product do
+  #   # Found associations:
+  #     configure :categories, :has_and_belongs_to_many_association
+  #     configure :options, :has_and_belongs_to_many_association
+  #     configure :cart_item, :has_one_association
+  #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :category_ids, :serialized         # Hidden
+  #     configure :option_ids, :serialized         # Hidden
+  #     configure :name, :string
+  configure :price, :decimal do
+    pretty_value do
+      value.to_s + ' €'
+    end
+  end
+  #     configure :passive, :boolean
+  #     configure :suggestion, :boolean
+  #     configure :description, :text
+  #     configure :image, :text
+  #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Promotion do
+  #   # Found associations:
+  #     configure :discount, :has_one_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :start_date, :datetime
+  #     configure :end_date, :datetime
+  #     configure :passive, :boolean   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model ShoppingCart do
+  #   # Found associations:
+  #     configure :items, :has_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model Show do
+  #   # Found associations:
+  #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :title, :string
+  #     configure :duration, :integer
+  #     configure :date, :date
+  #     configure :url, :string
+  #     configure :location, :string   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+    sort_by :date
+    sort_reverse true
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model User do
+  #   # Found associations:
+  #     configure :user_groups, :has_and_belongs_to_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :email, :text
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :text         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :text
+  #     configure :last_sign_in_ip, :text
+  #     configure :first_name, :text
+  #     configure :last_name, :text
+  #     configure :user_group_ids, :serialized         # Hidden   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model UserGroup do
+  #   # Found associations:
+  #     configure :users, :has_and_belongs_to_many_association
+  #     configure :discounts, :has_many_association   #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :user_ids, :serialized         # Hidden   #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
 end
