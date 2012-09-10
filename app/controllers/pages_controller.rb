@@ -2,7 +2,9 @@ class PagesController < ApplicationController
 
   caches_action :home, cache_path: proc { |c|
     show = Show.where( :date.gte => Date.today ).asc(:date).first()
-    { tag: show.updated_at.to_i }
+    unless show.nil?
+      { tag: show.updated_at.to_i }
+    end
   }
   caches_page :contact, :about
 
