@@ -10,7 +10,7 @@ class Product
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :options
 
-  attr_accessible :image
+  attr_accessor :image
   attr_reader :image_remote_url
 
   has_mongoid_attached_file :image,
