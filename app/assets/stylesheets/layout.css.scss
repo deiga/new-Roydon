@@ -28,11 +28,11 @@ legend {
 }
 
 .rounded {
-  @include rounded-corners(10px);
+  @include border-radius(10px);
 }
 
 .rounded-top {
-  @include rounded-corners-top(0.5em);
+  @include border-top-radius(0.5em);
 }
 
 body {
@@ -50,7 +50,7 @@ body {
     background-color: $main-gray;
   }
   > {
-    header, #content, footer { 
+    header, #content, footer {
       width: 80%;
       min-width: 55em;
       margin: 0 auto;

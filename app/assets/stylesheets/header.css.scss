@@ -6,8 +6,8 @@ header {
 	text-align: center;
 	height: auto;
 
-	@include rounded-corners-top(1em);
-	
+	@include border-top-radius(1em);
+
 	section {
 		margin: 0 auto;
 		margin-bottom: 1em;
@@ -28,5 +28,5 @@ header {
 			padding-bottom: 0;
 		}
 	}
-	
+
 }

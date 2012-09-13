@@ -22,7 +22,7 @@
 				display: inline-block;
 				width: 100%;
 				line-height: 0;
-				@include rounded-corners(0);
+				@include border-radius(0);
 
 		    /* if you need IE6/7 support */
 		    *display: inline;
@@ -39,7 +39,7 @@
 		  	background-color: $dark-green;
 		  	color: white;
 		  	line-height: 1.6em;
-		  	@include rounded-corners(5px);
+		  	@include border-radius(5px);
 
 		  	&:hover {
 		  		background-color: white;

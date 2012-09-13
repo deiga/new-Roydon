@@ -17,7 +17,7 @@
 //-----------------------------------------
 // Imports
 //-----------------------------------------
-// @import "compass/css3"
+@import "compass/css3";
 @import "h5bp";
 //-----------------------------------------
 // Prepend includes
@@ -41,42 +41,11 @@ $dark-green: #006400;
 $main-gray: #d4d4d4;
 $height: 25em;
 
-@mixin rounded-corners-top($radius) {
-	@include rounded-corners($radius $radius 0 0);
-}
-
-@mixin rounded-corners($radius) {
-	-moz-border-radius: $radius;
-	-webkit-border-radius: $radius;
-	-khtml-border-radius: $radius; /* for old Konqueror browsers */
-	border-radius: $radius; /* future proofing */
-}
-
-@mixin box-shadow($shadow) {
-	-moz-box-shadow: $shadow;
-  -webkit-box-shadow: $shadow;
-  box-shadow: $shadow;
-}
-
-@mixin box-sizing($sizing) {
-	-moz-box-sizing: $sizing;
-  -webkit-box-sizing: $sizing;
-  box-sizing: $sizing;
-}
-
-@mixin transition($transition) {
-	-webkit-transition: $transition;
-  -moz-transition: $transition;
-  -ms-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
-}
-
 .box {
 	margin-top: 15px;
 	padding: 5px;
 	padding-top: 10px;
-	@include rounded-corners(5px);
+	@include border-radius(5px);
 	border: 1px solid #A9A9A9;
 	@include box-shadow(2px 2px 2px 0px #A9A9A9);
 }
