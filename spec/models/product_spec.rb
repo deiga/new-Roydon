@@ -36,4 +36,11 @@ describe Product do
     no_categories_product.categories.should be_empty
   end
 
+  it "should normalize filename" do
+    Product.any_instance.stub(:save_attached_files => true)
+    Paperclip::Attachment.any_instance.stub(:post_process => true)
+
+    FactoryGirl.create(:product_with_image).image_file_name.should eql("test_image_1.jpg")
+  end
+
 end
