@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Product do
 
   before :each do
-    @attr = { :name => 'Test product'}
   end
 
   it "should create a new Product given valid attributes" do
-    created = Product.create!(@attr)  
+    created = FactoryGirl.build(:product)
+    created.should be_valid
   end
 
   it "should be empty" do
@@ -16,7 +16,7 @@ describe Product do
   end
 
   it "should not accept zero length name" do
-    no_name_product = Product.new(@attr.merge(:name => ''))
+    no_name_product = FactoryGirl.build(:product, :name => '')
     no_name_product.should_not be_valid
   end
 
@@ -26,13 +26,13 @@ describe Product do
   end
 
   it "should not have negative price" do
-    negative_price_product = Product.new(@attr.merge(:price => -5.5))
+    negative_price_product = FactoryGirl.build(:product, :price => -5.5)
     negative_price_product.should_not be_valid
   end
 
 
   it "should have no categories" do
-    no_categories_product = Product.new(@attr)
+    no_categories_product = FactoryGirl.build(:product)
     no_categories_product.categories.should be_empty
   end
 
