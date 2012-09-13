@@ -53,7 +53,8 @@ module Roydon
 
     config.generators do |g|
       g.template_engine :haml
-      g.test_framework :rspec
+      g.test_framework :rspec, :fixture => true, :views => false, :fixture_replacement => :factory_girl, :view_specs => false
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.view_specs false
     end
   end
