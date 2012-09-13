@@ -6,11 +6,13 @@ gem 'rails', '3.1.3'
 # Gem for NoSQL DB
 gem 'mongoid'
 gem 'mongoid_rails_migrations'
+
 # Gem for tree structure of categories
 gem 'mongoid-ancestry'
 
 # Admin view
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
+
 # WYSIWYG for admin view
 gem 'bootstrap-wysihtml5-rails'
 
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'bullet'
+  gem 'rails3-generators'
 end
 
 group :test do
@@ -57,7 +60,7 @@ group :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'therubyracer', :platform => :ruby
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 # Asset gems
