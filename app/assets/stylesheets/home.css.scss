@@ -1,14 +1,15 @@
 #content {
 
-	#left , #right {
-		min-height: $height;
-		height: auto !important;
-		position: absolute;
-		color: inherit;
-
+	>  {
+		#left , #right {
+			min-height: $height;
+			height: auto !important;
+			position: absolute;
+			color: inherit;
+		}
 	}
 
-	#left {
+	> #left {
 		border-right: 1px solid white;
 		float: left;
 		width: 71%;

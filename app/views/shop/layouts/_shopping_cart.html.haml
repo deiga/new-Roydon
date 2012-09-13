@@ -1,4 +1,4 @@
-%section#shopping_cart.box.first-box
+%section#shopping-cart.box.first-box
   %strong= link_to 'Ostoskori:', shop_shopping_cart_path(session[:shopping_cart_id])
   %br
   - unless @shopping_cart.nil? || @shopping_cart.empty?
@@ -7,12 +7,14 @@
         - @shopping_cart.latest_items.each do |item|
           %tr
             %td
-              %small= item.product.name
+              %small= link_to item.product.name, shop_product_path(item.product)
             %td
               %small= " #{item.price} €"
-    %span#price>
-      = @shopping_cart.price
-      €
+    %span#total>
+      = "Tuotteita: #{@shopping_cart.size}kpl"
+      %span#price>
+        = @shopping_cart.price
+        €
   - else
     Ei tuotteita
     %br

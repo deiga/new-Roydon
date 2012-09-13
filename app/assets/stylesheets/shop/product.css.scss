@@ -18,3 +18,23 @@
 .product:after {
 	clear: both;
 }
+
+section#product-view {
+
+}
+
+div#product-wrapper {
+
+	> {
+		h1,h2,h3,h4 {
+			margin-top: 0;
+		}
+		div#left, div#right {
+			float: left;
+			width: 50%;
+		}
+	}
+	img {
+		width: 100%;
+	}
+}

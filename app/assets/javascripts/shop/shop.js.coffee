@@ -11,13 +11,13 @@ $ ->
   name = nameArr[5]
   if name? && name.length > 0
     element = document.getElementById(name)
-    $('#shop_navi > li').removeClass 'selected'
+    $('#shop-navi > li').removeClass 'selected'
     if element != null
       element.parentNode.className += ' selected'
 
 $ ->
   $('.add-to-cart')
     .on 'ajax:success', (event, data, status, xhr) =>
-        $('#shopping_cart').load(' #shopping_cart > *')
+        $('#shopping-cart').load(' #shopping-cart > *')
         flash(data.message, xhr.getResponseHeader('X-Message-Type'))
 

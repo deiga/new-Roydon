@@ -4,10 +4,16 @@ class ShoppingCart
 
   has_many :items, class_name: 'CartItem', inverse_of: :cart
 
-  delegate :size, :empty?, :to => :items
+  delegate :empty?, :to => :items
 
   def empty
     self.items.clear
+  end
+
+  def size
+    self.items.inject(0) do|result, item|
+      result += item.quantity
+    end
   end
 
   def add(product)

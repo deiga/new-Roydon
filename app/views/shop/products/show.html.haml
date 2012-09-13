@@ -1,0 +1,17 @@
+#product-wrapper
+  #left
+    %h2= @product.name
+
+    %p>
+    =raw "Hinta: #{@product.price} &euro;"
+    %p>
+      Lisätietoja:
+      %br
+      = raw(@product.description)
+    - unless @product.options.nil?
+      Vaihtoehtoja:
+      = @product.options.map(&:name).to_sentence
+      %br
+      = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(@product), remote: true, class: 'add-to-cart', "data-type" => :json
+  #right
+    %img.product-image{:src => @product.image}
