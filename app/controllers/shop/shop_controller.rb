@@ -24,7 +24,7 @@ class Shop::ShopController < ApplicationController
     def set_cart
       begin
         @shopping_cart = (session[:shopping_cart_id].nil? && ShoppingCart.create) || ShoppingCart.find(session[:shopping_cart_id])
-      rescue Mongoid::Errors::DocumentNotFound => e
+      rescue Mongoid::Errors::DocumentNotFound
         @shopping_cart = ShoppingCart.create
       end
       session[:shopping_cart_id] = @shopping_cart.id.to_s
