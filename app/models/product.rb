@@ -16,7 +16,7 @@ class Product
   has_mongoid_attached_file :image,
   styles: {
     thumb: ['175x', :png],
-    show: ['330x250', :png]
+    show: ['400x', :png]
   }
 
   attr_accessor :delete_image

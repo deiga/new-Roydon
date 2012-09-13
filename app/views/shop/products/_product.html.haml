@@ -1,6 +1,6 @@
 .product.box
   %strong= product.name
-  %img.product-image{:src => product.image}
+  %img.product-image{:src => product.image.url(:thumb)}
   %br
   = product.price
   &euro;
