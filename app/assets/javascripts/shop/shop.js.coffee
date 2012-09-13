@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 flash = (msg, type) ->
   $('#flash').append("<div class='wrapper'><div class='rounded " + type + "'>" + msg + "</div></div>")
-  # $('#flash').fadeOut 2500
+  $('#flash').fadeOut 2500
 
 $ ->
   url = location.href
