@@ -6,6 +6,8 @@ class ShoppingCart
 
   delegate :empty?, :to => :items
 
+  accepts_nested_attributes_for :items
+
   def empty
     self.items.clear
   end
