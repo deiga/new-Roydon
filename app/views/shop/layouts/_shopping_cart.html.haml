@@ -1,5 +1,5 @@
 %section#shopping-cart.box.first-box
-  %strong= link_to 'Ostoskori:', shop_shopping_cart_path(session[:shopping_cart_id])
+  %strong= link_to 'Ostoskori:', edit_shop_shopping_cart_path(session[:shopping_cart_id])
   - unless @shopping_cart.nil? || @shopping_cart.empty?
     %table
       %tbody
