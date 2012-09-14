@@ -1,6 +1,5 @@
 %section#shopping-cart.box.first-box
   %strong= link_to 'Ostoskori:', shop_shopping_cart_path(session[:shopping_cart_id])
-  %br
   - unless @shopping_cart.nil? || @shopping_cart.empty?
     %table
       %tbody
@@ -9,13 +8,8 @@
             %td
               %small= link_to item.product.name, shop_product_path(item.product)
             %td
-              %small= " #{item.price} €"
-    %span#total>
-      = "Tuotteita: #{@shopping_cart.size}kpl"
-      %span#price>
-        = @shopping_cart.price
-        €
-  - else
-    Ei tuotteita
-    %br
-    %span#price 0.0 &euro;
+              %small=raw " #{item.price} &euro;"
+  %span#total>
+    = "Tuotteita: #{@shopping_cart.size}kpl"
+    %span#price>
+      =raw "#{@shopping_cart.price} &euro;"
