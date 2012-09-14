@@ -8,7 +8,7 @@
       Lisätietoja:
       %br
       = raw(@product.description)
-    - unless @product.options.nil?
+    - unless @product.empty?
       Vaihtoehtoja:
       = @product.options.map(&:name).to_sentence
       %br

@@ -7,6 +7,9 @@ class Shop::ProductsController < Shop::ShopController
 
   def show
     @product = Product.where(id: params[:id]).first
+    if @product.nil?
+      not_found
+    end
   end
 
 end

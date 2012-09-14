@@ -13,6 +13,8 @@ class Product
   attr_accessor :image
   attr_reader :image_remote_url
 
+  delegate :empty?, :to => :options
+
   has_mongoid_attached_file :image,
   styles: {
     thumb: ['175x', :png],
