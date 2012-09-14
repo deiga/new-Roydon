@@ -1,0 +1,6 @@
+fi:
+  mongoid:
+    models:
+      order: Tilaus
+      shopping_cart: Ostoskori
+      product: Tuote
