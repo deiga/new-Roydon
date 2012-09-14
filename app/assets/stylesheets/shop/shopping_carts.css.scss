@@ -19,6 +19,7 @@ section#shopping-cart {
       text-align:right;
     }
   }
+
   span#total {
     border-top: 1px solid black;
     display: inline-block;
@@ -28,6 +29,26 @@ section#shopping-cart {
     span#price {
       position: absolute;
       right: 3.5%;
+    }
+  }
+}
+
+body.shopping_carts{
+
+  section#shop-details {
+
+    > * {
+      margin-left: 2%;
+    }
+
+    table {
+      // border: 2px dashed $dark-green;
+      width: 92%;
+      margin-left: 4%;
+    }
+
+    tr#price {
+      border-top: 1px solid black;
     }
   }
 }
