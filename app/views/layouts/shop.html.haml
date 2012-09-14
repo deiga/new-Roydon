@@ -3,7 +3,7 @@
   %section#sub-navigation-sidebar
     = render 'shop/layouts/search'
     = render 'shop/layouts/category_menu'
-  %section#product-view
+  %section#shop-details
     = content_for?(:shop_content) ? yield(:shop_content) : yield
   %section#sidebar
     = render 'shop/layouts/shopping_cart'
