@@ -10,7 +10,7 @@
       = raw(@product.description)
     - unless @product.empty?
       Vaihtoehtoja:
-      = @product.options.map(&:name).to_sentence
+      = render @product.options
     %br
     = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(@product), remote: true, class: 'add-to-cart', "data-type" => :json
   #right
