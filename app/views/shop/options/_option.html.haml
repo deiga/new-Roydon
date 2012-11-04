@@ -1,0 +1,3 @@
+%select{name: "#{option.name.parameterize.downcase}_options"}
+  - option.values.each do |val|
+    %option= val
