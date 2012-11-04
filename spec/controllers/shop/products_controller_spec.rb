@@ -12,7 +12,7 @@ describe Shop::ProductsController do
   describe "GET 'show'" do
     it "returns http success" do
       get 'show', :id => Moped::BSON::ObjectId.new
-      response.should be_success
+      response.should_not be_success
     end
   end
 
