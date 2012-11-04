@@ -1,5 +1,5 @@
 .product.box
-  %strong= product.name
+  %strong= link_to product.name, shop_product_path(product)
   %img.product-image{:src => product.image.url(:thumb)}
   %br
   = product.price
