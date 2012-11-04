@@ -2,6 +2,8 @@ class CartItem
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  before_save :destroy_on_empty
+
   belongs_to :cart, class_name: 'ShoppingCart', inverse_of: 'items'
   belongs_to :product
 
@@ -12,6 +14,12 @@ class CartItem
 
   def price
     product.price * quantity
+  end
+
+  def destroy_on_empty
+    if self.quantity == 0
+      self.destroy
+    end
   end
 
 end

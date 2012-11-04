@@ -9,7 +9,7 @@
           %td Hinta
           %td Yhteensä
       %tbody
-        = f.fields_for :items do |items_fields|
+        = f.fields_for :items, @cart.items do |items_fields|
           %tr
             %td= link_to items_fields.object.product.name, shop_product_path(items_fields.object.product)
             %td= items_fields.text_field :quantity
@@ -18,5 +18,7 @@
         %tr#price
           %td{colspan: 3} Yhteensä:
           %td=raw "#{@cart.price} &euro;"
-  = f.submit
+    = f.submit
+  - else
+    %p Ostoskorissa ei ole tuotteita
 
