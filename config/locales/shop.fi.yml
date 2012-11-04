@@ -6,3 +6,6 @@ fi:
       add:
         success: 'Tuote lisätty onnistuneesti'
         failure: 'Tuotteen lisäys epäonnistui'
+      update:
+        success: 'Tuote päivitetty onnistuneesti'
+        failure: 'Tuotteen päivitys epäonnistui'
