@@ -18,8 +18,8 @@ class ShoppingCart
     end
   end
 
-  def add(product)
-    self.items << CartItem.new(product: product)
+  def add(product, options = {})
+    self.items << CartItem.new(product: product, selected_option: options.inject([]) {|x,y| x << y.join(': ')})
   end
 
   def price
