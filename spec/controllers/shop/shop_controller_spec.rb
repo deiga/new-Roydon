@@ -31,7 +31,7 @@ describe Shop::ShopController do
 	describe "GET 'add_to_cart'" do
 
 		def do_add_to_cart
-			get :add_to_cart, product: Product.create(:name => "Test product", price: 5.3)
+			get :add_to_cart, product: Product.create(:name => "Test product", price: 5.3), options: {}
 		end
 
 		include_examples "set_cart"
