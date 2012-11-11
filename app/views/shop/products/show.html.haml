@@ -1,17 +1,19 @@
 #product-wrapper
   #left
-    %h2= @product.name
+    = form_for @product, remote: true, url: shop_add_to_cart_path(@product), html: {'data-type' => :json, id: 'add-product-to-cart', method: :post} do |f|
+      %h2= @product.name
 
-    %p>
-    =raw "Hinta: #{@product.price} &euro;"
-    %p>
-      Lisätietoja:
+      %p>
+      =raw "Hinta: #{@product.price} &euro;"
+      %p>
+        Lisätietoja:
+        %br
+        = raw(@product.description)
+      - unless @product.empty?
+        Vaihtoehtoja:
+        - @product.options.each do |x|
+          = collection_select :options, x.name, x.values, 'html_safe', 'humanize', {include_blank: true}, {required: 'required'}
       %br
-      = raw(@product.description)
-    - unless @product.empty?
-      Vaihtoehtoja:
-      = render @product.options
-    %br
-    = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(@product), remote: true, class: 'add-to-cart', "data-type" => :json
+      = f.submit 'Lisää ostoskoriin', class: 'add-to-cart'
   #right
     %img.product-image{:src => @product.image.url(:show)}
