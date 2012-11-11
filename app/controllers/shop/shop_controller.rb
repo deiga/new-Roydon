@@ -8,8 +8,7 @@ class Shop::ShopController < ApplicationController
   end
 
   def add_to_cart
-    # raise session.inspect
-    @shopping_cart.add(params[:product])
+    @shopping_cart.add(params[:product], params[:options])
 
     success_msg = I18n.t 'shop.cart.add.success'
     respond_to do |format|
