@@ -43,7 +43,7 @@ fi:
       message: "Viesti"
     actions:
       dashboard:
-        title: "Sivustin ylläpito"
+        title: "Sivuston ylläpito"
         menu: "Kojelauta"
         breadcrumb: "Kojelauta"
       index:
