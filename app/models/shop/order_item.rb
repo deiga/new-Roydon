@@ -1,4 +1,4 @@
-class OrderItem
+class Shop::OrderItem
   include Mongoid::Document
   include Mongoid::Timestamps
 

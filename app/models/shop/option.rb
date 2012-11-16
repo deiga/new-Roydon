@@ -1,4 +1,4 @@
-class Option
+class Shop::Option
   include Mongoid::Document
   include Mongoid::Timestamps
 

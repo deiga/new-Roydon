@@ -8,7 +8,7 @@ puts "Seeding for env '#{Rails.env}'"
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
-    parent = Category.new(:name => top_category)
+    parent = Shop::Category.new(:name => top_category)
     parent.save!
 
     unless category_list.nil?
@@ -51,9 +51,9 @@ def create_stories
     :content => 'Testing. 1 2 3. <br /> BÖÖ!!\n Return')
 end
 
-breeder = UserGroup.create!( :name => :breeder )
-groomer = UserGroup.create!( :name => :groomer )
-admin = UserGroup.create! name: :admin
+breeder = Shop::UserGroup.create!( :name => :breeder )
+groomer = Shop::UserGroup.create!( :name => :groomer )
+admin = Shop::UserGroup.create! name: :admin
 
 if Rails.env.development?
   p "Creating admins"
@@ -90,7 +90,7 @@ p "Creating stories"
 create_stories()
 p "Creating dummy products"
 1.upto(15) do |i|
-  test_product = Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description =>
+  test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description =>
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
     image_remote_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg")
   test_product.categories << Category.any_in(:name => ['Häkit'])

@@ -1,4 +1,4 @@
-class UserGroup
+class Shop::UserGroup
   include Mongoid::Document
   include Mongoid::Timestamps
 

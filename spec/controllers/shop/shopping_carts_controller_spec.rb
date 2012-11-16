@@ -4,14 +4,14 @@ describe Shop::ShoppingCartsController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit', :id => ShoppingCart.create
+      get 'edit', :id => Shop::ShoppingCart.create
       response.should be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => ShoppingCart.create
+      get 'show', :id => Shop::ShoppingCart.create
       response.should be_success
     end
   end
@@ -25,7 +25,7 @@ describe Shop::ShoppingCartsController do
 
   describe "GET 'destroy'" do
     it "returns http success" do
-      get 'destroy', :id => ShoppingCart.create
+      get 'destroy', :id => Shop::ShoppingCart.create
       response.should be_success
     end
   end

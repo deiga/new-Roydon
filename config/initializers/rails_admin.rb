@@ -128,7 +128,7 @@ RailsAdmin.config do |config|
     #   create do; end
     #   update do; end
   end
-  config.model CartItem do
+  config.model Shop::CartItem do
   #   # Found associations:
   #     configure :cart, :belongs_to_association
   #     configure :product, :belongs_to_association
@@ -150,7 +150,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
 end
-config.model Category do
+config.model Shop::Category do
   # Found associations:
   #     configure :products, :has_and_belongs_to_many_association
   # Found columns:
@@ -161,7 +161,7 @@ config.model Category do
   configure :ancestry, :enum do
     label 'Parent'
     enum do
-      Category.where(:id.ne => bindings[:object].id).map { |c| [c.name, c.id]}
+      Shop::Category.where(:id.ne => bindings[:object].id).map { |c| [c.name, c.id]}
     end
   end
   #     configure :product_ids, :serialized         # Hidden
@@ -178,7 +178,7 @@ config.model Category do
   #   create do; end
   #   update do; end
 end
-config.model PriceModification do
+config.model Shop::PriceModification do
   #   # Found associations:
   #     configure :products, :has_many_association
   #   # Found columns:
@@ -200,7 +200,7 @@ config.model PriceModification do
   #   create do; end
   #   update do; end
 end
-config.model ValueAddedTax do
+config.model Shop::ValueAddedTax do
   #   # Found associations:
   #     configure :products, :has_many_association
   #   # Found columns:
@@ -222,7 +222,7 @@ config.model ValueAddedTax do
   #   create do; end
   #   update do; end
 end
-config.model Discount do
+config.model Shop::Discount do
   #   # Found associations:
   #     configure :user_group, :belongs_to_association
   #     configure :promotion, :belongs_to_association
@@ -247,7 +247,7 @@ config.model Discount do
   #   create do; end
   #   update do; end
 end
-config.model GroupDiscount do
+config.model Shop::GroupDiscount do
   #   # Found associations:
   #     configure :user, :belongs_to_association
   #     configure :promotion, :belongs_to_association
@@ -272,7 +272,7 @@ config.model GroupDiscount do
   #   create do; end
   #   update do; end
 end
-config.model Option do
+config.model Shop::Option do
   #   # Found associations:
   #   # Found columns:
   #     configure :_type, :text         # Hidden
@@ -292,7 +292,7 @@ config.model Option do
   #   create do; end
   #   update do; end
 end
-config.model Order do
+config.model Shop::Order do
   #   # Found associations:
   #   # Found columns:
   #     configure :_type, :text         # Hidden
@@ -309,7 +309,7 @@ config.model Order do
   #   create do; end
   #   update do; end
 end
-config.model Product do
+config.model Shop::Product do
   #   # Found associations:
   #     configure :categories, :has_and_belongs_to_many_association
   #     configure :options, :has_many_association
@@ -341,7 +341,7 @@ config.model Product do
   #   create do; end
   #   update do; end
 end
-config.model Promotion do
+config.model Shop::Promotion do
   #   # Found associations:
   #     configure :discount, :has_one_association
   #   # Found columns:
@@ -363,7 +363,7 @@ config.model Promotion do
   #   create do; end
   #   update do; end
 end
-config.model ShoppingCart do
+config.model Shop::ShoppingCart do
   #   # Found associations:
   #     configure :items, :has_many_association
   #   # Found columns:
@@ -435,7 +435,7 @@ config.model User do
   #   create do; end
   #   update do; end
 end
-config.model UserGroup do
+config.model Shop::UserGroup do
   #   # Found associations:
   #     configure :users, :has_and_belongs_to_many_association
   #     configure :discounts, :has_many_association

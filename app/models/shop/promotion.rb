@@ -6,7 +6,7 @@ class DateTimeValidator < ActiveModel::EachValidator
   end
 end
 
-class Promotion
+class Shop::Promotion
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -20,5 +20,5 @@ class Promotion
   validates :name, :presence => true, :length => { :minimum => 1}
   validates :start_date, :date_time => { :in_future => true }
   validates :end_date, :date_time => { :after => :start_date }
-  
+
 end

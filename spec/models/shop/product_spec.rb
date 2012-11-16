@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe Product do
+describe Shop::Product do
 
   before :each do
   end
 
-  it "should create a new Product given valid attributes" do
+  it "should create a new Shop::Product given valid attributes" do
     created = FactoryGirl.build(:product)
     created.should be_valid
   end
 
   it "should be empty" do
-    all_products = Product.all
+    all_products = Shop::Product.all
     all_products.should be_empty
   end
 
@@ -21,7 +21,7 @@ describe Product do
   end
 
   it "should have a name" do
-    no_name_product = Product.new
+    no_name_product = Shop::Product.new
     no_name_product.should_not be_valid
   end
 
@@ -37,7 +37,7 @@ describe Product do
   end
 
   it "should normalize filename" do
-    Product.any_instance.stub(:save_attached_files => true)
+    Shop::Product.any_instance.stub(:save_attached_files => true)
     Paperclip::Attachment.any_instance.stub(:post_process => true)
 
     FactoryGirl.create(:product_with_image).image_file_name.should eql("test_image_1.jpg")

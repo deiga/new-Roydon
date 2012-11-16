@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Promotion do
+describe Shop::CartItem do
   pending "add some examples to (or delete) #{__FILE__}"
 end

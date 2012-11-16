@@ -1,4 +1,4 @@
-class Product
+class Shop::Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
@@ -9,7 +9,7 @@ class Product
 
   has_and_belongs_to_many :categories
   has_many :options
-  has_many :value_added_taxes
+  has_one :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
   attr_accessor :image
   attr_reader :image_remote_url

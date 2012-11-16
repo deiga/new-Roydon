@@ -1,8 +1,8 @@
-class ShoppingCart
+class Shop::ShoppingCart
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_many :items, class_name: 'CartItem', inverse_of: :cart
+  has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart
 
   delegate :empty?, :to => :items
 
@@ -19,7 +19,7 @@ class ShoppingCart
   end
 
   def add(product, options = {})
-    self.items << CartItem.new(product: product, selected_option: options.inject([]) {|x,y| x << y.join(': ')})
+    self.items << Shop::CartItem.new(product: product, selected_option: options.inject([]) {|x,y| x << y.join(': ')})
   end
 
   def price
@@ -27,7 +27,7 @@ class ShoppingCart
     self.items.each do |item|
       price += item.price
     end
-    price
+    price.round(2)
   end
 
   def latest_items

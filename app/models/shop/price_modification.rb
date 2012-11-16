@@ -1,4 +1,4 @@
-class PriceModification
+class Shop::PriceModification
   include Mongoid::Document
   include Mongoid::Timestamps
 

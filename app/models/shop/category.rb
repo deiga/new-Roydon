@@ -1,4 +1,4 @@
-class Category
+class Shop::Category
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Ancestry

@@ -4,12 +4,12 @@ FactoryGirl.define do
     image { fixture_file_upload 'files/test%image 1.jpg' }
   end
 
-  factory :product do
+  factory :product, class: Shop::Product do
     name "Test product"
   end
 
   # This will use the User class (Admin would have been guessed)
-  factory :product_with_image, class: Product do
+  factory :product_with_image, class: Shop::Product do
     name "Test product with image"
     test_file
 

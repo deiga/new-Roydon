@@ -1,3 +1,0 @@
-class ValueAddedTax < PriceModification
-
-end
