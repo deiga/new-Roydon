@@ -11,6 +11,7 @@ Roydon::Application.routes.draw do
     resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i}
     match '/add_to_cart/:product', to: 'shop#add_to_cart', as: 'add_to_cart'
     match '/', :to => 'shop#index'
+    resources :orders, :except => [:index]
   end
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
