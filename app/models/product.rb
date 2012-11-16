@@ -8,7 +8,8 @@ class Product
   before_save :normalize_filename
 
   has_and_belongs_to_many :categories
-  has_and_belongs_to_many :options
+  has_many :options
+  has_many :value_added_taxes
 
   attr_accessor :image
   attr_reader :image_remote_url
