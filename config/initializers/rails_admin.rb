@@ -131,7 +131,8 @@ RailsAdmin.config do |config|
   config.model CartItem do
   #   # Found associations:
   #     configure :cart, :belongs_to_association
-  #     configure :product, :belongs_to_association   #   # Found columns:
+  #     configure :product, :belongs_to_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
@@ -166,7 +167,8 @@ config.model Category do
   #     configure :product_ids, :serialized         # Hidden
   #     configure :name, :string
   #     configure :passive, :boolean
-  #     configure :permalink, :text   #   # Sections:
+  #     configure :permalink, :text
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -181,7 +183,8 @@ config.model Discount do
   #     configure :user_group, :belongs_to_association
   #     configure :promotion, :belongs_to_association
   #     configure :products, :has_many_association
-  #     configure :categories, :has_many_association   #   # Found columns:
+  #     configure :categories, :has_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
@@ -189,7 +192,8 @@ config.model Discount do
   #     configure :name, :string
   #     configure :discount, :float
   #     configure :user_group_id, :bson_object_id         # Hidden
-  #     configure :promotion_id, :bson_object_id         # Hidden   #   # Sections:
+  #     configure :promotion_id, :bson_object_id         # Hidden
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -203,7 +207,8 @@ config.model GroupDiscount do
   #   # Found associations:
   #     configure :user, :belongs_to_association
   #     configure :promotion, :belongs_to_association
-  #     configure :products, :has_many_association   #   # Found columns:
+  #     configure :products, :has_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
@@ -212,7 +217,8 @@ config.model GroupDiscount do
   #     configure :discount, :float
   #     configure :amount_needed, :integer
   #     configure :user_id, :bson_object_id         # Hidden
-  #     configure :promotion_id, :bson_object_id         # Hidden   #   # Sections:
+  #     configure :promotion_id, :bson_object_id         # Hidden
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -224,14 +230,16 @@ config.model GroupDiscount do
 end
 config.model Option do
   #   # Found associations:
-  #     configure :products, :has_and_belongs_to_many_association   #   # Found columns:
+  #     configure :products, :has_and_belongs_to_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
   #     configure :updated_at, :datetime
   #     configure :product_ids, :serialized         # Hidden
   #     configure :name, :string
-  #     configure :values, :serialized   #   # Sections:
+  #     configure :values, :serialized
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -247,7 +255,8 @@ config.model Order do
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
+  #     configure :updated_at, :datetime
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -291,7 +300,8 @@ config.model Product do
 end
 config.model Promotion do
   #   # Found associations:
-  #     configure :discount, :has_one_association   #   # Found columns:
+  #     configure :discount, :has_one_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
@@ -299,7 +309,8 @@ config.model Promotion do
   #     configure :name, :string
   #     configure :start_date, :datetime
   #     configure :end_date, :datetime
-  #     configure :passive, :boolean   #   # Sections:
+  #     configure :passive, :boolean
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -311,11 +322,13 @@ config.model Promotion do
 end
 config.model ShoppingCart do
   #   # Found associations:
-  #     configure :items, :has_many_association   #   # Found columns:
+  #     configure :items, :has_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
+  #     configure :updated_at, :datetime
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -336,7 +349,8 @@ config.model Show do
   #     configure :duration, :integer
   #     configure :date, :date
   #     configure :url, :string
-  #     configure :location, :string   #   # Sections:
+  #     configure :location, :string
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
     sort_by :date
@@ -350,7 +364,8 @@ config.model Show do
 end
 config.model User do
   #   # Found associations:
-  #     configure :user_groups, :has_and_belongs_to_many_association   #   # Found columns:
+  #     configure :user_groups, :has_and_belongs_to_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :email, :text
@@ -366,7 +381,8 @@ config.model User do
   #     configure :last_sign_in_ip, :text
   #     configure :first_name, :text
   #     configure :last_name, :text
-  #     configure :user_group_ids, :serialized         # Hidden   #   # Sections:
+  #     configure :user_group_ids, :serialized         # Hidden
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
@@ -379,13 +395,15 @@ end
 config.model UserGroup do
   #   # Found associations:
   #     configure :users, :has_and_belongs_to_many_association
-  #     configure :discounts, :has_many_association   #   # Found columns:
+  #     configure :discounts, :has_many_association
+  #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
   #     configure :updated_at, :datetime
   #     configure :name, :string
-  #     configure :user_ids, :serialized         # Hidden   #   # Sections:
+  #     configure :user_ids, :serialized         # Hidden
+  #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
   end
