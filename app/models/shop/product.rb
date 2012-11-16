@@ -9,7 +9,7 @@ class Shop::Product
 
   has_and_belongs_to_many :categories
   has_many :options
-  has_one :value_added_tax, class_name: 'Shop::ValueAddedTax'
+  belongs_to :value_added_tax
 
   attr_accessor :image
   attr_reader :image_remote_url
