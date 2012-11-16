@@ -7,5 +7,5 @@ class Shop::UserGroup
   validates :name, presence: true, inclusion: { in: %w{admin breeder groomer}}, uniqueness: true
 
   has_and_belongs_to_many :users
-  has_many :discounts
+  has_many :discounts, class_name: 'Shop::Discount'
 end

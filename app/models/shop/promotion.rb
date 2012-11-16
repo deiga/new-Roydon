@@ -15,7 +15,7 @@ class Shop::Promotion
   field :end_date, :type => DateTime
   field :passive, :type => Boolean, :default => false
 
-  has_one :discount
+  has_one :discount, class_name: 'Shop::Discount'
 
   validates :name, :presence => true, :length => { :minimum => 1}
   validates :start_date, :date_time => { :in_future => true }

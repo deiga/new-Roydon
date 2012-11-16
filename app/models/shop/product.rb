@@ -7,9 +7,9 @@ class Shop::Product
 
   before_save :normalize_filename
 
-  has_and_belongs_to_many :categories
-  has_many :options
-  belongs_to :value_added_tax
+  has_and_belongs_to_many :categories, class_name: 'Shop::Category'
+  has_and_belongs_to_many :options, class_name: 'Shop::Option', inverse_of: nil
+  belongs_to :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
   attr_accessor :image
   attr_reader :image_remote_url

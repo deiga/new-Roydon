@@ -5,7 +5,7 @@ class Shop::CartItem
   before_save :destroy_on_empty
 
   belongs_to :cart, class_name: 'Shop::ShoppingCart', inverse_of: 'items'
-  belongs_to :product
+  belongs_to :product, class_name: 'Shop::Product'
 
   default_scope includes(:product)
 

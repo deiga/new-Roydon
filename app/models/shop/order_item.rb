@@ -2,7 +2,7 @@ class Shop::OrderItem
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :order
+  embedded_in :order, class_name: 'Shop::Order'
 
   field :product_id, type: Moped::BSON::ObjectId
   field :product_name, type: String
