@@ -274,7 +274,6 @@ config.model GroupDiscount do
 end
 config.model Option do
   #   # Found associations:
-  #     configure :products, :has_and_belongs_to_many_association
   #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
@@ -313,7 +312,7 @@ end
 config.model Product do
   #   # Found associations:
   #     configure :categories, :has_and_belongs_to_many_association
-  #     configure :options, :has_and_belongs_to_many_association
+  #     configure :options, :has_many_association
   #     configure :cart_item, :has_one_association
   #   # Found columns:
   #     configure :_type, :text         # Hidden
