@@ -178,6 +178,50 @@ config.model Category do
   #   create do; end
   #   update do; end
 end
+config.model PriceModification do
+  #   # Found associations:
+  #     configure :products, :has_many_association
+  #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :discount, :float
+  #     configure :user_group_id, :bson_object_id         # Hidden
+  #     configure :promotion_id, :bson_object_id         # Hidden
+  #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
+config.model ValueAddedTax do
+  #   # Found associations:
+  #     configure :products, :has_many_association
+  #   # Found columns:
+  #     configure :_type, :text         # Hidden
+  #     configure :_id, :bson_object_id
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :discount, :float
+  #     configure :user_group_id, :bson_object_id         # Hidden
+  #     configure :promotion_id, :bson_object_id         # Hidden
+  #   # Sections:
+  list do
+    exclude_fields :_type, :_id, :created_at, :updated_at
+  end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+end
 config.model Discount do
   #   # Found associations:
   #     configure :user_group, :belongs_to_association
