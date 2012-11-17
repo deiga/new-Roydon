@@ -1,5 +1,6 @@
 namespace :deploy do
 
+  desc "Deploy to heroku production env"
   task :production do
     puts "deploying to production"
     system "git push production master"
@@ -10,6 +11,7 @@ namespace :deploy do
     puts "done"
   end
 
+  desc "Deploy to heroku staging env"
   task :staging do
     puts "deploying to staging"
     system "git push staging master"
@@ -20,6 +22,7 @@ namespace :deploy do
     puts "done"
   end
 
+  desc "Deploy to heroku development env"
   task :development do
     puts "deploying to development"
     system "git push development master"
