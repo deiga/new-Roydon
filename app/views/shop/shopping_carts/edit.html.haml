@@ -1,6 +1,6 @@
-= form_for @cart, url: { action: 'update' } do |f|
-  %h1 Ostoskori
-  - unless @cart.empty?
+%h1 Ostoskori
+- unless @cart.empty?
+  = form_for @cart, url: { action: 'update' } do |f|
     %table
       %thead
         %tr
@@ -11,7 +11,10 @@
       %tbody
         = f.fields_for :items, @cart.items do |items_fields|
           %tr
-            %td= link_to items_fields.object.product.name, shop_product_path(items_fields.object.product)
+            %td<
+              = link_to items_fields.object.product.name, shop_product_path(items_fields.object.product)
+              %br
+              = "(#{items_fields.object.selected_option.join(', ')})"
             %td= items_fields.text_field :quantity
             %td=raw " #{items_fields.object.product.price} &euro;"
             %td=raw " #{items_fields.object.price} &euro;"
@@ -19,6 +22,9 @@
           %td{colspan: 3} Yhteensä:
           %td=raw "#{@cart.price} &euro;"
     = f.submit
-  - else
-    %p Ostoskorissa ei ole tuotteita
+    / TODO: Add empty cart link
+    / = link_to 'Empty cart', @cart,method: :delete, confirm: 'Are you sure?'
+  = link_to 'Checkout', new_shop_order_path, method: :get
+- else
+  %p Ostoskorissa ei ole tuotteita
 
