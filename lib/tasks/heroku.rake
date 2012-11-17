@@ -6,7 +6,7 @@ namespace :deploy do
     puts "clearing cache"
     system "heroku run console Rails.cache.clear -a roydon-cedar"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles"
+    system "heroku run rake paperclip:refresh:missing_styles -a roydon-cedar"
     puts "done"
   end
 
@@ -16,7 +16,7 @@ namespace :deploy do
     puts "clearing cache"
     system "heroku run console Rails.cache.clear -a roydon-staging"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles"
+    system "heroku run rake paperclip:refresh:missing_styles -a roydon-staging"
     puts "done"
   end
 
@@ -26,7 +26,7 @@ namespace :deploy do
     puts "clearing cache"
     system "heroku run console Rails.cache.clear -a roydon-dev"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles"
+    system "heroku run rake paperclip:refresh:missing_styles -a roydon-dev"
     puts "done"
   end
 end
