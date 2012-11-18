@@ -3,7 +3,7 @@
 namespace :homepage do
 
   desc 'Setup news'
-  task :stories do
+  task :stories => :environment do
     Ccsv.foreach('db/seed/news.csv') do |line|
       line.each { |str| str.gsub!(/\"/,'').gsub!(/;/,',') }
       date = Date.strptime(line[0])
@@ -17,7 +17,7 @@ namespace :homepage do
   end
 
   desc 'Setup shows'
-  task :shows do
+  task :shows => :environment do
     Ccsv.foreach('db/seed/shows.csv') do |line|
       line.each { |str| str.gsub!(/\"/,'') }
       title = line[3]

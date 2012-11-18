@@ -1,7 +1,7 @@
 namespace :shop do
 
   desc 'Add categories'
-  task :categories do
+  task :categories => :environment do
     categories_yaml = YAML.load_file('db/seed/categories.yml')
     categories_yaml.each do |top_category, category_list|
       parent = Shop::Category.new(:name => top_category)
@@ -16,7 +16,7 @@ namespace :shop do
   end
 
   desc 'Add user groups'
-  task :user_groups do
+  task :user_groups => :environment do
     breeder = Shop::UserGroup.create!( :name => :breeder )
     groomer = Shop::UserGroup.create!( :name => :groomer )
     admin = Shop::UserGroup.create! name: :admin
