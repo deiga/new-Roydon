@@ -23,13 +23,13 @@ group :production, :staging do
   gem 'dalli'
   gem 'google-analytics-rails'
 
-  # Gem for online storage
-  gem 'aws-sdk', '~> 1.3.4'
 end
 
 # Gem for attaching images
 # gem "paperclip", "~> 3.0"
 gem 'mongoid-paperclip', require: 'mongoid_paperclip'
+# Gem for online storage
+gem 'aws-sdk', '~> 1.3.4'
 
 # Gem for reading seed data
 gem 'ccsv'
