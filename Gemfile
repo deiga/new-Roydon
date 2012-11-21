@@ -5,7 +5,6 @@ gem 'rails', '3.1.3'
 
 # Gem for NoSQL DB
 gem 'mongoid'
-gem 'mongoid_rails_migrations'
 
 # Gem for tree structure of categories
 gem 'mongoid-ancestry'
