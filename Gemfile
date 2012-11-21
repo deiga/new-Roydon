@@ -21,7 +21,6 @@ group :production, :staging do
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'google-analytics-rails'
-
 end
 
 # Gem for attaching images
