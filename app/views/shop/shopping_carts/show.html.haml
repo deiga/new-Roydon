@@ -1,17 +1,18 @@
-%h1 Ostoskori
-- unless @cart.empty?
-  %table
-    %thead
-      %tr
-        %td Tuote
-        %td lkm
-        %td Hinta
-    %tbody
-      - @cart.items.each do |item|
-        %tr
-          %td= link_to item.product.name, shop_product_path(item.product)
-          %td= item.quantity
-          %td= " #{item.price} €"
-      %tr#price
-        %td{colspan: 2} Yhteensä:
-        %td=raw "#{@cart.price} &euro;"
+Who called you?
+/ %h1 Ostoskori
+/ - unless @cart.empty?
+/   %table
+/     %thead
+/       %tr
+/         %td Tuote
+/         %td lkm
+/         %td Hinta
+/     %tbody
+/       - @cart.items.each do |item|
+/         %tr
+/           %td= "#{link_to item.product.name, shop_product_path(item.product)} (#{item.selected_option.join(', ')})"
+/           %td= item.quantity
+/           %td= " #{item.price} €"
+/       %tr#price
+/         %td{colspan: 2} Yhteensä:
+/         %td=raw "#{@cart.price} &euro;"
