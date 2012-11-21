@@ -22,14 +22,6 @@ class Shop::Category
     self.where(:ancestry => nil)
   end
 
-  def format_name
-    self.name.downcase.gsub(/\s/,'_')
-  end
-
-  def self.find_by_formatted_name(formatted_name)
-    self.where(:name => /#{formatted_name.split('_').first}/i).first
-  end
-
   def all_products
     self.children.reduce(self.products) do |list, child|
       list << child.products
