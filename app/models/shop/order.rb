@@ -11,5 +11,10 @@ class Shop::Order
     items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option)
   end
 
+  def add(cart_items)
+    cart_items.each do |item|
+      add_item(item)
+    end
+  end
 
 end
