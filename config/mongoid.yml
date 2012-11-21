@@ -111,14 +111,3 @@ staging:
       options:
         consistency: :strong
         identity_map_enabled: true
-development:
-  sessions:
-    default:
-      database: <%= database %>
-      username: <%= username %>
-      password: <%= password %>
-      hosts:
-        - <%= host %>
-      options:
-        consistency: :strong
-        identity_map_enabled: true
