@@ -18,4 +18,11 @@ describe Shop::OrdersController do
     end
   end
 
+  describe "POST 'create'" do
+    it "should render 'new' action" do
+      post :create
+      response.should render_template 'new'
+    end
+  end
+
 end
