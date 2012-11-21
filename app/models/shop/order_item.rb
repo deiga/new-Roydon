@@ -10,7 +10,7 @@ class Shop::OrderItem
   field :quantity, type: Integer, default: 1
   field :options, type: Array
 
-  validates :name, :presence => true, :length => { :minimum => 1 }
-  validates :price, :numericality => { :greater_than_or_equal_to => 0.0}
+  validates :product_name, :presence => true, :length => { :minimum => 1 }
+  validates :product_price, :numericality => { :greater_than_or_equal_to => 0.0}
   validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
 end
