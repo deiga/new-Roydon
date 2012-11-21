@@ -14,12 +14,12 @@ class ShowsController < ApplicationController
 
     if @year < today.year
       queried_year = Date.new(@year)
-      @upcoming_shows = Show.where( :date.gte => queried_year,
+      @upcoming_shows = Show.active.where( :date.gte => queried_year,
         :date.lt => queried_year.next_year )
     else
       p "Current years"
-      @upcoming_shows = Show.where( :date.gte => today )
-      @earlier_shows = Show.where( :date.lt => today,
+      @upcoming_shows = Show.active.where( :date.gte => today )
+      @earlier_shows = Show.active.where( :date.lt => today,
         :date.gte => Date.new(today.year) )
     end
   end

@@ -11,7 +11,9 @@ class Show
 	field :location, 	:type => String
 	field :duration, 	:type => Integer, :default => 1
 	field :date, 			:type => Date
+	field :passive,		type: Boolean, default: false
 
+	scope :active, where(passive: false)
 	default_scope asc(:date)
 
 	# Validations
@@ -35,7 +37,7 @@ class Show
 	end
 
 	def self.next_show
-		where( :date.gte => Date.today ).first()
+		where( :date.gte => Date.today ).active.first()
 	end
 
 	private

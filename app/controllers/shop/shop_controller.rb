@@ -5,7 +5,7 @@ class Shop::ShopController < ApplicationController
   before_filter :load_side_menu
 
   def index
-    @newest_products = Shop::Product.where(passive: false).desc(:updated_at).take(9)
+    @newest_products = Shop::Product.active.desc(:updated_at).take(9)
   end
 
   def add_to_cart
@@ -36,9 +36,9 @@ class Shop::ShopController < ApplicationController
 
     def load_side_menu
       unless params[:category].nil?
-        @category = Shop::Category.find_by_formatted_name params[:category]
-        @top_category = Shop::Category.find_by_formatted_name params[:category].split('-').first
-        @categories = @top_category.children unless @top_category.nil?
+        @category = Shop::Category.active.where(permalink: params[:category])
+        @top_category = Shop::Category.active.where(permalink: params[:category].split('-').first).first
+        @categories = @top_category.children.active unless @top_category.nil?
       end
     end
 

@@ -18,6 +18,8 @@ class Shop::Category
   validates :name, :presence => true, :length => { :minimum => 2 }
   validates :permalink, uniqueness: true
 
+  scope :active, where(passive: false)
+
   def self.top_categories
     self.where(:ancestry => nil)
   end

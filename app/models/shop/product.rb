@@ -34,6 +34,8 @@ class Shop::Product
   validates :name, :presence => true, :length => { :minimum => 1 }
   validates :price, :numericality => { :greater_than_or_equal_to => 0.0}
 
+  scope :active, where(passive: false)
+
   def image_remote_url=(url_value)
     self.image = URI.parse(url_value)
     # Assuming url_value is http://example.com/photos/face.png
