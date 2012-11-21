@@ -168,9 +168,9 @@ config.model Shop::Category do
   #     configure :name, :string
   #     configure :passive, :boolean
   #     configure :permalink, :text
-  #   # Sections:
+  # Sections:
   list do
-    exclude_fields :_type, :_id, :created_at, :updated_at
+    exclude_fields :_type, :_id, :created_at, :updated_at, :products
   end
   #   export do; end
   #   show do; end
@@ -313,7 +313,6 @@ config.model Shop::Product do
   #   # Found associations:
   #     configure :categories, :has_and_belongs_to_many_association
   #     configure :options, :has_many_association
-  #     configure :cart_item, :has_one_association
   #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
@@ -337,7 +336,19 @@ config.model Shop::Product do
   end
   #   export do; end
   #   show do; end
-  #   edit do; end
+  edit do
+      field :name, :string
+      field :price, :decimal
+      field :description, :text do
+        bootstrap_wysihtml5 true
+      end
+      field :image, :paperclip
+      field :passive
+      field :suggestion
+      field :categories
+      field :options
+      field :value_added_tax
+    end
   #   create do; end
   #   update do; end
 end
