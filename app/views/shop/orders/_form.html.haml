@@ -1,4 +1,4 @@
-- form_for @order do |f|
+= form_for @order do |f|
   - if @order.errors.any?
     .error_explanation
       %h2= "#{pluralize(@order.errors.count, 'error')} prohibited this order from being saved:"
@@ -12,11 +12,23 @@
     = f.label :address
     = f.text_area :address, rows: 3, cols: 40
   .field
+    = f.label :country
+    = f.text_field :country, size: 40
+  .field
+    = f.label :city
+    = f.text_field :city, size: 40
+  .field
+    = f.label :postal_number
+    = f.text_field :postal_number, size: 40
+  .field
     = f.label :email
     = f.email_field :email, size: 40
   .field
+    = f.label :phone
+    = f.email_field :phone, size: 40
+  .field
     = f.label :payment
-    = f.text_field :payment, size: 40
+    = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
   .actions
     = f.submit 'Place order'
 
