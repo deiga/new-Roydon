@@ -1,0 +1,23 @@
+%section#shows
+  - unless @earlier_shows.blank?
+    %table#shows-table
+      %caption= "Seuraavista näyttelyistä löydät meidät vuonna #{ display_show_year(@year)}:"
+      %thead
+        %tr
+          %th#show_time{scope:"col"} Aika
+          %th#show_name{scope:"col"} Nimi
+          %th#show_place{scope:"col"} Paikka
+      %tbody
+        = render @upcoming_shows
+        - unless @earlier_shows.blank?
+          %tr
+            %td{headers:"show_name",colspan:"4"}
+              %strong Menneet näyttelyt tältä vuodelta
+          = render @earlier_shows
+        - else
+          %p= "Vuodelle #{@year} ei ole yhtään näyttelyä lisätty"
+%section#years
+  = display_year_list
+  %p>
+    Lisätietoja Suomen koiranäyttelyistä:
+    = link_to 'Suomen Kennelliitto', "http://www.kennelliitto.fi/FI/toiminta/nayttelyt/kvkr#{Time.now.year}/", :title => "SKL näyttelysivusto"
