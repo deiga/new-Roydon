@@ -8,7 +8,7 @@ class Shop::OrderItem
   field :product_name, type: String
   field :product_price, type: BigDecimal, default: 0.0
   field :quantity, type: Integer, default: 1
-  field :options, type: String
+  field :options, type: Array
 
   validates :name, :presence => true, :length => { :minimum => 1 }
   validates :price, :numericality => { :greater_than_or_equal_to => 0.0}
