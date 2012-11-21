@@ -25,6 +25,8 @@ development:
   sessions:
     # Defines the default session. (required)
     default:
+      username: <%= username %>
+      password: <%= password %>
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: <%= database %>
