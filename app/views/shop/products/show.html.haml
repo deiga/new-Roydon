@@ -1,6 +1,6 @@
 #product-wrapper
   #left
-    = form_for @product, remote: true, url: shop_add_to_cart_path(@product), html: {'data-type' => :json, id: 'add-product-to-cart', method: :post} do |f|
+    = form_for @product, remote: true, url: shop_add_to_cart_path(@product), html: {:'data-type' => :json, id: 'add-product-to-cart', method: :post} do |f|
       %h2= @product.name
 
       %p>
