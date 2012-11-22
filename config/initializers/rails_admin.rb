@@ -174,7 +174,13 @@ config.model Shop::Category do
   end
   #   export do; end
   #   show do; end
-  # edit do; end
+  edit do
+    field :name
+    field :ancestry
+    field :products
+    field :passive
+    exclude_fields :permalink
+  end
   #   create do; end
   #   update do; end
 end
