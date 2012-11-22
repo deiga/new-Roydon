@@ -6,7 +6,7 @@ class Shop::Category
   after_create :clear_cache
   after_update :clear_cache
   before_destroy :clear_cache
-  before_save :generate_permalink
+  before_validation :generate_permalink
 
   has_ancestry
   has_and_belongs_to_many :products, class_name: 'Shop::Product'
