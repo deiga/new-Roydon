@@ -1,8 +1,18 @@
 fi:
   mongoid:
     models:
-      show: Näyttely
-      story: Uutinen
-      shop/shopping_cart: Ostoskori
-      shop/product: Tuote
-      shop/order: Tilaus
+      show:
+        one: Näyttely
+        other: Näyttelyitä
+      story:
+        one: Uutinen
+        other: Uutisia
+      shop/shopping_cart:
+        one: Ostoskori
+        other: Ostoskoreja
+      shop/product:
+        one: Tuote
+        other: Tuotteita
+      shop/order:
+        one: Tilaus
+        other: Tilauksia
