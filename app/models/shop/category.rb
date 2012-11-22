@@ -11,7 +11,7 @@ class Shop::Category
   has_ancestry
   has_and_belongs_to_many :products, class_name: 'Shop::Product'
 
-  field :name, :type => String
+  field :name, :type => String, default: ''
   field :passive, :type => Boolean, :default => false
   field :permalink, :type => String
 
