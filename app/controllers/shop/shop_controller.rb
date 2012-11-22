@@ -37,7 +37,7 @@ class Shop::ShopController < ApplicationController
     def load_side_menu
       unless params[:category].nil?
         @category = Shop::Category.active.where(permalink: params[:category])
-        @top_category = Shop::Category.active.where(permalink: params[:category].split('-').first).first
+        @top_category = Shop::Category.active.where(permalink: params[:category].split('~').first).first
         @categories = @top_category.children.active unless @top_category.nil?
       end
     end

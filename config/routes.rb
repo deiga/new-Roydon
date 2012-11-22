@@ -5,7 +5,7 @@ Roydon::Application.routes.draw do
   namespace :shop do
     resources :products, :only => [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
       collection do
-        get ':category', :action => :index, :as => 'category', constraints: { category: /[a-zA-Z0-9-]+/i }
+        get ':category', :action => :index, :as => 'category', constraints: { category: /[a-zA-Z0-9~-]+/i }
       end
     end
     resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i}

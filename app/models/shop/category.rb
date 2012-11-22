@@ -34,7 +34,7 @@ class Shop::Category
     if self.ancestry.nil?
       permalink
     else
-      self.ancestors.first.permalink+'-'+permalink
+      self.ancestors.first.permalink+'~'+permalink
     end
   end
 
