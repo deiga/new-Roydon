@@ -9,3 +9,5 @@ fi:
       update:
         success: 'Tuote päivitetty onnistuneesti'
         failure: 'Tuotteen päivitys epäonnistui'
+    product:
+      newest: 'Uusimmat tuotteet'
