@@ -23,6 +23,14 @@ describe Shop::OrdersController do
       post :create
       response.should render_template 'new'
     end
+
+    it "should create order" do
+      order = FactoryGirl.build(:order)
+      lambda {
+        post :create, shop_order: order.attributes
+      }.should change(Shop::Order, :count)
+      response.should redirect_to(shop_url)
+    end
   end
 
 end
