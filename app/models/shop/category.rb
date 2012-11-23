@@ -45,8 +45,8 @@ class Shop::Category
   private
 
     def generate_permalink
-      if self.permalink.nil?
-        self.permalink = self.name.parameterize.downcase
+      if self.changes.has_key? 'name'
+        self.permalink = self.name.parameterize
       end
     end
 
