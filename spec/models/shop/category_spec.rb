@@ -35,6 +35,19 @@ describe Shop::Category do
     Shop::Category.top_categories.count.should be 1
   end
 
+  it "should generate permalink on create" do
+    foo = Shop::Category.create @attr
+    foo.permalink.should == foo.name.parameterize
+  end
+
+  it "should generate permalink on update" do
+    foo = Shop::Category.create @attr
+    foo.permalink.should == foo.name.parameterize
+    foo.name = 'foo & bar'
+    foo.save
+    foo.permalink.should == foo.name.parameterize
+  end
+
   describe "all products" do
     it "should return empty when no products available" do
       no_products_category = Shop::Category.create!(@attr)
