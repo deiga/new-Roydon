@@ -5,7 +5,7 @@ class Shop::ShopController < ApplicationController
   before_filter :load_side_menu
 
   def index
-    @newest_products = Shop::Product.active.desc(:updated_at).take(9)
+    @newest_products = Shop::Product.active.desc(:updated_at).includes(:options).take(9)
   end
 
   def add_to_cart
