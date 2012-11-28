@@ -23,11 +23,11 @@ class Shop::ShoppingCart
   end
 
   def price
-    price = 0.0
+    price = Money.new(0)
     self.items.each do |item|
       price += item.price
     end
-    price.round(2)
+    price
   end
 
   def latest_items
