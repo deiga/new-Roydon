@@ -1,13 +1,15 @@
 .product.box
-  %strong= link_to product.name, shop_product_path(product)
-  %img.product-image{:src => product.image.url(:thumb)}
-  %br
-  = product.price
-  &euro;
-  %br
-  = raw(product.description)
+  .product-title
+    %strong= link_to product.name, shop_product_path(product)
+  .product-image= link_to image_tag(product.image.url(:thumb)), shop_product_path(product)
+  .product-price
+    = product.price
+    &euro;
+  .product-description= raw(product.description)
   - unless product.options.nil?
-    Vaihtoehtoja:
-    = product.options.map(&:name).to_sentence
-    %br
-    = link_to 'Lisää ostoskoriin', shop_add_to_cart_path(product), remote: true, class: 'add-to-cart', "data-type" => :json
+    .product-options
+      Vaihtoehtoja:
+      = product.options.map(&:name).to_sentence
+    .product-link= link_to 'Katso lisää', shop_product_path(product)
+  - else
+    .product-link= link_to 'Lisää ostoskoriin', shop_add_to_cart_path(product), remote: true, class: 'add-to-cart', "data-type" => :json

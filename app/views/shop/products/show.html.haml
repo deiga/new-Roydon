@@ -16,4 +16,4 @@
       %br
       = f.submit 'Lisää ostoskoriin', class: 'add-to-cart'
   #right
-    %img.product-image{:src => @product.image.url(:show)}
+    .product-image= image_tag(@product.image.url(:show))

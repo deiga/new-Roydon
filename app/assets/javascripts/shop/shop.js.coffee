@@ -5,6 +5,10 @@ flash = (msg, type) ->
   $('#flash').append("<div class='wrapper'><div class='rounded " + type + "'>" + msg + "</div></div>")
   $('#flash').fadeOut 2500
 
+updateCart = (event, data, status, xhr) ->
+  $('#shopping-cart').load(' #shopping-cart > *')
+  flash(data.message, xhr.getResponseHeader('X-Message-Type'))
+
 $ ->
   url = location.href
   nameArr = url.split('/')
@@ -17,7 +21,8 @@ $ ->
 
 $ ->
   $('.add-to-cart')
-    .on 'ajax:success', (event, data, status, xhr) =>
-        $('#shopping-cart').load(' #shopping-cart > *')
-        flash(data.message, xhr.getResponseHeader('X-Message-Type'))
+    .on 'ajax:success', updateCart
 
+$ ->
+  $('.edit_shop_product')
+    .on 'ajax:success', updateCart
