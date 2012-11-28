@@ -9,6 +9,7 @@ class Shop::OrderItem
   field :product_price, type: BigDecimal, default: 0.0
   field :quantity, type: Integer, default: 1
   field :options, type: Array
+  field :tax, type: Float
 
   validates :product_name, :presence => true, :length => { :minimum => 1 }
   validates :product_price, :numericality => { :greater_than_or_equal_to => 0.0}

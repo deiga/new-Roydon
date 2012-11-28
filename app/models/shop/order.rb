@@ -23,7 +23,7 @@ class Shop::Order
 
   def add_item(cart_item)
     product = cart_item.product
-    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option)
+    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option), tax: product.value_added_tax.value
   end
 
   def add(cart_items)
