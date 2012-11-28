@@ -26,7 +26,7 @@ describe Shop::Product do
   end
 
   it "should not have negative price" do
-    negative_price_product = FactoryGirl.build(:product, :price => -5.5)
+    negative_price_product = FactoryGirl.build(:product, price: Money.new(-550))
     negative_price_product.should_not be_valid
   end
 
