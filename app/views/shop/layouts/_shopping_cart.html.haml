@@ -8,8 +8,8 @@
             %td
               %small= link_to item.product.name, shop_product_path(item.product)
             %td
-              %small=raw " #{item.price} &euro;"
+              %small=raw " #{humanized_money item.price} #{currency_symbol}"
   %span#total>
     = "Tuotteita: #{@shopping_cart.size}kpl"
     %span#price>
-      =raw "#{@shopping_cart.price} &euro;"
+      =raw "#{humanized_money @shopping_cart.price} #{currency_symbol}"

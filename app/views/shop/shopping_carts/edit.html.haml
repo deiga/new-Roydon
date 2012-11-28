@@ -16,11 +16,11 @@
               %br
               = "(#{items_fields.object.selected_option.join(', ')})"
             %td= items_fields.text_field :quantity
-            %td=raw " #{items_fields.object.product.price} &euro;"
-            %td=raw " #{items_fields.object.price} &euro;"
+            %td=raw " #{humanized_money items_fields.object.product.price} #{currency_symbol}"
+            %td=raw " #{humanized_money items_fields.object.price} #{currency_symbol}"
         %tr#price
           %td{colspan: 3} Yhteensä:
-          %td=raw "#{@cart.price} &euro;"
+          %td=raw "#{humanized_money @cart.price} #{currency_symbol}"
     = f.submit
     / TODO: Add empty cart link
     / = link_to 'Empty cart', @cart,method: :delete, confirm: 'Are you sure?'
