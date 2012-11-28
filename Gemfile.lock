@@ -171,6 +171,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
+    money (5.1.0)
+      i18n (~> 0.6.0)
+    money-rails (0.7.0)
+      activesupport (~> 3.0)
+      money (~> 5.1.0)
+      railties (~> 3.0)
     mongoid (3.0.13)
       activemodel (~> 3.1)
       moped (~> 1.1)
@@ -321,6 +327,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  money-rails
   mongoid
   mongoid-ancestry
   mongoid-paperclip
