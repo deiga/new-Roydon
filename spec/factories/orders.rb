@@ -9,5 +9,6 @@ FactoryGirl.define do
     postal_number "00100"
     payment "Cash"
     phone "0445566505"
+    tax 23.0
   end
 end
