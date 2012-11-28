@@ -12,8 +12,12 @@
 	min-height: 21em;
 	border: 1px solid $dark-green;
 	@include box-shadow(2px 2px 4px 0 $dark-green);
-	.product-image {
+	.product-image > img {
 		width: 175px;
+	}
+	.product-link {
+		text-align: center;
+		padding-top: .5em;
 	}
 }
 
