@@ -13,10 +13,17 @@ FactoryGirl.define do
     name "Test product with image"
     test_file
 
-    # after_create do |product, proxy|
+    # after(:create) do |product, proxy|
     #   proxy.file.close
     # end
   end
 
+  factory :product_with_options, class: Shop::Product do
+    name "Test product with options"
+
+    after(:build) do |product|
+      product.options << FactoryGirl.create(:option, name: 'Colour', values: ['Red','Green','Blue'])
+    end
+  end
 
 end

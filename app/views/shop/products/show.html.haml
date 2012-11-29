@@ -4,7 +4,7 @@
       %h2= @product.name
 
       %p>
-      =raw "Hinta: #{@product.price} &euro;"
+      =raw "Hinta: #{humanized_money @product.price} #{currency_symbol}"
       %p>
         Lisätietoja:
         %br

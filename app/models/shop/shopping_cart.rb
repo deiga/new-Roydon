@@ -18,19 +18,29 @@ class Shop::ShoppingCart
     end
   end
 
-  def add(product, options = {})
-    self.items << Shop::CartItem.new(product: product, selected_option: options.inject([]) {|x,y| x << y.join(': ')})
+  def add(product_id, options = {})
+    options = {} if options.nil?
+    product_id = product_id.id if product_id.class == Shop::Product
+    product_id = product_id.to_s
+    new_options = options.inject([]) {|x,y| x << y.join(': ')}
+    new_item = Shop::CartItem.new(product: product_id, selected_option: new_options)
+    existing_item = self.items.includes(:product).to_a.find { |x| x.product_id.to_s == product_id &&  x.selected_option == new_item.selected_option}
+    unless existing_item.nil?
+      existing_item.inc(:quantity, 1)
+    else
+      self.items << new_item
+    end
   end
 
   def price
-    price = 0.0
+    price = Money.new(0)
     self.items.each do |item|
       price += item.price
     end
-    price.round(2)
+    price
   end
 
   def latest_items
-    self.items.sort_by(&:updated_at).take(5)
+    self.items.includes(:product).sort_by(&:updated_at).take(5)
   end
 end

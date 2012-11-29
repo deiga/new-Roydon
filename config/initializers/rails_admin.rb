@@ -300,11 +300,21 @@ config.model Shop::Option do
 end
 config.model Shop::Order do
   #   # Found associations:
+  #     configure :items, :has_many_association
   #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
   #     configure :created_at, :datetime
   #     configure :updated_at, :datetime
+  #     configure :name, :string
+  #     configure :email, :text
+  #     configure :address, :text
+  #     configure :country, :text
+  #     configure :city, :text
+  #     configure :postal_number, :text
+  #     configure :phone, :text
+  #     configure :message, :text
+  #     configure :payment, :text
   #   # Sections:
   list do
     exclude_fields :_type, :_id, :created_at, :updated_at
@@ -315,10 +325,57 @@ config.model Shop::Order do
   #   create do; end
   #   update do; end
 end
+
+###  Shop::OrderItem  ###
+
+config.model 'Shop::OrderItem' do
+
+#   # You can copy this to a 'rails_admin do ... end' block inside your shop/order_item.rb model definition
+
+#   # Found associations:
+
+#   # Found columns:
+
+#     configure :_type, :text         # Hidden
+#     configure :_id, :bson_object_id
+#     configure :created_at, :datetime
+#     configure :updated_at, :datetime
+#     configure :product_id, :bson_object_id
+#     configure :product_name, :text
+#     configure :product_price, :serialized
+#     configure :quantity, :integer
+#     configure :options, :serialized
+#     configure :tax, :float
+
+#   # Cross-section configuration:
+
+#     # object_label_method :name     # Name of the method called for pretty printing an *instance* of ModelName
+#     # label 'My model'              # Name of ModelName (smartly defaults to ActiveRecord's I18n API)
+#     # label_plural 'My models'      # Same, plural
+#     # weight 0                      # Navigation priority. Bigger is higher.
+#     # parent OtherModel             # Set parent model for navigation. MyModel will be nested below. OtherModel will be on first position of the dropdown
+#     # navigation_label              # Sets dropdown entry's name in navigation. Only for parents!
+
+#   # Section specific configuration:
+
+#     list do
+#       # filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
+#       # items_per_page 100    # Override default_items_per_page
+#       # sort_by :id           # Sort column (default is primary key)
+#       # sort_reverse true     # Sort direction (default is true for primary key, last created first)
+#     end
+#     show do; end
+#     edit do; end
+#     export do; end
+#     # also see the create, update, modal and nested sections, which override edit in specific cases (resp. when creating, updating, modifying from another model in a popup modal or modifying from another model nested form)
+#     # you can override a cross-section field configuration in any section with the same syntax `configure :field_name do ... end`
+#     # using `field` instead of `configure` will exclude all other fields and force the ordering
+end
 config.model Shop::Product do
   #   # Found associations:
   #     configure :categories, :has_and_belongs_to_many_association
-  #     configure :options, :has_many_association
+  #     configure :options, :has_and_belongs_to_many_association
+  #     configure :value_added_tax, :belongs_to_association
   #   # Found columns:
   #     configure :_type, :text         # Hidden
   #     configure :_id, :bson_object_id
@@ -326,10 +383,20 @@ config.model Shop::Product do
   #     configure :updated_at, :datetime
   #     configure :category_ids, :serialized         # Hidden
   #     configure :option_ids, :serialized         # Hidden
+  #     configure :value_added_tax_id, :bson_object_id         # Hidden
+  #     configure :image_file_name, :text         # Hidden
+  #     configure :image_content_type, :text         # Hidden
+  #     configure :image_file_size, :integer         # Hidden
+  #     configure :image_updated_at, :datetime         # Hidden
+  #     configure :image, :paperclip
   #     configure :name, :string
+  #     configure :passive, :boolean
+  #     configure :suggestion, :boolean
+  #     configure :description, :text
+  #     configure :price, :decimal
   configure :price, :decimal do
     pretty_value do
-      value.to_s + ' €'
+      humanized_money value + ' €'
     end
   end
   #     configure :passive, :boolean
@@ -344,7 +411,9 @@ config.model Shop::Product do
   #   show do; end
   edit do
       field :name, :string
-      field :price, :decimal
+      field :price do
+        help 'Example: 35,00'
+      end
       field :description, :text do
         bootstrap_wysihtml5 true
       end

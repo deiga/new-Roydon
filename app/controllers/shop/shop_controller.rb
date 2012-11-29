@@ -1,8 +1,8 @@
 class Shop::ShopController < ApplicationController
   layout 'shop'
   before_filter :set_cart
-  before_filter :load_top_menu
-  before_filter :load_side_menu
+  before_filter :load_top_menu, except: ['add_to_cart']
+  before_filter :load_side_menu, except: ['add_to_cart']
 
   def index
     @newest_products = Shop::Product.active.desc(:updated_at).includes(:options).take(9)

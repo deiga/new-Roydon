@@ -26,7 +26,7 @@ describe Shop::Product do
   end
 
   it "should not have negative price" do
-    negative_price_product = FactoryGirl.build(:product, :price => -5.5)
+    negative_price_product = FactoryGirl.build(:product, price: Money.new(-550))
     negative_price_product.should_not be_valid
   end
 
@@ -41,6 +41,18 @@ describe Shop::Product do
     Paperclip::Attachment.any_instance.stub(:post_process => true)
 
     FactoryGirl.create(:product_with_image).image_file_name.should eql("test_image_1.jpg")
+  end
+
+  it "should create prodcut with options" do
+    prod = FactoryGirl.create(:product_with_options)
+    prod.options.should_not be_empty
+  end
+
+  it "should have correct options" do
+    prod = FactoryGirl.create(:product_with_options)
+    p prod.options
+    prod.options.should_not be_empty
+    prod.options.first.values.should include('Red')
   end
 
 end

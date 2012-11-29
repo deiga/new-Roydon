@@ -12,6 +12,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
   def edit
     begin
       @cart = Shop::ShoppingCart.find(params[:id])
+      @cart_items = @cart.items.includes(:product)
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
       not_found
@@ -20,7 +21,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def update
     @cart = Shop::ShoppingCart.find(params[:id])
-    if @cart.update_attributes(params["shopping_cart"])
+    if @cart.update_attributes(params["shop_shopping_cart"])
       flash[:notice] = t 'shop.cart.update.success'
     else
       flash[:error] = t 'shop.cart.update.failure'

@@ -3,10 +3,9 @@
     %strong= link_to product.name, shop_product_path(product)
   .product-image= link_to image_tag(product.image.url(:thumb)), shop_product_path(product)
   .product-price
-    = product.price
-    &euro;
+    =raw "#{humanized_money product.price} #{currency_symbol}"
   .product-description= raw(product.description)
-  - unless product.options.nil?
+  - unless product.options.nil? || product.options.empty?
     .product-options
       Vaihtoehtoja:
       = product.options.map(&:name).to_sentence

@@ -97,7 +97,7 @@ colour = Shop::Option.create!(name: 'Colour', values: ['Grey', 'Red', 'Brown', '
 
 p "Creating dummy products"
 1.upto(15) do |i|
-  test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => '65', :description =>
+  test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => Money.new(6500), :description =>
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
     image_remote_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
   test_product.options << colour

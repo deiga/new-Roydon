@@ -26,13 +26,13 @@ class Shop::Product
   before_validation { self.image.clear if self.delete_image == '1' }
 
   field :name,        :type => String
-  field :price,       :type => BigDecimal,  :default => 0.0
+  field :price,       :type => Money, default: Money.new(0)
   field :passive,     :type => Boolean,     :default => false
   field :suggestion,  :type => Boolean,     :default => false
   field :description, :type => String
 
   validates :name, :presence => true, :length => { :minimum => 1 }
-  validates :price, :numericality => { :greater_than_or_equal_to => 0.0}
+  validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
 
   scope :active, where(passive: false)
 
