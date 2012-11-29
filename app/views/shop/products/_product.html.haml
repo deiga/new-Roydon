@@ -5,7 +5,7 @@
   .product-price
     =raw "#{humanized_money product.price} #{currency_symbol}"
   .product-description= raw(product.description)
-  - unless product.options.nil?
+  - unless product.options.nil? || product.options.empty?
     .product-options
       Vaihtoehtoja:
       = product.options.map(&:name).to_sentence
