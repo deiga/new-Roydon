@@ -9,12 +9,12 @@
           %td Hinta
           %td Yhteensä
       %tbody
-        = f.fields_for :items, @cart.items do |items_fields|
+        = f.fields_for :items, @cart_items do |items_fields|
           %tr
             %td<
               = link_to items_fields.object.product.name, shop_product_path(items_fields.object.product)
               %br
-              = "(#{items_fields.object.selected_option.join(', ')})"
+              = "(#{items_fields.object.selected_option.join(', ')})" if items_fields.object.selected_option.size > 0
             %td= items_fields.text_field :quantity
             %td=raw " #{humanized_money items_fields.object.product.price} #{currency_symbol}"
             %td=raw " #{humanized_money items_fields.object.price} #{currency_symbol}"
