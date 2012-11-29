@@ -25,7 +25,7 @@ class Shop::Category
   end
 
   def all_products
-    self.children.reduce(self.products) do |list, child|
+    self.children.includes(:products).reduce(self.products) do |list, child|
       list << child.products
     end
   end
