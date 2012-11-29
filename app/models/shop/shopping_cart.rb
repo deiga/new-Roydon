@@ -31,6 +31,6 @@ class Shop::ShoppingCart
   end
 
   def latest_items
-    self.items.sort_by(&:updated_at).take(5)
+    self.items.includes(:product).sort_by(&:updated_at).take(5)
   end
 end
