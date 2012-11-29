@@ -20,7 +20,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def update
     @cart = Shop::ShoppingCart.find(params[:id])
-    if @cart.update_attributes(params["shopping_cart"])
+    if @cart.update_attributes(params["shop_shopping_cart"])
       flash[:notice] = t 'shop.cart.update.success'
     else
       flash[:error] = t 'shop.cart.update.failure'
