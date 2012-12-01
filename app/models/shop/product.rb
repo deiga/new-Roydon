@@ -44,18 +44,10 @@ class Shop::Product
     @image_remote_url = url_value
   end
 
-  def taxed_price
-    unless self.value_added_tax.nil?
-      self.price * self.value_added_tax.percentage
-    else
-      self.price
-    end
-  end
-
   private
     def normalize_filename
-      if self.image.exists?
-        self.image_file_name= self.image_file_name.parameterize.downcase
+      if image.exists?
+        image_file_name = image_file_name.parameterize.downcase
       end
     end
 
