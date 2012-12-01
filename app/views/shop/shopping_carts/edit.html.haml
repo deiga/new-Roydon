@@ -16,7 +16,7 @@
               %br
               = "(#{items_fields.object.selected_option.join(', ')})" if items_fields.object.selected_option.size > 0
             %td= items_fields.text_field :quantity
-            %td=raw " #{humanized_money items_fields.object.product.price} #{currency_symbol}"
+            %td=raw " #{humanized_money items_fields.object.product.taxed_price} #{currency_symbol}"
             %td=raw " #{humanized_money items_fields.object.price} #{currency_symbol}"
         %tr#price
           %td{colspan: 3} Yhteensä:
