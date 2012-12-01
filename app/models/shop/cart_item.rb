@@ -11,14 +11,15 @@ class Shop::CartItem
 
   field :selected_option, type: Array, default: []
   field :quantity, type: Integer, default: 1
+  field :single_price, type: Money
 
   def price
-    product.price * quantity
+    single_price * quantity
   end
 
   def destroy_on_empty
-    if self.quantity == 0
-      self.destroy
+    if quantity == 0
+      destroy
     end
   end
 
