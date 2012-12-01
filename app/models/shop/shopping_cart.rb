@@ -18,13 +18,12 @@ class Shop::ShoppingCart
     end
   end
 
-  def add(product_id, options = {})
+  def add(product, options = {})
     options = {} if options.nil?
-    product_id = product_id.id if product_id.class == Shop::Product
-    product_id = product_id.to_s
+    product = Shop::Product.find(product) unless product.class == Shop::Product
     new_options = options.inject([]) {|x,y| x << y.join(': ')}
-    new_item = Shop::CartItem.new(product: product_id, selected_option: new_options)
-    existing_item = self.items.includes(:product).to_a.find { |x| x.product_id.to_s == product_id &&  x.selected_option == new_item.selected_option}
+    new_item = Shop::CartItem.new(product: product, selected_option: new_options, single_price: product.price)
+    existing_item = self.items.includes(:product).to_a.find { |x| x.product == product &&  x.selected_option == new_item.selected_option}
     unless existing_item.nil?
       existing_item.inc(:quantity, 1)
     else
@@ -41,6 +40,6 @@ class Shop::ShoppingCart
   end
 
   def latest_items
-    self.items.includes(:product).sort_by(&:updated_at).take(5)
+    self.items.includes(:product).order_by(:updated_at.desc).limit(5)
   end
 end
