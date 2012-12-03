@@ -39,7 +39,6 @@ describe Shop::Product do
   it "should normalize filename" do
     Shop::Product.any_instance.stub(:save_attached_files => true)
     Paperclip::Attachment.any_instance.stub(:post_process => true)
-
     FactoryGirl.create(:product_with_image).image_file_name.should eql("test_image_1.jpg")
   end
 
@@ -50,7 +49,6 @@ describe Shop::Product do
 
   it "should have correct options" do
     prod = FactoryGirl.create(:product_with_options)
-    p prod.options
     prod.options.should_not be_empty
     prod.options.first.values.should include('Red')
   end

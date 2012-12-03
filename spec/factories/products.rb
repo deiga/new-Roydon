@@ -1,7 +1,11 @@
 FactoryGirl.define do
 
   trait :test_file do
-    image { fixture_file_upload 'files/test%image 1.jpg' }
+    image { fixture_file_upload 'spec/fixtures/files/test%image 1.jpg' }
+
+    after(:create) do |product, proxy|
+      proxy.image.close
+    end
   end
 
   factory :product, class: Shop::Product do
@@ -13,9 +17,7 @@ FactoryGirl.define do
     name "Test product with image"
     test_file
 
-    # after(:create) do |product, proxy|
-    #   proxy.file.close
-    # end
+
   end
 
   factory :product_with_options, class: Shop::Product do
