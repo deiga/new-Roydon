@@ -17,6 +17,8 @@ class Shop::Order
   field :phone, type: String
   field :message, type: String
   field :payment, type: String
+  field :price, type: Money, default: Money.new(0)
+  field :tax_amount, type: Money , default: Money.new(0)
 
   validates :name, :address, :email, presence: true
   validates :payment, inclusion: PAYMENT_TYPES
@@ -24,6 +26,12 @@ class Shop::Order
   def add_item(cart_item)
     product = cart_item.product
     items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option, tax: product.value_added_tax.value)
+    increase_price(product.price, product.value_added_tax.substract_percentage)
+  end
+
+  def increase_price(price, tax)
+    self.price += price
+    self.tax_amount += price * tax
   end
 
   def add(cart_items)
@@ -31,5 +39,4 @@ class Shop::Order
       add_item(item)
     end
   end
-
 end

@@ -14,7 +14,9 @@ class Shop::OrdersController < Shop::ShopController
   end
 
   def create
-    @order = Shop::Order.new(params[:shop_order])
+    order_params = params[:shop_order]
+    order_params = order_params.merge("price" => Money.new(order_params["price"]), "tax_amount" => Money.new(order_params["tax_amount"])) unless order_params.nil?
+    @order = Shop::Order.new(order_params)
     @order.add(@shopping_cart.items)
     respond_to do |format|
       if @order.save
