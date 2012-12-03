@@ -13,6 +13,8 @@ class Show
 	field :date, 			:type => Date
 	field :passive,		type: Boolean, default: false
 
+	index date: 1
+
 	scope :active, where(passive: false)
 	default_scope asc(:date)
 

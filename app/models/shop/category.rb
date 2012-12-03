@@ -15,6 +15,8 @@ class Shop::Category
   field :passive, :type => Boolean, :default => false
   field :permalink, :type => String
 
+  index permalink: 1
+
   validates :name, :presence => true, :length => { :minimum => 2 }
   validates :permalink, uniqueness: true
 

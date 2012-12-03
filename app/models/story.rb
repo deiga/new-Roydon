@@ -12,6 +12,8 @@ class Story
 	field :language,	:type => String,	:default => "fi"
 	field :passive,		type: Boolean,		default: false
 
+	index date: 1
+
 	# Validations
 	validates :title, :content, :presence => true
 	validates :title, :content, :length => { :minimum => 3 }
