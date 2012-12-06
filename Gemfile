@@ -53,6 +53,7 @@ group :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'therubyracer', :platform => :ruby
+  gem 'libv8', '~> 3.11.8'
   gem 'factory_girl_rails'
 end
 
