@@ -5,9 +5,10 @@ gem 'rails', '3.2.8'
 
 # Gem for NoSQL DB
 gem 'mongoid'
-
 # Gem for tree structure of categories
 gem 'mongoid-ancestry'
+# Gem for attaching images
+gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 
 # Admin view
 gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
@@ -23,13 +24,9 @@ group :production, :staging do
   gem 'google-analytics-rails'
 end
 
-# Gem for attaching images
-gem 'mongoid-paperclip', require: 'mongoid_paperclip'
+
 # Gem for online storage
 gem 'aws-sdk', '~> 1.3.4'
-
-# Gem for reading seed data
-gem 'ccsv'
 
 # Gem for pagination
 gem 'kaminari'
@@ -53,7 +50,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  gem 'cucumber'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   gem 'therubyracer', :platform => :ruby
@@ -75,12 +71,6 @@ gem 'html5-rails'
 gem 'haml-rails'
 
 gem 'money-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the web server
-# gem 'unicorn'
 
 # To use debugger
 # gem 'ruby-debug'
