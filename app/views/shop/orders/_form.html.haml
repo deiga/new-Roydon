@@ -25,7 +25,7 @@
     = f.email_field :email, size: 40
   .field
     = f.label :phone
-    = f.email_field :phone, size: 40
+    = f.text_field :phone, size: 40
   .field
     = f.label :payment
     = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
