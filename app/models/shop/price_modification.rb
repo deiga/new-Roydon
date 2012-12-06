@@ -12,7 +12,7 @@ class Shop::PriceModification
     (self.value+100)/100
   end
 
-  def substract_percentage
+  def subtract_percentage
     (100-self.value)/100
   end
 end
