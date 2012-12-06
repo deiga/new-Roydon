@@ -46,7 +46,7 @@ end
 
 group :test do
   gem 'webrat'
-  gem 'autotest'
+  gem 'autotest-standalone'
   gem 'autotest-rails-pure'
   gem 'autotest-fsevent'
   gem 'autotest-growl'
