@@ -2,6 +2,8 @@ class Shop::Order
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  before_save :update_prices
+
   PAYMENT_TYPES = ['Credit card', 'Cash']
 
   embeds_many :items,class_name: 'Shop::OrderItem', inverse_of: :order
@@ -18,20 +20,22 @@ class Shop::Order
   field :message, type: String
   field :payment, type: String
   field :price, type: Money, default: Money.new(0)
-  field :tax_amount, type: Money , default: Money.new(0)
+  field :untaxed_price, type: Money , default: Money.new(0)
 
   validates :name, :address, :email, presence: true
   validates :payment, inclusion: PAYMENT_TYPES
 
   def add_item(cart_item)
     product = cart_item.product
-    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option, tax: product.value_added_tax.value)
-    increase_price(product.price, product.value_added_tax.substract_percentage)
+    vat = product.value_added_tax || Shop::ValueAddedTax.new(value: 0)
+    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option, tax: vat.add_percentage)
   end
 
-  def increase_price(price, tax)
-    self.price += price
-    self.tax_amount += price * tax
+  def update_prices
+    items.each do |item|
+      self.price += item.price
+      self.untaxed_price += item.price / item.tax
+    end
   end
 
   def add(cart_items)
@@ -39,4 +43,5 @@ class Shop::Order
       add_item(item)
     end
   end
+
 end
