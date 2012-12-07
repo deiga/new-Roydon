@@ -8,7 +8,7 @@ class ShowsController < ApplicationController
   }
 
   def index
-    @title = 'Shows'
+    @title = t 'shows.title'
     @year = params[:year].to_i
     today = Date.today
 

@@ -3,6 +3,7 @@ class Shop::ShopController < ApplicationController
   before_filter :set_cart
   before_filter :load_top_menu, except: ['add_to_cart']
   before_filter :load_side_menu, except: ['add_to_cart']
+  before_filter :set_title
 
   def index
     @newest_products = Shop::Product.active.desc(:updated_at).includes(:options).limit(9)
@@ -28,6 +29,15 @@ class Shop::ShopController < ApplicationController
         @shopping_cart = Shop::ShoppingCart.create
       end
       session[:shopping_cart_id] = @shopping_cart.id.to_s
+    end
+
+    def set_title
+      @title = ''
+      unless @top_category.nil?
+        @title = "#{@top_category.name.capitalize} | "
+      end
+      @title += t 'shop.shop'
+
     end
 
     def load_top_menu

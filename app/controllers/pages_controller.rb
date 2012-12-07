@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   private
 
     def set_title
-      @title = params[:action].capitalize
+      @title = t "pages.#{params[:action]}"
     end
 
 end
