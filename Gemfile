@@ -73,5 +73,8 @@ gem 'haml-rails', '~> 0.3.5'
 
 gem 'money-rails', '~> 0.7.0'
 
+# For seeds
+gem 'ccsv'
+
 # To use debugger
 # gem 'ruby-debug'
