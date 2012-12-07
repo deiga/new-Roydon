@@ -1,5 +1,6 @@
 fi:
   shop:
+    shop: 'Kauppa'
     cart:
       errors:
         not_found: 'Ostoskoria ei löytynyt'
