@@ -25,7 +25,7 @@ class Show
 		time = Date.parse(self.date.to_s)
 		date_string = time.strftime('%d.%m.')
 		if self.duration > 1
-			unless (Date.parse(self.date.year.to_s + "-" + (self.date.month + 1).to_s + "-01") - 1) == self.date
+			unless (self.date.next_month.at_beginning_of_month - 1) == self.date
 				date_string = time.strftime('%d.')
 			end
 
