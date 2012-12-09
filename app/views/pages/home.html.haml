@@ -1,0 +1,31 @@
+#left
+	%section#short-introduction
+		%h2 Tervetuloa sivuillemme!
+		%p Olemme koiratarvikkeisiin erikoistunut yritys. Valikoimastamme löydät myös koulutustarvikkeita moneen tarpeeseen. Koko valikoimaamme pääset tutustumaan koiranäyttelyissä.
+	- unless @index_news.blank?
+		%section#news
+			%fieldset
+				%legend Uutiset
+				= render @index_news
+			= link_to 'Lisää uutisia...', stories_path
+#right
+	%aside.content
+		%section#next-show
+			%h3 Seuraavaksi löydät meidät:
+			- unless @next_show.blank?
+				%span>
+					= "#{@next_show.format_date} #{@next_show.location}"
+					%br
+					= link_to @next_show.title, @next_show.url
+			- else
+				%span Ei tulevia näyttelyitä ilmoitettu
+			%p= link_to 'Näytä lisää näyttelyitä...', shows_path
+		%section#links
+			%h4 Linkkejä:
+			%ul
+				%li= link_to 'Suomen Kennelliitto',
+						'http://www.kennelliitto.fi/fi',
+						:title => 'Suomen Kennelliitto'
+				%li= link_to 'Suomen Terrierijärjestö Ry',
+						'http://www.terrierijarjesto.fi/',
+						:title => 'STJ Ry'
