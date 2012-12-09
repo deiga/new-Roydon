@@ -2,10 +2,6 @@ class Story
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
-	after_create :clear_cache
-  after_update :clear_cache
-  before_destroy :clear_cache
-
 	field :title, 		:type => String
 	field :date, 			:type => Date, 		:default => Date.today
 	field :content, 	:type => String
@@ -21,13 +17,7 @@ class Story
 	scope :active, where(passive: false)
 
 	def format_date
-		Time.parse(self.date.to_s).strftime('%d.%m.%Y')		
+		Time.parse(self.date.to_s).strftime('%d.%m.%Y')
 	end
 
-	private
-
-		def clear_cache
-			ActionController::Base.new.expire_page '/'
-			ActionController::Base.new.expire_page '/news'
-		end
 end

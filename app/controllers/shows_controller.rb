@@ -1,12 +1,5 @@
 class ShowsController < ApplicationController
 
-  caches_action :index, cache_path: proc { |c|
-    show = Show.desc(:updated_at).limit(1).first
-    unless show.nil?
-      { tag: show.updated_at.to_i }
-    end
-  }
-
   def index
     @title = t 'shows.title'
     @year = params[:year].to_i

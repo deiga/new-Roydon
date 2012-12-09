@@ -3,9 +3,6 @@ class Shop::Category
   include Mongoid::Timestamps
   include Mongoid::Ancestry
 
-  after_create :clear_cache
-  after_update :clear_cache
-  before_destroy :clear_cache
   before_validation :generate_permalink
 
   has_ancestry
@@ -50,9 +47,5 @@ class Shop::Category
       if self.changes.has_key? 'name'
         self.permalink = self.name.parameterize
       end
-    end
-
-    def clear_cache
-      ActionController::Base.new.expire_fragment(:shop_navigation)
     end
 end
