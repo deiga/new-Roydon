@@ -1,6 +1,7 @@
 class Shop::CartItem
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::ForbiddenAttributesProtection
 
   before_save :destroy_on_empty
 

@@ -1,6 +1,7 @@
 class Shop::ShoppingCart
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::ForbiddenAttributesProtection
 
   has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart
 

@@ -78,3 +78,6 @@ gem 'ccsv'
 
 # To use debugger
 # gem 'ruby-debug'
+
+# Strong parameters for Rails 4
+gem 'strong_parameters'

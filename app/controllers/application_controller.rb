@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   after_filter :flash_to_headers
   rescue_from ActionController::RoutingError, :with => :render_404
+  rescue_from ActionController::ParameterMissing, :with => :render_400
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -24,5 +25,13 @@ class ApplicationController < ActionController::Base
       end
 
       render :file => "#{Rails.root}/public/404", :formats => [:html], :status => 404, :layout => false
+    end
+
+    def render_400(exception = nil)
+      if exception
+          logger.info "Rendering 400: #{exception.message}"
+      end
+
+      render :file => "#{Rails.root}/public/400", :formats => [:html], :status => 400, :layout => false
     end
 end

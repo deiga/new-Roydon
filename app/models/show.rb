@@ -1,6 +1,7 @@
 class Show
 	include Mongoid::Document
 	include Mongoid::Timestamps
+	include ActiveModel::ForbiddenAttributesProtection
 
 	field :title, 		:type => String
 	field :url, 			:type => String

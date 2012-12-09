@@ -1,6 +1,7 @@
 class Shop::PriceModification
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::ForbiddenAttributesProtection
 
   field :name, :type => String
   field :value, :type => Float, default: 0.0

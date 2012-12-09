@@ -1,6 +1,7 @@
 class Shop::Order
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::ForbiddenAttributesProtection
 
   before_save :update_prices
 

@@ -21,7 +21,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def update
     @cart = Shop::ShoppingCart.find(params[:id])
-    if @cart.update_attributes(params["shop_shopping_cart"])
+    if @cart.update_attributes(cart_params)
       flash[:notice] = t 'shop.cart.update.success'
     else
       flash[:error] = t 'shop.cart.update.failure'
@@ -37,5 +37,11 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def new
   end
+
+  private
+
+    def cart_params
+      params.require(:shop_shopping_cart).permit(items: [:quantity])
+    end
 
 end

@@ -2,6 +2,7 @@ class Shop::Category
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Ancestry
+  include ActiveModel::ForbiddenAttributesProtection
 
   before_validation :generate_permalink
 

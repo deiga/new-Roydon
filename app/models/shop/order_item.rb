@@ -1,6 +1,7 @@
 class Shop::OrderItem
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActiveModel::ForbiddenAttributesProtection
 
   embedded_in :order, class_name: 'Shop::Order'
 

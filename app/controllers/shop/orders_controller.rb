@@ -14,10 +14,10 @@ class Shop::OrdersController < Shop::ShopController
   end
 
   def create
-    order_params = params[:shop_order]
     # FIXME: https://github.com/RubyMoney/money-rails/issues/60
-    order_params = order_params.merge("price" => Money.new(order_params["price"]), "untaxed_price" => Money.new(order_params["untaxed_price"])) unless order_params.nil?
-    @order = Shop::Order.new(order_params)
+    order_parameters = order_params
+    order_parameters = order_parameters.merge("price" => Money.new(order_parameters["price"]), "untaxed_price" => Money.new(order_parameters["untaxed_price"])) unless order_parameters.nil?
+    @order = Shop::Order.new(order_parameters)
     @order.add(@shopping_cart.items)
     respond_to do |format|
       if @order.save
@@ -26,10 +26,20 @@ class Shop::OrdersController < Shop::ShopController
         format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @order.errors, status: 'Failure' }
       end
     end
   end
+
+  private
+
+    def order_params
+      begin
+        params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
+      rescue ActionController::ParameterMissing => e
+        nil
+      end
+    end
 
 end

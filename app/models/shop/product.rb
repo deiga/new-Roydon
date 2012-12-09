@@ -2,6 +2,7 @@ class Shop::Product
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
+  include ActiveModel::ForbiddenAttributesProtection
 
   paginates_per 9
 
