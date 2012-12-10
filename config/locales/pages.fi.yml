@@ -1,0 +1,13 @@
+fi:
+  pages:
+    contact: 'Yhteystiedot'
+    home: 'Etusivu'
+    errors:
+      '404':
+        message: 'Valitettavasti etsimäänne sivua ei löytynyt, olkaa hyvä ja yrittäkää uudestaan. Jos vika toistuu, ottakaa yhteyttä ylläpitoon.'
+      '500': &default_error
+        message: 'Palvelimessa tapahtui virhe, olkaa hyvä ja yrittäkää uudestaan. Jos vika toistuu, ottakaa yhteyttä ylläpitoon.'
+      '400':
+        <<: *default_error
+  shows:
+    title: 'Näyttelyt'
