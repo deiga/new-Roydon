@@ -11,10 +11,10 @@ describe Shop::ShopController do
 
 		it "should create a shopping cart" do
 			get :index
-			@shopping_cart = assigns(:shopping_cart)
-			@shopping_cart.should be_a(Shop::ShoppingCart)
-			@shopping_cart.should_not be_nil
-			@shopping_cart.should be_empty
+			@cart = assigns(:cart)
+			@cart.should be_a(Shop::ShoppingCart)
+			@cart.should_not be_nil
+			@cart.should be_empty
 		end
 	end
 
@@ -26,21 +26,6 @@ describe Shop::ShopController do
 		end
 
 		include_examples "set_cart"
-	end
-
-	describe "GET 'add_to_cart'" do
-
-		def do_add_to_cart
-			get :add_to_cart, product: Shop::Product.create(:name => "Test product", price: 5.3), options: {}
-		end
-
-		include_examples "set_cart"
-
-		it "should have one product in cart" do
-			do_add_to_cart
-			@shopping_cart = assigns(:shopping_cart)
-			@shopping_cart.items.size.should be 1
-		end
 	end
 
 end

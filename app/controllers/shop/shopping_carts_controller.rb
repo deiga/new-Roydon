@@ -29,6 +29,15 @@ class Shop::ShoppingCartsController < Shop::ShopController
     redirect_to edit_shop_shopping_cart_path(@cart)
   end
 
+  def remove_item
+    @cart.remove(params[:id])
+    success_msg = I18n.t 'shop.cart.remove.success'
+    respond_to do |format|
+      flash[:notice] = success_msg
+      format.html { redirect_to(request.referer ||shop_path) }
+      format.js { render :json => { message: success_msg } }
+    end
+  end
 
   def add_item
     @cart.add(params[:id], params[:options])

@@ -31,6 +31,10 @@ class Shop::ShoppingCart
     end
   end
 
+  def remove(cart_item_id)
+    items.delete_if { |item| item.id.to_s == cart_item_id}
+  end
+
   def price
     price = Money.new(0)
     self.items.each do |item|

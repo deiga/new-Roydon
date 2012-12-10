@@ -16,13 +16,6 @@ describe Shop::ShoppingCartsController do
     end
   end
 
-  describe "GET 'update'" do
-    # it "returns http success" do
-    #   get 'update', :id => ShoppingCart.create
-    #   response.should be_success
-    # end
-  end
-
   describe "GET 'destroy'" do
     it "returns http success" do
       get 'destroy', :id => Shop::ShoppingCart.create
@@ -30,17 +23,24 @@ describe Shop::ShoppingCartsController do
     end
   end
 
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
+  describe "GET 'add_item'" do
+
+    it "should have one product in cart" do
+      get :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: Shop::Product.create(:name => "Test product", price: 5.3), options: {}
+      @cart = assigns(:cart)
+      @cart.items.size.should be 1
     end
   end
 
-  describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      response.should be_success
+  describe "GET 'remove_item" do
+    it "should remove item from cart" do
+      prod = Shop::Product.create(:name => "Test product", price: 5.3)
+      get :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: prod, options: {}
+      @cart = assigns(:cart)
+      @cart.items.size.should be 1
+      get :remove_item, shopping_cart_id: @cart, id: @cart.items.first
+      @cart = assigns(:cart)
+      @cart.should be_empty
     end
   end
 end
