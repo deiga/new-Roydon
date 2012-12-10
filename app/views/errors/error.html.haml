@@ -1,0 +1,6 @@
+.error
+  %h2>
+    = @message.titleize
+    %small= "(#{@status})"
+  %h3= "Error Code: #{request.env['action_dispatch.request_id']}"
+  %p= t "pages.errors.#{@status}.message"
