@@ -7,11 +7,7 @@ class Shop::ProductsController < Shop::ShopController
   end
 
   def show
-    begin
-      @product = Shop::Product.find(params[:id])
-    rescue Mongoid::Errors::DocumentNotFound => e
-      not_found
-    end
+    @product = Shop::Product.find(params[:id])
   end
 
 end
