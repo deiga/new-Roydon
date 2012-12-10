@@ -61,5 +61,10 @@ module Roydon
       g.view_specs false
       g.helper_specs false
     end
+
+    # 404 catcher
+    config.after_initialize do |app|
+      app.routes.append{ match '*a', :to => 'application#render_404' } unless config.consider_all_requests_local
+    end
   end
 end

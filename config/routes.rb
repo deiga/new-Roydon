@@ -28,9 +28,6 @@ Roydon::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  #Last route in routes.rb
-  match '*a', :to => 'errors#routing'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
