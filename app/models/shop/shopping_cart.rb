@@ -32,7 +32,7 @@ class Shop::ShoppingCart
   end
 
   def remove(cart_item_id)
-    items.delete_if { |item| item.id.to_s == cart_item_id}
+    items.find(cart_item_id).destroy
   end
 
   def price

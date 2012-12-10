@@ -30,22 +30,34 @@ class Shop::ShoppingCartsController < Shop::ShopController
   end
 
   def remove_item
+    size_before = @cart.items.size
     @cart.remove(params[:id])
-    success_msg = I18n.t 'shop.cart.remove.success'
+    if size_before > @cart.items.size
+      msg = I18n.t 'shop.cart.remove.success'
+      flash[:notice] = msg
+    else
+      msg = I18n.t 'shop.cart.remove.failure'
+      flash[:alert] = msg
+    end
     respond_to do |format|
-      flash[:notice] = success_msg
       format.html { redirect_to(request.referer ||shop_path) }
-      format.js { render :json => { message: success_msg } }
+      format.js { render :json => { message: msg } }
     end
   end
 
   def add_item
+    size_before = @cart.items.size
     @cart.add(params[:id], params[:options])
-    success_msg = I18n.t 'shop.cart.add.success'
+    if size_before > @cart.items.size
+      msg = I18n.t 'shop.cart.add.success'
+      flash[:notice] = msg
+    else
+      msg = I18n.t 'shop.cart.add.failure'
+      flash[:alert] = msg
+    end
     respond_to do |format|
-      flash[:notice] = success_msg
       format.html { redirect_to(request.referer ||shop_path) }
-      format.js { render :json => { message: success_msg } }
+      format.js { render :json => { message: msg } }
     end
   end
 
