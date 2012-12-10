@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'rails'
+load(File.expand_path('../heroku_env.rb', __FILE__))
 # Pick the frameworks you want:
 require "action_controller/railtie"
 require "action_mailer/railtie"
