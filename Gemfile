@@ -37,8 +37,13 @@ gem 'devise', '~> 2.1.2'
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'bullet'
   gem 'rails3-generators'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
 end
 
 group :test do
