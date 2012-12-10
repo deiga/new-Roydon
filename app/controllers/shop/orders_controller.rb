@@ -1,6 +1,6 @@
 class Shop::OrdersController < Shop::ShopController
   def new
-    if @shopping_cart.empty?
+    if @cart.empty?
       redirect_to shop_url, notice: 'Your cart is empty'
       return
     end
@@ -18,10 +18,10 @@ class Shop::OrdersController < Shop::ShopController
     order_parameters = order_params
     order_parameters = order_parameters.merge("price" => Money.new(order_parameters["price"]), "untaxed_price" => Money.new(order_parameters["untaxed_price"])) unless order_parameters.nil?
     @order = Shop::Order.new(order_parameters)
-    @order.add(@shopping_cart.items)
+    @order.add(@cart.items)
     respond_to do |format|
       if @order.save
-        @shopping_cart.destroy
+        @cart.destroy
         session[:cart_id] = nil
         format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }

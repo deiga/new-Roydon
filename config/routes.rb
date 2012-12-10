@@ -8,8 +8,10 @@ Roydon::Application.routes.draw do
         get 'categories/:category', :action => :index, :as => 'category', constraints: { category: /[a-zA-Z0-9~-]+/i }
       end
     end
-    resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i}
-    match '/add_to_cart/:product', to: 'shop#add_to_cart', as: 'add_to_cart'
+    resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i} do
+      match '/remove_item/:id', action: 'remove_item', as: 'remove_item'
+      match '/add_item/:id', action: 'add_item', as: 'add_item'
+    end
     match '/', :to => 'shop#index'
     resources :orders, :except => [:index]
   end

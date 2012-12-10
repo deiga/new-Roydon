@@ -1,15 +1,20 @@
 %section#shopping-cart.box.first-box
-  %strong= link_to 'Ostoskori:', edit_shop_shopping_cart_path(session[:shopping_cart_id])
-  - unless @shopping_cart.nil? || @shopping_cart.empty?
+  %strong= link_to 'Ostoskori:', edit_shop_shopping_cart_path(cart)
+  - unless cart.nil? || cart.empty?
     %table
       %tbody
-        - @shopping_cart.latest_items.each do |item|
+        - cart.latest_items.each do |item|
           %tr
             %td
               %small= link_to item.product.name, shop_product_path(item.product)
             %td
               %small=raw " #{humanized_money item.price} #{currency_symbol}"
-  %span#total>
-    = "Tuotteita: #{@shopping_cart.size}kpl"
-    %span#price>
-      =raw "#{humanized_money @shopping_cart.price} #{currency_symbol}"
+    %span#total>
+      = "Tuotteita: #{cart.size}kpl"
+      %span#price>
+        =raw "#{humanized_money cart.price} #{currency_symbol}"
+  - else
+    %span#total>
+      = "Tuotteita: 0 kpl"
+      %span#price>
+        =raw "0 #{currency_symbol}"

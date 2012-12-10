@@ -22,13 +22,12 @@ class Shop::ShoppingCart
   def add(product, options = {})
     options = {} if options.nil?
     product = Shop::Product.find(product) unless product.class == Shop::Product
-    new_options = options.inject([]) {|x,y| x << y.join(': ')}
-    new_item = Shop::CartItem.new(product: product, selected_option: new_options, single_price: product.price)
-    existing_item = self.items.includes(:product).to_a.find { |x| x.product == product &&  x.selected_option == new_item.selected_option}
-    unless existing_item.nil?
+    new_options = options.inject([]) {|x,y| x << y.join(': ')} # Option array in the form ['Option name': 'Option value', ...]
+    existing_item = self.items.includes(:product).to_a.find { |x| x.product == product &&  x.selected_option == new_options}
+    if existing_item
       existing_item.inc(:quantity, 1)
     else
-      self.items << new_item
+      self.items << Shop::CartItem.new(product: product, selected_option: new_options, single_price: product.price)
     end
   end
 
