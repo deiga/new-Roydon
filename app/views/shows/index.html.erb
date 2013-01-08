@@ -1,5 +1,5 @@
 <section id="shows">
-  <% unless @earlier_shows.blank? %>
+  <% unless @earlier_shows.blank? and @upcoming_shows.blank? %>
     <table id="shows_table">
       <caption>Seuraavista näyttelyistä löydät meidät vuonna <%= display_show_years(@year) %>:</caption>
       <thead>
