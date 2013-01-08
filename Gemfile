@@ -7,7 +7,7 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 
 # Admin view
-gem 'rails_admin', git: 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin'
 # WYSIWYG for admin view
 gem 'bootstrap-wysihtml5-rails'
 
