@@ -15,14 +15,7 @@ class Story
 	validates :title, :content, :length => { :minimum => 3 }
 
 	def format_date
-		Time.parse(self.date.to_s).strftime('%d.%m.%Y')		
+		Time.parse(self.date.to_s).strftime('%d.%m.%Y')
 	end
-
-	private
-
-		def clear_cache
-			ActionController::Base.new.expire_page '/'
-			# ActionController::Base.new.expire_page '/news'
-		end
 
 end
