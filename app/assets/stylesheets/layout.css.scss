@@ -58,3 +58,13 @@ body {
     }
   }
 }
+
+// Icon Font styles
+
+.fontawesome-remove {
+  color: red !important;
+}
+
+a[class*="fontawesome-"] {
+  text-decoration: none;
+}
