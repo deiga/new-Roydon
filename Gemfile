@@ -1,7 +1,7 @@
 source :rubygems
 
 ruby '1.9.3'
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Gem for NoSQL DB
 gem 'mongoid', '~> 3.0.14'
