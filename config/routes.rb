@@ -12,8 +12,8 @@ Roydon::Application.routes.draw do
       end
     end
     resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i} do
-      get '/remove_item/:id', action: 'remove_item', as: 'remove_item'
-      get '/add_item/:id', action: 'add_item', as: 'add_item'
+      post '/remove_item/:id', action: 'remove_item', as: 'remove_item'
+      post '/add_item/:id', action: 'add_item', as: 'add_item'
     end
     get '/', :to => 'shop#index'
     resources :orders, :except => [:index]
