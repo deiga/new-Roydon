@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
@@ -49,7 +49,7 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
 
-  def admin?
+  def is_admin?
     user_groups.map(&:name).include?('admin')
   end
 end

@@ -1,5 +1,8 @@
 Roydon::Application.routes.draw do
 
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   resources :stories, :only => [:index], :path => :news, constraints: { id: /[0-9a-f]{24}/i}
 
   namespace :shop do
@@ -15,9 +18,6 @@ Roydon::Application.routes.draw do
     get '/', :to => 'shop#index'
     resources :orders, :except => [:index]
   end
-
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  devise_for :users
 
   resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i, :year => /\d{4}/ } do
     collection do
