@@ -2,10 +2,12 @@ fi:
   home:
     name: Koti
   views:
-    pagination:
-      previous: "&laquo; Edellinen"
-      next: "Seuraava &raquo;"
-      truncate: "…"
+    pagination: # Kaminari
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: '…'
   admin:
     home:
       name: Koti

@@ -1,9 +1,11 @@
 en:
   views:
-    pagination:
-      previous: "&laquo; Prev"
-      next: "Next &raquo;"
-      truncate: "…"
+    pagination: # Kaminari
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: '…'
   admin:
     home:
       name: Home
@@ -108,7 +110,7 @@ en:
       confirmation: "Yes, I'm sure"
       bulk_delete: "The following objects will be deleted, which may delete or orphan some of their related dependencies:"
       new_model: "%{name} (new)"
-    export:      
+    export:
       confirmation: "Export to %{name}"
       select: "Select fields to export"
       fields_from: "Fields from %{name}"
