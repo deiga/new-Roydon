@@ -48,7 +48,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
   def add_item
     size_before = @cart.items.size
     @cart.add(params[:id], params[:options])
-    if size_before > @cart.items.size
+    if size_before < @cart.items.size
       msg = I18n.t 'shop.cart.add.success'
       flash[:notice] = msg
     else
