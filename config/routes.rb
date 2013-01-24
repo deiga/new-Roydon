@@ -9,10 +9,10 @@ Roydon::Application.routes.draw do
       end
     end
     resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i} do
-      match '/remove_item/:id', action: 'remove_item', as: 'remove_item'
-      match '/add_item/:id', action: 'add_item', as: 'add_item'
+      get '/remove_item/:id', action: 'remove_item', as: 'remove_item'
+      get '/add_item/:id', action: 'add_item', as: 'add_item'
     end
-    match '/', :to => 'shop#index'
+    get '/', :to => 'shop#index'
     resources :orders, :except => [:index]
   end
 
@@ -25,8 +25,8 @@ Roydon::Application.routes.draw do
     end
   end
 
-  match '/contact', :to => 'pages#contact'
-  match '/about', :to => 'pages#about'
+  get '/contact', :to => 'pages#contact'
+  get '/about', :to => 'pages#about'
 
   root :to => 'pages#home'
 
