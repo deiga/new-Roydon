@@ -26,7 +26,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
     else
       flash[:error] = t 'shop.cart.update.failure'
     end
-    redirect_to edit_shop_shopping_cart_path(@cart)
+    redirect_to edit_shop_shopping_cart_path(@cart.id)
   end
 
   def remove_item

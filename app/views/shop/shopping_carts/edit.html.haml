@@ -13,13 +13,13 @@
         = f.fields_for :items, @cart_items do |items_fields|
           %tr
             %td<
-              = link_to items_fields.object.product.name, shop_product_path(items_fields.object.product)
+              = link_to items_fields.object.product.name, shop_product_path(items_fields.object.product.id)
               %br
               = "(#{items_fields.object.selected_option.join(', ')})" if items_fields.object.selected_option.size > 0
             %td= items_fields.text_field :quantity
             %td=raw " #{humanized_money items_fields.object.single_price} #{currency_symbol}"
             %td=raw " #{humanized_money items_fields.object.price} #{currency_symbol}"
-            %td= link_to 'poista', shop_shopping_cart_remove_item_path(@cart,items_fields.object)
+            %td= link_to 'poista', shop_shopping_cart_remove_item_path(@cart.id,items_fields.object)
         %tr#price
           %td{colspan: 3} Yhteensä:
           %td=raw "#{humanized_money @cart.price} #{currency_symbol}"
