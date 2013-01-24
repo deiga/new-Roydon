@@ -11,8 +11,7 @@ describe Shop::OrdersController do
     it "should render new order" do
       cart = Shop::ShoppingCart.create
       session[:shopping_cart_id] = cart.id
-      cart.add Shop::Product.create!(name: 'Test 23', price: 4.2)
-
+      cart.add FactoryGirl.create(:product, name: 'Test 23', price: 4.2)
       get :new
       response.should be_success
     end

@@ -26,7 +26,7 @@ describe Shop::ShoppingCartsController do
   describe "GET 'add_item'" do
 
     it "should have one product in cart" do
-      get :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: Shop::Product.create(:name => "Test product", price: 5.3), options: {}
+      get :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: FactoryGirl.create(:product, :name => "Test product", price: 5.3), options: {}
       @cart = assigns(:cart)
       @cart.items.size.should be 1
     end
@@ -34,7 +34,7 @@ describe Shop::ShoppingCartsController do
 
   describe "GET 'remove_item" do
     it "should remove item from cart" do
-      prod = Shop::Product.create(:name => "Test product", price: 5.3)
+      prod = FactoryGirl.create(:product, :name => "Test product", price: 5.3)
       get :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: prod, options: {}
       @cart = assigns(:cart)
       @cart.items.size.should be 1
