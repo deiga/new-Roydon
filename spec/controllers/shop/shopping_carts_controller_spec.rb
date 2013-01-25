@@ -19,7 +19,7 @@ describe Shop::ShoppingCartsController do
   describe "GET 'destroy'" do
     it "returns http success" do
       get 'destroy', :id => Shop::ShoppingCart.create
-      response.should be_success
+      response.should redirect_to shop_path
     end
   end
 
