@@ -62,6 +62,10 @@ class Shop::ShoppingCartsController < Shop::ShopController
   end
 
   def destroy
+    @cart.destroy
+    respond_to do |format|
+      format.html { redirect_to shop_path }
+    end
   end
 
   def create
