@@ -3,8 +3,11 @@ fi:
     shop: 'Kauppa'
     checkout: 'Osta tuotteet'
     confirmation: 'Oletko varma?'
+    overall: 'Yhteensä'
     cart:
-      empty: 'Tyhjennä'
+      empty: 'Ei tuotteita'
+      action:
+        empty: 'Tyhjennä'
       errors:
         not_found: 'Ostoskoria ei löytynyt'
       add:
@@ -16,5 +19,10 @@ fi:
       remove:
         success: 'Tuote poistettu'
         failure: 'Tuotetta ei pystytty poistamaan'
+      headers:
+        product: 'Tuote'
+        count: 'lkm'
+        price: 'Hinta'
+        overall: 'Yhteensä'
     product:
       newest: 'Uusimmat tuotteet'

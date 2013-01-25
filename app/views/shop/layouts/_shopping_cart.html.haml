@@ -15,6 +15,6 @@
         =raw "#{humanized_money cart.price} #{currency_symbol}"
   - else
     %span#total>
-      = "Tuotteita: 0 kpl"
+      = t 'shop.cart.empty'
       %span#price>
         =raw "0 #{currency_symbol}"
