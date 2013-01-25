@@ -7,5 +7,5 @@
     = content_for?(:shop_content) ? yield(:shop_content) : yield
   %section#sidebar
     = render 'shop/layouts/shopping_cart', cart: @cart
-    = render 'shop/layouts/advertisement'
+    / = render 'shop/layouts/advertisement'
 = render :template => 'layouts/application'
