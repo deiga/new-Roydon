@@ -77,7 +77,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
   private
 
     def cart_params
-      params.require(:shop_shopping_cart).permit(items: [:quantity])
+      params.require(:shop_shopping_cart).permit(items_attributes: [:quantity, :id])
     end
 
     def set_cart
