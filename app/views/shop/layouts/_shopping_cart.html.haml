@@ -1,6 +1,6 @@
 %section#shopping-cart.box.first-box
   %strong= link_to 'Ostoskori:', edit_shop_shopping_cart_path(@cart.id)
-  - unless @cart.nil? || @cart.empty?
+  - unless @cart.blank?
     %table
       %tbody
         - @cart.latest_items.each do |item|
