@@ -38,8 +38,9 @@ describe Shop::ShoppingCartsController do
       post :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: prod, options: {}
       @cart = assigns(:cart)
       @cart.items.size.should be 1
-      post :remove_item, shopping_cart_id: @cart, id: @cart.items.first
+      post :remove_item, shopping_cart_id: @cart.id, id: @cart.items.first.id
       @cart = assigns(:cart)
+      @cart.items.should be_empty
       @cart.should be_empty
     end
   end

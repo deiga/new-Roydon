@@ -3,7 +3,7 @@ class Shop::ShoppingCart
   include Mongoid::Timestamps
   include ActiveModel::ForbiddenAttributesProtection
 
-  has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart
+  has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart, dependent: :destroy
 
   delegate :empty?, :to => :items
 
@@ -31,8 +31,9 @@ class Shop::ShoppingCart
     end
   end
 
-  def remove(cart_item_id)
-    items.find(cart_item_id).destroy
+  def remove_item(cart_item_id)
+    item_to_remove = Shop::CartItem.find(cart_item_id) unless cart_item_id.blank?
+    items.delete(item_to_remove)
   end
 
   def price

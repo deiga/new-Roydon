@@ -31,7 +31,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def remove_item
     size_before = @cart.items.size
-    @cart.remove(params[:id])
+    @cart.remove_item(params[:id])
     if size_before > @cart.items.size
       msg = I18n.t 'shop.cart.remove.success'
       flash[:notice] = msg
