@@ -1,5 +1,5 @@
 %section#shows
-  - unless @earlier_shows.blank?
+  - unless @earlier_shows.blank? and @upcoming_shows.blank?
     %table#shows-table
       %caption= "Seuraavista näyttelyistä löydät meidät vuonna #{ display_show_year(@year)}:"
       %thead
@@ -14,8 +14,8 @@
             %td{headers:"show_name",colspan:"4"}
               %strong Menneet näyttelyt tältä vuodelta
           = render @earlier_shows
-        - else
-          %p= "Vuodelle #{@year} ei ole yhtään näyttelyä lisätty"
+  - else
+    %p= "Vuodelle #{@year} ei ole yhtään näyttelyä lisätty"
 %section#years
   = display_year_list
   %p>
