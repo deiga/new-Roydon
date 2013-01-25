@@ -11,4 +11,4 @@
       = product.options.map(&:name).to_sentence
     .product-link= link_to 'Katso lisää', shop_product_path(product.id)
   - else
-    .product-link= link_to 'Lisää ostoskoriin', shop_shopping_cart_add_item(product), remote: true, class: 'add-to-cart', "data-type" => :json
+    .product-link= link_to 'Lisää ostoskoriin', shop_shopping_cart_add_item_path(@cart.id,product.id), remote: true, class: 'add-to-cart', "data-type" => :json
