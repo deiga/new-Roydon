@@ -1,7 +1,10 @@
 fi:
   shop:
     shop: 'Kauppa'
+    checkout: 'Osta tuotteet'
+    confirmation: 'Oletko varma?'
     cart:
+      empty: 'Tyhjennä'
       errors:
         not_found: 'Ostoskoria ei löytynyt'
       add:

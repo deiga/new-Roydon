@@ -24,9 +24,8 @@
           %td{colspan: 3} Yhteensä:
           %td=raw "#{humanized_money @cart.price} #{currency_symbol}"
     = f.submit
-    / TODO: Add empty cart link
-    / = link_to 'Empty cart', @cart,method: :delete, confirm: 'Are you sure?'
-  = link_to 'Checkout', new_shop_order_path, method: :get
+  = link_to t('shop.cart.empty'), shop_shopping_cart_path(@cart.id), data: { confirm: t('shop.confirmation') }, :method => :delete
+  = link_to t('shop.checkout'), new_shop_order_path, method: :get
 - else
   %p Ostoskorissa ei ole tuotteita
 
