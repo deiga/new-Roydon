@@ -113,4 +113,13 @@ describe Shop::ShoppingCart do
     end
   end
 
+  describe "destruction" do
+    it "should destroy empty cart" do
+      cart_id = @cart.id
+      expect {
+        @cart.destroy
+      }.to change(Shop::ShoppingCart, :count).by(-1)
+    end
+  end
+
 end
