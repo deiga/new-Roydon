@@ -6,6 +6,10 @@ describe Shop::ShoppingCart do
     @cart = Shop::ShoppingCart.create!
   end
 
+  after(:each) do
+    @cart.destroy
+  end
+
   describe "calling empty" do
     it "should do nothing on an empty cart" do
       @cart.empty
