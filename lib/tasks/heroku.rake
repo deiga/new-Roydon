@@ -25,7 +25,7 @@ namespace :deploy do
   desc "Deploy to heroku development env"
   task :development do
     puts "deploying to development"
-    system "git push development master"
+    system "git push development develop:master"
     puts "clearing cache"
     system "heroku run console Rails.cache.clear -a roydon-dev"
     puts "Refreshing missing attachments"
