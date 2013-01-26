@@ -1,3 +1,5 @@
-- unless @products.nil? 
-  = paginate @products
-  = render @products
+- unless @products.nil?
+  .paginator
+    = paginate @products, remote: true
+  #products
+    = render @products
