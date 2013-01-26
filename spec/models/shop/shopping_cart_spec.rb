@@ -80,7 +80,7 @@ describe Shop::ShoppingCart do
       @cart.add prod
       @cart.items.first.quantity.should == 1
       @cart.add prod
-      @cart.reload.items.first.quantity.should == 2
+      @cart.items.first.quantity.should == 2
     end
 
     it "should increment quantity if product already in cart w/ options" do
