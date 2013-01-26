@@ -5,7 +5,7 @@ Feature: Shopping Cart can calculate it's price
 
 Background: products in shopping cart
 
-  Given the following products are in the shopping cart:
+  Given the following products are in the cart:
   | name	| price |
   | Testi 1 | 5.0  	|
   | Testi 2 | 15.0 	|
