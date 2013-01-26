@@ -1,33 +1,33 @@
 Roydon::Application.routes.draw do
 
   devise_for :users
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :stories, :only => [:index], :path => :news, constraints: { id: /[0-9a-f]{24}/i}
+  resources :stories, only: [:index], path: :news, constraints: { id: /[0-9a-f]{24}/i}
 
   namespace :shop do
-    resources :products, :only => [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
+    resources :products, only: [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
       collection do
-        get 'categories/:category', :action => :index, :as => 'category', constraints: { category: /[a-zA-Z0-9~-]+/i }
         get 'search', action: :search
+        get 'categories/:category', action: :index, as: 'category', constraints: { category: /[a-zA-Z0-9~-]+/i }
       end
     end
-    resources :shopping_carts, :except => [:index], constraints: { id: /[0-9a-f]{24}/i} do
+    resources :shopping_carts, except: [:index], constraints: { id: /[0-9a-f]{24}/i} do
       post '/remove_item/:id', action: 'remove_item', as: 'remove_item'
       post '/add_item/:id', action: 'add_item', as: 'add_item'
     end
-    get '/', :to => 'shop#index'
-    resources :orders, :except => [:index]
+    get '/', to: 'shop#index'
+    resources :orders, except: [:index]
   end
 
-  resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i, :year => /\d{4}/ } do
+  resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i, year: /\d{4}/ } do
     collection do
       get '(:year)', action: 'index', defaults: { year: Date.today.year }, as: 'year'
     end
   end
 
-  get '/contact', :to => 'pages#contact'
-  get '/about', :to => 'pages#about'
+  get '/contact', to: 'pages#contact'
+  get '/about', to: 'pages#about'
 
   root :to => 'pages#home'
 
