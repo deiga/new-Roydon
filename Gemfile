@@ -43,6 +43,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'meta_request' # Binding with RailsPanel in chrome
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
 end

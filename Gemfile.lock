@@ -152,6 +152,9 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.2.1)
+      rack-contrib
+      rails
     mime-types (1.19)
     money (5.1.0)
       i18n (~> 0.6.0)
@@ -331,6 +334,7 @@ DEPENDENCIES
   kaminari (~> 0.14)
   launchy
   money-rails (~> 0.7.0)
+  meta_request
   mongoid (~> 3.0)
   mongoid-ancestry (~> 0.3)
   mongoid-paperclip (~> 0.0)
