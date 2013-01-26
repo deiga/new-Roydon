@@ -37,6 +37,4 @@ rvm use $ruby_version@$gemset_name
         gem install bundler
     fi   
 
-    # Bundle while redcing excess noise.
-    bundle | grep -v 'Using' | grep -v 'complete' | sed '/^$/d'
 )&
