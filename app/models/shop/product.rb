@@ -48,7 +48,7 @@ class Shop::Product
   private
     def normalize_filename
       if image.exists?
-        image_file_name = image_file_name.parameterize.downcase
+        image_file_name = image_file_name.parameterize.downcase unless image_file_name.blank?
       end
     end
 
