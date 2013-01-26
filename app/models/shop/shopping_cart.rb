@@ -23,11 +23,11 @@ class Shop::ShoppingCart
     options = {} if options.nil?
     product = Shop::Product.find(product) unless product.class == Shop::Product
     new_options = options.inject([]) {|x,y| x << y.join(': ')} # Option array in the form ['Option name': 'Option value', ...]
-    existing_item = self.items.includes(:product).to_a.find { |x| x.product == product &&  x.selected_option == new_options}
+    existing_item = self.items.to_a.find { |x| x.product == product && x.selected_option == new_options}
     if existing_item
       existing_item.inc(:quantity, 1)
     else
-      self.items << Shop::CartItem.new(product: product, selected_option: new_options, single_price: product.price)
+      self.items << Shop::CartItem.create(product: product, selected_option: new_options)
     end
   end
 
