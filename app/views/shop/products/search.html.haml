@@ -1,0 +1,8 @@
+%h2= t 'shop.search.title'
+- unless @products.blank?
+  .paginator
+    = paginate @products, remote: true
+  #products
+    = render @products
+- else
+  %p Ei tuloksia haulle

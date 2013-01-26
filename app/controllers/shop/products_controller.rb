@@ -10,4 +10,8 @@ class Shop::ProductsController < Shop::ShopController
     @product = Shop::Product.find(params[:id])
   end
 
+  def search
+    @products = Shop::Product.search(params[:search]).page(params[:page])
+  end
+
 end

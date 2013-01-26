@@ -4,6 +4,10 @@ fi:
     checkout: 'Osta tuotteet'
     confirmation: 'Oletko varma?'
     overall: 'Yhteensä'
+    search:
+      title: 'Hakutulokset'
+    action:
+      search: 'Hae'
     cart:
       empty: 'Ei tuotteita'
       action:

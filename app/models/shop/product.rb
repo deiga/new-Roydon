@@ -45,6 +45,10 @@ class Shop::Product
     @image_remote_url = url_value
   end
 
+  def self.search search
+    where(name: /#{search}/).includes(:options)
+  end
+
   private
     def normalize_filename
       if image.exists?
