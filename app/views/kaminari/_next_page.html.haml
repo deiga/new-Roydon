@@ -6,4 +6,7 @@
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
 %span.next
-  = link_to_unless current_page.last?, '', url, rel: 'next', remote: remote, class: 'fontawesome-forward'
+  - if current_page.last?
+    %span.first.fontawesome-forward.disabled
+  - else
+    = link_to '', url, rel: 'next', remote: remote, class: 'fontawesome-forward'
