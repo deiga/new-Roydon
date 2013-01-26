@@ -1,13 +1,6 @@
 fi:
   home:
     name: Koti
-  views:
-    pagination: # Kaminari
-      first: "&laquo;"
-      last: "&raquo;"
-      previous: "&lsaquo;"
-      next: "&rsaquo;"
-      truncate: '…'
   admin:
     home:
       name: Koti
