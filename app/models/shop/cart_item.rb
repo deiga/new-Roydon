@@ -12,7 +12,10 @@ class Shop::CartItem
 
   field :selected_option, type: Array, default: []
   field :quantity, type: Integer, default: 1
-  field :single_price, type: Money
+  field :single_price, type: Money, default: Money.new(0)
+
+  validates :product, presence: true
+  validates :single_price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
 
   def price
     single_price * quantity
