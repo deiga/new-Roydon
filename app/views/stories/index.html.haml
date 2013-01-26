@@ -1,0 +1,7 @@
+%section#news
+	- unless @all_news.blank?
+		%fieldset
+			%legend Uutiset
+			 = render @all_news
+	- else
+		%p Ei yhtään uutista järjestelmässä!
