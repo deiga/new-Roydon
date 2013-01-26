@@ -9,6 +9,10 @@ class Shop::ShopController < ApplicationController
     @newest_products = Shop::Product.active.desc(:updated_at).includes(:options).limit(9)
   end
 
+  def search
+    @products = Shop::Product.search(params[:search]).page(params[:page])
+  end
+
   private
 
     def set_cart
