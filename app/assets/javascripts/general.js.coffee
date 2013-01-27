@@ -22,4 +22,4 @@ $ ->
 
   $(window).on 'popstate', ->
     console.log 'Popstate!', $(this)
-    $.get(location.href)
+    $.getScript(location.href)

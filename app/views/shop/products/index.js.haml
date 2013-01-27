@@ -1,2 +1,6 @@
 $('#products').html("#{escape_javascript render(@products)}");
 $('#paginator').html("#{escape_javascript(paginate(@products, remote: true).to_s)}");
+title = document.title.split('|')
+title[0] = title[0] + "#{ params[:page] ? t('shop.search.page')+ ' ' + params[:page]+' ' : ''}"
+document.title = title.join('|')
+
