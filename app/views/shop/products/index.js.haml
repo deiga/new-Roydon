@@ -1,5 +1,4 @@
-$('#products').html("#{escape_javascript render(@products)}");
-$('#paginator').html("#{escape_javascript(paginate(@products, remote: true).to_s)}");
+$('#shop-details').html("#{escape_javascript render(file: 'shop/products/index', formats: [:html] )}");
 title = document.title.split('|')
 title[0] = title[0] + "#{ params[:page] ? t('shop.search.page')+ ' ' + params[:page]+' ' : ''}"
 document.title = title.join('|')
