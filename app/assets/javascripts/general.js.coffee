@@ -23,6 +23,11 @@ $ ->
   $(window).on 'popstate', ->
     console.log 'Popstate!', $(this)
     $.getScript(location.href)
+
+  () ->
+    # Activating Best In Place
+    $(".best_in_place").best_in_place()
+
   # Track jquery links in google analytics
   $(document).ajaxSend (event, xhr, settings) ->
     if _gaq?

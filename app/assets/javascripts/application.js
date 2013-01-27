@@ -7,4 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require best_in_place
+
 //= require h5bp
