@@ -1,5 +1,5 @@
 %section#shopping-cart.box.first-box
-  %strong= link_to 'Ostoskori:', edit_shop_shopping_cart_path(@cart.id)
+  %strong= link_to 'Ostoskori', edit_shop_shopping_cart_path(@cart.id), class: 'fontawesome-shopping-cart'
   - unless @cart.blank?
     %table
       %tbody
