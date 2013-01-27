@@ -1,2 +1,2 @@
-$('#shop-details').html("#{escape_javascript render( file: '/Users/timosand/Dropbox/Code/Rails/roydon/app/views/shop/shop/search', formats: [:html] )}");
+$('#shop-details').html("#{escape_javascript render( file: 'shop/shop/search', formats: [:html] )}");
 document.title = "#{ escape_javascript("#{(params[:search] ? t('shop.search.action')+params[:search] : '').to_s.titleize} #{t 'shop.search.page'} #{params[:page] || 1}")}"
