@@ -23,3 +23,7 @@ $ ->
   $(window).on 'popstate', ->
     console.log 'Popstate!', $(this)
     $.getScript(location.href)
+  # Track jquery links in google analytics
+  $(document).ajaxSend (event, xhr, settings) ->
+    if _gaq?
+      _gaq.push ['_trackPageview', settings.url]

@@ -121,7 +121,6 @@ GEM
     fssm (0.2.10)
     gherkin (2.11.5)
       json (>= 1.4.6)
-    google-analytics-rails (0.0.3)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -328,7 +327,6 @@ DEPENDENCIES
   database_cleaner
   devise (~> 2.2)
   factory_girl_rails
-  google-analytics-rails
   haml-rails
   html5-rails
   jquery-rails

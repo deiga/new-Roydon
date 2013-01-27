@@ -15,7 +15,6 @@ group :production, :staging do
   gem 'thin', '~> 1.5.0' # Webserver
   gem 'newrelic_rpm' # Statistics
   gem 'dalli', '~> 2.5.0'
-  gem 'google-analytics-rails'
 end
 
 gem 'aws-sdk', '~> 1.8' # Online storage

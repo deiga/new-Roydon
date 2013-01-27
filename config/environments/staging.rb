@@ -79,7 +79,6 @@ Roydon::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-  GA.tracker = "UA-22841460-1"
 
   # Setup for S3
   config.paperclip_defaults = {:storage => :s3, :s3_credentials => {access_key_id: ENV['S3_ACCESS'], secret_access_key: ENV['S3_SECRET']}, bucket: "roydon-prod", path: ":attachment/:id/:style.:extension", url: ":s3_domain_url"}
