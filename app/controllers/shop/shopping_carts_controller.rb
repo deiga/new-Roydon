@@ -5,6 +5,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def show
     begin
+      @cart_items = @cart.items.includes(:product)
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
       not_found
