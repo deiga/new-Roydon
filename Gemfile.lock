@@ -45,9 +45,6 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
-    best_in_place (2.0.3)
-      jquery-rails
-      rails (~> 3.1)
     better_errors (0.3.2)
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
@@ -312,7 +309,6 @@ DEPENDENCIES
   autotest-rails-pure
   autotest-standalone
   aws-sdk (~> 1.8)
-  best_in_place
   better_errors
   binding_of_caller
   bootstrap-wysihtml5-rails (~> 0.3)
