@@ -23,7 +23,7 @@ describe Shop::ShoppingCartsController do
     end
   end
 
-  describe "GET 'add_item'" do
+  describe "POST 'add_item'" do
 
     it "should have one product in cart" do
       post :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: FactoryGirl.create(:product, :name => "Test product", price: 5.3), options: {}
@@ -32,13 +32,13 @@ describe Shop::ShoppingCartsController do
     end
   end
 
-  describe "GET 'remove_item" do
+  describe "DELETE 'remove_item" do
     it "should remove item from cart" do
       prod = FactoryGirl.create(:product, :name => "Test product", price: 5.3)
-      post :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: prod, options: {}
+      delete :add_item, shopping_cart_id: Shop::ShoppingCart.create, id: prod, options: {}
       @cart = assigns(:cart)
       @cart.items.size.should be 1
-      post :remove_item, shopping_cart_id: @cart.id, id: @cart.items.first.id
+      delete :remove_item, shopping_cart_id: @cart.id, id: @cart.items.first.id
       @cart = assigns(:cart)
       @cart.items.should be_empty
       @cart.should be_empty
