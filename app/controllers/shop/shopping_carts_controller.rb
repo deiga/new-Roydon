@@ -30,9 +30,9 @@ class Shop::ShoppingCartsController < Shop::ShopController
   end
 
   def remove_item
-    size_before = @cart.items.size
+    size_before = @cart.size
     @cart.remove_item(params[:id])
-    if size_before > @cart.items.size
+    if size_before > @cart.size
       msg = I18n.t 'shop.cart.remove.success'
       flash[:notice] = msg
     else
@@ -46,9 +46,9 @@ class Shop::ShoppingCartsController < Shop::ShopController
   end
 
   def add_item
-    size_before = @cart.items.size
+    size_before = @cart.size
     @cart.add(params[:id], params[:options])
-    if size_before < @cart.items.size
+    if size_before < @cart.size
       msg = I18n.t 'shop.cart.add.success'
       flash[:notice] = msg
     else
