@@ -9,15 +9,20 @@ updateCart = (event, data, status, xhr) ->
   $('#shopping-cart').load(' #shopping-cart > *')
   flash(data.message, xhr.getResponseHeader('X-Message-Type'))
 
+selectSubcategory = (subCategoryName) ->
+  if subCategoryName? and subCategoryName.length > 0
+    $('#category-menu li').removeClass 'selected'
+    $('#'+subCategoryName).parent().addClass 'selected'
+
 $ ->
-  url = location.href
-  nameArr = url.split('/')
-  name = nameArr[5]
-  if name? && name.length > 0
-    element = document.getElementById(name)
+  pathParts = location.pathname.split '/'
+  name = pathParts[pathParts.length-1] # Last item of pathname is either the category or it isn't anything
+  [categoryName, subCategoryName] = name.split '~'
+  if categoryName? and categoryName.length > 0
     $('#shop-navi > li').removeClass 'selected'
-    if element != null
-      element.parentNode.className += ' selected'
+    $('#'+categoryName).parent().addClass 'selected'
+    selectSubcategory(subCategoryName)
+
 
 $ ->
   $('.add-to-cart')

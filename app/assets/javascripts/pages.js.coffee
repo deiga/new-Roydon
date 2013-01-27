@@ -3,14 +3,12 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  url = location.href
-  nameArr = url.split('/')
-  name = nameArr[3]
-  if name.length > 0
-    element = document.getElementById(name)
+  path = location.pathname
+  pathParts = path.split('/').filter(String) # Filter String to remove empty strings
+  name = pathParts[0] # First actual element of path is the correct part of the URL
+  if name?
     $('#navilist > li').removeClass 'selected'
-    if element != null
-      element.className += ' selected'
+    $('#'+name).addClass 'selected'
   else
     $('#index').addClass 'selected'
 
