@@ -6,6 +6,8 @@ fi:
     overall: 'Yhteensä'
     search:
       title: 'Hakutulokset'
+      action: 'Haku: '
+      page: 'Sivu'
     action:
       search: 'Hae'
     cart:
