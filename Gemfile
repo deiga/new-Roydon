@@ -49,7 +49,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
-  gem 'therubyracer', :platform => :ruby
+  # gem 'therubyracer', :platform => :ruby
   gem 'factory_girl_rails'
 end
 
