@@ -7,6 +7,6 @@
 -#    remote:        data-remote
 %span.prev
   - if current_page.first?
-    %span.first.fontawesome-backward.disabled
+    %span.first.fontawesome-angle-left.disabled
   - else
-    = link_to '', url, rel: 'prev', remote: remote, class: 'fontawesome-backward'
+    = link_to '', url, rel: 'prev', remote: remote, class: 'fontawesome-angle-left'
