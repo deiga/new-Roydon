@@ -1,3 +1,4 @@
+@wip
 Feature: Shopping Cart can calculate it's price
 
 	As a buyer
@@ -14,4 +15,5 @@ Background: products in shopping cart
 
 Scenario: Shopping Cart contains a few products
 	Given I am on the shop page
+  Then show me the page
 	Then I should see "41.0 €"
