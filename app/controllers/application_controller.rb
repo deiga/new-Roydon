@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   after_filter :flash_to_headers
+  after_filter :store_location
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
@@ -52,5 +53,22 @@ class ApplicationController < ActionController::Base
       end
 
       render template: "errors/error", formats: [:html], layout: 'application', status: @status
+    end
+
+    def store_location
+      # store last url as long as it isn't a /users path
+      session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+    end
+
+    def after_sign_in_path_for(resource)
+      session[:previous_url] || shop_path
+    end
+
+    def after_update_path_for(resource)
+      session[:previous_url] || shop_path
+    end
+
+    def after_sign_out_path_for(resource)
+      shop_path
     end
 end
