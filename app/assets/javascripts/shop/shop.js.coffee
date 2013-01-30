@@ -12,7 +12,7 @@ updateCart = (event, data, status, xhr) ->
 selectSubcategory = (subCategoryName) ->
   if subCategoryName? and subCategoryName.length > 0
     $('#category-menu li').removeClass 'selected'
-    $('#'+subCategoryName).parent().addClass 'selected'
+    $('a#'+subCategoryName).parent().addClass 'selected'
 
 $ ->
   pathParts = location.pathname.split '/'
@@ -20,7 +20,7 @@ $ ->
   [categoryName, subCategoryName] = name.split '~'
   if categoryName? and categoryName.length > 0
     $('#shop-navi > li').removeClass 'selected'
-    $('#'+categoryName).parent().addClass 'selected'
+    $('a#'+categoryName).parent().addClass 'selected'
     selectSubcategory(subCategoryName)
 
 
