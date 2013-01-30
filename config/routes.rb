@@ -1,6 +1,13 @@
 Roydon::Application.routes.draw do
 
-  devise_for :users
+  get '/users/show', to: 'users#show'
+
+  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+
+  devise_scope :user do
+    put "/confirm" => "confirmations#confirm"
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :stories, only: [:index], path: :news, constraints: { id: /[0-9a-f]{24}/i}
