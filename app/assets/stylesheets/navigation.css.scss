@@ -1,4 +1,4 @@
-nav {
+nav#top-menu {
 	font-size: 1.2em;
 	padding-bottom: 0;
 	margin-bottom: 0;
@@ -6,20 +6,13 @@ nav {
 	text-align: left;
 	background-color: inherit;
 
-	.currpage {
-		a { 
-			&:link ,  &:visited {
-				color: $dark-green;
-			}
-		}
-	}
 }
 
 #navilist {
 	list-style: none;
 	padding-bottom: 0;
 	margin-bottom: 0;
-	
+
 	li {
 		display: inline;
 		padding: 5px 7.5px 2px 7.5px;
@@ -49,8 +42,8 @@ nav {
 				background-color: transparent;
 			}
 		}
-		
-		
+
+
 	}
 
 	a:hover {

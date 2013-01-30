@@ -7,7 +7,7 @@ $ ->
   pathParts = path.split('/').filter(String) # Filter String to remove empty strings
   name = pathParts[0] # First actual element of path is the correct part of the URL
   if name?
-    $('#navilist > li').removeClass 'selected'
+    $('#top-menu .nav-item').removeClass 'selected'
     $('#'+name).addClass 'selected'
   else
     $('#index').addClass 'selected'
