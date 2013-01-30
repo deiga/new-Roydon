@@ -6,15 +6,7 @@ nav#top-menu {
 	text-align: left;
 	background-color: inherit;
 
-}
-
-#navilist {
-	list-style: none;
-	padding-bottom: 0;
-	margin-bottom: 0;
-
-	li {
-		display: inline;
+	.nav-item {
 		padding: 5px 7.5px 2px 7.5px;
 		margin: 0 3px;
 		border-top: 1px solid $dark-green;
@@ -23,44 +15,35 @@ nav#top-menu {
 
 		&:hover {
 			background-color: $dark-green;
-			color: Green;
 			text-decoration: none;
 		}
 
 		a {
-
-			&:active {
-				color: green;
-			}
 
 			&:link , &:visited {
 				color: white;
 				font-weight: normal;
 			}
 
+			&:active {
+				color: green;
+			}
+
 			&:hover {
 				background-color: transparent;
+				text-decoration: none;
 			}
 		}
 
-
-	}
-
-	a:hover {
-		text-decoration: none;
-	}
-
-	.selected {
-		background-color: $main-gray;
-		padding-bottom: 1%;
-
-		&:hover {
+		&.selected {
 			background-color: $main-gray;
-			text-decoration: none;
-		}
+			padding-bottom: 1%;
 
-		> a:link , a:visited {
-			color: $dark-green;
+			> a {
+				color: $dark-green;
+			}
 		}
 	}
+
+
 }
