@@ -31,9 +31,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec', '> 2.1'
   gem 'rspec-rails'
-  gem 'rails3-generators'
 end
 
 group :test do
