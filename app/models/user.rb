@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
 
-  before_create :set_random_password
+  before_validation :set_random_password
   after_initialize :migrate_data
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -57,6 +57,12 @@ class User
   def is_admin?
     user_groups.map(&:name).include?('admin')
   end
+
+
+  def display_name
+    first_name.blank? ? email : first_name
+  end
+
   private
 
     def migrate_data
@@ -66,6 +72,8 @@ class User
     end
 
     def set_random_password
-      self.password = Devise.friendly_token
+      if self.password.blank?
+        self.password = Devise.friendly_token
+      end
     end
 end
