@@ -47,6 +47,7 @@ group :test do
   gem 'launchy'    # So you can do Then show me the page
   # gem 'therubyracer', :platform => :ruby
   gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
 
 group :assets do
