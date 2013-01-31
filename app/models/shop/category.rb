@@ -31,7 +31,7 @@ class Shop::Category
   end
 
   def to_param
-    if self.ancestry.nil?
+    if top_category?
       permalink
     else
       self.ancestors.first.permalink+'~'+permalink
