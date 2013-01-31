@@ -27,7 +27,7 @@ Roydon::Application.routes.draw do
     resources :orders, except: [:index]
   end
 
-  resources :shows, except: [:index, :show], constraints: { id: /[0-9a-f]{24}/i, year: /\d{4}/ } do
+  resources :shows, only: [], constraints: { year: /\d{4}/ } do
     collection do
       get '(:year)', action: 'index', defaults: { year: Date.today.year }, as: 'year'
     end
