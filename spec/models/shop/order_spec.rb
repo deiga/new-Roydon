@@ -9,7 +9,7 @@ describe Shop::Order do
   end
 
   it "should not be valid with wrong values" do
-    invalid_ord = Shop::Order.create
+    invalid_ord = Shop::Order.new
     invalid_ord.should_not be_valid
   end
 

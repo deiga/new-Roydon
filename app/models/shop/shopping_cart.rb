@@ -27,7 +27,7 @@ class Shop::ShoppingCart
     if existing_item
       existing_item.inc(:quantity, 1)
     else
-      self.items << Shop::CartItem.create(product: product, selected_option: new_options)
+      self.items << Shop::CartItem.create!(product: product, selected_option: new_options)
     end
   end
 

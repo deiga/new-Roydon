@@ -7,7 +7,7 @@ describe Shop::Category do
   end
 
   it "should create a new Shop::Category given valid attributes" do
-    created = Shop::Category.create(@attr)
+    created = Shop::Category.create!(@attr)
     created.should_not be_nil
   end
 
@@ -31,20 +31,20 @@ describe Shop::Category do
   end
 
   it "should have a top category" do
-    Shop::Category.create @attr
+    Shop::Category.create! @attr
     Shop::Category.top_categories.count.should be 1
   end
 
   it "should generate permalink on create" do
-    foo = Shop::Category.create @attr
+    foo = Shop::Category.create! @attr
     foo.permalink.should == foo.name.parameterize
   end
 
   it "should generate permalink on update" do
-    foo = Shop::Category.create @attr
+    foo = Shop::Category.create! @attr
     foo.permalink.should == foo.name.parameterize
     foo.name = 'foo & bar'
-    foo.save
+    foo.save!
     foo.permalink.should == foo.name.parameterize
   end
 

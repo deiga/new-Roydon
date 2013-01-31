@@ -9,7 +9,7 @@ describe Shop::OrdersController do
     end
 
     it "should render new order" do
-      cart = Shop::ShoppingCart.create
+      cart = Shop::ShoppingCart.create!
       session[:shopping_cart_id] = cart.id
       prod = FactoryGirl.create(:product, name: 'Test 23', price: 4.2)
       cart.add prod

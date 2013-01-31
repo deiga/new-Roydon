@@ -13,18 +13,18 @@ describe Shop::CartItem do
     prod = FactoryGirl.create(:product, name: 'Test 1', price: 4.2)
     @item.product = prod
     @item.should be_valid
-    @item.save
+    @item.save!
     @item.quantity = 0
-    @item.save
+    @item.save!
     @item.should be_destroyed
     prod.destroy
   end
 
   it "should create valid item" do
     prod = FactoryGirl.create(:product, name: 'Test 1', price: 4.2)
-    item = Shop::CartItem.create(product: prod)
+    item = Shop::CartItem.create!(product: prod)
     item.should be_valid
-    item.save
+    item.save!
     prod.destroy
     item.destroy
   end
