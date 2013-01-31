@@ -1,6 +1,7 @@
 fi:
   errors:
     messages:
+      confirmation_period_expired:
       expired: "on vanhentunut, ole hyvä ja pyydä uusi"
       not_found: "ei löytynyt"
       already_confirmed: "on jo vahvistettu, yritä kirjautua sisään uudelleen"
@@ -17,12 +18,14 @@ fi:
       locked: 'Käyttäjätilisi on lukittu.'
       invalid: 'Virheellinen sähköpostiosoite tai salasana.'
       invalid_token: 'Virheellinen valtuutusavain.'
+      not_found_in_database:
       timeout: 'Istuntosi on vanhentunut, kirjaudu uudelleen sisään jatkaaksesi.'
       inactive: 'Käyttäjätiliäsi ei ole vielä aktivoitu.'
     sessions:
       signed_in: 'Sisäänkirjautuminen onnistui.'
       signed_out: 'Sinut on kirjattu ulos palvelusta onnistuneesti.'
     passwords:
+      no_token: 'Et voi päästä tälle sivulle tulematta salasanannollaussähköpostin kautta. Mikäli tulet salasanannollaussähköpostiviestistä, varmista että syötit koko verkko-osoitteen osoiteriville.'
       send_instructions: 'Saat hetken kuluttua sähköpostiisi ohjeet, joiden avulla voit vaihtaa salasanasi.'
       updated: 'Salasanasi on vaihdettu, ja sinut on kirjattu sisään.'
       updated_not_active: 'Salasanasi on vaihdettu.'
