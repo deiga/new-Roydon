@@ -26,7 +26,7 @@ class Shop::OrdersController < Shop::ShopController
         format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { render action: 'new' }
+        format.html { render :new }
         format.json { render json: @order.errors, status: 'Failure' }
       end
     end
