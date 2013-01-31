@@ -19,7 +19,7 @@ module ShowsHelper
     elsif @@time.month >= 6
       year_text = "#{startYear} - #{@@time.next_year.year}"
     else
-      year_text = startYear           
+      year_text = startYear
     end
   end
 
