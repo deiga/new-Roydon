@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def home
     # TODO: Add filtering by current language
-    @next_show = Show.next_show
+    @next_show = Show.upcoming.first
     @index_news = Story.active.where( :date.gte => Date.today.prev_month(3) )
   end
 

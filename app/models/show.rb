@@ -13,6 +13,7 @@ class Show
 	index date: 1
 
 	scope :active, where(passive: false)
+	scope :upcoming, where(:date.gte => Date.today).active
 	default_scope asc(:date)
 
 	# Validations
@@ -33,10 +34,6 @@ class Show
 			date_string << time.next_day(self.duration-1).strftime('%d.%m.')
 		end
 		date_string
-	end
-
-	def self.next_show
-		where( :date.gte => Date.today ).active.first()
 	end
 
 end
