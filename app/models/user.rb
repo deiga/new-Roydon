@@ -74,6 +74,11 @@ class User
     first_name.blank? ? email : first_name
   end
 
+  # Turn off trackable for admin users
+  def update_tracked_fields!(request)
+    super(request) unless is_admin?
+  end
+
   private
 
     def migrate_data
