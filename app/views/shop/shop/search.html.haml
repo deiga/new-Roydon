@@ -4,6 +4,6 @@
     #paginator
       = paginate @products, remote: true
     #products
-      = render @products
+      = render @products, cart: @cart
   - else
     %p Ei tuloksia haulle

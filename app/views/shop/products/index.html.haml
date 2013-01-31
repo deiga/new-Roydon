@@ -2,6 +2,6 @@
   #paginator
     = paginate @products, remote: true
   #products
-    = render @products
+    = render @products, cart: @cart
 - else
   Ei tuotteita.

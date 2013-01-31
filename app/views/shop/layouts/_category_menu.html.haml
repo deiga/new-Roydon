@@ -1,5 +1,5 @@
-- unless @categories.nil?
+- unless categories.nil?
   %nav#category-menu
     %ul
-      - @categories.each do |category|
+      - categories.each do |category|
         %li= category_link(category)

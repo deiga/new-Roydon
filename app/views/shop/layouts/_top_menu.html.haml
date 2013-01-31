@@ -1,7 +1,7 @@
 %nav#shop-navi
-  - unless @top_categories.nil?
+  - unless top_categories.nil?
     %ul
       - cache :shop_navigation do
-        - @top_categories.each do |top_category|
+        - top_categories.each do |top_category|
           %li= category_link(top_category)
       %li.stretch
