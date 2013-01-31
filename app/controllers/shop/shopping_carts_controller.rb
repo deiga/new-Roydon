@@ -3,8 +3,6 @@ class Shop::ShoppingCartsController < Shop::ShopController
   before_filter :set_cart, except: [:remove_item, :add_item]
   before_filter :set_modify_cart, only: [:remove_item, :add_item]
 
-  after_filter :item_response, only: [:remove_item, :add_item]
-
   def show
     begin
       @cart_items = @cart.items.includes(:product)
@@ -42,6 +40,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
       msg = I18n.t 'shop.cart.remove.failure'
       flash[:alert] = msg
     end
+    item_response(msg)
   end
 
   def add_item
@@ -54,6 +53,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
       msg = I18n.t 'shop.cart.add.failure'
       flash[:alert] = msg
     end
+    item_response(msg)
   end
 
   def destroy
@@ -69,10 +69,10 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   private
 
-    def item_response
+    def item_response(message)
       respond_to do |format|
         format.html { redirect_to(request.referer || shop_path) }
-        format.js { render :json => { message: msg } }
+        format.js { render :json => { message: message } }
       end
     end
 
