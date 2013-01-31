@@ -3,6 +3,8 @@ class Shop::ShoppingCartsController < Shop::ShopController
   before_filter :set_cart, except: [:remove_item, :add_item]
   before_filter :set_modify_cart, only: [:remove_item, :add_item]
 
+  after_filter :item_response, only: [:remove_item, :add_item]
+
   def show
     begin
       @cart_items = @cart.items.includes(:product)
@@ -27,7 +29,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
     else
       flash[:error] = t 'shop.cart.update.failure'
     end
-    redirect_to edit_shop_shopping_cart_path(@cart.id)
+    redirect_to [:edit, @cart] #edit_shop_shopping_cart_path(@cart.id)
   end
 
   def remove_item
@@ -39,10 +41,6 @@ class Shop::ShoppingCartsController < Shop::ShopController
     else
       msg = I18n.t 'shop.cart.remove.failure'
       flash[:alert] = msg
-    end
-    respond_to do |format|
-      format.html { redirect_to(request.referer ||shop_path) }
-      format.js { render :json => { message: msg } }
     end
   end
 
@@ -56,17 +54,11 @@ class Shop::ShoppingCartsController < Shop::ShopController
       msg = I18n.t 'shop.cart.add.failure'
       flash[:alert] = msg
     end
-    respond_to do |format|
-      format.html { redirect_to(request.referer ||shop_path) }
-      format.js { render :json => { message: msg } }
-    end
   end
 
   def destroy
     @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to shop_path }
-    end
+    redirect_to shop_path
   end
 
   def create
@@ -76,6 +68,13 @@ class Shop::ShoppingCartsController < Shop::ShopController
   end
 
   private
+
+    def item_response
+      respond_to do |format|
+        format.html { redirect_to(request.referer || shop_path) }
+        format.js { render :json => { message: msg } }
+      end
+    end
 
     def cart_params
       params.require(:shop_shopping_cart).permit(items_attributes: [:quantity, :id])
