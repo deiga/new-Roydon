@@ -1,2 +1,0 @@
-module Shop::ShoppingCartsHelper
-end
