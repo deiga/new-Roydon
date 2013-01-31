@@ -60,6 +60,7 @@ module Roydon
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.view_specs false
       g.helper_specs false
+      g.helper false
     end
 
     # 404 catcher
