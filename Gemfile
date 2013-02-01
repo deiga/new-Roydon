@@ -32,6 +32,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
 end
 
 group :test do
@@ -46,7 +47,6 @@ group :test do
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   # gem 'therubyracer', :platform => :ruby
-  gem 'factory_girl_rails'
   gem 'simplecov', require: false
 end
 
