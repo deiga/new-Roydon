@@ -4,13 +4,13 @@
 
     %address
       Yleiset kysymykset:
-      = mail_to 'roydon@roydon.fi', nil, {replace_at: '_at_', class: 'email', encode: 'javascript'}
+      = mail_to 'roydon@roydon.fi', nil, replace_at: '_at_', class: 'email', encode: 'hex'
       %br
       Tuote-, saatavuus- ja hintakyselyt:
-      = mail_to 'myynti@roydon.fi', nil, replace_at: '_at_', class: 'email', encode: 'javascript'
+      = mail_to 'myynti@roydon.fi', nil, replace_at: '_at_', class: 'email', encode: 'hex'
       %br
       Sivuihin liittyvät kysymykset ja kommentit:
-      = mail_to 'webmaster@roydon.fi', nil, replace_at: '_at_', class: 'email', encode: 'javascript'
+      = mail_to 'webmaster@roydon.fi', nil, replace_at: '_at_', class: 'email', encode: 'hex'
       %br
       Postitse:
       %span Roydon Ky, Kuninkaantie 752, 07110 HINTHAARA
