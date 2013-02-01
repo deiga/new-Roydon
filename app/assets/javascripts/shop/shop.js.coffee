@@ -14,7 +14,7 @@ selectSubcategory = (subCategoryName) ->
     $('#category-menu li').removeClass 'selected'
     $('a#'+subCategoryName).parent().addClass 'selected'
 
-$ ->
+hilightShopLocationTab = ->
   pathParts = location.pathname.split '/'
   name = pathParts[pathParts.length-1] # Last item of pathname is either the category or it isn't anything
   [categoryName, subCategoryName] = name.split '~'
@@ -22,6 +22,12 @@ $ ->
     $('#shop-navi > li').removeClass 'selected'
     $('a#'+categoryName).parent().addClass 'selected'
     selectSubcategory(subCategoryName)
+
+$ ->
+  hilightShopLocationTab()
+
+  $(document).on 'ajaxSuccess', (event, XHR, settings) ->
+    hilightShopLocationTab()
 
 
 $ ->
