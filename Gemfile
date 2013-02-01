@@ -21,6 +21,7 @@ gem 'aws-sdk', '~> 1.8' # Online storage
 gem 'kaminari', '~> 0.14' # Pagination
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
+gem 'rack-pjax'
 
 group :development do
   gem 'better_errors'

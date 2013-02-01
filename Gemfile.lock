@@ -327,6 +327,7 @@ DEPENDENCIES
   mongoid-ancestry (~> 0.3)
   mongoid-paperclip (~> 0.0)
   newrelic_rpm
+  rack-pjax
   rails (= 3.2.11)
   rails_admin
   rspec-rails
