@@ -24,9 +24,7 @@ hilightShopLocationTab = ->
     selectSubcategory(subCategoryName)
 
 $ ->
-  hilightShopLocationTab()
-
-  $(document).on 'ajaxSuccess', (event, XHR, settings) ->
+  $(document).on 'pjax:success ready', (event, XHR, settings) ->
     hilightShopLocationTab()
 
 $ ->
@@ -34,7 +32,7 @@ $ ->
     $.pjax.submit(event, 'section#shop-details')
 
 $ ->
-  $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details');
+  $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
 
 $ ->
   $('.add-to-cart')

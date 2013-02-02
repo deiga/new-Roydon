@@ -13,9 +13,7 @@ hilightLocationTab = ->
     $('#index').addClass 'selected'
 
 $ ->
-  hilightLocationTab()
-
-  $(document).on 'ajaxSuccess', (event, XHR, settings) ->
+  $(document).on 'pjax:success ready', (event, XHR, settings) ->
     hilightLocationTab()
 
 $ ->
@@ -23,4 +21,4 @@ $ ->
     $('#flash').fadeOut 2500
 
 $ ->
-  $(document).pjax('#top-menu .nav-item > a:not([data-skip-pjax])', 'div#content');
+  $(document).pjax('#top-menu .nav-item > a:not([data-skip-pjax]), section#news fieldset+a, section#next-show a', 'div#content', {timeout: 2000});
