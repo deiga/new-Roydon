@@ -19,7 +19,7 @@ hilightShopLocationTab = ->
   name = pathParts[pathParts.length-1] # Last item of pathname is either the category or it isn't anything
   [categoryName, subCategoryName] = name.split '~'
   if categoryName? and categoryName.length > 0
-    $('#shop-navi > li').removeClass 'selected'
+    $('#shop-menu > li').removeClass 'selected'
     $('a#'+categoryName).parent().addClass 'selected'
     selectSubcategory(subCategoryName)
 
@@ -33,6 +33,7 @@ $ ->
 
 $ ->
   $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
+  $(document).pjax('nav#shop-menu a:not([data-skip-pjax])', 'div#content', {timeout: 2000})
 
 $ ->
   $('.add-to-cart')
