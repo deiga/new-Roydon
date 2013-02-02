@@ -10,6 +10,12 @@ $ ->
   $(document).on 'pjax:error', (event, XHR, settings, errorThrown) ->
     console.log 'PjaxError:',  event, XHR, settings, errorThrown
 
+  $(document).on
+    'pjax:start':  (event) ->
+      $(event.target).fadeOut 2000
+    'pjax:end': (event) ->
+      $(event.target).stop(true, true).fadeIn 500
+
   $(document).on 'click', 'a[data-remote="true"]', ->
     console.log "RemoteLinkClick:", this
     console.log 'Url: ' + this.href
