@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 flash = (msg, type) ->
-  $('#flash').append("<div class='wrapper'><div class='rounded " + type + "'>" + msg + "</div></div>")
+  $('#flash').fadeIn 500
+  $('#flash').html("<div class='wrapper'><div class='rounded " + type + "'>" + msg + "</div></div>")
   $('#flash').fadeOut 2500
 
 updateCart = (event, data, status, xhr) ->
