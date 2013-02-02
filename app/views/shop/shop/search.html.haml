@@ -1,8 +1,7 @@
 %section#search-results
   %h2= t 'shop.search.title'
   - unless @products.blank?
-    #paginator
-      = paginate @products, remote: true
+    = paginate @products
     #products
       = render @products, cart: @cart
   - else

@@ -1,6 +1,5 @@
 - unless @products.nil?
-  #paginator
-    = paginate @products, remote: true
+  = paginate @products
   #products
     = render @products, cart: @cart
 - else

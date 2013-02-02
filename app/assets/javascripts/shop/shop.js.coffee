@@ -33,6 +33,8 @@ $ ->
   $(document).on 'submit','form[data-pjax]', (event) ->
     $.pjax.submit(event, 'section#shop-details')
 
+$ ->
+  $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details');
 
 $ ->
   $('.add-to-cart')
