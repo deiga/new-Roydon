@@ -12,14 +12,6 @@ $ ->
     console.log 'Url: ' + this.href
     history.pushState(null, '', this.href)
 
-  $(document).on 'click', '[data-remote="true"] input[type="submit"]', ->
-    console.log "RemoteButtonClick:", this
-    parent = $(this).parent()
-    if parent.attr('method') == 'get'
-      url = parent.attr('action') + '?' + parent.serialize()
-      console.log "Url: " + url
-      history.pushState(null, '', url)
-
   $(window).on 'popstate', ->
     console.log 'Popstate!', $(this)
     $.getScript(location.href)

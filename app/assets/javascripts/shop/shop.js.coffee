@@ -29,6 +29,10 @@ $ ->
   $(document).on 'ajaxSuccess', (event, XHR, settings) ->
     hilightShopLocationTab()
 
+$ ->
+  $(document).on 'submit','form[data-pjax]', (event) ->
+    $.pjax.submit(event, 'section#shop-details')
+
 
 $ ->
   $('.add-to-cart')
