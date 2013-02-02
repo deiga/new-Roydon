@@ -15,12 +15,20 @@ selectSubcategory = (subCategoryName) ->
     $('#category-menu li').removeClass 'selected'
     $('a#'+subCategoryName).parent().addClass 'selected'
 
+productsInPath = ->
+  location.pathname.indexOf('products') > 0
+
+productsAndCategoriesInPath = ->
+  location.pathname.indexOf('categories') > 0 and productsInPath()
+
 hilightShopLocationTab = ->
-  pathParts = location.pathname.split '/'
+  pathname = location.pathname
+  pathParts = pathname.split '/'
   name = pathParts[pathParts.length-1] # Last item of pathname is either the category or it isn't anything
   [categoryName, subCategoryName] = name.split '~'
+  if !productsInPath() or productsAndCategoriesInPath()
+    $('#shop-menu li').removeClass 'selected'
   if categoryName? and categoryName.length > 0
-    $('#shop-menu > li').removeClass 'selected'
     $('a#'+categoryName).parent().addClass 'selected'
     selectSubcategory(subCategoryName)
 
@@ -33,7 +41,7 @@ $ ->
     $.pjax.submit(event, 'section#shop-details', {timeout: 2000})
 
 $ ->
-  $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
+  $(document).pjax('nav.pagination a:not([data-skip-pjax]), div#products a:not([data-skip-pjax]), section#shopping-cart a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
   $(document).pjax('nav#shop-menu a:not([data-skip-pjax])', 'div#content', {timeout: 2000})
 
 $ ->
