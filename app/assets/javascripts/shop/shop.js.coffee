@@ -29,7 +29,7 @@ $ ->
 
 $ ->
   $(document).on 'submit','form[data-pjax]', (event) ->
-    $.pjax.submit(event, 'section#shop-details')
+    $.pjax.submit(event, 'section#shop-details', {timeout: 2000})
 
 $ ->
   $(document).pjax('nav.pagination a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
