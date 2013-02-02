@@ -4,8 +4,11 @@ $ ->
   $(document).on 'ajaxSuccess', (event, XHR, settings) ->
     console.log "AjaxSuccess:", event, XHR, settings
 
-  $(document).on 'ajaxError', (event, XHR, settings, errorThrown)->
+  $(document).on 'ajaxError', (event, XHR, settings, errorThrown) ->
     console.log "AjaxError:",  event, XHR, settings, errorThrown
+
+  $(document).on 'pjax:error', (event, XHR, settings, errorThrown) ->
+    console.log 'PjaxError:',  event, XHR, settings, errorThrown
 
   $(document).on 'click', 'a[data-remote="true"]', ->
     console.log "RemoteLinkClick:", this
