@@ -25,12 +25,13 @@ class Shop::ShopController < ApplicationController
     end
 
     def set_title
-      @title = ''
-      unless @top_category.nil?
-        @title = "#{@top_category.name.capitalize} | "
+      if params[:search]
+        @title = "#{t('shop.search.action')}`#{params[:search]}`"
+      else
+        @title = @top_category.present? ? "#{@top_category.name.capitalize}" : ''
       end
-      @title += t 'shop.shop'
-
+      @title += params[:page] ? " #{t('shop.search.page')} #{params[:page]}" : ''
+      @title += "#{@title.present? ? ' |' : ''} #{t 'shop.shop'}"
     end
 
     def load_top_menu
