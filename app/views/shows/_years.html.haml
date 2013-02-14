@@ -1,0 +1,4 @@
+%ul#yearslist
+  %li= link_to(time.prev_year(2).year, year_shows_path(time.prev_year(2).year), title: time.prev_year(2).year)
+  %li= link_to(time.prev_year.year, year_shows_path(time.prev_year.year), title: time.prev_year.year)
+  %li= link_to(time.year, year_shows_path(time.year), title: time.year)

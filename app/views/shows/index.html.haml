@@ -17,7 +17,7 @@
   - else
     %p= "Vuodelle #{@year} ei ole yhtään näyttelyä lisätty"
 %aside#years
-  = display_year_list
+  = render 'years', time: Date.today
   %p>
     Lisätietoja Suomen koiranäyttelyistä:
     = link_to 'Suomen Kennelliitto', "http://www.kennelliitto.fi/FI/toiminta/nayttelyt/kvkr#{Time.now.year}/", :title => "SKL näyttelysivusto"
