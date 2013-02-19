@@ -18,12 +18,15 @@ class Show
 
 	def format_date
 		time = Date.parse(self.date.to_s)
-		unless self.duration > 1
-			date_string = time.strftime('%d.%m.')
-		else
-			date_string = time.strftime('%d.')
+		date_string = time.strftime('%d.%m.')
+		if self.duration > 1
+			unless (self.date.next_month.at_beginning_of_month - 1) == self.date
+				date_string = time.strftime('%d.')
+			end
+
 			date_string << '-'
-			date_string << time.next_day(self.duration).strftime('%d.%m.')
+			date_string << time.next_day(self.duration-1).strftime('%d.%m.')
 		end
+		date_string
 	end
 end
