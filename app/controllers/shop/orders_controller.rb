@@ -34,7 +34,7 @@ class Shop::OrdersController < Shop::ShopController
     def order_params
       begin
         params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
-      rescue ActionController::ParameterMissing => e
+      rescue ActionController::ParameterMissing
         nil
       end
     end
