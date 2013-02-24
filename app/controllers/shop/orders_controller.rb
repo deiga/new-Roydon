@@ -14,10 +14,7 @@ class Shop::OrdersController < Shop::ShopController
   end
 
   def create
-    # FIXME: https://github.com/RubyMoney/money-rails/issues/60
-    order_parameters = order_params
-    order_parameters = order_parameters.merge("price" => Money.new(order_parameters["price"]), "untaxed_price" => Money.new(order_parameters["untaxed_price"])) unless order_parameters.nil?
-    @order = Shop::Order.new(order_parameters)
+    @order = Shop::Order.new(order_params)
     @order.add(@cart.items)
     respond_to do |format|
       if @order.save
