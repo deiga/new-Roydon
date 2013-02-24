@@ -15,10 +15,8 @@ hilightLocationTab = ->
 $ ->
   $(document).on 'pjax:success ready', (event, XHR, settings) ->
     hilightLocationTab()
-
-$ ->
-  if $('#flash').contents.length > 2
-    $('#flash').fadeOut 2500
+    if $('#flash').contents().length > 2
+      $('#flash').fadeOut 2500
 
 $ ->
   $(document).pjax('#top-menu .nav-item > a:not([data-skip-pjax]), section#news fieldset+a, section#next-show a', 'div#content', {timeout: 2000});
