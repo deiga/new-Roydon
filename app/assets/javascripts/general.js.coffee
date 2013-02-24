@@ -7,8 +7,8 @@ $ ->
   $(document).on 'ajaxError', (event, XHR, settings, errorThrown) ->
     console.log "AjaxError:",  event, XHR, settings, errorThrown
 
-  $(document).on 'pjax:error', (event, XHR, settings, errorThrown) ->
-    console.log 'PjaxError:',  event, XHR, settings, errorThrown
+  $(document).on 'pjax:error', (event, XHR, errorThrown) ->
+    console.log 'PjaxError:',  event, XHR, errorThrown
 
   $(document).on
     'pjax:start':  (event) ->
