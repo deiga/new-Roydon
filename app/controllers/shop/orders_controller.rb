@@ -1,4 +1,7 @@
 class Shop::OrdersController < Shop::ShopController
+
+  respond_to :html, :js
+
   def new
     if @cart.empty?
       redirect_to shop_url, notice: 'Your cart is empty'
@@ -7,10 +10,7 @@ class Shop::OrdersController < Shop::ShopController
 
     @order = Shop::Order.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
+    respond_with @order
   end
 
   def create
