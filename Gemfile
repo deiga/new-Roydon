@@ -11,8 +11,9 @@ gem 'devise', '~> 2.2' # User control
 gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
 
+gem 'thin', '~> 1.5.0' # Webserver
+
 group :production, :staging do
-  gem 'thin', '~> 1.5.0' # Webserver
   gem 'newrelic_rpm' # Statistics
   gem 'dalli', '~> 2.5.0'
 end
