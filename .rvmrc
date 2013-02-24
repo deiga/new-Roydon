@@ -1,40 +1,23 @@
 #!/usr/bin/env bash
 
-# This is an RVM Project .rvmrc file, used to automatically load the ruby
-# development environment upon cd'ing into the directory
-
-# First we specify our desired <ruby>[@<gemset>], the @gemset name is optional.
-#environment_id="ruby-1.9.3-p0@roydon"
-
 # IMPORTANT: Source RVM as a function into local environment.
 # # #            Otherwise switching gemsets won't work.
 [ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
 
-#
-# Uncomment following line if you want options to be set only for given project.
-#
-# PROJECT_JRUBY_OPTS=( --1.9 )
-#
-# The variable PROJECT_JRUBY_OPTS requires the following to be run in shell:
-#
-#    chmod +x ${rvm_path}/hooks/after_use_jruby_opts
-#
+source ./script/env/ruby_env
 
-gemset_name="roydon"
-ruby_version="1.9.3"
-rvm use $ruby_version@$gemset_name
+if [ -e '.rvmrc.local' ]; then
+    source .rvmrc.local;
+elif [ -e '.rvmrc_custom' ] ; then
+    source .rvmrc_custom;
+else
+    if rvm list strings | grep -q "$ruby_version" ; then
+        rvm --create use "$ruby_version@$gemset"
+    else
+        printf "\e[00;31mPLEASE INSTALL RUBY $ruby_version WITH \`rvm install $ruby_version\`"
+        printf "Don't forget to run \`cd .. && cd -\` afterwards!\e[00m"
+        return 1
+    fi
+fi
 
-# Uncomment the following lines if you want to verify rvm version per project
-# # rvmrc_rvm_version="1.13.0 (master)" # 1.10.1 seams as a safe start
-# # eval "$(echo ${rvm_version}.${rvmrc_rvm_version} | awk -F. '{print "[[ "$1*65536+$2*256+$3" -ge "$4
-# #   echo "This .rvmrc file requires at least RVM ${rvmrc_rvm_version}, aborting loading."
-# #   return 1
-# # }
-#
-(
-    # Ensure that Bundler is installed, install it if it is not.
-    if ! command -v bundle ; then 
-        gem install bundler
-    fi   
-
-)&
+source ./script/env/ensure_right_rubygems
