@@ -2,10 +2,13 @@ require 'spec_helper'
 
 describe Show do
 
+  it { should_not be_valid }
+
   before :each do
     @attr = { :location => 'Helsinki', :url => 'http://foo.bar',
      :title => 'Test Show', :date => Date.new(2012, 3, 1)}
   end
+
 
   it "should create a new Show given valid attributes" do
     created = Show.create!(@attr)
@@ -15,11 +18,6 @@ describe Show do
     Show.create!(@attr)
     allShows = Show.all
     allShows.should_not be_empty
-  end
-
-  it "should be empty" do
-    allShows = Show.all
-    allShows.should be_empty
   end
 
   it "should require a title" do
@@ -60,5 +58,15 @@ describe Show do
   it "should return the correct date, when starting date is last of month" do
     foo = Show.new(@attr.merge(:date => Date.new(2012,01,31), :duration => 3))
     foo.format_date.should == "31.01.-02.02."
+  end
+
+  it "should return a single date if duration is 1" do
+    foo = Show.new(@attr.merge(duration: 1))
+    foo.format_date.should == "01.03."
+  end
+
+  it "should return a 2 day range if duration is 2" do
+    foo = Show.new(@attr.merge(duration: 2))
+    foo.format_date.should == "01.-02.03."
   end
 end
