@@ -12,9 +12,9 @@ $ ->
 
   $(document).on
     'pjax:start':  (event) ->
-      $(event.target).fadeOut 2000
+      $(event.target).fadeOut 6000
     'pjax:end': (event) ->
-      $(event.target).stop(true, true).fadeIn 500
+      $(event.target).stop(true, true).fadeIn 100
 
   $(document).on 'click', 'a[data-remote="true"]', ->
     console.log "RemoteLinkClick:", this
