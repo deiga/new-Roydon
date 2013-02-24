@@ -5,7 +5,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def show
     begin
-      @cart_items = @cart.items.includes(:product)
+      @cart_items = @cart.items.with_product
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
       not_found
@@ -14,7 +14,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def edit
     begin
-      @cart_items = @cart.items.includes(:product)
+      @cart_items = @cart.items.with_product
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
       not_found

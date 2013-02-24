@@ -8,7 +8,7 @@ class Shop::CartItem
   belongs_to :cart, class_name: 'Shop::ShoppingCart', inverse_of: 'items', dependent: :nullify
   belongs_to :product, class_name: 'Shop::Product'
 
-  # default_scope includes(:product)
+  scope :with_product, includes(:product)
 
   field :selected_option, type: Array, default: []
   field :quantity, type: Integer, default: 1

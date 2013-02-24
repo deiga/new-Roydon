@@ -45,6 +45,6 @@ class Shop::ShoppingCart
   end
 
   def latest_items
-    self.items.includes(:product).order_by(:updated_at.desc).limit(5)
+    self.items.with_product.order_by(:updated_at.desc).limit(5)
   end
 end

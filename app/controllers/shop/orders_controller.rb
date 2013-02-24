@@ -15,7 +15,7 @@ class Shop::OrdersController < Shop::ShopController
 
   def create
     @order = Shop::Order.new(order_params)
-    @order.add(@cart.items)
+    @order.add(@cart.items.with_product)
     respond_to do |format|
       if @order.save
         @cart.destroy
