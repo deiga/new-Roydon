@@ -19,13 +19,14 @@ class Shop::Category
   validates :permalink, uniqueness: true
 
   scope :active, where(passive: false)
+  scope :with_products, includes(:products)
 
   def self.top_categories
     self.where(:ancestry => nil)
   end
 
   def all_products
-    self.children.includes(:products).reduce(self.products) do |list, child|
+    self.children.with_products.reduce(self.products) do |list, child|
       list << child.products
     end
   end
