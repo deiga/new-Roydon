@@ -33,9 +33,9 @@ Roydon::Application.configure do
 
   # See everything in the log (default is :info)
   config.log_level = :debug
-
-  # Use a different logger for distributed setups
-  # config.logger = SyslogLogger.new
+  config.logger.level = Logger.const_get(
+    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
+  )
 
   # Use a different cache store in staging
   config.cache_store = :dalli_store
