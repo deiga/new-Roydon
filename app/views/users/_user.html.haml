@@ -1,0 +1,8 @@
+%h2= "#{user.first_name} #{user.last_name}"
+%p= "E-Mail: #{user.email}"
+%p= "Groups: #{user.user_groups.map(&:name).join(', ')}"
+- unless user.addresses.blank?
+  Addresses:
+  %ul
+    - user.addresses.each do |addr|
+      %li= addr.name
