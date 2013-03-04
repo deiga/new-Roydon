@@ -4,10 +4,10 @@ FactoryGirl.define do
   factory :address do
     name ""
     city ""
-    postal ""
+    postal_number "00970"
     country ""
-    street ""
-    telephone ""
-    description "MyText"
+    street "Aarteenetsijänkuja 8D 24"
+    phone_number "+358445655606"
+    description ""
   end
 end
