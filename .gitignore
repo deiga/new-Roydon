@@ -34,3 +34,4 @@ pickle-email-*.html
 
 *credentials.yml
 .DS_Store
+bin/*
