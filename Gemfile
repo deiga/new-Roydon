@@ -31,6 +31,7 @@ group :development do
   gem 'meta_request' # Binding with RailsPanel in chrome
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
+  gem 'wirble'
 end
 
 group :development, :test do
