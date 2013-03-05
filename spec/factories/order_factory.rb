@@ -1,11 +1,13 @@
 FactoryGirl.define do
 
   factory :order, class: Shop::Order do
-    user { FactoryGirl.build(:user, first_name: 'Order', last_name: 'Tester', email: 'order@tester.org')}
     payment "Cash"
     address { FactoryGirl.build(:address) }
     message ""
 
+    factory :order_with_user do
+      user { FactoryGirl.build(:user, first_name: 'Order', last_name: 'Tester', email: 'order@tester.org')}
+    end
 
     factory :order_with_items do
       items {
