@@ -9,7 +9,7 @@ class Shop::Order
 
   embeds_many :items, class_name: 'Shop::OrderItem', inverse_of: :order
   accepts_nested_attributes_for :items
-  # belongs_to :user
+  belongs_to :user
   has_one :address, as: :addressable
 
   field :message, type: String
