@@ -45,13 +45,13 @@ describe Address do
   describe "Before filters" do
     it "should set name if empty" do
       valid.name.should be_blank
-      valid.save
+      valid.save!
       valid.name.should eq valid.street
     end
 
     it "should leave name if set" do
       valid.name = 'Foo'
-      valid.save
+      valid.save!
       valid.name.should eq 'Foo'
     end
   end
