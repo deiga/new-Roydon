@@ -2,17 +2,16 @@ require 'spec_helper'
 
 describe ShowsHelper do
 
-  it "should return correct year for input" do
-    display_show_year(2011).should be 2011
+  it { display_show_year(2011).should be 2011 }
+
+  it "should return year range, if month >= 9" do
+    Timecop.travel(Date.new(2012, 9, 1))
+    display_show_year(2012).should == '2012 - 2013'
   end
 
-  # it "should return year range, if month >= 6" do
-  #   self.time = Date.new(2012,6,1)
-  #   display_show_year.should == '2012 - 2013'
-  # end
-
-  # it "should return correctly the current year" do
-  #   self.time = Date.new(Date.today.year, 1, 1)
-  #   display_show_year.should be Date.today.year
-  # end
+  it "should display the current year" do
+    year = Date.today.year
+    Timecop.travel(Date.new(year, 1, 1))
+    display_show_year.should be year
+  end
 end

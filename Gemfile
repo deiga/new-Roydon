@@ -51,6 +51,7 @@ group :test do
   gem 'launchy'    # So you can do Then show me the page
   # gem 'therubyracer', :platform => :ruby
   gem 'simplecov', require: false
+  gem 'timecop'
 end
 
 group :assets do
