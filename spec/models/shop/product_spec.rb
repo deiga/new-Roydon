@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe Shop::Product do
 
-  before :each do
-  end
-
   it "should create a new Shop::Product given valid attributes" do
     created = FactoryGirl.build(:product)
     created.should be_valid

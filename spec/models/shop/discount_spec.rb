@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Shop::Discount do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Shop::Discount.new(name: 'Test Discount')}
+  it { should be_valid }
 end

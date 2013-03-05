@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Shop::UserGroup do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Shop::UserGroup.new( name: 'test group')}
+  it {should be_valid}
 end

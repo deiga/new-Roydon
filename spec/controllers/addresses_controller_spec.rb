@@ -11,7 +11,7 @@ describe AddressesController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      get 'show', id: FactoryGirl.create(:address)
       response.should be_success
     end
   end
@@ -25,21 +25,21 @@ describe AddressesController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit'
+      get 'edit', id: FactoryGirl.create(:address)
       response.should be_success
     end
   end
 
   describe "GET 'update'" do
     it "returns http success" do
-      get 'update'
+      get 'update', id: FactoryGirl.create(:address)
       response.should be_success
     end
   end
 
   describe "GET 'destroy'" do
     it "returns http success" do
-      get 'destroy'
+      get 'destroy', id: FactoryGirl.create(:address)
       response.should be_success
     end
   end
