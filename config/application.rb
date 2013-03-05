@@ -65,7 +65,7 @@ module Roydon
       g.helper false
     end
 
-    config.logger = Logger.new(STDOUT)
+    # config.logger = Logger.new(STDOUT)
 
     # 404 catcher
     config.after_initialize do |app|
