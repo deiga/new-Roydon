@@ -11,3 +11,5 @@ fi:
         <<: *default_error
   shows:
     title: 'Näyttelyt'
+  stories:
+    title: 'Uutiset'

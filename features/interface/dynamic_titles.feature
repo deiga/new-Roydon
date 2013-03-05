@@ -19,3 +19,7 @@ Scenario: Shop page has a title
 Scenario: Shows page has a title
 	When I go to the shows page
 	Then the title should be "Näyttelyt | Roydon"
+
+Scenario: Stories page has a title
+	When I go to the stories page
+	Then the title should be "Uutiset | Roydon"
