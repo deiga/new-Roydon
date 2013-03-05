@@ -9,6 +9,7 @@ class AddressesController < ApplicationController
   end
 
   def show
+    @address = Address.find(address_id_params)
   end
 
   def create
@@ -39,6 +40,14 @@ class AddressesController < ApplicationController
     def address_params
       begin
         params.require(:address).permit(:name, :street, :country, :city, :postal_number, :phone_number, :description, :home)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
+    def address_id_params
+      begin
+        params.require(:id)
       rescue ActionController::ParameterMissing
         nil
       end
