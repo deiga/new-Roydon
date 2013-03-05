@@ -12,7 +12,6 @@ gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
 
 gem 'unicorn' # Webserver
-gem 'hooves', require: 'hooves/default'
 
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
@@ -26,6 +25,7 @@ gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
 
 group :development do
+  gem 'hooves', require: 'hooves/default'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request' # Binding with RailsPanel in chrome
@@ -48,7 +48,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  gem 'spork'
+  # gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   # gem 'therubyracer', :platform => :ruby
   gem 'simplecov', require: false
