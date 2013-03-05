@@ -31,7 +31,7 @@ class Shop::ShopController < ApplicationController
         @title = @top_category.present? ? "#{@top_category.name.capitalize}" : ''
       end
       @title += params[:page] ? " #{t('shop.search.page')} #{params[:page]}" : ''
-      @title += "#{@title.present? ? ' |' : ''} #{t 'shop.shop'}"
+      @title += "#{@title.present? ? ' | ' : ''}#{t 'shop.shop'}"
     end
 
     def load_top_menu
