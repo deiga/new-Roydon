@@ -5,4 +5,7 @@
   Addresses:
   %ul
     - user.addresses.each do |addr|
-      %li= addr.name
+      %li= link_to addr.name, address_path(addr)
+    %li= link_to 'Add...', new_address_path
+- else
+  = raw "You have not added any addresses yet. #{link_to 'Add', new_address_path}"

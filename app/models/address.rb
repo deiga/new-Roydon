@@ -2,6 +2,8 @@ class Address
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :addressable, polymorphic: true
+
   before_save :set_name
 
   field :name, type: String

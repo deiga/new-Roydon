@@ -34,7 +34,7 @@ class User
 
   ## Relations
   has_and_belongs_to_many :user_groups, class_name: 'Shop::UserGroup'
-  has_many :addresses
+  has_many :addresses, as: :addressable
 
   ## Encryptable
   # field :password_salt, type: String
