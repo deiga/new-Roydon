@@ -1,5 +1,7 @@
 Roydon::Application.routes.draw do
 
+  resources :addresses, except: [:index]
+
   get '/users/show', to: 'users#show'
 
   devise_for :users, :controllers => {:confirmations => 'confirmations'}
