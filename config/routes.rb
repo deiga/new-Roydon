@@ -4,7 +4,7 @@ Roydon::Application.routes.draw do
 
   get '/users/show', to: 'users#show'
 
-  devise_for :users, :controllers => {:confirmations => 'confirmations'}
+  devise_for :users, controllers: {confirmations: 'confirmations'}
 
   devise_scope :user do
     put "/confirm" => "confirmations#confirm"
@@ -37,8 +37,9 @@ Roydon::Application.routes.draw do
 
   get '/contact', to: 'pages#contact'
   get '/about', to: 'pages#about'
+  get '/', to: 'pages#home', as: 'home'
 
-  root :to => 'pages#home'
+  root to: 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
