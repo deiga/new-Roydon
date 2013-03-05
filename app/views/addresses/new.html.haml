@@ -1,2 +1,34 @@
-%h1 Addresses#new
-%p Find me in app/views/addresses/new.html.haml
+= form_for @address do |f|
+  - if @address.errors.any?
+    .error_explanation
+      %h2= "#{pluralize(order.errors.count, 'error')} prohibited this address from being saved:"
+      %ul
+        - @address.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    = f.text_field :name, size: 40
+  .field
+    = f.label :street
+    = f.text_field :street, cols: 40, required: true
+  .field
+    = f.label :city
+    = f.text_field :city, size: 40
+  .field
+    = f.label :postal_number
+    = f.text_field :postal_number, size: 40, required: true
+  .field
+    = f.label :country
+    = f.text_field :country, size: 40
+  .field
+    = f.label :phone_number
+    = f.phone_field :phone_number, size: 40, required: true
+  .field
+    = f.label :description
+    = f.text_area :description, rows: 3, columns: 40
+  .field
+    = f.label :home
+    = f.check_box :home
+  .actions
+    = f.submit 'Add address'
+
