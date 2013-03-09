@@ -16,7 +16,13 @@ class Shop::OrdersController < Shop::ShopController
   def create
     @order = Shop::Order.new(order_params)
     @order.add(@cart.items.with_product)
+
+    unless order_address_param.nil?
+      @address = Address.find(order_address_param)
+      @order.address = @address
+    end
     @order.user = current_user
+
     respond_to do |format|
       if @order.save
         @cart.destroy
