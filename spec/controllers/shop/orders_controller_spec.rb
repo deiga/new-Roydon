@@ -39,7 +39,6 @@ describe Shop::OrdersController do
     it "should pass params to order" do
       test_order = FactoryGirl.build(:order)
       post :create, shop_order: test_order.attributes.merge({ address: test_order.address})
-      puts assigns[:order].inspect
       assigns[:order].message.should eq test_order.message
       assigns[:order].address.should eq test_order.address
       assigns[:order].price.should eq test_order.price
