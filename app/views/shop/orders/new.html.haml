@@ -6,12 +6,14 @@
         %ul
           - @order.errors.full_messages.each do |msg|
             %li= msg
-    - if current_user.nil? || current_user.addresses.blank?
+    - if current_user.nil?
       log in form here
+    - elsif current_user.addresses.blank?
+      address form here
     - else
       .field
         = f.label :address
-        = f.select :address, current_user.addresses.map {|a| [a.name, a.id] }, prompt: 'Select delivery address'
+        = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
     .field
       = f.label :payment
       = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
