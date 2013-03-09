@@ -3,6 +3,7 @@ class Shop::OrdersController < Shop::ShopController
   respond_to :html, :js
 
   def new
+    puts "OC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.inspect}"
     if @cart.empty?
       redirect_to shop_url, notice: 'Your cart is empty'
       return
@@ -44,6 +45,7 @@ class Shop::OrdersController < Shop::ShopController
 
     def order_params
       begin
+        puts "OC#order_params - params: #{params}"
         params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
       rescue ActionController::ParameterMissing
         nil
