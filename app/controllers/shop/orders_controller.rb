@@ -30,11 +30,32 @@ class Shop::OrdersController < Shop::ShopController
     end
   end
 
+  def show
+    @order = Shop::Order.find(order_id_param)
+  end
+
   private
 
     def order_params
       begin
         params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
+    def order_address_param
+      begin
+
+        params.require(:shop_order).require(:address)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
+    def order_id_param
+      begin
+        params.require(:id)
       rescue ActionController::ParameterMissing
         nil
       end

@@ -1,0 +1,9 @@
+%h2 Order
+%small @order.created_at.strftime("%d.%m.%y %H:%M")
+
+%ul
+  %li= "Payment type: #{@order.payment}"
+  %li=raw "Price: #{humanized_money @order.price} #{currency_symbol}"
+  %li=raw "Untaxed price: #{humanized_money @order.untaxed_price} #{currency_symbol}"
+  %li= "Message: #{@order.message}"
+= render @order.address
