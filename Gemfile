@@ -26,6 +26,9 @@ gem 'rack-pjax'
 
 group :development do
   gem 'hooves', require: 'hooves/default'
+end
+
+group :development, :development_remote do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request' # Binding with RailsPanel in chrome
@@ -34,7 +37,7 @@ group :development do
   gem 'wirble'
 end
 
-group :development, :test do
+group :development, :test, :development_remote do
   gem 'rspec-rails'
   gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
 end

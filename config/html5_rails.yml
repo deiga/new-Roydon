@@ -16,6 +16,9 @@ defaults: &defaults
 :development:
   <<: *defaults
 
+:development_remote:
+  <<: *defaults
+
 :test:
   <<: *defaults
 

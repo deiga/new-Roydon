@@ -16,4 +16,4 @@
 
     -# Javascript at the bottom for fast page loading
     = render "javascripts"
-    = debug(params) if Rails.env.development?
+    = debug(params) if Rails.env.development? or Rails.env.development_remote?
