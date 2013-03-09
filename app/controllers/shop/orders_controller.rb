@@ -16,6 +16,7 @@ class Shop::OrdersController < Shop::ShopController
   def create
     @order = Shop::Order.new(order_params)
     @order.add(@cart.items.with_product)
+    @order.user = current_user
     respond_to do |format|
       if @order.save
         @cart.destroy

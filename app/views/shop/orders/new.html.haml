@@ -1,4 +1,23 @@
 .order-form
-  %fieldset
-    %legend Please enter your details
-    = render 'form', order: @order
+  = form_for @order do |f|
+    - if @order.errors.any?
+      .error_explanation
+        %h2= "#{pluralize(order.errors.count, 'error')} prohibited this order from being saved:"
+        %ul
+          - @order.errors.full_messages.each do |msg|
+            %li= msg
+    - if current_user.nil? || current_user.addresses.blank?
+      log in form here
+    - else
+      .field
+        = f.label :address
+        = f.select :address, current_user.addresses.map {|a| [a.name, a.id] }, prompt: 'Select delivery address'
+    .field
+      = f.label :payment
+      = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
+    .field
+      = f.label :message
+      = f.text_area :message, rows: 3, cols: 40
+    .actions
+      = f.submit 'Place order'
+
