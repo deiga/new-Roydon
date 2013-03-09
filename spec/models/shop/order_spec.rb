@@ -3,20 +3,25 @@ require 'spec_helper'
 describe Shop::Order do
   describe "default values, no products" do
     it "should create order" do
-      ord = FactoryGirl.build(:order)
-      ord.should be_valid
+      FactoryGirl.build(:order).should be_valid
     end
   end
 
   it "should not be valid with wrong values" do
-    invalid_ord = Shop::Order.new
-    invalid_ord.should_not be_valid
+    Shop::Order.new.should_not be_valid
+  end
+
+  it "should not be valid without address" do
+    FactoryGirl.build(:order, address: nil).should_not be_valid
+  end
+
+  it "should have an address attribute" do
+    FactoryGirl.build(:order).should respond_to(:address)
   end
 
   describe "with products" do
     it "should create valid order" do
-      ord = FactoryGirl.create(:order_with_items)
-      ord.should be_valid
+      FactoryGirl.create(:order_with_items).should be_valid
     end
 
     it "should calculate correct price" do
