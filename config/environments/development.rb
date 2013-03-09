@@ -43,5 +43,5 @@ Roydon::Application.configure do
   # config.middleware.use NewRelic::Rack::DeveloperMode
   #
   # S3 config for paperclip
-  # config.paperclip_defaults = {:storage => :s3, :s3_credentials => {access_key_id: ENV['S3_ACCESS'], secret_access_key: ENV['S3_SECRET']}, bucket: "roydon-dev", path: ":attachment/:id/:style.:extension", url: ":s3_domain_url"}
+  config.paperclip_defaults = {:storage => :s3, :s3_credentials => {access_key_id: ENV['S3_ACCESS'], secret_access_key: ENV['S3_SECRET']}, bucket: "roydon-dev", path: ":attachment/:id/:style.:extension", url: ":s3_domain_url"}
 end
