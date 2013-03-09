@@ -21,17 +21,28 @@ describe Shop::OrdersController do
   end
 
   describe "POST 'create'" do
-    it "should render 'new' action" do
-      post :create
-      response.should render_template 'new'
-    end
 
     it "should create order" do
-      order = FactoryGirl.build(:order)
-      lambda {
-        post :create, shop_order: order.attributes
-      }.should change(Shop::Order, :count)
+      Shop::Order.any_instance.stub(:valid?).and_return(true)
+      post :create
+      assigns[:order].should_not be_new_record
       response.should redirect_to(shop_url)
+    end
+
+    it "should render new order page if errors" do
+      Shop::Order.any_instance.stub(:valid?).and_return(false)
+      post :create
+      assigns[:order].should be_new_record
+      response.should render_template(:new)
+    end
+
+    it "should pass params to order" do
+      test_order = FactoryGirl.build(:order)
+      post :create, shop_order: test_order.attributes.merge({ address: test_order.address})
+      puts assigns[:order].inspect
+      assigns[:order].message.should eq test_order.message
+      assigns[:order].address.should eq test_order.address
+      assigns[:order].price.should eq test_order.price
     end
   end
 
