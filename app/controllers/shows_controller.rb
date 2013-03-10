@@ -2,8 +2,8 @@ class ShowsController < ApplicationController
 
   def index
     @title = t 'shows.title'
-    @year = params[:year].to_i
     today = Date.today
+    @year = params[:year] ? params[:year].to_i : today.year
 
     if @year < today.year
       queried_year = Date.new(@year)
