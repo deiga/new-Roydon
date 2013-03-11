@@ -23,7 +23,7 @@ class Shop::Category
   scope :top_categories, lambda { where(ancestry: nil) }
 
   def all_products
-    self.children.reduce(self.products) { |list, child| list << child.products }.asc('name').includes(:options)
+    Shop::Product.category_products(self)
   end
 
   def to_param

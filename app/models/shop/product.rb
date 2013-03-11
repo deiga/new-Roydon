@@ -36,6 +36,7 @@ class Shop::Product
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
 
   scope :active, where(passive: false)
+  scope :category_products, lambda { |category| where(:category_ids.in => category.children << category).asc('name').active.includes(:options) }
 
   def image_remote_url=(url_value)
     self.image = URI.parse(url_value)
