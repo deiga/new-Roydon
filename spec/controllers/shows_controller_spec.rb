@@ -29,6 +29,11 @@ describe ShowsController do
         get :index, year: 2012
       end
 
+      it "should assign @year with 2012" do
+        get :index, year: 2012
+        assigns[:year].should eq 2012
+      end
+
     end
 
   end
