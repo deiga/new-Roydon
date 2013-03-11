@@ -26,9 +26,7 @@ class Shop::Category
   end
 
   def all_products
-    self.children.with_products.reduce(self.products) do |list, child|
-      list << child.products
-    end
+    self.children.reduce(self.products) { |list, child| list << child.products }.asc('name').includes(:options)
   end
 
   def to_param
