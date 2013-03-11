@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
 
 gem 'mongoid', '~> 3.0' # MongoDB
 gem 'mongoid-ancestry', '~> 0.3' # tree structure of categories
-gem 'mongoid-paperclip', '~> 0.0', require: 'mongoid_paperclip' # attaching images
+gem 'mongoid-paperclip', '~> 0.0', :require => 'mongoid_paperclip' # attaching images
 
 gem 'devise', '~> 2.2' # User control
 gem 'rails_admin' # Admin view
@@ -27,7 +27,7 @@ gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
 
 group :development do
-  gem 'hooves', require: 'hooves/default'
+  gem 'hooves', :require => 'hooves/default'
 end
 
 group :development, :development_remote do
@@ -56,7 +56,7 @@ group :test do
   # gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
   # gem 'therubyracer', :platform => :ruby
-  gem 'simplecov', require: false
+  gem 'simplecov', :require => false
   gem 'timecop'
 end
 
@@ -67,14 +67,9 @@ group :assets do
   gem 'compass-rails'
   gem 'compass-h5bp'
   gem 'yui-compressor'
+  gem 'haml-rails'
+  gem 'jquery-rails'
+  gem 'html5-rails'
 end
-
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'html5-rails'
-
-
-# To use debugger
-# gem 'ruby-debug'
 
 gem 'strong_parameters' # Emulate Strong parameters for Rails 4
