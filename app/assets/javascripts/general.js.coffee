@@ -21,10 +21,6 @@ $ ->
     console.log 'Url: ' + this.href
     history.pushState(null, '', this.href)
 
-  $(window).on 'popstate', ->
-    console.log 'Popstate!', $(this)
-    # $.getScript(location.href)
-
   # Track jquery links in google analytics
   $(document).ajaxSend (event, xhr, settings) ->
     if _gaq?
