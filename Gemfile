@@ -13,6 +13,8 @@ gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
 
 gem 'unicorn' # Webserver
 
+gem "rack-timeout" # Timeout requests
+
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
   gem 'dalli', '~> 2.5.0'
