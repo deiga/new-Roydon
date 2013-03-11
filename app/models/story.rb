@@ -11,11 +11,14 @@ class Story
 
 	index date: 1
 
+  scope :active, where(passive: false)
+  scope :newest, lambda { where( :date.gte => Date.today.prev_month(3)).active }
+
 	# Validations
 	validates :title, :content, :presence => true
 	validates :title, :content, :length => { :minimum => 3 }
 
-	scope :active, where(passive: false)
+
 
 	def format_date
 		Time.parse(self.date.to_s).strftime('%d.%m.%Y')
