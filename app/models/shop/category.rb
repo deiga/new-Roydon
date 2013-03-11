@@ -20,10 +20,7 @@ class Shop::Category
 
   scope :active, where(passive: false)
   scope :with_products, includes(:products)
-
-  def self.top_categories
-    self.where(:ancestry => nil)
-  end
+  scope :top_categories, lambda { where(ancestry: nil) }
 
   def all_products
     self.children.reduce(self.products) { |list, child| list << child.products }.asc('name').includes(:options)
