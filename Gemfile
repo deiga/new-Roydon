@@ -28,15 +28,15 @@ gem 'rack-pjax'
 
 group :development do
   gem 'hooves', :require => 'hooves/default'
-end
-
-group :development, :development_remote do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request' # Binding with RailsPanel in chrome
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
   gem 'wirble'
+end
+
+group :development, :development_remote do
+  gem 'meta_request' # Binding with RailsPanel in chrome
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test, :development_remote do
@@ -55,7 +55,6 @@ group :test do
   gem 'cucumber-rails', :require => false
   # gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
-  # gem 'therubyracer', :platform => :ruby
   gem 'simplecov', :require => false
   gem 'timecop'
 end
