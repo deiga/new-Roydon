@@ -14,6 +14,10 @@ class Show
 
 	scope :active, where(passive: false)
 	scope :upcoming, where(:date.gte => Date.today).active
+  scope :range, (lambda do |from, to|
+      where(:date.gte => from, :date.lt => to).active
+    end)
+  scope :earlier_this_year, lambda { range(Date.today.beginning_of_year, Date.today) }
 	default_scope asc(:date)
 
 	# Validations
