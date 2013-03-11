@@ -27,12 +27,12 @@ describe Shop::Category do
   end
 
   it "should have zero top categories" do
-    Shop::Category.top_categories.count.should be 0
+    Shop::Category.top_categories.count.should eq 0
   end
 
   it "should have a top category" do
     Shop::Category.create! @attr
-    Shop::Category.top_categories.count.should be 1
+    Shop::Category.top_categories.count.should eq 1
   end
 
   it "should generate permalink on create" do
@@ -63,7 +63,7 @@ describe Shop::Category do
         five_product_category.products << Shop::Product.create!(@product_attr)
       end
       five_product_category.products.length.should be 5
-      five_product_category.all_products.length.should be 5
+      five_product_category.all_products.length.should eq 5
     end
   end
 end
