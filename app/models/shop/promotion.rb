@@ -1,7 +1,7 @@
 class DateTimeValidator < ActiveModel::EachValidator
   def validate_each(object, attribute, value)
-    puts "DTV - self: #{self.inspect}"
-    puts "DTV - options: #{options.inspect}"
+    puts "\nDTV - self: #{self.inspect}\n"
+    puts "\nDTV - options: #{options.inspect}\n"
     false
   end
 end
