@@ -50,10 +50,17 @@ describe Shop::Product do
     prod.options.first.values.should include('Red')
   end
 
+  it "should return unmodified price when no discount" do
+    subject.discount.should_not be_present
+    subject.discounted_price.should eq subject.price
+  end
+
   describe "discounted products" do
-    it "should return unmodified price when no discount" do
-      subject.discount.should_not be_present
-      subject.discounted_price.should eq subject.price
+    subject { FactoryGirl.build(:product) }
+    it "should return discounted price" do
+      discount = FactoryGirl.create(:discount, value: 10)
+      subject.discount = discount
+      subject.discounted_price.should eq(subject.price * 0.9)
     end
   end
 

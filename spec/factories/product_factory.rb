@@ -10,6 +10,7 @@ FactoryGirl.define do
 
   factory :product, class: Shop::Product do
     name "Test product"
+    price Money.new(6342)
   end
 
   factory :product_with_image, class: Shop::Product do
