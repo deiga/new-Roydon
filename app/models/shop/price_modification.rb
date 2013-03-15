@@ -7,7 +7,7 @@ class Shop::PriceModification
   field :value, :type => Float, default: 0.0
 
   validates :name, presence: true, length: { minimum: 2 }
-  validates :value, numericality: true
+  validates :value, numericality: { minimum: 0.0, maximum: 100.0 }
 
   def add_percentage
     (self.value+100)/100
