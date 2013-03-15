@@ -52,8 +52,7 @@ class Shop::Product
   end
 
   def discounted_price
-    # look for active discounts for this product
-    price
+    discount.present? ? price * discount.subtract_percentage : price
   end
 
   private
