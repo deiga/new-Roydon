@@ -10,6 +10,7 @@ class Shop::Product
 
   has_and_belongs_to_many :categories, class_name: 'Shop::Category'
   has_and_belongs_to_many :options, class_name: 'Shop::Option', inverse_of: nil
+  belongs_to :discount, class_name: 'Shop::Discount'
   belongs_to :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
   attr_accessor :image
@@ -48,6 +49,11 @@ class Shop::Product
 
   def self.search search
     where(name: /#{search}/).includes(:options)
+  end
+
+  def discounted_price
+    # look for active discounts for this product
+    price
   end
 
   private

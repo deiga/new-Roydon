@@ -50,4 +50,11 @@ describe Shop::Product do
     prod.options.first.values.should include('Red')
   end
 
+  describe "discounted products" do
+    it "should return unmodified price when no discount" do
+      subject.discount.should_not be_present
+      subject.discounted_price.should eq subject.price
+    end
+  end
+
 end
