@@ -23,7 +23,7 @@ class Shop::Order
   def add_item(cart_item)
     product = cart_item.product
     vat = product.value_added_tax || Shop::ValueAddedTax.new(value: 0)
-    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.price, options: cart_item.selected_option, tax: vat.add_percentage)
+    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.discounted_price, options: cart_item.selected_option, tax: vat.add_percentage)
   end
 
   def update_prices
