@@ -1,33 +1,25 @@
 require 'spec_helper'
 
 describe Shop::CartItem do
-  before(:each) do
-    @item = Shop::CartItem.new
+
+  let(:product) { FactoryGirl.create(:product, name: 'Test 1', price: 4.2) }
+
+  it { should_not be_valid }
+
+  describe "with product" do
+    subject(:with_product) { Shop::CartItem.create(product: product) }
+
+    it { should be_valid }
+
+    it "should delete item when quantity 0" do
+      with_product.quantity = 0
+      with_product.save!
+      with_product.should be_destroyed
+    end
   end
 
-  after(:each) do
-    @item.destroy
+  specify "should not be valid when single_price nil" do
+    subject.single_price = nil
+    subject.should_not be_valid
   end
-
-  it "should delete item when quantity 0" do
-    prod = FactoryGirl.create(:product, name: 'Test 1', price: 4.2)
-    @item.product = prod
-    @item.should be_valid
-    @item.save!
-    @item.quantity = 0
-    @item.save!
-    @item.should be_destroyed
-    prod.destroy
-  end
-
-  it "should create valid item" do
-    prod = FactoryGirl.create(:product, name: 'Test 1', price: 4.2)
-    item = Shop::CartItem.create!(product: prod)
-    item.should be_valid
-    item.save!
-    prod.destroy
-    item.destroy
-  end
-
-  specify { @item.single_price = nil; @item.should_not be_valid }
 end
