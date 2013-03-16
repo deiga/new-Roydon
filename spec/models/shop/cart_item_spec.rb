@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Shop::CartItem do
 
+  subject(:item) { Shop::CartItem.new }
   let(:product) { FactoryGirl.create(:product, name: 'Test 1', price: 4.2) }
 
   it { should_not be_valid }
@@ -19,7 +20,14 @@ describe Shop::CartItem do
   end
 
   specify "should not be valid when single_price nil" do
-    subject.single_price = nil
-    subject.should_not be_valid
+    item.single_price = nil
+    item.should_not be_valid
+  end
+
+  specify "item should set price before save" do
+    item.product = product
+    item.single_price.should eq Money.new(0)
+    item.save!
+    item.single_price.should eq product.price
   end
 end

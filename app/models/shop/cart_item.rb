@@ -14,7 +14,7 @@ class Shop::CartItem
   field :quantity, type: Integer, default: 1
   field :single_price, type: Money, default: Money.new(0)
 
-  # validates :product, presence: true # This validation screws up specs FIXME TODO
+  validates :product_id, presence: true # This validation screws up specs FIXME TODO
   validates :single_price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
 
   def price
