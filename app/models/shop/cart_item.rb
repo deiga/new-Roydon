@@ -3,7 +3,7 @@ class Shop::CartItem
   include Mongoid::Timestamps
   include ActiveModel::ForbiddenAttributesProtection
 
-  before_save :destroy_on_empty
+  before_save :destroy_on_empty, :set_price
 
   belongs_to :cart, class_name: 'Shop::ShoppingCart', inverse_of: 'items', dependent: :nullify
   belongs_to :product, class_name: 'Shop::Product'
@@ -29,4 +29,7 @@ class Shop::CartItem
       end
     end
 
+    def set_price
+      self.single_price = product.price unless single_price > Money.new(0)
+    end
 end
