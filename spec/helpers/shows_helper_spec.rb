@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe ShowsHelper do
 
+  after do
+    Timecop.return
+  end
+
   it { display_show_year(2011).should be 2011 }
 
   it "should return year range, if month >= 9" do
