@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 describe Shop::GroupDiscount do
-  subject { Shop::GroupDiscount.new(name: 'Test grpDiscount')}
+  subject { FactoryGirl.build(:group_discount)}
   it {should be_valid}
 end
