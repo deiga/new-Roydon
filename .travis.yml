@@ -1,5 +1,5 @@
 language: ruby
-budler_args: --without development production staging development_remote
+bundler_args: --without development production staging development_remote
 rvm:
   - "2.0.0"
 services: mongodb
