@@ -1,12 +1,14 @@
 <%
 begin
-  credentials = YAML.load_file('config/db.credentials.yml')[ENV['RAILS_ENV']]
-  username = credentials['user']
-  password = credentials['password']
-  port = credentials['port']
-  url = credentials['url']
-  database = credentials['database']
-  host = "#{url}:#{port}"
+  unless ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
+    credentials = YAML.load_file('config/db.credentials.yml')[ENV['RAILS_ENV']]
+    username = credentials['user']
+    password = credentials['password']
+    port = credentials['port']
+    url = credentials['url']
+    database = credentials['database']
+    host = "#{url}:#{port}"
+  end
 rescue Exception => e
   p 'Error while reading db credentials!'
   require 'uri'
@@ -77,15 +79,22 @@ common: &common
 
 development:
   <<: *common
+  sessions:
+    default:
+      database: roydon_develop
+      hosts:
+        - localhost
+      options:
+        consistency: :strong
 development_remote:
   <<: *common
 test:
   <<: *common
   sessions:
     default:
-      database: <%= database %>
+      database: roydon_test
       hosts:
-        - <%= host %>
+        - localhost
       options:
         consistency: :strong
         max_retries: 1
