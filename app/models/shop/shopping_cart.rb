@@ -47,4 +47,8 @@ class Shop::ShoppingCart
   def latest_items
     self.items.with_product.order_by(:updated_at.desc).limit(5)
   end
+
+  def products
+    items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
+  end
 end

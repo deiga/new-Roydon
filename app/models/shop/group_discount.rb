@@ -12,8 +12,7 @@ class Shop::GroupDiscount
   validates :name, :scheme, presence: true
 
   def apply_price(cart)
-    cart_products = cart.items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
-    cart_products.select! {|item| products.include?(item)}
+    cart_products = cart.products.select {|item| products.include?(item)}
     prod_amount = cart_products.size
     if prod_amount >= scheme.keys.sort.first
       old_price = cart_products.reduce(Money.new(0)) { |sum, prod| sum += prod.price }
@@ -22,19 +21,25 @@ class Shop::GroupDiscount
       else
         values = scheme.keys
       end
-      new_price = Money.new(0)
-      begin
-        value = values.max
-        puts "#{scheme[value]}, #{value}, #{scheme[value][:cents]}"
-        new_price += Money.new(scheme[value][:cents])
-        prod_amount -= value
-        values.delete(value) unless prod_amount >= value
-      end while values.present?
+      new_price, prod_amount = apply_scheme(values, prod_amount)
       old_price -= cart_products.first.price * prod_amount
       [new_price, old_price]
     else
       nil
     end
   end
+
+  private
+
+    def apply_scheme(keys, products_amount)
+      price = Money.new(0)
+      begin
+        value = keys.max
+        price += Money.new(scheme[value][:cents])
+        products_amount -= value
+        keys.delete(value) unless products_amount >= value
+      end while keys.present?
+      [price, products_amount]
+    end
 
 end
