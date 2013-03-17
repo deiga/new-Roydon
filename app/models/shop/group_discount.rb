@@ -11,35 +11,38 @@ class Shop::GroupDiscount
 
   validates :name, :scheme, presence: true
 
-  def apply_price(cart)
-    cart_products = cart.products.select {|item| products.include?(item)}
-    amount_of_products = cart_products.size
-    all_keys = scheme.keys
-    if amount_of_products >= all_keys.sort.first
-      old_price = cart_products.reduce(Money.new(0)) { |sum, prod| sum += prod.price }
-      applicable_keys = all_keys
-      unless amount_of_products >= all_keys.max
-        applicable_keys = all_keys.include?(amount_of_products) ? [amount_of_products] : all_keys.select { |key| key < amount_of_products }
-      end
-      new_price, amount_left = apply_scheme(applicable_keys, amount_of_products)
-      old_price -= cart_products.first.price * amount_left
-      [new_price, old_price]
-    else
-      nil
-    end
+  def apply_discount_on(cart)
+    discountable_products = cart.products.select { |item| products.include?(item) }
+    product_count = discountable_products.count
+    return nil if product_count < discount_tiers.first
+
+    undiscounted_price = discountable_products.map(&:price).reduce(:+)
+    discounted_price, leftover_count = discounted_price_for(product_count)
+    undiscounted_price -= discountable_products.first.price * leftover_count
+    [discounted_price, undiscounted_price]
   end
 
   private
 
-    def apply_scheme(keys, products_amount)
+    def discount_tiers
+      scheme.keys.sort
+    end
+
+    def discount_tiers_for(product_count)
+      discount_tiers.include?(product_count) ? [product_count] : discount_tiers.select { |key| key < product_count }
+    end
+
+    def discounted_price_for(product_count)
+      tiers = discount_tiers_for(product_count)
       price = Money.new(0)
+      leftover_count = product_count
       begin
-        value = keys.max
-        price += Money.new(scheme[value][:cents])
-        products_amount -= value
-        keys.delete(value) unless products_amount >= value
-      end while keys.present?
-      [price, products_amount]
+        best_applicable_tier = tiers.max
+        price += Money.new(scheme[best_applicable_tier][:cents]) # TODO bug in money-rails, https://github.com/RubyMoney/money-rails/issues/90
+        leftover_count -= best_applicable_tier
+        tiers.delete(best_applicable_tier) unless product_count >= best_applicable_tier
+      end while tiers.present?
+      [price, leftover_count]
     end
 
 end

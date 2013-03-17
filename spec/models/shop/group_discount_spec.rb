@@ -12,7 +12,7 @@ describe Shop::GroupDiscount do
     subject(:with_scheme) { FactoryGirl.build(:group_discount_with_scheme) }
     it { should be_valid }
 
-    specify { with_scheme.apply_price(cart).should be_nil }
+    specify { with_scheme.apply_discount_on(cart).should be_nil }
 
     context "group discount and cart with multiple products" do
       before(:each) do
@@ -21,7 +21,7 @@ describe Shop::GroupDiscount do
       specify "group discount should return new price and old price reduction" do
         1.upto(5) { cart.add product }
         with_scheme.products << product
-        with_scheme.apply_price(cart).should eq [Money.new(1000), product.price*5]
+        with_scheme.apply_discount_on(cart).should eq [Money.new(1000), product.price*5]
       end
     end
   end
