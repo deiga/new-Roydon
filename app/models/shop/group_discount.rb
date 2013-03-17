@@ -21,8 +21,8 @@ class Shop::GroupDiscount
       unless amount_of_products >= all_keys.max
         applicable_keys = all_keys.include?(amount_of_products) ? [amount_of_products] : all_keys.select { |key| key < amount_of_products }
       end
-      new_price, amount_of_products = apply_scheme(applicable_keys, amount_of_products)
-      old_price -= cart_products.first.price * amount_of_products
+      new_price, amount_left = apply_scheme(applicable_keys, amount_of_products)
+      old_price -= cart_products.first.price * amount_left
       [new_price, old_price]
     else
       nil
