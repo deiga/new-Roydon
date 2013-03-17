@@ -13,16 +13,16 @@ class Shop::GroupDiscount
 
   def apply_price(cart)
     cart_products = cart.products.select {|item| products.include?(item)}
-    prod_amount = cart_products.size
-    if prod_amount >= scheme.keys.sort.first
+    amount_of_products = cart_products.size
+    all_keys = scheme.keys
+    if amount_of_products >= all_keys.sort.first
       old_price = cart_products.reduce(Money.new(0)) { |sum, prod| sum += prod.price }
-      unless prod_amount >= scheme.keys.max
-        values = scheme.keys.include?(prod_amount) ? [prod_amount] : scheme.keys.select { |key| key < prod_amount }
-      else
-        values = scheme.keys
+      applicable_keys = all_keys
+      unless amount_of_products >= all_keys.max
+        applicable_keys = all_keys.include?(amount_of_products) ? [amount_of_products] : all_keys.select { |key| key < amount_of_products }
       end
-      new_price, prod_amount = apply_scheme(values, prod_amount)
-      old_price -= cart_products.first.price * prod_amount
+      new_price, amount_of_products = apply_scheme(applicable_keys, amount_of_products)
+      old_price -= cart_products.first.price * amount_of_products
       [new_price, old_price]
     else
       nil
