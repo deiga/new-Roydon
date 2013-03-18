@@ -1,6 +1,6 @@
 language: ruby
 bundler_args: --without development production staging development_remote
-gemfile: 
+gemfile:
   - Gemfile
   - gemfiles/Gemfile.19
 rvm:
@@ -14,3 +14,6 @@ matrix:
       gemfile: gemfiles/Gemfile.19
     - rvm: 1.9.3
       gemfile: Gemfile
+  allow_failures:
+    - rvm: 1.9.3
+      gemfile: gemfile/Gemfile.19
