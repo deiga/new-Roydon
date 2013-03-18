@@ -1,6 +1,7 @@
 language: ruby
 bundler_args: --without development production staging development_remote
 rvm:
+  - "1.9.3"
   - "2.0.0"
 services: mongodb
 script: bundle exec rake spec cucumber
