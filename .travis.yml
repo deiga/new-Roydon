@@ -2,7 +2,15 @@ language: ruby
 bundler_args: --without development production staging development_remote
 gemfile: 
   - Gemfile
+  - gemfiles/Gemfile.19
 rvm:
+  - "1.9.3"
   - "2.0.0"
 services: mongodb
 script: bundle exec rake spec cucumber
+matrix:
+  exclude:
+    - rvm: 2.0.0
+      gemfile: gemfiles/Gemfile.19
+    - rvm: 1.9.3
+      gemfile: Gemfile
