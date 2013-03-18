@@ -40,6 +40,7 @@ class Shop::GroupDiscount
         best_applicable_tier = tiers.max
         price += Money.new(scheme[best_applicable_tier][:cents]) # TODO bug in money-rails, https://github.com/RubyMoney/money-rails/issues/90
         leftover_count -= best_applicable_tier
+        tiers = discount_tiers_for(leftover_count)
         tiers.delete(best_applicable_tier) unless product_count >= best_applicable_tier
       end while tiers.present?
       [price, leftover_count]
