@@ -1,5 +1,6 @@
 language: ruby
 bundler_args: --without development production staging development_remote
+gemfile: gemfiles/Gemfile.ci
 rvm:
   - "1.9.3"
   - "2.0.0"
