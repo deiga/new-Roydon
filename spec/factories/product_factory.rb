@@ -11,19 +11,17 @@ FactoryGirl.define do
   factory :product, class: Shop::Product do
     name "Test product"
     price Money.new(6342)
+
+    factory :product_with_image do
+      name "Test product with image"
+      test_file
+    end
+
+    factory :product_with_options do
+      name "Test product with options"
+
+      options {[FactoryGirl.create(:option, name: 'Colour', values: ['Red','Green','Blue'])]}
+    end
+
   end
-
-  factory :product_with_image, class: Shop::Product do
-    name "Test product with image"
-    test_file
-
-
-  end
-
-  factory :product_with_options, class: Shop::Product do
-    name "Test product with options"
-
-    options {[FactoryGirl.create(:option, name: 'Colour', values: ['Red','Green','Blue'])]}
-  end
-
 end
