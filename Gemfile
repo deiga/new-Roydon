@@ -57,6 +57,7 @@ group :test do
   gem 'launchy'    # So you can do Then show me the page
   gem 'simplecov', :require => false
   gem 'timecop'
+  gem 'coveralls', :require => false
 end
 
 group :assets do
