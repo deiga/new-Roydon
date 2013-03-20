@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Shop::GroupDiscount do
   subject { FactoryGirl.build(:invalid_group_discount)}
 
-  let(:product) { FactoryGirl.build(:product, price: Money.new(350))}
+  let(:product) { FactoryGirl.create(:product, price: Money.new(350))}
   let(:cart) { FactoryGirl.build(:cart) }
 
   it { should_not be_valid }
 
   describe "with scheme" do
-    subject(:with_scheme) { FactoryGirl.build(:group_discount) }
+    subject(:with_scheme) { FactoryGirl.create(:group_discount) }
     it { should be_valid }
 
     specify { with_scheme.apply_discount_on(cart).should be_nil }
@@ -33,7 +33,20 @@ describe Shop::GroupDiscount do
         with_scheme.products << product
         with_scheme.apply_discount_on(cart).should eq [Money.new(2000), product.price*scheme_threshold*2]
       end
+    end
 
+    context "product association" do
+      specify "adding to products associates with product" do
+        with_scheme.products << product
+        with_scheme.products.should include(product)
+        product.reload.group_discounts.should include(with_scheme)
+      end
+
+      specify "adding to group_discounts associates with group_discount" do
+        product.group_discounts << with_scheme
+        product.group_discounts.should include(with_scheme)
+        with_scheme.reload.products.should include(product)
+      end
     end
   end
 end
