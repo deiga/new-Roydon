@@ -10,6 +10,7 @@ class Shop::Product
 
   has_and_belongs_to_many :categories, class_name: 'Shop::Category'
   has_and_belongs_to_many :options, class_name: 'Shop::Option', inverse_of: nil
+  has_and_belongs_to_many :group_discounts, class_name: 'Shop::GroupDiscount'
   belongs_to :discount, class_name: 'Shop::Discount'
   belongs_to :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
