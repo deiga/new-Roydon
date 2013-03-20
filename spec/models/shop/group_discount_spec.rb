@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Shop::GroupDiscount do
-  subject { FactoryGirl.build(:group_discount)}
+  subject { FactoryGirl.build(:invalid_group_discount)}
 
   let(:product) { FactoryGirl.build(:product, price: Money.new(350))}
   let(:cart) { FactoryGirl.build(:cart) }
@@ -9,7 +9,7 @@ describe Shop::GroupDiscount do
   it { should_not be_valid }
 
   describe "with scheme" do
-    subject(:with_scheme) { FactoryGirl.build(:group_discount_with_scheme) }
+    subject(:with_scheme) { FactoryGirl.build(:group_discount) }
     it { should be_valid }
 
     specify { with_scheme.apply_discount_on(cart).should be_nil }
