@@ -82,17 +82,22 @@ describe Shop::ShoppingCart do
     end
 
     context "with group discount" do
-      let(:group_discount) { FactoryGirl.create(:group_discount, products: [product]) }
+      let(:group_discount) { FactoryGirl.create(:group_discount) }
       let(:scheme_threshold) { group_discount.scheme.keys.sort.first}
 
-      it "shouldn't include discount into price with only 1 product" do
+      before(:each) do
         Shop::GroupDiscount.should_receive(:apply_discount_on)
+        group_discount.products << product
+        product.reload
+      end
+
+      it "shouldn't include discount into price with only 1 product" do
+        product.group_discounts.should_not be_empty
         cart.add product
         cart.price.should eq product.price
       end
 
       it "should include discounted price with exactly :scheme_threshold products" do
-        Shop::GroupDiscount.should_receive(:apply_discount_on)
         1.upto(scheme_threshold) do
           cart.add product
         end
