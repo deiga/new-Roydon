@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Shop::ShoppingCart do
 
   subject(:cart) { FactoryGirl.create(:cart) }
-  let(:product) { FactoryGirl.build(:product, price: Money.new(230), name: 'Test 1') }
+  let(:product) { FactoryGirl.create(:product, price: Money.new(230), name: 'Test 1') }
   let(:product2) { FactoryGirl.build(:product, price: Money.new(420), name: 'Test 2') }
   let(:product_with_options) { FactoryGirl.build(:product_with_options, price: Money.new(420), name: 'Test 3') }
   it { should be_valid }
@@ -79,6 +79,25 @@ describe Shop::ShoppingCart do
       cart.add product
       cart.add product
       cart.price.should eq product.price*2
+    end
+
+    context "with group discount" do
+      let(:group_discount) { FactoryGirl.create(:group_discount, products: [product]) }
+      let(:scheme_threshold) { group_discount.scheme.keys.sort.first}
+
+      it "shouldn't include discount into price with only 1 product" do
+        Shop::GroupDiscount.should_receive(:apply_discount_on)
+        cart.add product
+        cart.price.should eq product.price
+      end
+
+      it "should include discounted price with exactly :scheme_threshold products" do
+        Shop::GroupDiscount.should_receive(:apply_discount_on)
+        1.upto(scheme_threshold) do
+          cart.add product
+        end
+        cart.price.should eq Money.new(group_discount.scheme[scheme_threshold][:cents])
+      end
     end
   end
 
