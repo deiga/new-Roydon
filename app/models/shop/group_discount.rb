@@ -25,7 +25,7 @@ class Shop::GroupDiscount
   private
 
     def discount_tiers
-      scheme.keys.sort
+      scheme.keys.sort.map(&:to_i)
     end
 
     def discount_tiers_for(product_count)
