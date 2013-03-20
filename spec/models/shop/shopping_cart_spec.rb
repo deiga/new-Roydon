@@ -86,7 +86,7 @@ describe Shop::ShoppingCart do
       let(:scheme_threshold) { group_discount.scheme.keys.sort.first}
 
       before(:each) do
-        Shop::GroupDiscount.should_receive(:apply_discount_on)
+        group_discount.should_receive(:apply_discount_on).with(cart).and_call_original
         group_discount.products << product
         product.reload
       end
