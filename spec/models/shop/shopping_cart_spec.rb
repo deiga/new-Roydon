@@ -98,7 +98,7 @@ describe Shop::ShoppingCart do
       end
 
       it "should include discounted price with exactly :scheme_threshold products" do
-        1.upto(scheme_threshold) do
+        1.upto(scheme_threshold.to_i) do
           cart.add product
         end
         cart.price.should eq Money.new(group_discount.scheme[scheme_threshold][:cents])

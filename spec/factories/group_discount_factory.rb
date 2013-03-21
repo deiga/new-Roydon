@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "Test group discount"
 
     factory :group_discount do
-      scheme {{5 => Money.new(1000)}}
+      scheme {{"5" => Money.new(1000)}}
     end
   end
 end

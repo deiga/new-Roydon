@@ -13,7 +13,7 @@ describe Shop::GroupDiscount do
     it { should be_valid }
 
     specify { with_scheme.apply_discount_on(cart).should be_nil }
-    let(:scheme_threshold) {with_scheme.scheme.keys.sort.first}
+    let(:scheme_threshold) {with_scheme.scheme.keys.sort.first.to_i}
 
     context "cart with multiple products" do
       specify "group discount should return new price and old price reduction with even products" do
