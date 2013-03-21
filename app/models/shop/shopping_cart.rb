@@ -37,18 +37,20 @@ class Shop::ShoppingCart
   end
 
   def price
-    price = Money.new(0)
-    self.items.each do |item|
-      price += item.price
-    end
-    group_discounts = items.map(&:product).map(&:group_discounts).flatten
-    if group_discounts.any?
-      group_discounts.each do |group_discount|
-        price_modification = group_discount.apply_discount_on(self) # TODO remove passing cart and pass products instead
+    Rails.cache.fetch [self, 'price'] do
+      price = Money.new(0)
+      self.items.each do |item|
+        price += item.price
+      end
+      group_discounts = items.map(&:product).map(&:group_discounts).flatten
+      if group_discounts.any?
+        group_discounts.each do |group_discount|
+          price_modification = group_discount.apply_discount_on(self) # TODO remove passing cart and pass products instead
           unless price_modification.nil?
             (@price_modifications ||= [] ) << price_modification
             price += price_modification.inject(:-)
           end
+        end
       end
       price
     end
