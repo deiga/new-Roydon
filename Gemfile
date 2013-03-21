@@ -17,7 +17,7 @@ gem "rack-timeout" # Timeout requests
 
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
-  gem 'dalli', '~> 2.5.0'
+  gem 'dalli', '~> 2.5'
 end
 
 gem 'aws-sdk', '~> 1.8' # Online storage
