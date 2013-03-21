@@ -45,10 +45,19 @@ class Shop::ShoppingCart
     if group_discounts.any?
       group_discounts.each do |group_discount|
         price_modification = group_discount.apply_discount_on(self) # TODO remove passing cart and pass products instead
-        price += price_modification.inject(:-) unless price_modification.nil?
+          unless price_modification.nil?
+            (@price_modifications ||= [] ) << price_modification
+            price += price_modification.inject(:-)
+          end
       end
+      price
     end
-    price
+  end
+
+  def price_modifications
+    Rails.cache.fetch [self, 'price_modifications'] do
+      @price_modifications
+    end
   end
 
   def latest_items
