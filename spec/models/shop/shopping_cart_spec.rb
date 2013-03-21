@@ -92,7 +92,6 @@ describe Shop::ShoppingCart do
       end
 
       it "shouldn't include discount into price with only 1 product" do
-        product.group_discounts.should_not be_empty
         cart.add product
         cart.price.should eq product.price
       end
@@ -102,6 +101,14 @@ describe Shop::ShoppingCart do
           cart.add product
         end
         cart.price.should eq Money.new(group_discount.scheme[scheme_threshold][:cents])
+      end
+
+      it "should assign @price_modifications" do
+        1.upto(scheme_threshold.to_i) do
+          cart.add product
+        end
+        cart.price
+        cart.price_modifications.should be_present
       end
     end
   end
