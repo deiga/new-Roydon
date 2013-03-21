@@ -34,15 +34,18 @@ class Shop::GroupDiscount
 
     def discounted_price_for(product_count)
       tiers = discount_tiers_for(product_count)
-      price = Money.new(0)
+      price_cents = 0
       leftover_count = product_count
       while tiers.any?
         best_applicable_tier = tiers.max
-        price += Money.new(scheme[best_applicable_tier][:cents]) # TODO bug in money-rails, https://github.com/RubyMoney/money-rails/issues/90
+        money_hash = scheme[best_applicable_tier]
+        # Need to or these as the first pass has symbols and subsequent passes have strings, because loading from db transforms all to strings
+        price_cents += money_hash[:cents] || money_hash['cents'] # TODO bug in money-rails, https://github.com/RubyMoney/money-rails/issues/90
         leftover_count -= best_applicable_tier.to_i
         tiers = discount_tiers_for(leftover_count)
         tiers.delete(best_applicable_tier) unless leftover_count >= best_applicable_tier.to_i
       end
+      price = Money.new(price_cents)
       [price, leftover_count]
     end
 
