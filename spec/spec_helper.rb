@@ -1,8 +1,9 @@
 require 'simplecov'
-SimpleCov.start 'rails'
-
 require 'coveralls'
-Coveralls.wear!
+
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start 'rails'
+# Coveralls.wear!('rails')
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] = 'test'
