@@ -6,14 +6,16 @@ class Shop::Product
 
   paginates_per 9
 
+  before_validation { self.image.clear if self.delete_image == '1' }
   before_save :normalize_filename
 
   has_and_belongs_to_many :categories, class_name: 'Shop::Category'
   has_and_belongs_to_many :options, class_name: 'Shop::Option', inverse_of: nil
+  has_and_belongs_to_many :group_discounts, class_name: 'Shop::GroupDiscount'
   belongs_to :discount, class_name: 'Shop::Discount'
   belongs_to :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
-  attr_accessor :image
+  attr_accessor :image, :delete_image
   attr_reader :image_remote_url
 
   delegate :empty?, :to => :options
@@ -23,9 +25,6 @@ class Shop::Product
     thumb: ['175x', :png],
     show: ['400x', :png]
   }
-
-  attr_accessor :delete_image
-  before_validation { self.image.clear if self.delete_image == '1' }
 
   field :name,        :type => String
   field :price,       :type => Money, default: Money.new(0)
@@ -47,8 +46,8 @@ class Shop::Product
     @image_remote_url = url_value
   end
 
-  def self.search search
-    where(name: /#{search}/).includes(:options)
+  def self.search term
+    where(name: /#{term}/).includes(:options)
   end
 
   def discounted_price
