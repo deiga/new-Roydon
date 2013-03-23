@@ -16,12 +16,9 @@ class Shop::OrdersController < Shop::ShopController
 
   def create
     @order = Shop::Order.new(order_params)
-    @order.add(@cart.items.with_product)
 
-    unless order_address_param.nil?
-      @address = Address.find(order_address_param)
-      @order.address = @address
-    end
+    @order.add(@cart.items.with_product)
+    @order.address = Address.find(order_address_param) unless order_address_param.nil?
     @order.user = current_user
 
     respond_to do |format|
