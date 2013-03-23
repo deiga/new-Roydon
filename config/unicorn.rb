@@ -15,6 +15,10 @@ preload_app true
 # haven't responded within 30 seconds
 timeout 29
 
+before_exec do |server|
+  ENV['RUBY_GC_MALLOC_LIMIT']=16000000
+end
+
 before_fork do |server, worker|
 
   Signal.trap 'TERM' do
