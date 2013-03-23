@@ -41,4 +41,9 @@ class Show
 		date_string
 	end
 
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
+
 end
