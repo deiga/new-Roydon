@@ -8,12 +8,14 @@
           %th#show_name{scope:"col"} Nimi
           %th#show_place{scope:"col"} Paikka
       %tbody
-        = render @upcoming_shows
+        = cache [@upcoming_shows, @year] do
+          = render @upcoming_shows
         - unless @earlier_shows.blank?
-          %tr
-            %td{headers:"show_name",colspan:"4"}
-              %strong Menneet näyttelyt tältä vuodelta
-          = render @earlier_shows
+          = cache [@earlier_shows, @year] do
+            %tr
+              %td{headers:"show_name",colspan:"4"}
+                %strong Menneet näyttelyt tältä vuodelta
+            = render @earlier_shows
   - else
     %p= "Vuodelle #{@year} ei ole yhtään näyttelyä lisätty"
 = cache "years-#{Date.today.year}" do
