@@ -33,6 +33,10 @@ group :development do
   gem 'wirble'
 end
 
+group :development, :test do
+  gem 'debugger'
+end
+
 group :development, :development_remote do
   gem 'meta_request' # Binding with RailsPanel in chrome
   gem 'better_errors'
