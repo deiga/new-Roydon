@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   before_filter :set_title
 
-  caches_page :contact, :about
+  caches_action :contact, :about
 
   def home
     # TODO: Add filtering by current language
