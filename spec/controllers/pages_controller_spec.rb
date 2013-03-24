@@ -14,7 +14,7 @@ describe PagesController do
     end
 
     it "should receive call to Show.upcoming scope" do
-      Show.should_receive(:first_upcoming)
+      Show.should_receive(:upcoming)
       get :home
     end
 
