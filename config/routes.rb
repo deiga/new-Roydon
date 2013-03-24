@@ -2,13 +2,13 @@ Roydon::Application.routes.draw do
 
   resources :addresses, except: [:index]
 
-  get '/users/show', to: 'users#show'
 
   devise_for :users, controllers: {confirmations: 'confirmations'}
 
   devise_scope :user do
     put "/confirm" => "confirmations#confirm"
   end
+  resources :users, only: [:show]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
