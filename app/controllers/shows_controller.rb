@@ -1,5 +1,7 @@
 class ShowsController < ApplicationController
 
+  caches_action :index, cache_path: proc { tag = params[:year].nil? ? "#{Show.cache_key}-#{Date.today.year}" : "#{Show.cache_key}-#{params[:year]}"; { tag: tag } }
+
   def index
     @title = t 'shows.title'
     today = Date.today
