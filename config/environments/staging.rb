@@ -79,4 +79,5 @@ Roydon::Application.configure do
 
   # Setup for S3
   config.paperclip_defaults = {:storage => :s3, :s3_credentials => {access_key_id: ENV['S3_ACCESS'], secret_access_key: ENV['S3_SECRET']}, bucket: "roydon-prod", path: ":attachment/:id/:style.:extension", url: ":s3_domain_url"}
+  Paperclip.options[:log] = false
 end
