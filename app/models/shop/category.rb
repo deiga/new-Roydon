@@ -38,6 +38,11 @@ class Shop::Category
     self.ancestry.nil?
   end
 
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
+
   private
 
     def generate_permalink

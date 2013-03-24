@@ -54,6 +54,11 @@ class Shop::Product
     discount.present? ? price * discount.subtract_percentage : price
   end
 
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
+
   private
     def normalize_filename
       if image.exists?
