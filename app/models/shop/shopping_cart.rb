@@ -57,16 +57,25 @@ class Shop::ShoppingCart
   end
 
   def price_modifications
-    Rails.cache.fetch [self, 'price_modifications'] do
+    Rails.cache.fetch [self, 'price', 'modifications'] do
       @price_modifications
     end
   end
 
   def latest_items
-    self.items.with_product.order_by(:updated_at.desc).limit(5)
+    Rails.cache.fetch [self, 'latest-items'].join('/') do
+      self.items.with_product.order_by(:updated_at.desc).limit(5)
+    end
   end
 
   def products
-    items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
+    Rails.cache.fetch [self, 'products'].join('/') do
+      items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
+    end
+  end
+
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
   end
 end
