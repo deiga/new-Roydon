@@ -1,26 +1,27 @@
 Roydon::Application.routes.draw do
 
-  resources :addresses, except: [:index]
+  bson_id_regex = /[0-9a-f]{24}/i
 
+  resources :addresses, except: [:index]
 
   devise_for :users, controllers: {confirmations: 'confirmations'}
 
   devise_scope :user do
     put "/confirm" => "confirmations#confirm"
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show], constraints: { id: bson_id_regex }
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :stories, only: [:index], path: :news, constraints: { id: /[0-9a-f]{24}/i}
+  resources :stories, only: [:index], path: :news, constraints: { id: bson_id_regex }
 
   namespace :shop do
-    resources :products, only: [:index, :show], constraints: { id: /[0-9a-f]{24}/i} do
+    resources :products, only: [:index, :show], constraints: { id: bson_id_regex } do
       collection do
         get 'categories/:category', action: :index, as: 'category', constraints: { category: /[a-zA-Z0-9~-]+/i }
       end
     end
-    resources :shopping_carts, except: [:index], constraints: { id: /[0-9a-f]{24}/i} do
+    resources :shopping_carts, except: [:index], constraints: { id: bson_id_regex } do
       delete '/remove_item/:id', action: 'remove_item', as: 'remove_item'
       post '/add_item/:id', action: 'add_item', as: 'add_item'
     end
