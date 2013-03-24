@@ -1,8 +1,11 @@
 - content_for :content do
-  = render 'shop/layouts/top_menu', top_categories: @top_categories
+  = cache [@top_categories, 'top-categories'] do
+    = render 'shop/layouts/top_menu', top_categories: @top_categories
   %section#sub-navigation-sidebar
     = render 'shop/layouts/search'
-    = render 'shop/layouts/category_menu', categories: @categories
+    - unless @categories.nil?
+      = cache [@categories, 'sub-categories'] do
+        = render 'shop/layouts/category_menu', categories: @categories
   %section#shop-details
     = content_for?(:shop_content) ? yield(:shop_content) : yield
   %section#sidebar
