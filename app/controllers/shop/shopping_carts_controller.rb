@@ -61,12 +61,6 @@ class Shop::ShoppingCartsController < Shop::ShopController
     redirect_to shop_path
   end
 
-  def create
-  end
-
-  def new
-  end
-
   private
 
     def item_response(message)
