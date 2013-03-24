@@ -1,5 +1,7 @@
 class AddressesController < ApplicationController
 
+  caches_action :show, cache_path: proc {{ tag: Address.find(address_id_params).updated_at.to_i }}
+
   respond_to :html, :js
 
   def new
