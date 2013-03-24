@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class Shop::Category
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -39,8 +41,11 @@ class Shop::Category
   end
 
   def self.cache_key
-    require 'digest/md5'
     Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
+
+  def products_cache_key
+    Digest::MD5.hexdigest "#{Shop::Product.category_products(self).max(:updated_at)}.try(:to_i)-#{Shop::Product.category_products(self).count}"
   end
 
   private
