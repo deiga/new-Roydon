@@ -18,10 +18,13 @@ class Story
 	validates :title, :content, :presence => true
 	validates :title, :content, :length => { :minimum => 3 }
 
-
-
 	def format_date
 		Time.parse(self.date.to_s).strftime('%d.%m.%Y')
 	end
+
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
 
 end
