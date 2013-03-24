@@ -10,9 +10,23 @@ describe Shop::ShoppingCart do
 
   it { should be_empty }
 
-  it "should empty an non-empty cart" do
+  it "should add a product to cart" do
     cart.add product
     cart.size.should eq 1
+  end
+
+  it "should empty a cart" do
+    cart = FactoryGirl.build(:cart_with_product)
+    cart.should_not be_empty
+    cart.empty
+    cart.should be_empty
+  end
+
+  it "should empty a cart" do
+    cart.add product
+    cart.should_not be_empty
+    cart.empty
+    cart.should be_empty
   end
 
   describe "cart size" do
