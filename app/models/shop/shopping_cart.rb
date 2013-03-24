@@ -26,6 +26,7 @@ class Shop::ShoppingCart
     existing_item = self.items.to_a.find { |x| x.product == product && x.selected_option == new_options}
     if existing_item
       existing_item.inc(:quantity, 1)
+      self.items
     else
       self.items << Shop::CartItem.create!(product: product, selected_option: new_options)
     end
@@ -63,7 +64,7 @@ class Shop::ShoppingCart
   end
 
   def latest_items
-    self.items.with_product.order_by(:updated_at.desc).limit(5)
+    self.items.desc(:updated_at).limit(5)
   end
 
   def products

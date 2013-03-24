@@ -29,6 +29,11 @@ describe Shop::ShoppingCart do
     cart.should be_empty
   end
 
+  it "should return 5 items on latest_items" do
+    1.upto(7) { cart.add FactoryGirl.build(:product) }
+    cart.latest_items.lazy.count.should eq 5 # lazy is a workaround for
+  end
+
   describe "cart size" do
     it "should have size 2 after adding products" do
       cart.add product
