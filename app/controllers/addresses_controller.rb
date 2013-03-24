@@ -1,7 +1,5 @@
 class AddressesController < ApplicationController
 
-  caches_action :show, cache_path: proc {{ tag: Address.find(address_id_params).updated_at.to_i }}
-
   respond_to :html, :js
 
   def new
@@ -12,6 +10,9 @@ class AddressesController < ApplicationController
 
   def show
     @address = Address.find(address_id_params)
+    stale? @address do
+      respond_with @address
+    end
   end
 
   def create

@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate_user!
-  caches_action :show, cache_path: proc {{ tag: User.find(params[:id]).updated_at.to_i }}
+  respond_to :html
 
   def show
     @user = User.find(params[:id])
+    stale? @user do
+      respond_with @user
+    end
   end
 end

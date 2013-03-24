@@ -1,7 +1,5 @@
 class Shop::OrdersController < Shop::ShopController
 
-  caches_action :show, cache_path: proc {{ tag: Shop::Order.find(order_id_param).updated_at.to_i }}
-
   respond_to :html, :js
 
   def new
@@ -38,6 +36,9 @@ class Shop::OrdersController < Shop::ShopController
 
   def show
     @order = Shop::Order.find(order_id_param)
+    stale? @order do
+      respond_with @order
+    end
   end
 
   private
