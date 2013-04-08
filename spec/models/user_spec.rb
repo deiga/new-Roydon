@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  subject { FactoryGirl.build(:user) }
+  subject(:user) { FactoryGirl.build(:user) }
 
   it { should be_valid }
 
@@ -24,6 +24,24 @@ describe User do
     let(:admin) { FactoryGirl.build(:admin) }
     it "should be admin" do
       admin.should be_admin
+    end
+  end
+
+  describe "formatting methods" do
+    it "should display email when no first name" do
+      user = FactoryGirl.build(:user, first_name: '')
+      user.display_name.should eq user.email
+    end
+
+    it { user.name.should eq "#{user.first_name} #{user.last_name}" }
+  end
+
+  describe "callbacks" do
+    it "should set password to random if empty" do
+      user.should_receive(:set_random_password).and_call_original
+      user.password = ''
+      user.save!
+      user.password.should_not be_blank
     end
   end
 
