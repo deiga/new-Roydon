@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   before_validation :set_random_password
   after_initialize :migrate_data

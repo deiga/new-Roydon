@@ -12,9 +12,8 @@ class Show
 
 	index date: 1
 
-	scope :active, where(passive: false)
+	scope :active, lambda { where(passive: false) }
 	scope :upcoming, lambda { where(:date.gte => Date.today).active }
-  scope :first_upcoming, lambda { upcoming.limit(1) }
   scope :range, (lambda do |from, to|
       where(:date.gte => from, :date.lt => to).active
     end)
@@ -40,5 +39,10 @@ class Show
 		end
 		date_string
 	end
+
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
+  end
 
 end

@@ -36,6 +36,9 @@ class Shop::OrdersController < Shop::ShopController
 
   def show
     @order = Shop::Order.find(order_id_param)
+    stale? @order do
+      respond_with @order
+    end
   end
 
   private

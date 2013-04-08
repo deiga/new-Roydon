@@ -2,19 +2,19 @@ require 'spec_helper'
 
 describe Shop::CartItem do
 
-  subject(:item) { Shop::CartItem.new }
+  subject(:item) { FactoryGirl.build(:cart_item) }
   let(:product) { FactoryGirl.create(:product, name: 'Test 1', price: 4.2) }
 
   it { should_not be_valid }
 
   describe "with product" do
-    subject(:with_product) { Shop::CartItem.create(product: product) }
+    subject(:with_product) { FactoryGirl.build(:cart_item, product: product) }
 
     it { should be_valid }
 
     it "should delete item when quantity 0" do
       with_product.quantity = 0
-      with_product.save!
+      with_product.save.should be_false
       with_product.should be_destroyed
     end
   end

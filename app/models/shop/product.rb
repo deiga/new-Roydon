@@ -18,8 +18,6 @@ class Shop::Product
   attr_accessor :image, :delete_image
   attr_reader :image_remote_url
 
-  delegate :empty?, :to => :options
-
   has_mongoid_attached_file :image,
   styles: {
     thumb: ['175x', :png],
@@ -36,7 +34,7 @@ class Shop::Product
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
 
   scope :active, where(passive: false)
-  scope :category_products, lambda { |category| where(:category_ids.in => category.children << category).asc('name').active.includes(:options) }
+  scope :category_products, lambda { |category| where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }
 
   def image_remote_url=(url_value)
     self.image = URI.parse(url_value)
@@ -52,6 +50,11 @@ class Shop::Product
 
   def discounted_price
     discount.present? ? price * discount.subtract_percentage : price
+  end
+
+  def self.cache_key
+    require 'digest/md5'
+    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
   end
 
   private

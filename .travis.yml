@@ -1,7 +1,7 @@
 language: ruby
 bundler_args: --without development production staging development_remote
-gemfile: 
-  - Gemfile
+gemfile:
+  - gemfiles/Gemfile.20
 rvm:
   - "2.0.0"
 services: mongodb

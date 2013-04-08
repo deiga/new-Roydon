@@ -106,6 +106,7 @@ describe Shop::ShoppingCart do
 
       before(:each) do
         group_discount.should_receive(:apply_discount_on).with(cart).and_call_original
+        Rails.cache.stub(:write) # RSpec mocks can't be cached, cache.write needs to be stubbed out...
         group_discount.products << product
         product.reload
       end

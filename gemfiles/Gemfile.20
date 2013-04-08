@@ -15,33 +15,11 @@ gem 'unicorn' # Webserver
 
 gem "rack-timeout" # Timeout requests
 
-group :production, :staging do
-  gem 'newrelic_rpm' # Statistics
-  gem 'dalli', '~> 2.5'
-end
-
 gem 'aws-sdk', '~> 1.8' # Online storage
 gem 'kaminari', '~> 0.14' # Pagination
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
-
-group :development do
-  gem 'hooves', :require => 'hooves/default'
-  gem 'bullet'
-  gem 'sextant' # see routes at /rails/routes
-  gem 'wirble'
-end
-
-group :development, :test do
-  gem 'debugger'
-end
-
-group :development, :development_remote do
-  gem 'meta_request' # Binding with RailsPanel in chrome
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
 
 group :development, :test, :development_remote do
   gem 'rspec-rails'

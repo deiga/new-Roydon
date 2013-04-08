@@ -10,6 +10,9 @@ class AddressesController < ApplicationController
 
   def show
     @address = Address.find(address_id_params)
+    stale? @address do
+      respond_with @address
+    end
   end
 
   def create
@@ -17,7 +20,7 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         current_user.addresses << @address
-        format.html { redirect_to users_show_path, notice: 'Address created' }
+        format.html { redirect_to user_path(current_user.id), notice: 'Address created' }
         format.json { render json: @address, status: :created, location: @address }
       else
         format.html { render :new }

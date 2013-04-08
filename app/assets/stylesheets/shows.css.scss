@@ -1,67 +1,67 @@
 // Place all the styles related to the Shows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.shows {
+  #content {
+    #shows {
+      padding-top: 3%;
 
-#content {
-	#shows {
-		padding-top: 3%;
+      p , #shows-table {
+        margin: 0 auto;
+        text-align: center;
+      }
 
-		p , #shows-table {
-			margin: 0 auto;
-			text-align: center;
-		}
+      #shows-table {
+        border-collapse: collapse;
 
-		#shows-table {
-			border-collapse: collapse;
+        caption {
+          padding: 0 0 1% 1%;
+          caption-side: top;
+          text-align: left;
+          font-weight: bold;
+          min-width: 26em;
+        }
 
-			caption {
-				padding: 0 0 1% 1%;
-				caption-side: top;
-				text-align: left;
-				font-weight: bold;
-				min-width: 26em;
-			}
+        th {
+          border-bottom: 2px solid black;
+          padding: 0.3em;
+          background-color: darkGreen;
+        }
 
-			th {
-				border-bottom: 2px solid black;
-				padding: 0.3em;
-				background-color: darkGreen;
-			}
+        td , th {
+          text-align: center;
+        }
 
-			td , th {
-				text-align: center;
-			}
+        td {
+          padding: 0.3em 0.8em;
+          background-color: darkSeaGreen;
+          border-bottom: 1px dashed darkGreen;
+        }
 
-			td {
-				padding: 0.3em 0.8em;
-				background-color: darkSeaGreen;
-				border-bottom: 1px dashed darkGreen;
-			}
+        tr:nth-of-type(2n+0) td {
+          background-color: mediumSeaGreen;
+        }
+      }
+    }
 
-			tr:nth-of-type(2n+0) td {
-				background-color: mediumSeaGreen;
-			}
-		}
-	}
+    aside {
+      margin: 0 auto;
+      text-align: center;
 
-	#years {
-		margin: 0 auto;
-		text-align: center;
+      #years {
+        list-style: none;
+        padding: 0;
 
-		#yearslist {
-			list-style: none;
-			padding: 0;
+        li {
+          display: inline;
+          padding: 5px 10px;
+          margin: 2%;
+        }
+      }
 
-			li {
-				display: inline;
-				padding: 5px 10px;
-				margin: 2%;
-			}
-		}
-
-		p {
-			padding-bottom: 1%;
-		}
-	}
-
+      p {
+        padding-bottom: 1%;
+      }
+    }
+  }
 }

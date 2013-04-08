@@ -1,6 +1,7 @@
-- unless @products.nil?
-  = paginate @products
-  #products
-    = render @products, cart: @cart
-- else
-  Ei tuotteita.
+= cache ['products', @category.permalink, (params[:page] || 1), @category.products_cache_key] do
+  - unless @products.nil?
+    = paginate @products
+    #products
+      = render @products, cart: @cart
+  - else
+    Ei tuotteita.

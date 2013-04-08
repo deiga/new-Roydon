@@ -2,7 +2,7 @@ class Address
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user, inverse_of: :addresses
+  belongs_to :user, inverse_of: :addresses, touch: true
   belongs_to :order, class_name: 'Shop::Order', inverse_of: :address
 
   before_save :set_name
