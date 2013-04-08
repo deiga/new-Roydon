@@ -3,12 +3,12 @@
 - html_tag :class => "no-js", :lang => I18n.locale.to_s do
   = render "head"
 
-  %body{ :class => "#{ controller.controller_name }" }
+  %body
     = render "chromeframe"
     = cache 'header' do
       = render "header"
 
-    #content.shadow{ :role => "main" }
+    #content.shadow{ :role => "main", :class => "#{ controller.controller_name }" }
       = render "flashes"
       = content_for?(:content) ? yield(:content) : yield
 

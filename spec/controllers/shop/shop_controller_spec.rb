@@ -28,4 +28,11 @@ describe Shop::ShopController do
 		include_examples "set_cart"
 	end
 
+  describe "GET 'search'" do
+    it "should retutn http success" do
+      get :search, search: 'Test search'
+      response.should be_success
+    end
+  end
+
 end

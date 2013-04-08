@@ -19,4 +19,4 @@ $ ->
       $('#flash').fadeOut 2500
 
 $ ->
-  $(document).pjax('#top-menu .nav-item > a:not([data-skip-pjax]), section#news fieldset+a, section#next-show a', 'div#content', {timeout: 2000});
+  $(document).pjax('#top-menu .nav-item > a:not([data-skip-pjax]), section#news fieldset+a, section#next-show a', 'div#content', {timeout: 4000});

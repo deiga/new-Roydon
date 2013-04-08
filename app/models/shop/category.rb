@@ -1,10 +1,9 @@
-require 'digest/md5'
-
 class Shop::Category
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Ancestry
   include ActiveModel::ForbiddenAttributesProtection
+  extend Shop::Caching
 
   before_validation :generate_permalink
 
@@ -38,10 +37,6 @@ class Shop::Category
 
   def top_category?
     self.ancestry.nil?
-  end
-
-  def self.cache_key
-    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
   end
 
   def products_cache_key

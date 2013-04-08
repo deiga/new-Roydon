@@ -38,11 +38,11 @@ $ ->
 
 $ ->
   $(document).on 'submit','form[data-pjax]', (event) ->
-    $.pjax.submit(event, 'section#shop-details', {timeout: 2000})
+    $.pjax.submit(event, 'section#shop-details', {timeout: 4000})
 
 $ ->
-  $(document).pjax('nav.pagination a:not([data-skip-pjax]), div#products a:not([data-skip-pjax]), section#shopping-cart a:not([data-skip-pjax])', 'section#shop-details', {timeout: 2000});
-  $(document).pjax('nav#shop-menu a:not([data-skip-pjax])', 'div#content', {timeout: 3000})
+  $(document).pjax('nav.pagination a:not([data-skip-pjax]), div#products a:not([data-skip-pjax]), section#shopping-cart a:not([data-skip-pjax])', 'section#shop-details', {timeout: 4000});
+  $(document).pjax('nav#shop-menu a:not([data-skip-pjax])', 'div#content', {timeout: 4000})
 
 $ ->
   $('.add-to-cart')

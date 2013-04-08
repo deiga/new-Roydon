@@ -10,5 +10,16 @@ FactoryGirl.define do
     factory :user_with_order do
       orders  { [FactoryGirl.build(:order)] }
     end
+
+    factory :admin do
+      user_groups { [FactoryGirl.create(:admin_group)] }
+    end
+  end
+
+  factory :group, class: Shop::UserGroup do
+
+    factory :admin_group do
+      name 'admin'
+    end
   end
 end

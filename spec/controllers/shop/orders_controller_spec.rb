@@ -20,6 +20,22 @@ describe Shop::OrdersController do
     end
   end
 
+  describe "GET 'show'" do
+    it "should render 'show' for order" do
+      get 'show', id: FactoryGirl.create(:order)
+      response.should be_success
+    end
+
+    it "should not render 'show' for order" do
+      get 'show', id: Moped::BSON::ObjectId.new
+      response.should_not be_success
+    end
+
+    it "should be an routing error" do
+      expect{ get 'show' }.to raise_error(ActionController::RoutingError)
+    end
+  end
+
   describe "POST 'create'" do
 
     it "should create order" do
