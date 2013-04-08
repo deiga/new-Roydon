@@ -2,7 +2,7 @@ class Shop::ShoppingCart
   include Mongoid::Document
   include Mongoid::Timestamps
   include ActiveModel::ForbiddenAttributesProtection
-  include Shop::Caching
+  extend Shop::Caching
 
   has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart, dependent: :destroy
 

@@ -3,7 +3,7 @@ class Shop::Product
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   include ActiveModel::ForbiddenAttributesProtection
-  include Shop::Caching
+  extend Shop::Caching
 
   paginates_per 9
 

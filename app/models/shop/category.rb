@@ -3,7 +3,7 @@ class Shop::Category
   include Mongoid::Timestamps
   include Mongoid::Ancestry
   include ActiveModel::ForbiddenAttributesProtection
-  include Shop::Caching
+  extend Shop::Caching
 
   before_validation :generate_permalink
 
