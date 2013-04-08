@@ -20,4 +20,11 @@ describe User do
     end
   end
 
+  describe "admin" do
+    let(:admin) { FactoryGirl.build(:admin) }
+    it "should be admin" do
+      admin.should be_admin
+    end
+  end
+
 end
