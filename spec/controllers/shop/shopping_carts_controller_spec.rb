@@ -2,25 +2,26 @@ require 'spec_helper'
 
 describe Shop::ShoppingCartsController do
 
+  subject(:cart) { FactoryGirl.create(:cart) }
   let(:product) { FactoryGirl.create(:product, :name => "Test product", price: 5.3) }
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit', :id => Shop::ShoppingCart.create!
+      get 'edit', id: cart.id
       response.should be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => Shop::ShoppingCart.create!
+      get 'show', id: cart.id
       response.should be_success
     end
   end
 
   describe "GET 'destroy'" do
     it "returns http success" do
-      get 'destroy', :id => Shop::ShoppingCart.create!
+      get 'destroy', id: cart.id
       response.should redirect_to shop_path
     end
   end
