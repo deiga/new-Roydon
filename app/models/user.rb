@@ -57,7 +57,7 @@ class User
   ## Token authenticatable
   # field :authentication_token, type: String
 
-  def is_admin?
+  def admin?
     user_groups.map(&:name).include?('admin')
   end
 
@@ -82,7 +82,7 @@ class User
 
   # Turn off trackable for admin users
   def update_tracked_fields!(request)
-    super(request) unless is_admin?
+    super(request) unless admin?
   end
 
   private
