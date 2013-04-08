@@ -9,7 +9,7 @@
         Lisätietoja:
         %br
         = raw(@product.description)
-      - unless @product.empty?
+      - unless @product.options.empty?
         Vaihtoehtoja:
         - @product.options.each do |x|
           = collection_select :options, x.name, x.values, 'html_safe', 'humanize', {include_blank: true}, {required: 'required'}
