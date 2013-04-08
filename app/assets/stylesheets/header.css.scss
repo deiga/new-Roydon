@@ -8,6 +8,10 @@ header {
 
 	@include border-top-radius(1em);
 
+  &.shadow {
+    box-shadow: 0 6px 0 white, 5px 5px 1px darkgray;
+  }
+
 	section {
 		margin: 0 auto;
 		margin-bottom: 1em;
