@@ -26,40 +26,37 @@ describe Shop::ShoppingCartsController do
     end
   end
 
-  describe "POST 'add_item'" do
-
-    it "should have one product in cart" do
-      post :add_item, shopping_cart_id: Shop::ShoppingCart.create!, id: product.id, options: {}
-      @cart = assigns(:cart)
-      @cart.items.size.should be 1
+  describe "Addition and deletion of items" do
+    before(:each) do
+      post :add_item, shopping_cart_id: cart.id, id: product.id, options: {}
     end
 
-    it "should fail to add item" do
-      post :add_item, shopping_cart_id: Shop::ShoppingCart.create!, id: product, options: {}
-      @cart = assigns(:cart)
-      @cart.should_receive(:add)
-      post :add_item, shopping_cart_id: @cart.id, id: product, options: {}
-      flash[:alert].should eq (I18n.t 'shop.cart.add.failure')
-    end
-  end
+    context "POST 'add_item'" do
+      it "should have one product in cart" do
+        cart.items.size.should be 1
+      end
 
-  describe "DELETE 'remove_item" do
-    it "should remove item from cart" do
-      post :add_item, shopping_cart_id: Shop::ShoppingCart.create!, id: product, options: {}
-      @cart = assigns(:cart)
-      @cart.items.size.should be 1
-      delete :remove_item, shopping_cart_id: @cart.id, id: @cart.items.first.id
-      @cart = assigns(:cart)
-      @cart.items.should be_empty
-      @cart.should be_empty
+      it "should fail to add item" do
+        cart.should_receive(:add)
+        post :add_item, shopping_cart_id: cart.id, id: product, options: {}
+        flash[:alert].should eq (I18n.t 'shop.cart.add.failure')
+      end
     end
 
-    it "should fail to remove item" do
-      post :add_item, shopping_cart_id: Shop::ShoppingCart.create!, id: product, options: {}
-      @cart = assigns(:cart)
-      @cart.should_receive(:remove_item)
-      delete :remove_item, shopping_cart_id: @cart.id, id: @cart.items.first.id
-      flash[:alert].should eq (I18n.t 'shop.cart.remove.failure')
+    context "DELETE 'remove_item" do
+      it "should remove item from cart" do
+        cart.items.size.should be 1
+        delete :remove_item, shopping_cart_id: cart.id, id: cart.items.first.id
+        cart = assigns(:cart)
+        cart.items.should be_empty
+        cart.should be_empty
+      end
+
+      it "should fail to remove item" do
+        cart.should_receive(:remove_item)
+        delete :remove_item, shopping_cart_id: cart.id, id: cart.items.first.id
+        flash[:alert].should eq (I18n.t 'shop.cart.remove.failure')
+      end
     end
   end
 end
