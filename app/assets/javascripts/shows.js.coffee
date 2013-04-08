@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $(document).pjax('#years a:not([data-skip-pjax])', 'section#shows', {timeout: 2000});
+  $(document).pjax('#years a:not([data-skip-pjax])', 'section#shows', {timeout: 4000});
