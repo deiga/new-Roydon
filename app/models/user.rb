@@ -96,6 +96,7 @@ class User
     def set_random_password
       if self.password.blank?
         self.password = Devise.friendly_token
+        self.password_confirmation = self.password
       end
     end
 end
