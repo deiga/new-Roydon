@@ -3,6 +3,7 @@ class Shop::Product
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   include ActiveModel::ForbiddenAttributesProtection
+  include Shop::Caching
 
   paginates_per 9
 
@@ -50,11 +51,6 @@ class Shop::Product
 
   def discounted_price
     discount.present? ? price * discount.subtract_percentage : price
-  end
-
-  def self.cache_key
-    require 'digest/md5'
-    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
   end
 
   private

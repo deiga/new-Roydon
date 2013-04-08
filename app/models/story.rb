@@ -2,6 +2,7 @@ class Story
 	include Mongoid::Document
 	include Mongoid::Timestamps
 	include ActiveModel::ForbiddenAttributesProtection
+  include Shop::Caching
 
 	field :title, 		:type => String
 	field :date, 			:type => Date, 		:default => Date.today
@@ -21,10 +22,5 @@ class Story
 	def format_date
 		Time.parse(self.date.to_s).strftime('%d.%m.%Y')
 	end
-
-  def self.cache_key
-    require 'digest/md5'
-    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
-  end
 
 end

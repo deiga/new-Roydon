@@ -2,6 +2,7 @@ class Shop::ShoppingCart
   include Mongoid::Document
   include Mongoid::Timestamps
   include ActiveModel::ForbiddenAttributesProtection
+  include Shop::Caching
 
   has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart, dependent: :destroy
 
@@ -73,10 +74,5 @@ class Shop::ShoppingCart
     Rails.cache.fetch [self, 'products'].join('/') do
       items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
     end
-  end
-
-  def self.cache_key
-    require 'digest/md5'
-    Digest::MD5.hexdigest "#{max(:updated_at)}.try(:to_i)-#{count}"
   end
 end
