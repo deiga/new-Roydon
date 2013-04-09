@@ -16,7 +16,8 @@ class ErrorsController < ApplicationController
   end
 
   def error
-
+    @status = params[:status]
+    @message = "Undefined error"
   end
 
   private
