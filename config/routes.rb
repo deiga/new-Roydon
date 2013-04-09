@@ -1,5 +1,4 @@
 Roydon::Application.routes.draw do
-
   bson_id_regex = /[0-9a-f]{24}/i
 
   resources :addresses, except: [:index]
@@ -26,8 +25,8 @@ Roydon::Application.routes.draw do
       post '/add_item/:id', action: 'add_item', as: 'add_item'
       get '/add_item/:id', action: 'add_item', as: 'add_item'
     end
-    get '/', to: 'shop#index'
-    get 'search', to: 'shop#search'
+    get '/' => 'shop#index'
+    get 'search' => 'shop#search'
     resources :orders, except: [:index]
   end
 
@@ -37,9 +36,9 @@ Roydon::Application.routes.draw do
     end
   end
 
-  get '/contact', to: 'pages#contact'
-  get '/about', to: 'pages#about'
-  get '/', to: 'pages#home', as: 'home'
+  get '/contact' => 'pages#contact'
+  get '/about' => 'pages#about'
+  get '/' => 'pages#home', as: 'home'
 
   root to: 'pages#home'
 
