@@ -1,3 +1,5 @@
+# http://blog.plataformatec.com.br/2012/01/my-five-favorite-hidden-features-in-rails-3-2/
+
 class ErrorsController < ApplicationController
   def not_found
     if params[:ex]
@@ -12,12 +14,13 @@ class ErrorsController < ApplicationController
   end
 
   def no_route
-    render_exception(404, "Route does not exist #{params[:a]}")
+    render_404("Route does not exist #{params[:a]}")
   end
 
   def error
+    @exception = params[:ex] || env["action_dispatch.exception"]
     @status = params[:status]
-    @message = "Undefined error"
+    @message = exception.try(:message) || "Undefined error"
   end
 
   private
