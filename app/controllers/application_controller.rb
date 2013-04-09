@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/404', ex: ex
     end
     rescue_from ActionController::ParameterMissing do |ex|
-      render_exception(400, ex.message, ex)
+      redirect_to '/400', ex: ex.message
     end
   end
 
