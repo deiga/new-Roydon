@@ -84,5 +84,7 @@ Roydon::Application.routes.draw do
   #   end
 
   # See how all your routes lay out with "rake routes"
+  match "/404" => 'errors#not_found'
+  match "/500" => 'errors#server_error'
 
 end

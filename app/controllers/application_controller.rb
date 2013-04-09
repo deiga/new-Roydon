@@ -4,22 +4,27 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: :render_500
-    rescue_from ActionController::RoutingError, with: :render_404
-    rescue_from ActionController::UnknownController, with: :render_404
-    rescue_from AbstractController::ActionNotFound, with: :render_404 # To prevent Rails 3.2.8 deprecation warnings
+    rescue_from Exception do |ex|
+      redirect_to '/500', ex: ex
+    end
+    rescue_from ActionController::UnknownController do |ex|
+      redirect_to '/404', ex: ex
+    end
+    rescue_from AbstractController::ActionNotFound do |ex| # To prevent Rails 3.2.8 deprecation warnings
+      redirect_to '/404', ex: ex
+    end
     rescue_from ActionController::ParameterMissing do |ex|
       render_exception(400, ex.message, ex)
     end
   end
 
   rescue_from Mongoid::Errors::DocumentNotFound do |ex|
-    render_exception(404, "#{ex.message.match(/class\s(\b.*?)\s/)[0].split('::').last} not found", ex)
+    redirect_to '/404', ex: ex
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
+  # def not_found
+  #   raise ActionController::RoutingError.new('Not Found')
+  # end
 
   private
 
@@ -30,29 +35,6 @@ class ApplicationController < ActionController::Base
       response.headers['X-Message'] = flash[:error] unless flash[:error].blank?
 
       flash.discard  # don't want the flash to appear when you reload page
-    end
-
-    def render_500(exception = nil)
-      render_exception(500, exception.message, exception)
-    end
-
-
-    def render_404(exception = nil)
-      render_exception(404, 'Page not found', exception)
-    end
-
-    def render_exception(status = 500, message = 'Server error', exception)
-      @status = status
-      @message = message
-
-      if exception
-        Rails.logger.fatal "\n#{exception.class.to_s} (#{exception.message})"
-        Rails.logger.fatal exception.backtrace.join("\n")
-      else
-        Rails.logger.fatal "No route matches [#{env['REQUEST_METHOD']}] #{env['PATH_INFO'].inspect}"
-      end
-
-      render template: "errors/error", formats: [:html], layout: 'application', status: @status
     end
 
     def store_location
