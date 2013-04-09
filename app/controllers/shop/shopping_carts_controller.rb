@@ -8,7 +8,6 @@ class Shop::ShoppingCartsController < Shop::ShopController
       @cart_items = @cart.items.with_product
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
-      not_found
     end
   end
 
@@ -17,7 +16,6 @@ class Shop::ShoppingCartsController < Shop::ShopController
       @cart_items = @cart.items.with_product
     rescue Mongoid::Errors::DocumentNotFound
       flash[:error] = t 'shop.cart.errors.not_found'
-      not_found
     end
   end
 
