@@ -10,7 +10,7 @@ class ErrorsController < ApplicationController
   end
 
   def server_error
-    render_exception(nil)
+    render_500
   end
 
   def no_route
