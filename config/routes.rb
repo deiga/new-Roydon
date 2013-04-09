@@ -44,5 +44,6 @@ Roydon::Application.routes.draw do
 
   match "/404" => 'errors#not_found'
   match "/500" => 'errors#server_error'
+  match "/:status" => 'errors#error', constraints: { status: /[45][0-9][0-9]/}
 
 end
