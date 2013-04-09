@@ -5,21 +5,22 @@ class ApplicationController < ActionController::Base
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception do |ex|
-      redirect_to '/500', ex: ex
+      redirect_to '/500', ex: ex, status: 500
     end
     rescue_from ActionController::UnknownController do |ex|
-      redirect_to '/404', ex: ex
+      redirect_to '/404', ex: ex, status: 404
     end
     rescue_from AbstractController::ActionNotFound do |ex| # To prevent Rails 3.2.8 deprecation warnings
-      redirect_to '/404', ex: ex
+      redirect_to '/404', ex: ex, status: 404
     end
     rescue_from ActionController::ParameterMissing do |ex|
-      redirect_to '/400', ex: ex.message
+      redirect_to '/400', ex: ex.message, status: 404
     end
   end
 
   rescue_from Mongoid::Errors::DocumentNotFound do |ex|
-    redirect_to '/404', ex: ex
+    # raise ActionController::RoutingError.new('Not Found')
+    redirect_to '/404', ex: ex, status: 404
   end
 
   # def not_found
