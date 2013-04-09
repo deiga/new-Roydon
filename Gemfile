@@ -35,6 +35,9 @@ end
 
 group :development, :test do
   gem 'debugger'
+  gem 'guard-rspec'
+  gem 'rb-fsevent', :require => false
+  gem 'growl'
 end
 
 group :development, :development_remote do
@@ -50,10 +53,6 @@ end
 
 group :test do
   gem 'webrat'
-  gem 'autotest-standalone'
-  gem 'autotest-rails-pure'
-  gem 'autotest-fsevent'
-  gem 'autotest-growl'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
