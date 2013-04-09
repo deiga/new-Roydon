@@ -5,6 +5,9 @@ describe ApplicationController do
     def index
       params.require(:a)
     end
+    def new
+      Show.find(nil)
+    end
   end
 
   render_views
@@ -33,4 +36,10 @@ describe ApplicationController do
     get :index
     response.should redirect_to('/400')
   end
+
+  #= Redirects to /500, why?
+  # it "should render 404 on Mongoid DocumentError" do
+  #   get :new
+  #   response.should redirect_to('/404')
+  # end
 end
