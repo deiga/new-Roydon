@@ -1,0 +1,14 @@
+group :development do
+  gem 'hooves', :require => 'hooves/default'
+end
+
+group :development, :test do
+  gem 'debugger'
+  gem 'guard-rspec'
+  gem 'rb-fsevent', :require => false
+  gem 'growl'
+end
+
+group :test do
+  gem 'launchy'    # So you can do Then show me the page
+end

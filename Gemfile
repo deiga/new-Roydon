@@ -27,17 +27,9 @@ gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
 
 group :development do
-  gem 'hooves', :require => 'hooves/default'
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
   gem 'wirble'
-end
-
-group :development, :test do
-  gem 'debugger'
-  gem 'guard-rspec'
-  gem 'rb-fsevent', :require => false
-  gem 'growl'
 end
 
 group :development, :development_remote do
@@ -56,8 +48,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  # gem 'spork'
-  gem 'launchy'    # So you can do Then show me the page
   gem 'simplecov', :require => false
   gem 'timecop'
   gem 'coveralls', :require => false
@@ -76,3 +66,7 @@ group :assets do
 end
 
 gem 'strong_parameters' # Emulate Strong parameters for Rails 4
+
+if File.exists?('gemfiles/Gemfile.devel') then
+  eval File.read('gemfiles/Gemfile.devel'), nil, 'Gemfile.devel' unless ENV['CI']
+end
