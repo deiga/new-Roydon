@@ -17,24 +17,24 @@ describe ApplicationController do
   it "should render 500 on Exception" do
     controller.stub(:index).and_raise(Exception)
     get :index
-    response.should redirect_to('/500')
+    response.status.should eq 500
   end
 
   it "should render 404 on unknown controller" do
     controller.stub(:index).and_raise(ActionController::UnknownController)
     get :index
-    response.should redirect_to('/404')
+    response.status.should eq 404
   end
 
   it "should render 404 on action not found" do
     controller.stub(:index).and_raise(AbstractController::ActionNotFound)
     get :index
-    response.should redirect_to('/404')
+    response.status.should eq 404
   end
 
   it "should render 400 on parameter missing" do
     get :index
-    response.should redirect_to('/400')
+    response.status.should eq 404
   end
 
   #= Redirects to /500, why?
