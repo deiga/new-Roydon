@@ -6,20 +6,20 @@ Feature: Pages have dynamic titles
 
 Scenario: Home page has a title
 	When I am on the home page
-	Then the title should be "Etusivu | Roydon"
+	Then I should see "Etusivu | Roydon" in the title
 
 Scenario: Contact page has a title
 	When I am on the contact page
-	Then the title should be "Yhteystiedot | Roydon"
+  Then I should see "Yhteystiedot | Roydon" in the title
 
 Scenario: Shop page has a title
 	When I am on the shop page
-	Then the title should be "Kauppa | Roydon"
+  Then I should see "Kauppa | Roydon" in the title
 
 Scenario: Shows page has a title
 	When I am on the shows page
-	Then the title should be "Näyttelyt | Roydon"
+  Then I should see "Näyttelyt | Roydon" in the title
 
 Scenario: Stories page has a title
 	When I am on the stories page
-	Then the title should be "Uutiset | Roydon"
+  Then I should see "Uutiset | Roydon" in the title
