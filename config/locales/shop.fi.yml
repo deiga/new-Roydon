@@ -32,3 +32,6 @@ fi:
         overall: 'Yhteensä'
     product:
       newest: 'Uusimmat tuotteet'
+    session:
+      sign_in: 'Kirjaudu sisään'
+      sign_up: 'Rekisteröidy'
