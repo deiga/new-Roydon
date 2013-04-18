@@ -7,8 +7,11 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rb-fsevent', :require => false
   gem 'growl'
+  gem 'zeus'
 end
 
 group :test do
   gem 'launchy'    # So you can do Then show me the page
 end
+
+gem 'foreman'
