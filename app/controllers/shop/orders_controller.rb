@@ -19,7 +19,11 @@ class Shop::OrdersController < Shop::ShopController
 
     @order.add(@cart.items.with_product)
     @order.address = Address.find(order_address_param) unless order_address_param.nil?
-    @order.user = current_user
+    if current_user.nil?
+      @user.user = User.create(user_email_param)
+    else
+      @order.user = current_user
+    end
 
     respond_to do |format|
       if @order.save
@@ -64,6 +68,14 @@ class Shop::OrdersController < Shop::ShopController
     def order_id_param
       begin
         params.require(:id)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
+    def user_email_param
+      begin
+        params.require(:shop_order).require(:user_email)
       rescue ActionController::ParameterMissing
         nil
       end
