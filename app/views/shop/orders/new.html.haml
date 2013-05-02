@@ -15,6 +15,18 @@
     - elsif current_user.addresses.blank?
       address form here
     - else
+/ check whether user logged in
+/ if not login or order as guest
+/ login returns to this page
+/ order as guest:
+/   - email from order and creates user
+/   - address from order and create address for user
+/   - link user and address to order
+/ current_user.present && addresses.blank?
+/   - address from order and create address for user
+/   - link user and address to order
+/ current_user.present && addresses.any
+/   - select address
       .field
         = f.label :address
         = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
