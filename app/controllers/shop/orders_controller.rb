@@ -50,7 +50,7 @@ class Shop::OrdersController < Shop::ShopController
     def order_params
       begin
         puts "\nOC#order_params - params: #{params}\n"
-        params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
+        params.require(:shop_order).permit(:message, :payment)
       rescue ActionController::ParameterMissing
         nil
       end
@@ -75,7 +75,7 @@ class Shop::OrdersController < Shop::ShopController
 
     def user_email_param
       begin
-        params.require(:shop_order).require(:user_email)
+        params.require(:user).permit(:email)
       rescue ActionController::ParameterMissing
         nil
       end
