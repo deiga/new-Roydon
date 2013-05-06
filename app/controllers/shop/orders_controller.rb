@@ -56,6 +56,14 @@ class Shop::OrdersController < Shop::ShopController
       end
     end
 
+    def user_address_params
+      begin
+        params.require(:address).permit(:street, :city, :postal_number, :country, :phone_number, :description, :home)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
     def order_address_param
       begin
 
