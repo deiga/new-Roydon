@@ -20,7 +20,7 @@ class Shop::OrdersController < Shop::ShopController
     @order.add(@cart.items.with_product)
     @order.address = Address.find(order_address_param) unless order_address_param.nil?
     if current_user.nil?
-      @user.user = User.create(user_email_param)
+      @order.user = User.create(user_email_param)
     else
       @order.user = current_user
     end
