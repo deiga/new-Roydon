@@ -35,3 +35,4 @@ fi:
     session:
       sign_in: 'Kirjaudu sisään'
       sign_up: 'Rekisteröidy'
+      continue_order: 'Jatka tilausta'
