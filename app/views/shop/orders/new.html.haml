@@ -1,20 +1,3 @@
-.order-form
-  = form_for @order do |f|
-    - if @order.errors.any?
-      .error_explanation
-        %h2= "#{pluralize(order.errors.count, 'error')} prohibited this order from being saved:"
-        %ul
-          - @order.errors.full_messages.each do |msg|
-            %li= msg
-    - if current_user.nil?
-      = f.label t 'shop.session.sign_in'
-      = radio_button_tag 'user_control', 'sign_in', true
-      = f.label t 'shop.session.sign_up'
-      = radio_button_tag 'user_control', 'sign_up'
-      address form here
-    - elsif current_user.addresses.blank?
-      address form here
-    - else
 / check whether user logged in
 / if not login or order as guest
 / login returns to this page
@@ -27,15 +10,35 @@
 /   - link user and address to order
 / current_user.present && addresses.any
 /   - select address
+
+- if current_user or params.include?(:cont)
+  .order-form
+    = form_for @order do |f|
+      = render 'order_errors', object: @order
+
+      - if not current_user or not current_user.addresses.any?
+        address form here
+      - else
+        .field
+          = f.label :address
+          = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
       .field
-        = f.label :address
-        = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
-    .field
-      = f.label :payment
-      = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
-    .field
-      = f.label :message
-      = f.text_area :message, rows: 3, cols: 40
-    .actions
-      = f.submit 'Place order'
+        = f.label :payment
+        = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
+      .field
+        = label 'user', 'email'
+        = email_field 'user', 'email', value: current_user ? current_user.email : ''
+      .field
+        = f.label :message
+        = f.text_area :message, rows: 3, cols: 40
+      .actions
+        = f.submit 'Place order'
+- else
+  / = label_tag t 'shop.session.sign_in'
+  / = radio_button_tag 'user_control', 'sign_in'
+  / = label_tag t 'shop.session.continue_order'
+  / = radio_button_tag 'user_control', 'continue_order'
+  = link_to t('shop.session.sign_in'), new_user_session_path
+  = link_to t('shop.session.continue_order'), params.merge(cont: 1)
+
 
