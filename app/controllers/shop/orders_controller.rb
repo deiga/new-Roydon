@@ -18,11 +18,16 @@ class Shop::OrdersController < Shop::ShopController
     @order = Shop::Order.new(order_params)
 
     @order.add(@cart.items.with_product)
-    @order.address = Address.find(order_address_param) unless order_address_param.nil?
     if current_user.nil?
       @order.user = User.create(user_email_param)
+      # TODO Add login for created user
     else
       @order.user = current_user
+    end
+    if current_user.address
+      @order.address = Address.find(order_address_param) unless order_address_param.nil?
+    else
+      @order.address = Address.create(user_address_params) unless user_address_params.nil?
     end
 
     respond_to do |format|
