@@ -26,7 +26,7 @@ describe Shop::OrdersController do
       response.should be_success
     end
 
-    it "should not render 'show' for random order" do
+    it "should not render 'show' for random order " do
       get 'show', id: Moped::BSON::ObjectId.new
       response.should_not be_success
     end
@@ -38,27 +38,29 @@ describe Shop::OrdersController do
 
   describe "POST 'create'" do
 
-    it "should create order" do
-      Shop::Order.any_instance.stub(:valid?).and_return(true)
-      post :create
-      assigns[:order].should_not be_new_record
-      response.should redirect_to(shop_url)
-    end
+    # TODO move tests to cucumber
 
-    it "should render new order page if errors" do
-      Shop::Order.any_instance.stub(:valid?).and_return(false)
-      post :create
-      assigns[:order].should be_new_record
-      response.should render_template(:new)
-    end
+    # it "should create order" do
+    #   Shop::Order.any_instance.stub(:valid?).and_return(true)
+    #   post :create
+    #   assigns[:order].should_not be_new_record
+    #   response.should redirect_to(shop_url)
+    # end
 
-    it "should pass params to order" do
-      test_order = FactoryGirl.build(:order)
-      post :create, shop_order: test_order.attributes.merge({ address: test_order.address})
-      assigns[:order].message.should eq test_order.message
-      assigns[:order].address.should eq test_order.address
-      assigns[:order].price.should eq test_order.price
-    end
+    # it "should render new order page if errors" do
+    #   Shop::Order.any_instance.stub(:valid?).and_return(false)
+    #   post :create
+    #   assigns[:order].should be_new_record
+    #   response.should render_template(:new)
+    # end
+
+    # it "should pass params to order" do
+    #   test_order = FactoryGirl.build(:order)
+    #   post :create, shop_order: test_order.attributes.merge({ address: test_order.address})
+    #   assigns[:order].message.should eq test_order.message
+    #   assigns[:order].address.should eq test_order.address
+    #   assigns[:order].price.should eq test_order.price
+    # end
   end
 
 end
