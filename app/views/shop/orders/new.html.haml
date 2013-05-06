@@ -16,8 +16,31 @@
     = form_for @order do |f|
       = render 'order_errors', object: @order
 
+      .field
+        = label 'user', 'email'
+        = email_field 'user', 'email', value: current_user ? current_user.email : ''
       - if not current_user or not current_user.addresses.any?
-        address form here
+        .field
+          = label 'address', 'street'
+          = text_field 'address', 'street', cols: 40, required: true
+        .field
+          = label 'address', :city
+          = text_field 'address', :city, size: 40
+        .field
+          = label 'address', :postal_number
+          = text_field 'address', :postal_number, size: 40, required: true
+        .field
+          = label 'address', :country
+          = text_field 'address', :country, size: 40
+        .field
+          = label 'address', :phone_number
+          = phone_field 'address', :phone_number, size: 40, required: true
+        .field
+          = label 'address', :description
+          = text_area 'address', :description, rows: 3, columns: 40
+        .field
+          = label 'address', :home
+          = check_box 'address', :home
       - else
         .field
           = f.label :address
@@ -25,9 +48,6 @@
       .field
         = f.label :payment
         = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
-      .field
-        = label 'user', 'email'
-        = email_field 'user', 'email', value: current_user ? current_user.email : ''
       .field
         = f.label :message
         = f.text_area :message, rows: 3, cols: 40
