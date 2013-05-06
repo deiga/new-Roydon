@@ -13,7 +13,7 @@
 
 - if current_user or params.include?(:cont)
   .order-form
-    = form_for @order do |f|
+    = form_for @order, url: { action: :create, cont: params['cont']} do |f|
       = render 'order_errors', object: @order
 
       .field
