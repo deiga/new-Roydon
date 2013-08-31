@@ -16,6 +16,7 @@ group :production, :staging do
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'dalli'
+  gem 'memcachier'
   gem 'google-analytics-rails'
 end
 
@@ -43,7 +44,7 @@ end
 
 # Asset gems
 group :assets do
-  gem 'sass-rails', '!= 3.1.6'
+  gem 'sass-rails', '>3.1.6'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass-rails'
