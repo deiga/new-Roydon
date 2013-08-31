@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ -> 
+$ ->
   url = location.href
   name = url.substring(url.lastIndexOf('/')+1)
   nameArr = name.split('.')
@@ -10,5 +10,10 @@ $ ->
   if name.length > 0
     $('#navilist > li').removeClass 'selected'
     element = document.getElementById(name)
-    if element != null 
+    if element != null
+      element.className += ' selected'
+  else
+    $('#navilist > li').removeClass 'selected'
+    element = document.getElementById("index")
+    if element != null
       element.className += ' selected'
