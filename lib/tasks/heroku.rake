@@ -5,9 +5,10 @@ namespace :deploy do
     puts "deploying to production"
     system "git push production master"
     puts "clearing cache"
-    system "heroku run console Rails.cache.clear -a roydon-cedar"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles -a roydon-cedar"
+    system "heroku run rake:paperclip:refresh:missing_styles -a roydon-cedar"
+    puts "Setting App version"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master)"
     puts "done"
   end
 
@@ -16,20 +17,24 @@ namespace :deploy do
     puts "deploying to staging"
     system "git push staging master"
     puts "clearing cache"
-    system "heroku run console Rails.cache.clear -a roydon-staging"
+    system "heroku run:console Rails.cache.clear -a roydon-staging"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles -a roydon-staging"
+    system "heroku run rake:paperclip:refresh:missing_styles -a roydon-staging"
+    puts "Setting App version"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master)"
     puts "done"
   end
 
   desc "Deploy to heroku development env"
   task :development do
     puts "deploying to development"
-    system "git push development master"
+    system "git push development develop:master"
     puts "clearing cache"
-    system "heroku run console Rails.cache.clear -a roydon-dev"
+    system "heroku run:console Rails.cache.clear -a roydon-dev"
     puts "Refreshing missing attachments"
-    system "heroku run rake paperclip:refresh:missing_styles -a roydon-dev"
+    system "heroku run:rake paperclip:refresh:missing_styles -a roydon-dev"
+    puts "Setting App version"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short develop)"
     puts "done"
   end
 end
