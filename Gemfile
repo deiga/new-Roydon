@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 gem 'mongoid', '~> 3.0' # MongoDB
 gem 'mongoid-ancestry', '~> 0.3' # tree structure of categories
 gem 'mongoid-paperclip', '~> 0.0', :require => 'mongoid_paperclip' # attaching images
 
-gem 'devise', '~> 2.2' # User control
+gem 'devise', '~> 2.0' # User control
 gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
 
@@ -20,7 +20,8 @@ group :production, :staging do
   gem 'dalli', '~> 2.5'
 end
 
-gem 'aws-sdk', '~> 1.8' # Online storage
+gem 'nokogiri', '< 1.6.0'
+gem 'aws-sdk', '~> 1.0' # Online storage
 gem 'kaminari', '~> 0.14' # Pagination
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
