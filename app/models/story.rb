@@ -5,7 +5,7 @@ class Story
   extend Shop::Caching
 
 	field :title, 		:type => String
-	field :date, 			:type => Date, 		:default => Date.today
+	field :date, 		:type => Date, 		:default => Date.today
 	field :content, 	:type => String
 	field :language,	:type => String,	:default => "fi"
 	field :passive,		type: Boolean,		default: false

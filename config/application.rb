@@ -65,8 +65,6 @@ module Roydon
       g.helper false
     end
 
-    # config.logger = Logger.new(STDOUT)
-
     config.exceptions_app = self.routes
     # 404 catcher
     config.after_initialize do |app|
