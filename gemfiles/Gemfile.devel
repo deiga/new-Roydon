@@ -3,7 +3,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger'
+  gem 'byebug'
   gem 'guard-rspec'
   gem 'rb-fsevent', :require => false
   gem 'growl'
