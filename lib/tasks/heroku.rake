@@ -8,7 +8,7 @@ namespace :deploy do
     puts "Refreshing missing attachments"
     system "heroku run rake:paperclip:refresh:missing_styles -a roydon-cedar"
     puts "Setting App version"
-    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master)"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master) -a roydon-cedar"
     puts "done"
   end
 
@@ -21,7 +21,7 @@ namespace :deploy do
     puts "Refreshing missing attachments"
     system "heroku run rake:paperclip:refresh:missing_styles -a roydon-staging"
     puts "Setting App version"
-    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master)"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master) -a roydon-staging"
     puts "done"
   end
 
@@ -34,7 +34,7 @@ namespace :deploy do
     puts "Refreshing missing attachments"
     system "heroku run:rake paperclip:refresh:missing_styles -a roydon-dev"
     puts "Setting App version"
-    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short develop)"
+    system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short develop) -a roydon-dev"
     puts "done"
   end
 end
