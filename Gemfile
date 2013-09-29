@@ -37,6 +37,8 @@ group :development, :development_remote do
   gem 'meta_request' # Binding with RailsPanel in chrome
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'pry-plus'
 end
 
 group :development, :test, :development_remote do
