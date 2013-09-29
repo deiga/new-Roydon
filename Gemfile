@@ -18,6 +18,7 @@ gem "rack-timeout" # Timeout requests
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
   gem 'dalli', '~> 2.5'
+  gem 'memcachier'
 end
 
 gem 'nokogiri', '< 1.6.0'
