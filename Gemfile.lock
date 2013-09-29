@@ -181,6 +181,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     meta_request (0.2.8)
       callsite
       rack-contrib
@@ -402,6 +403,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.14)
   launchy
+  memcachier
   meta_request
   money-rails
   mongoid (~> 3.0)
