@@ -62,24 +62,24 @@ if Rails.env.development?
   admin.users.create!(admins['Timo'])
 end
 
-User.create!(:email => 'test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+User.create!(:email => 'test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-groomer.users.create!(:email => '1test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+groomer.users.create!(:email => '1test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+groomer.users.create!(:email => '2test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
 p "Creating categories"
