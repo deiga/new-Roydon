@@ -7,4 +7,3 @@ RSpec::Core::RakeTask.new
 Cucumber::Rake::Task.new
 
 task :test => [:spec, :cucumber, 'coveralls:push'] #=> 'test:with_coveralls'
-task :default => :test

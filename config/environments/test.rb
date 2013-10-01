@@ -38,4 +38,6 @@ Roydon::Application.configure do
   config.active_support.deprecation = :stderr
 
   Paperclip.options[:log] = false
+
+  config.assets.debug = false
 end
