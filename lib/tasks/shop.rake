@@ -35,7 +35,7 @@ namespace :shop do
     1.upto(15) do |i|
       test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => Money.new(6500), :description =>
         "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
-        image_remote_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
+        image_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
       test_product.options << colour
       test_product.categories << Shop::Category.any_in(:name => ['Häkit'])
     end

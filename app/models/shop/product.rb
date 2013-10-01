@@ -8,7 +8,6 @@ class Shop::Product
   paginates_per 9
 
   before_validation { self.image.clear if self.delete_image == '1' }
-  before_save :normalize_filename
 
   has_and_belongs_to_many :categories, class_name: 'Shop::Category'
   has_and_belongs_to_many :options, class_name: 'Shop::Option', inverse_of: nil
@@ -17,7 +16,10 @@ class Shop::Product
   belongs_to :value_added_tax, class_name: 'Shop::ValueAddedTax'
 
   attr_accessor :image, :delete_image
-  attr_reader :image_remote_url
+  attr_accessor :image_url
+
+  before_save :download_remote_image, :if => :image_url_present?
+  before_save :normalize_filename
 
   has_mongoid_attached_file :image,
   styles: {
@@ -37,14 +39,6 @@ class Shop::Product
   scope :active, where(passive: false)
   scope :category_products, lambda { |category| where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }
 
-  def image_remote_url=(url_value)
-    self.image = URI.parse(url_value)
-    # Assuming url_value is http://example.com/photos/face.png
-    # image_file_name == "face.png"
-    # image_content_type == "image/png"
-    @image_remote_url = url_value
-  end
-
   def self.search term
     where(name: /#{term}/).includes(:options)
   end
@@ -54,6 +48,15 @@ class Shop::Product
   end
 
   private
+
+    def image_url_present?
+      image_url.present?
+    end
+
+    def download_remote_image
+      self.image = URI.parse(image_url)
+    end
+
     def normalize_filename
       if image.exists?
         image_file_name = image_file_name.parameterize.downcase unless image_file_name.blank?
