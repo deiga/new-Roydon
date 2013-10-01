@@ -20,6 +20,7 @@ group :production, :staging do
   gem 'newrelic_rpm' # Statistics
   gem 'dalli', '~> 2.5'
   gem 'memcachier'
+  gem 'rails_12factor' # STDOUT logging and static assets
 end
 
 gem 'nokogiri', '< 1.6.0'
@@ -33,6 +34,10 @@ group :development do
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
   gem 'wirble'
+end
+
+group :development_remote do
+  gem 'rails_12factor' # STDOUT logging and static assets
 end
 
 group :development, :development_remote do

@@ -10,7 +10,6 @@ Roydon::Application.configure do
 
   config.whiny_nils = true
   config.log_level = :debug
-  config.logger = Logger.new(STDOUT)
   config.logger.level = Logger.const_get(
     ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
   )
