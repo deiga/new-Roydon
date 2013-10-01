@@ -5,12 +5,12 @@ class User
   before_validation :set_random_password
   after_initialize :migrate_data
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :email,              type: String
+  field :email,              type: String, :default => ""
   field :encrypted_password, type: String, :default => ""
 
   validates :email, presence: true

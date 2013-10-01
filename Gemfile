@@ -7,7 +7,7 @@ gem 'mongoid', '~> 3.0' # MongoDB
 gem 'mongoid-ancestry', '~> 0.3' # tree structure of categories
 gem 'mongoid-paperclip', '~> 0.0', :require => 'mongoid_paperclip' # attaching images
 
-gem 'devise', '~> 2.0' # User control
+gem 'devise', '~> 3.1' # User control
 gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
 
