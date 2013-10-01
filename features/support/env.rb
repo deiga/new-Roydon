@@ -1,3 +1,5 @@
+require 'simplecov'
+
 ENV["RAILS_ENV"] = 'test'
 ENV['RACK_ENV'] = 'test'
 
@@ -8,18 +10,6 @@ ENV['RACK_ENV'] = 'test'
 # files.
 
 require 'cucumber/rails'
-require 'simplecov'
-require 'coveralls'
-
-# SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-#   SimpleCov::Formatter::HTMLFormatter,
-#   Coveralls::SimpleCov::Formatter
-# ]
-SimpleCov.formatter SimpleCov::Formatter::HTMLFormatter
-SimpleCov.start do
-  add_filter 'config'
-  command_name "Cucumber"
-end
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

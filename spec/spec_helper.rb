@@ -1,15 +1,4 @@
 require 'simplecov'
-require 'coveralls'
-
-# SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-#   SimpleCov::Formatter::HTMLFormatter,
-#   Coveralls::SimpleCov::Formatter
-# ]
-SimpleCov.formatter SimpleCov::Formatter::HTMLFormatter
-SimpleCov.start do
-  add_filter 'config'
-  command_name "RSpec"
-end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] = 'test'
