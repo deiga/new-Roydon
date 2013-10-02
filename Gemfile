@@ -6,6 +6,7 @@ gem 'rails', '3.2.14'
 gem 'mongoid', '~> 3.0' # MongoDB
 gem 'mongoid-ancestry', '~> 0.3' # tree structure of categories
 gem 'mongoid-paperclip', '~> 0.0', :require => 'mongoid_paperclip' # attaching images
+gem 'mongo_session_store-rails3' # Mongoid SessionStore
 
 gem 'devise', '~> 3.1' # User control
 gem 'devise-i18n'

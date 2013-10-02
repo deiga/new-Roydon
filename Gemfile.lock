@@ -197,6 +197,8 @@ GEM
       activesupport (>= 3.0)
       money (~> 5.1.0)
       railties (>= 3.0)
+    mongo_session_store-rails3 (4.1.1)
+      actionpack (>= 3.1)
     mongoid (3.1.5)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -417,6 +419,7 @@ DEPENDENCIES
   memcachier
   meta_request
   money-rails
+  mongo_session_store-rails3
   mongoid (~> 3.0)
   mongoid-ancestry (~> 0.3)
   mongoid-paperclip (~> 0.0)
