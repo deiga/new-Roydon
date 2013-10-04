@@ -52,6 +52,7 @@ end
 group :development, :test, :development_remote do
   gem 'rspec-rails'
   gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
+  gem 'poltergeist'
 end
 
 group :test do
