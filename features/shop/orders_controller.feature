@@ -18,3 +18,9 @@ Scenario: Shopping cart contains a few products
   When I follow "Ostoskori"
   # And I am on the edit shopping cart page
   Then I should see "Osta tuotteet"
+
+Scenario: Shopping cart is empty
+  Given I am on the shop page
+  Given the shopping cart is empty
+  When I am on the new shop order page
+  Then I should see "Your cart is empty"
