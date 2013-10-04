@@ -1,4 +1,4 @@
-Feature: OrdersController new should render correct page
+Feature: OrdersController actions should perform correctly
 
   As a developer
   I want the action render the page correctly
@@ -17,5 +17,4 @@ Scenario: Shopping cart contains a few products
   And I am on the shop page
   When I follow "Ostoskori"
   # And I am on the edit shopping cart page
-  And I should see "Osta tuotteet"
-
+  Then I should see "Osta tuotteet"
