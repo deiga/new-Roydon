@@ -27,3 +27,12 @@ end
 Given(/^the shopping cart is empty$/) do
   page.should have_content "Ei tuotteita"
 end
+
+Then(/^fill in the order form$/) do
+  fill_in 'Email', with: 'test@tester.com'
+  fill_in 'Street', with: 'Testikatu 1'
+  fill_in 'City', with: 'Helsinki'
+  fill_in 'Postal number', with: '00100'
+  fill_in 'Country', with: 'Finland'
+  select 'Cash', from: 'Payment'
+end

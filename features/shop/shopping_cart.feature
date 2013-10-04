@@ -28,7 +28,6 @@ Scenario: Shopping Cart contains a few products
   Then I should see "41 €"
 
 Scenario: Shopping cart is empty
-  Given I am on the shop page
   Given the shopping cart is empty
   When I follow "Ostoskori"
   Then I should see "Ei tuotteita"
