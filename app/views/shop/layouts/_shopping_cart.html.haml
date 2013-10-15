@@ -13,6 +13,7 @@
       = "Tuotteita: #{cart.size}kpl"
       %span#price>
         =raw "#{humanized_money cart.price} #{currency_symbol}"
+    = link_to t('shop.checkout'), new_shop_order_path, method: :get
   - else
     %span#total>
       = t 'shop.cart.empty'
