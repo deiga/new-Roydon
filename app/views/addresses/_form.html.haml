@@ -1,5 +1,5 @@
-= form_for @address do |f|
-  = render 'order_errors', object: @address
+= form_for address do |f|
+  = render 'order_errors', object: address
   .field
     = f.label :name
     = f.text_field :name, size: 40
