@@ -29,7 +29,7 @@ describe User do
 
   describe "formatting methods" do
     it "should display email when no first name" do
-      user = FactoryGirl.build(:user, first_name: '')
+      user.first_name = ''
       user.display_name.should eq user.email
     end
 
