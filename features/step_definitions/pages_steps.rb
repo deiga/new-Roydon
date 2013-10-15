@@ -25,3 +25,7 @@ end
 Then(/^I submit the form "(.*?)"$/) do  |button|
   click_button(button)
 end
+
+Then(/^I should be on the (.*) page$/) do |page_name|
+  current_path.should eq send(page_name.split(/\s+/).push('path').join('_').to_sym)
+end

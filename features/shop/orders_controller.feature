@@ -18,7 +18,7 @@ Scenario: Shopping cart contains a few products
     | name  | price  |
     | Test 1  | 4.2 |
   When I follow "Ostoskori"
-  # And I am on the edit shopping cart page
+  And I should be on the edit shop shopping cart page
   Then I should see "Siirry kassalle"
   And I should see "4,20 €"
 
@@ -37,3 +37,6 @@ Scenario: Unregistered user can make order
     And I follow "Siirry kassalle"
     Then fill in the order form
     And I submit the form "Place order"
+    And show me the page
+    And I should be on the shop page
+    And I should see "Thnk you for your order"
