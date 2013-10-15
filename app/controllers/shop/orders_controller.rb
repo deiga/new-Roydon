@@ -15,18 +15,19 @@ class Shop::OrdersController < Shop::ShopController
   end
 
   def create
-    @order = Shop::Order.new(order_params)
-
-    @order.add(@cart.items.with_product)
+    cart_items = @cart.items.with_product
     if current_user.nil?
-      @order.user = User.create(user_email_param)
-      @order.address = Address.create(order_address_params) unless order_address_params.nil?
-      @order.user.addresses << @order.address
+      user = User.create(user_email_param)
+      address = Address.create(order_address_params) unless order_address_params.nil?
+      user.addresses << address
       # TODO Email login information
     else
-      @order.user = current_user
-      @order.address = Address.find_or_create(user_address_param) unless user_address_param.nil?
+      user = current_user
+      address = Address.find_or_create(user_address_param) unless user_address_param.nil?
     end
+    user.addresses << address unless (user.addresses.include?(address) && address.user.present?)
+
+    @order = Shop::Order.build_from(order_params, cart_items, user, address)
 
     respond_to do |format|
       if @order.save
