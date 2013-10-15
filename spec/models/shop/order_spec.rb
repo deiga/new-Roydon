@@ -40,4 +40,18 @@ describe Shop::Order do
       ord.untaxed_price.should == Money.new(3000/1.23)
     end
   end
+
+  describe "order factory" do
+    it "should build correct order" do
+      user = FactoryGirl.create(:user)
+      address = FactoryGirl.create(:address)
+      cart_items = [FactoryGirl.create(:item_with_product)]
+      order_params = {message: 'Foo', payment: 'Cash'}
+      order = Shop::Order.build_from(order_params, cart_items, user, address)
+      order.should be_valid
+      order.items.first.product_id.should eq cart_items.first.product.id
+      order.user.should eq user
+      order.address.should eq address
+    end
+  end
 end
