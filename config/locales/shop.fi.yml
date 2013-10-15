@@ -1,7 +1,7 @@
 fi:
   shop:
     shop: 'Kauppa'
-    checkout: 'Osta tuotteet'
+    checkout: 'Siirry kassalle'
     confirm: 'Oletko varma?'
     overall: 'Yhteensä'
     search:
