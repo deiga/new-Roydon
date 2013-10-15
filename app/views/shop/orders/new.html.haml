@@ -11,54 +11,48 @@
 / current_user.present && addresses.any
 /   - select address
 
-- if current_user or params.include?(:cont)
-  .order-form
-    = form_for @order, url: { action: :create, cont: params['cont']} do |f|
-      = render 'order_errors', object: @order
-
-      .field
-        = label 'user', 'email'
-        = email_field 'user', 'email', value: current_user ? current_user.email : ''
-      - if not current_user or not current_user.addresses.any?
-        .field
-          = label 'address', 'street'
-          = text_field 'address', 'street', cols: 40, required: true
-        .field
-          = label 'address', :city
-          = text_field 'address', :city, size: 40
-        .field
-          = label 'address', :postal_number
-          = text_field 'address', :postal_number, size: 40, required: true
-        .field
-          = label 'address', :country
-          = text_field 'address', :country, size: 40
-        .field
-          = label 'address', :phone_number
-          = phone_field 'address', :phone_number, size: 40, required: true
-        .field
-          = label 'address', :description
-          = text_area 'address', :description, rows: 3, columns: 40
-        .field
-          = label 'address', :home
-          = check_box 'address', :home
-      - else
-        .field
-          = f.label :address
-          = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
-      .field
-        = f.label :payment
-        = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
-      .field
-        = f.label :message
-        = f.text_area :message, rows: 3, cols: 40
-      .actions
-        = f.submit 'Place order'
-- else
-  / = label_tag t 'shop.session.sign_in'
-  / = radio_button_tag 'user_control', 'sign_in'
-  / = label_tag t 'shop.session.continue_order'
-  / = radio_button_tag 'user_control', 'continue_order'
+- if not current_user# or params.include?(:cont)
   = link_to t('shop.session.sign_in'), new_user_session_path
-  = link_to t('shop.session.continue_order'), params.merge(cont: 1)
+  tai jatka tilausta
+.order-form
+  = form_for @order, url: { action: :create } do |f|
+    = render 'order_errors', object: @order
 
-
+    .field
+      = label 'user', 'email'
+      = email_field 'user', 'email', value: current_user ? current_user.email : ''
+    - if not current_user or not current_user.addresses.any?
+      = f.fields_for :address do |af|
+        .field
+          = af.label :street
+          = af.text_field :street, cols: 40, required: true
+        .field
+          = af.label :city
+          = af.text_field :city, size: 40
+        .field
+          = af.label :postal_number
+          = af.text_field :postal_number, size: 40, required: true
+        .field
+          = af.label :country
+          = af.text_field :country, size: 40
+        .field
+          = af.label :phone_number
+          = af.phone_field :phone_number, size: 40, required: true
+        .field
+          = af.label :description
+          = af.text_area :description, rows: 3, columns: 40
+        .field
+          = af.label :home
+          = af.check_box :home
+    - else
+      .field
+        = f.label :address
+        = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
+    .field
+      = f.label :payment
+      = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
+    .field
+      = f.label :message
+      = f.text_area :message, rows: 3, cols: 40
+    .actions
+      = f.submit 'Place order'
