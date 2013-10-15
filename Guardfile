@@ -6,7 +6,7 @@ filter [/\.txt$/, /.*\.zip/]
 
 notification :gntp
 
-guard 'rspec', cmd: 'zeus test' do
+guard 'rspec', cmd: 'zeus rspec spec/ --order rand:$RANDOM' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
