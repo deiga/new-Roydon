@@ -20,20 +20,19 @@ class Shop::OrdersController < Shop::ShopController
     @order.add(@cart.items.with_product)
     if current_user.nil?
       @order.user = User.create(user_email_param)
-      # TODO Add login for created user
+      @order.address = Address.create(order_address_params) unless order_address_params.nil?
+      @order.user.addresses << @order.address
+      # TODO Email login information
     else
       @order.user = current_user
-    end
-    if current_user.address
-      @order.address = Address.find(order_address_param) unless order_address_param.nil?
-    else
-      @order.address = Address.create(user_address_params) unless user_address_params.nil?
+      @order.address = Address.find_or_create(user_address_param) unless user_address_param.nil?
     end
 
     respond_to do |format|
       if @order.save
         @cart.destroy
         session[:cart_id] = nil
+        # TODO Email order confirmation
         format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -61,15 +60,15 @@ class Shop::OrdersController < Shop::ShopController
       end
     end
 
-    def user_address_params
+    def order_address_params
       begin
-        params.require(:address).permit(:street, :city, :postal_number, :country, :phone_number, :description, :home)
+        params.require(:shop_order).require(:address).permit(:street, :city, :postal_number, :country, :phone_number, :description, :home)
       rescue ActionController::ParameterMissing
         nil
       end
     end
 
-    def order_address_param
+    def user_address_param
       begin
 
         params.require(:shop_order).require(:address)
