@@ -13,7 +13,7 @@ class User
   field :email,              type: String, :default => ""
   field :encrypted_password, type: String, :default => ""
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 
   ## Recoverable
   field :reset_password_token,   type: String
