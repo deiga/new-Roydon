@@ -10,6 +10,9 @@ fi:
       page: 'Sivu'
     action:
       search: 'Hae'
+    user:
+      greet: 'Hei'
+      unknown: 'sinä.'
     cart:
       empty: 'Ei tuotteita'
       action:
