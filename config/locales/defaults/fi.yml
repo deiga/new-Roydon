@@ -9,7 +9,7 @@ fi:
     - pe
     - la
     abbr_month_names:
-    - 
+    -
     - tammi
     - helmi
     - maalis
@@ -35,7 +35,7 @@ fi:
       long: ! '%A %e. %Bta %Y'
       short: ! '%e.%m.%Y'
     month_names:
-    - 
+    -
     - tammikuu
     - helmikuu
     - maaliskuu
@@ -123,8 +123,8 @@ fi:
     template:
       body: ! 'Seuraavat kentät aiheuttivat ongelmia:'
       header:
-        one: Virhe syötteessä esti mallin %{model} tallentamisen
-        other: ! '%{count} virhettä esti mallin %{model} tallentamisen'
+        one: Virhe syötteessä esti %{model}-mallin tallentamisen
+        other: ! '%{count} virhettä esti %{model}-mallin tallentamisen'
   helpers:
     select:
       prompt: Valitse
