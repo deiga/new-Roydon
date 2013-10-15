@@ -63,7 +63,7 @@ class Shop::ShoppingCart
 
   def latest_items
     Rails.cache.fetch [self, 'latest-items'].join('/') do
-      self.items.desc(:updated_at).limit(5)
+      self.items.desc(:updated_at).limit(5).includes(:product)
     end
   end
 
