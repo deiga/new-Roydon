@@ -88,7 +88,7 @@ class Shop::OrdersController < Shop::ShopController
 
     def user_email_param
       begin
-        params.require(:user).permit(:email)
+        params.require(:shop_order).require(:user).permit(:email)
       rescue ActionController::ParameterMissing
         nil
       end
