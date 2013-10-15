@@ -30,6 +30,7 @@ gem 'kaminari', '~> 0.14' # Pagination
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
+gem 'formtastic'
 
 group :development do
   gem 'bullet'
