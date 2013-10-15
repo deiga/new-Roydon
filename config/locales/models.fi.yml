@@ -19,3 +19,7 @@ fi:
       shop/order:
         one: Tilaus
         other: Tilauksia
+    attributes:
+      shop/order:
+        address: 'Osoite'
+        payment: 'Maksutapa'
