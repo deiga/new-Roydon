@@ -36,3 +36,4 @@ Scenario: Unregistered user can make order
     When I follow "Ostoskori"
     And I follow "Siirry kassalle"
     Then fill in the order form
+    And I submit the form "Place order"

@@ -21,3 +21,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then(/^I submit the form "(.*?)"$/) do  |button|
+  click_button(button)
+end
