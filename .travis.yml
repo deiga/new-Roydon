@@ -9,8 +9,6 @@ rvm:
 install:
   - "pip install --user robotframework"
   - "pip install --user robotframework-selenium2library"
-  - "rvm osx-ssl-certs status all"
-  - "rvm osx-ssl-certs update all"
   - "bundle install --without development production staging development_remote"
 services: mongodb
 before_script:
