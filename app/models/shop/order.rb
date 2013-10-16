@@ -5,8 +5,6 @@ class Shop::Order
 
   before_save :update_prices
 
-  PAYMENT_TYPES = ['Credit card', 'Cash']
-
   embeds_many :items, class_name: 'Shop::OrderItem', inverse_of: :order
   accepts_nested_attributes_for :items
   belongs_to :user, touch: true
