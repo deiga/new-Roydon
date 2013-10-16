@@ -23,6 +23,15 @@ require 'capybara/poltergeist'
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(
+    app,
+    window_size: [1280, 1024]#,
+    #debug:       true
+    )
+end
+Capybara.default_driver    = :poltergeist
 Capybara.javascript_driver = :poltergeist
 
 # By default, any exception happening in your Rails application will bubble up
