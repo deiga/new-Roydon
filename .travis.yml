@@ -5,7 +5,7 @@ python:
 install:
   - "pip install --user robotframework"
   - "pip install --user robotframework-selenium2library"
-  - "bundle install"
+  - "bundle install --without development production staging development_remote"
 env:
   - CI=true
 rvm:
