@@ -16,16 +16,14 @@
   tai jatka tilausta
 .order-form
   = semantic_form_for @order, url: { action: :create } do |f|
-    = f.semantic_errors :order
-    = f.semantic_fields_for @order.user do |uf|
-      = uf.semantic_errors :user
+    = f.semantic_errors :user, :address
+    = f.semantic_fields_for :user do |uf|
       = uf.inputs do
         = uf.input :email
         - if current_user and current_user.addresses.any?
           = uf.input :address, as: :select, collection: @order.user.addresses
     - if not current_user or current_user.addresses.empty?
-      = f.semantic_fields_for @order.address do |af|
-        = af.semantic_errors :address
+      = f.semantic_fields_for :address do |af|
         = af.inputs do
           = af.input :street
           = af.input :city, required: false
