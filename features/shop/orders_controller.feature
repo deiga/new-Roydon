@@ -36,7 +36,6 @@ Scenario: Unregistered user can make order
     When I follow "Ostoskori"
     And I follow "Siirry kassalle"
     Then fill in the order form
-    And I submit the form "Place order"
-    And show me the page
+    And I submit the form "Create Tilaus"
     And I should be on the shop page
-    And I should see "Thnk you for your order"
+    And I should see "Thank you for your order"

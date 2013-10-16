@@ -2,8 +2,12 @@ When(/^I am on the (.*) page$/) do |page_name|
   visit send(page_name.split(/\s+/).push('path').join('_').to_sym)
 end
 
-When(/^I follow "(.*?)"$/) do |link_name|
-  click_on(link_name)
+When(/^I follow "(.*?)"(?: in the selector "(.*?)")?$/) do |link_name, selector|
+  if selector
+    find(selector).click_on(link_name)
+  else
+    find_link(link_name).trigger('click')
+  end
 end
 
 Then(/^I should see "(.*?)" in the title$/) do |expected|
@@ -27,5 +31,11 @@ Then(/^I submit the form "(.*?)"$/) do  |button|
 end
 
 Then(/^I should be on the (.*) page$/) do |page_name|
-  current_path.should eq send(page_name.split(/\s+/).push('path').join('_').to_sym)
+  object_id = current_path.match(BSON_ID_REGEX).to_s
+  path_name = page_name.split(/\s+/).push('path').join('_').to_sym
+  if object_id.present?
+    current_path.should eq send(path_name, object_id)
+  else
+    current_path.should eq send(path_name)
+  end
 end

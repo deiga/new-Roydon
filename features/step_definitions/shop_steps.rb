@@ -34,5 +34,6 @@ Then(/^fill in the order form$/) do
   fill_in 'City', with: 'Helsinki'
   fill_in 'Postal number', with: '00100'
   fill_in 'Country', with: 'Finland'
+  fill_in 'Phone number', with: '0123456789'
   select 'Cash', from: Shop::Order.human_attribute_name('payment')
 end
