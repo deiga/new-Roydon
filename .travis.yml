@@ -3,13 +3,16 @@ bundler_args: --without development production staging development_remote
 python:
   - "2.7"
 install:
-  - "pip install robotframework"
-  - "pip install robotframework-selenium2library"
+  - "pip install --user robotframework"
+  - "pip install --user robotframework-selenium2library"
 env:
   - CI=true
 rvm:
   - "2.0.0"
 services: mongodb
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 script:
   - pybot robot/*.robot
   - bundle exec rake test
