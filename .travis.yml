@@ -2,19 +2,22 @@ language: ruby
 bundler_args: --without development production staging development_remote
 python:
   - "2.7"
+env:
+  - CI=true
+  - DISPLAY=:99.0
+rvm:
+  - "2.0.0"
 install:
   - "pip install --user robotframework"
   - "pip install --user robotframework-selenium2library"
   - "bundle install --without development production staging development_remote"
-env:
-  - CI=true
-rvm:
-  - "2.0.0"
+  - "rvm osx-ssl-certs status all"
+  - "rvm osx-ssl-certs update all"
 services: mongodb
 before_script:
-  - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rails server -d"
 script:
-  - bundle exec rails server -d; ~/.local/bin/pybot robot/*.robot
+  - ~/.local/bin/pybot robot/*.robot
   - bundle exec rspec
   - bundle exec cucumber
