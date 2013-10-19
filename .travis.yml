@@ -6,9 +6,6 @@ env:
   - CI=true DISPLAY=:99.0
 rvm:
   - "2.0.0"
-before_install:
-  - gem update --system
-  - gem --version
 install:
   - "pip install --user robotframework"
   - "pip install --user robotframework-selenium2library"
