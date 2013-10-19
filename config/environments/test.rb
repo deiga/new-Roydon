@@ -18,5 +18,8 @@ Roydon::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
+  # Stops specs and features from funning twice
+  config.assets.debug = false
+
   Paperclip.options[:log] = false
 end
