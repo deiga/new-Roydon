@@ -16,6 +16,7 @@ install:
 services: mongodb
 before_script:
   - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rake db:reseed"
   - "bundle exec rails server -d"
 script:
   - ~/.local/bin/pybot robot/*.robot
