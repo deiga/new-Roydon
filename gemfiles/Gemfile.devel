@@ -6,10 +6,10 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'guard-bundler', github: 'guard/guard-bundler', :branch => 'v2.0'
+  gem 'guard-bundler'
   gem 'rb-fsevent', :require => false
   gem 'ruby_gntp'
-  gem 'zeus', '~> 0.13.4.pre2'
+  gem 'zeus', '~> 0.14.0.rc1'
   gem 'guard-rails_best_practices'
 
 end
