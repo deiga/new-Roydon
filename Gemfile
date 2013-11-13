@@ -35,7 +35,6 @@ gem 'formtastic'
 group :development do
   gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
-  gem 'wirble'
 end
 
 group :development_remote do
@@ -50,13 +49,10 @@ group :development, :development_remote do
   gem 'pry-plus'
 end
 
-group :development, :test, :development_remote do
+group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
   gem 'poltergeist'
-end
-
-group :test do
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
