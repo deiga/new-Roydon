@@ -17,7 +17,7 @@ class Shop::OrdersController < Shop::ShopController
   def create
     cart_items = @cart.items.with_product
     if current_user.nil?
-      user = User.create(user_email_param)
+      user = User.create!(user_email_param)
       address = Address.create(order_address_params) unless order_address_params.nil?
       user.addresses << address
       # TODO Email login information
