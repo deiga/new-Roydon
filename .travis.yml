@@ -1,11 +1,11 @@
 language: ruby
 bundler_args: --without development production staging development_remote
 python:
-  - "2.7"
+    - "2.7"
 env:
-  - CI=true DISPLAY=:99.0
+    - CI=true DISPLAY=:99.0
 rvm:
-  - "2.0.0"
+    - "2.0.0"
 before_install:
     - gem update --system
     - gem --version
@@ -15,9 +15,9 @@ before_install:
 #  - "bundle install --without development production staging development_remote"
 services: mongodb
 before_script:
-  - "sh -e /etc/init.d/xvfb start"
+    - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake db:reseed"
   - "bundle exec rails server -d"
 script:
-  - ~/.local/bin/pybot robot/*.robot
+    - ~/.local/bin/pybot robot/*.robot
   - bundle exec rake spec cucumber
