@@ -12,7 +12,7 @@ before_install:
 install:
   - "pip install --user robotframework"
   - "pip install --user robotframework-selenium2library"
-  - "bundle install --without development production staging development_remote"
+    #  - "bundle install --without development production staging development_remote"
 services: mongodb
 before_script:
   - "sh -e /etc/init.d/xvfb start"
