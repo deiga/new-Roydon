@@ -69,7 +69,7 @@ group :assets do
   gem 'compass-rails'
   gem 'compass-h5bp'
   gem 'yui-compressor'
-  gem 'haml-rails'
+  gem 'haml-rails', "< 0.5"
   gem 'jquery-rails'
   gem 'html5-rails'
 end
