@@ -32,7 +32,7 @@ def create_shows
     else
       url = line[-1]
     end
-    date = Date.strptime(line[1])
+    date = Date.strptime(line[1], '%Y-%m-%d')
     Show.create!(:location => line[0], :date => date,
       :duration => line[2], :title => line[3], :url => url)
   end
@@ -41,7 +41,7 @@ end
 def create_stories
   Ccsv.foreach('db/seed/news.csv') do |line|
     line.each { |str| str.gsub!(/\"/,'').gsub!(/;/,',') }
-    date = Date.strptime(line[0])
+    date = Date.strptime(line[0], '%Y-%m-%d')
     Story.create!(:date => date, :title => line[1],
       :content => line[2])
     Story.create!(:date => date, :title => line[3],
