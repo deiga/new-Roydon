@@ -12,7 +12,7 @@ group :development, :test do
   gem 'zeus', '~> 0.14.0.rc1'
   gem 'guard-rails_best_practices'
   gem 'traceroute'
-  gem 'brakeman'
+  gem 'brakeman', :require => false
   gem 'rack-mini-profiler'
   gem 'railroady'
   gem 'rails-footnotes'
