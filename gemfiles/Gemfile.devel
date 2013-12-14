@@ -14,7 +14,6 @@ group :development, :test do
   gem 'traceroute'
   gem 'brakeman'
   gem 'rack-mini-profiler'
-  gem 'lol_dba'
   gem 'railroady'
   gem 'rails-footnotes'
 end
