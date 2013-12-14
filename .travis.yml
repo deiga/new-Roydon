@@ -4,6 +4,7 @@ python:
   - "2.7"
 env:
   - CI=true DISPLAY=:99.0
+  - SECRET_TOKEN=$(rake secret)
 rvm:
   - "2.0.0"
 before_install:
