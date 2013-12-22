@@ -13,12 +13,12 @@ class Show
 
 	index date: 1
 
-	scope :active, lambda { where(passive: false) }
-	scope :upcoming, lambda { where(:date.gte => Date.today).active }
-  scope :range, (lambda do |from, to|
+	scope :active, ->() { where(passive: false) }
+	scope :upcoming, ->() { where(:date.gte => Date.today).active }
+  scope :range, (->(from, to) do
       where(:date.gte => from, :date.lt => to).active
     end)
-  scope :earlier_this_year, lambda { range(Date.today.beginning_of_year, Date.today) }
+  scope :earlier_this_year, ->() { range(Date.today.beginning_of_year, Date.today) }
 	default_scope asc(:date)
 
 	# Validations

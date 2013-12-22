@@ -3,9 +3,7 @@ def zeus_running?
   File.exists? '.zeus.sock'
 end
 
-unless zeus_running?
-  require 'simplecov'
-end
+require 'simplecov' unless zeus_running?
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require File.expand_path('../../config/environment', __FILE__)

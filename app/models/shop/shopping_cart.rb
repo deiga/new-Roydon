@@ -46,7 +46,7 @@ class Shop::ShoppingCart
         group_discounts.each do |group_discount|
           price_modification = group_discount.apply_discount_on(self) # TODO remove passing cart and pass products instead
           unless price_modification.nil?
-            (@price_modifications ||= {} )[group_discount.id] = price_modification
+            (@price_modifications ||= {})[group_discount.id] = price_modification
             price_sum += price_modification.inject(:-)
           end
         end

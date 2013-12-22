@@ -18,7 +18,7 @@ class Shop::Product
   attr_accessor :image, :delete_image
   attr_accessor :image_url
 
-  before_save :download_remote_image, :if => :image_url_present?
+  before_save :download_remote_image, if: :image_url_present?
   before_save :normalize_filename
 
   has_mongoid_attached_file :image,
@@ -27,19 +27,19 @@ class Shop::Product
     show: ['400x', :png]
   }
 
-  field :name,        :type => String
-  field :price,       :type => Money, default: Money.new(0)
-  field :passive,     :type => Boolean,     :default => false
-  field :suggestion,  :type => Boolean,     :default => false
-  field :description, :type => String
+  field :name,        type: String
+  field :price,       type: Money,    default: Money.new(0)
+  field :passive,     type: Boolean,  default: false
+  field :suggestion,  type: Boolean,  default: false
+  field :description, type: String
 
-  validates :name, :presence => true, :length => { :minimum => 1 }
-  validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
+  validates :name, presence: true, length: { minimum: 1 }
+  validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1_000_000, message: 'Only amounts in the range 0 to 10000.00 are allowed.'  }
 
   scope :active, where(passive: false)
-  scope :category_products, lambda { |category| where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }
+  scope :category_products, ->(category) { where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }
 
-  def self.search term
+  def self.search(term)
     where(name: /#{term}/).includes(:options)
   end
 

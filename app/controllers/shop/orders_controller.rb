@@ -25,7 +25,7 @@ class Shop::OrdersController < Shop::ShopController
       user = current_user
       address = Address.find_or_create(user_address_param) unless user_address_param.nil?
     end
-    user.addresses << address unless (user.addresses.include?(address) && address.user.present?)
+    user.addresses << address unless user.addresses.include?(address) && address.user.present?
 
     @order = Shop::Order.build_from(order_params, cart_items, user, address)
 

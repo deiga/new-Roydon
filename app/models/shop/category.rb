@@ -21,7 +21,7 @@ class Shop::Category
 
   scope :active, where(passive: false)
   scope :with_products, includes(:products)
-  scope :top_categories, lambda { where(ancestry: nil) }
+  scope :top_categories, ->() { where(ancestry: nil) }
 
   def all_products
     Shop::Product.category_products(self)
