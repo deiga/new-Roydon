@@ -44,5 +44,4 @@ class Shop::Order
     order.address = address
     return order
   end
-
 end

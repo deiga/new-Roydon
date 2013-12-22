@@ -25,7 +25,7 @@ Then(/^There are (\d+) products$/) do |number|
 end
 
 Given(/^the shopping cart is empty$/) do
-  page.should have_content "Ei tuotteita"
+  page.should have_content 'Ei tuotteita'
 end
 
 Then(/^fill in the order form$/) do

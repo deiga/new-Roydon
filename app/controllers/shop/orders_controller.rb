@@ -93,5 +93,4 @@ class Shop::OrdersController < Shop::ShopController
         nil
       end
     end
-
 end

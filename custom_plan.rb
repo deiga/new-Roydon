@@ -1,7 +1,6 @@
 require 'zeus/rails'
 
 class CustomPlan < Zeus::Rails
-
   def test
     require 'simplecov'
 
@@ -16,12 +15,11 @@ class CustomPlan < Zeus::Rails
     require 'simplecov'
 
     # require all ruby files
-    #Dir["#{Rails.root}/app/**/*.rb"].each { |f| load f }
+    # Dir["#{Rails.root}/app/**/*.rb"].each { |f| load f }
 
     # run the tests
     super
   end
-
 end
 
 Zeus.plan = CustomPlan.new

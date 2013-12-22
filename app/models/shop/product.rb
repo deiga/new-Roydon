@@ -59,8 +59,8 @@ class Shop::Product
 
     def normalize_filename
       if image.exists?
-        image_file_name = image_file_name.parameterize.downcase unless image_file_name.blank?
+        extension = File.extname(image_file_name).downcase
+        self.image.instance_write(:file_name, "#{image_file_name.parameterize.downcase}#{extension}") unless image_file_name.blank?
       end
     end
-
 end
