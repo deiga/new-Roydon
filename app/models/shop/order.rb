@@ -37,7 +37,7 @@ class Shop::Order
     end
   end
 
-  def self.build_from(order_params, cart_items, user, address)
+  def self.build(order_params, cart_items, user, address)
     order = self.new(order_params)
     order.add(cart_items)
     order.user = user

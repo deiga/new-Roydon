@@ -27,7 +27,7 @@ class Shop::OrdersController < Shop::ShopController
     end
     user.addresses << address unless user.addresses.include?(address) && address.user.present?
 
-    @order = Shop::Order.build_from(order_params, cart_items, user, address)
+    @order = Shop::Order.build(order_params, cart_items, user, address)
 
     respond_to do |format|
       if @order.save

@@ -47,7 +47,7 @@ describe Shop::Order do
       address = FactoryGirl.create(:address)
       cart_items = [FactoryGirl.create(:item_with_product)]
       order_params = { message: 'Foo', payment: 'Cash' }
-      order = Shop::Order.build_from(order_params, cart_items, user, address)
+      order = Shop::Order.build(order_params, cart_items, user, address)
       order.should be_valid
       order.items.first.product_id.should eq cart_items.first.product.id
       order.user.should eq user
