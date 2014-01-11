@@ -26,6 +26,7 @@ end
 gem 'nokogiri', '< 1.6.0'
 gem 'aws-sdk', '~> 1.0' # Online storage
 gem 'kaminari', '~> 0.14' # Pagination
+gem "money", "~> 6.0.1.beta3"
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
 gem 'rack-pjax'
