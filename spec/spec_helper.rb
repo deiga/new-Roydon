@@ -1,9 +1,6 @@
 ENV['RAILS_ENV'] = 'test'
-def zeus_running?
-  File.exists? '.zeus.sock'
-end
 
-require 'simplecov' unless zeus_running?
+require 'simplecov'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require File.expand_path('../../config/environment', __FILE__)

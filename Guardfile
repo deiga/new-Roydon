@@ -6,7 +6,7 @@ filter [/\.txt$/, /.*\.zip/]
 
 notification :gntp
 
-guard 'rspec', cmd: 'zeus rspec spec/ --order rand:$RANDOM' do
+guard 'rspec', cmd: 'rake spec' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -27,7 +27,7 @@ guard 'rspec', cmd: 'zeus rspec spec/ --order rand:$RANDOM' do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
 
-guard 'cucumber', command_prefix: 'zeus', bundler: false do
+guard 'cucumber', bundler: false do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})          { 'features' }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }

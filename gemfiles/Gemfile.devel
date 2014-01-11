@@ -9,7 +9,6 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'rb-fsevent', :require => false
   gem 'ruby_gntp'
-  gem 'zeus', '~> 0.14.0.rc1'
   gem 'guard-rails_best_practices'
   gem 'traceroute'
   gem 'brakeman', :require => false
