@@ -33,7 +33,7 @@
           = af.input :description, required: false
           = af.input :home, as: :boolean
     = f.inputs do
-      = f.input :payment, as: :select, collection: Shop::Order::PAYMENT_TYPES
+      = f.input :payment, as: :select, collection: PAYMENT_TYPES
       = f.input :message, as: :text
     = f.actions :submit
     / = render 'order_errors', object: @order
@@ -72,7 +72,7 @@
     /     = f.collection_select :address, current_user.addresses, :id, :name, prompt: 'Select delivery address'
     / .field
     /   = f.label :payment
-    /   = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
+    /   = f.select :payment, PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
     / .field
     /   = f.label :message
     /   = f.text_area :message, rows: 3, cols: 40
