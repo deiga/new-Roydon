@@ -1,5 +1,7 @@
 group :development do
   gem 'unicorn-rails'
+  gem 'bullet'
+  gem 'sextant' # see routes at /rails/routes
 end
 
 group :development, :test do
