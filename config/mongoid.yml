@@ -1,5 +1,6 @@
 <%
 begin
+  ENV['RAILS_ENV'] = 'development' if ENV['RAILS_ENV'].nil?
   unless ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
     credentials = YAML.load_file('config/db.credentials.yml')[ENV['RAILS_ENV']]
     username = credentials['user']
