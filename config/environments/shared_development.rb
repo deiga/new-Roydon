@@ -8,7 +8,7 @@ Roydon::Application.configure do
   config.consider_all_requests_local = true
 
   # Do not compress assets
-  config.assets.compress = false
+  config.assets.js_compress = false
 
   # Expands the lines which load the assets
   config.assets.debug = true

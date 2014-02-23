@@ -38,10 +38,9 @@ Roydon::Application.routes.draw do
   get '/about' => 'pages#about'
   get '/' => 'pages#home', as: 'home'
 
+  get "/404" => 'errors#not_found'
+  get "/500" => 'errors#server_error'
+  get "/:status" => 'errors#error', constraints: { status: /[45][0-9][0-9]/}
+
   root to: 'pages#home'
-
-  match "/404" => 'errors#not_found'
-  match "/500" => 'errors#server_error'
-  match "/:status" => 'errors#error', constraints: { status: /[45][0-9][0-9]/}
-
 end
