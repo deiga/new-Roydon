@@ -5,7 +5,7 @@ class Shop::OrderItem
 
   embedded_in :order, class_name: 'Shop::Order'
 
-  field :product_id, type: Moped::BSON::ObjectId
+  field :product_id, type: BSON::ObjectId
   field :product_name, type: String
   field :product_price, type: Money, default: Money.new(0)
   field :quantity, type: Integer, default: 1

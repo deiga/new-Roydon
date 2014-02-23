@@ -66,7 +66,7 @@ describe Shop::ShoppingCart do
 
     it "should have 2 items after incrementation" do
       cart.add product
-      cart.items.first.inc(:quantity, 1)
+      cart.items.first.inc(quantity: 1)
       cart.size.should be 2
     end
   end

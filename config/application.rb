@@ -1,19 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails'
-load(File.expand_path('../heroku_env.rb', __FILE__))
-# Pick the frameworks you want:
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
 require "sprockets/railtie"
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  # Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  Bundler.require(:default, Rails.env)
-end
+load(File.expand_path('../heroku_env.rb', __FILE__))
+Bundler.require(:default, Rails.env)
 
 module Roydon
   class Application < Rails::Application

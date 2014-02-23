@@ -89,7 +89,7 @@ class User
 
     def migrate_data
       if self[:confirmation_token].blank?
-        self.set(:confirmed_at, Time.now)
+        self.set(confirmed_at: Time.now)
       end
     end
 

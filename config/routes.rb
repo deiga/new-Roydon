@@ -21,7 +21,7 @@ Roydon::Application.routes.draw do
     resources :shopping_carts, except: [:index], constraints: { id: BSON_ID_REGEX } do
       delete '/remove_item/:id', action: 'remove_item', as: 'remove_item'
       post '/add_item/:id', action: 'add_item', as: 'add_item'
-      get '/add_item/:id', action: 'add_item', as: 'add_item'
+      # get '/add_item/:id', action: 'add_item', as: 'add_item'
     end
     get '/' => 'shop#index'
     get 'search' => 'shop#search'

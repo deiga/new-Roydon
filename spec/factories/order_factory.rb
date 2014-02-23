@@ -18,7 +18,7 @@ FactoryGirl.define do
 
   factory :order_item, class: Shop::OrderItem do
     product_name 'Test product'
-    product_id Moped::BSON::ObjectId.new
+    product_id BSON::ObjectId.new
     tax 1.23
   end
 end

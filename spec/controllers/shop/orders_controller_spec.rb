@@ -27,7 +27,7 @@ describe Shop::OrdersController do
     end
 
     it "should not render 'show' for random order " do
-      get 'show', id: Moped::BSON::ObjectId.new
+      get 'show', id: BSON::ObjectId.new
       response.should_not be_success
     end
 

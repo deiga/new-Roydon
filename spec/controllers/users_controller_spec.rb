@@ -7,7 +7,7 @@ describe UsersController do
 
   describe "GET 'show'" do
     it "should redirect to login page" do
-      get :show, id: Moped::BSON::ObjectId.new
+      get :show, id: BSON::ObjectId.new
       response.should redirect_to '/users/sign_in'
     end
 

@@ -18,4 +18,6 @@ Roydon::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+
+  config.eager_load = false
 end
