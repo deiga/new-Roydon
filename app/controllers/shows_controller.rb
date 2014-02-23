@@ -1,9 +1,6 @@
 class ShowsController < ApplicationController
 
-  caches_action :index, cache_path: (proc do
-    year = params[:year].nil? ? Date.today.year : params[:year]
-    { tag: "#{Show.cache_key}-#{year}" }
-  end)
+  before_action :skip_if_cached, only: [:index]
 
   def index
     @title = t 'shows.title'
@@ -18,4 +15,11 @@ class ShowsController < ApplicationController
       @earlier_shows = Show.earlier_this_year
     end
   end
+
+  private
+
+    def skip_if_cached
+      year = params[:year].nil? ? Date.today.year : params[:year]
+      return render :index if fragment_exists?([Show.cache_key, year])
+    end
 end
