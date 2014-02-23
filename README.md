@@ -5,5 +5,9 @@
 
 This is the application for the rebuilt Roydon webpage and shop with Ruby on Rails
 
+### Development
+
+Development uses [mailcatcher](https://github.com/sj26/mailcatcher), so you need to install and start it
+
 Current application [Roydon.fi](http://www.roydon.fi)
 by [Timo Sand](http://timosand.com)

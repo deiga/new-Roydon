@@ -2,6 +2,8 @@
 
 MoneyRails.configure do |config|
 
+  Money.silence_core_extensions_deprecations = true # Remove deprecation
+
   # To set the default currency
   #
   config.default_currency = :eur

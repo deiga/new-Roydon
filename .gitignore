@@ -36,3 +36,6 @@ pickle-email-*.html
 .DS_Store
 bin/*
 heroku.yml
+
+robot/report/*
+.rbenv-vars

@@ -1,10 +1,11 @@
 / views/devise/menu/_login_items.html.haml
 .user-status
   - if user_signed_in?
-    Hi
+    = t 'shop.user.greet'
     = link_to current_user.display_name, user_path(current_user.id)
     / TODO on hover dropdown with 'Profile', 'Change email&password', 'Logout'
-    = link_to 'Logout', destroy_user_session_path, method: :delete
+    = link_to t('shop.session.sign_out'), destroy_user_session_path, method: :delete
   - else
-    Hi Unknown user.
-    = link_to 'Login', new_user_session_path # TODO evaluate if Login is actually needed here?
+    = t 'shop.user.greet'
+    = t 'shop.user.unknown'
+    = link_to t('shop.session.sign_in'), new_user_session_path # TODO evaluate if Login is actually needed here?

@@ -1,13 +1,20 @@
 group :development do
-  gem 'hooves', :require => 'hooves/default'
+  gem 'unicorn-rails'
 end
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-bundler'
   gem 'rb-fsevent', :require => false
-  gem 'growl'
-  gem 'zeus'
+  gem 'ruby_gntp'
+  gem 'guard-rails_best_practices'
+  gem 'traceroute'
+  gem 'brakeman', :require => false
+  gem 'rack-mini-profiler'
+  gem 'railroady'
+  gem 'rails-footnotes'
 end
 
 group :test do

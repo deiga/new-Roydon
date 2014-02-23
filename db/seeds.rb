@@ -32,7 +32,7 @@ def create_shows
     else
       url = line[-1]
     end
-    date = Date.strptime(line[1])
+    date = Date.strptime(line[1], '%Y-%m-%d')
     Show.create!(:location => line[0], :date => date,
       :duration => line[2], :title => line[3], :url => url)
   end
@@ -41,7 +41,7 @@ end
 def create_stories
   Ccsv.foreach('db/seed/news.csv') do |line|
     line.each { |str| str.gsub!(/\"/,'').gsub!(/;/,',') }
-    date = Date.strptime(line[0])
+    date = Date.strptime(line[0], '%Y-%m-%d')
     Story.create!(:date => date, :title => line[1],
       :content => line[2])
     Story.create!(:date => date, :title => line[3],
@@ -62,24 +62,24 @@ if Rails.env.development?
   admin.users.create!(admins['Timo'])
 end
 
-User.create!(:email => 'test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+User.create!(:email => 'test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-groomer.users.create!(:email => '1test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+groomer.users.create!(:email => '1test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
-groomer.users.create!(:email => '2test@tester.com', :password => 'foofoo',
-  :password_confirmation => 'foofoo', :first_name => 'Tester',
+groomer.users.create!(:email => '2test@tester.com', :password => 'foofoofoo',
+  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
   :last_name => 'Test')
 
 p "Creating categories"
@@ -99,7 +99,7 @@ p "Creating dummy products"
 1.upto(15) do |i|
   test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => Money.new(6500), :description =>
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
-    image_remote_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
+    image_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
   test_product.options << colour
   test_product.categories << Shop::Category.any_in(:name => ['Häkit'])
 end

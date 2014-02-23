@@ -15,16 +15,25 @@ class Shop::OrdersController < Shop::ShopController
   end
 
   def create
-    @order = Shop::Order.new(order_params)
+    cart_items = @cart.items.with_product
+    if current_user.nil?
+      user = User.create!(user_email_param)
+      address = Address.create(order_address_params) unless order_address_params.nil?
+      user.addresses << address
+      # TODO Email login information
+    else
+      user = current_user
+      address = Address.find_or_create(user_address_param) unless user_address_param.nil?
+    end
+    user.addresses << address unless user.addresses.include?(address) && address.user.present?
 
-    @order.add(@cart.items.with_product)
-    @order.address = Address.find(order_address_param) unless order_address_param.nil?
-    @order.user = current_user
+    @order = Shop::Order.build(order_params, cart_items, user, address)
 
     respond_to do |format|
       if @order.save
         @cart.destroy
         session[:cart_id] = nil
+        # TODO Email order confirmation
         format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -46,13 +55,21 @@ class Shop::OrdersController < Shop::ShopController
     def order_params
       begin
         puts "\nOC#order_params - params: #{params}\n"
-        params.require(:shop_order).permit(:name, :email, :address, :country, :city, :postal_number, :phone, :message, :payment, :price, :untaxed_price)
+        params.require(:shop_order).permit(:message, :payment)
       rescue ActionController::ParameterMissing
         nil
       end
     end
 
-    def order_address_param
+    def order_address_params
+      begin
+        params.require(:shop_order).require(:address).permit(:street, :city, :postal_number, :country, :phone_number, :description, :home)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
+
+    def user_address_param
       begin
 
         params.require(:shop_order).require(:address)
@@ -69,4 +86,11 @@ class Shop::OrdersController < Shop::ShopController
       end
     end
 
+    def user_email_param
+      begin
+        params.require(:shop_order).require(:user).permit(:email)
+      rescue ActionController::ParameterMissing
+        nil
+      end
+    end
 end

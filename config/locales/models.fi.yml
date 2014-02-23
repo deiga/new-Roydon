@@ -7,6 +7,9 @@ fi:
       story:
         one: Uutinen
         other: Uutisia
+      address:
+        one: Osoite
+        other: Osoitteet
       shop/shopping_cart:
         one: Ostoskori
         other: Ostoskoreja
@@ -16,3 +19,7 @@ fi:
       shop/order:
         one: Tilaus
         other: Tilauksia
+    attributes:
+      shop/order:
+        address: 'Osoite'
+        payment: 'Maksutapa'

@@ -5,15 +5,15 @@ class User
   before_validation :set_random_password
   after_initialize :migrate_data
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
-  field :email,              type: String
-  field :encrypted_password, type: String, :default => ""
+  field :email,              type: String, default: ''
+  field :encrypted_password, type: String, default: ''
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -23,7 +23,7 @@ class User
   field :remember_created_at, type: Time
 
   ## Trackable
-  field :sign_in_count,      type: Integer, :default => 0
+  field :sign_in_count,      type: Integer, default: 0
   field :current_sign_in_at, type: Time
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
@@ -50,7 +50,7 @@ class User
   index({ confirmation_token: 1}, { unique: true })
 
   ## Lockable
-  # field :failed_attempts, type: Integer, :default => 0 # Only if lock strategy is :failed_attempts
+  # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
@@ -66,9 +66,9 @@ class User
   end
 
   def password_match?
-    self.errors[:password] << "can't be blank" if password.blank?
-    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
-    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    self.errors[:password] << 'can\'t be blank' if password.blank?
+    self.errors[:password_confirmation] << 'can\'t be blank' if password_confirmation.blank?
+    self.errors[:password_confirmation] << 'does not match password' if password != password_confirmation
     password == password_confirmation && !password.blank?
   end
 

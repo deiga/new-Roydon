@@ -9,6 +9,7 @@ namespace :deploy do
     system "heroku run rake:paperclip:refresh:missing_styles -a roydon-cedar"
     puts "Setting App version"
     system "heroku config:set RAILS_APP_VERSION=$(git rev-parse --short master)"
+    system "heroku config:set SECRET_TOKEN=$(rake secret)"
     puts "done"
   end
 

@@ -5,7 +5,7 @@ class Story
   extend Shop::Caching
 
 	field :title, 		:type => String
-	field :date, 			:type => Date, 		:default => Date.today
+	field :date, 		:type => Date, 		:default => Date.today
 	field :content, 	:type => String
 	field :language,	:type => String,	:default => "fi"
 	field :passive,		type: Boolean,		default: false
@@ -13,7 +13,7 @@ class Story
 	index date: 1
 
   scope :active, where(passive: false)
-  scope :newest, lambda { where( :date.gte => Date.today.prev_month(3)).active }
+  scope :newest, ->() { where( :date.gte => Date.today.prev_month(3)).active }
 
 	# Validations
 	validates :title, :content, :presence => true

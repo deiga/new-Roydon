@@ -19,6 +19,20 @@ ul {
   list-style-image: url('/assets/button15.gif');
 }
 
+.error_explanation {
+  border: 2px dashed red;
+  padding: 5px 10px;
+  margin: 5px;
+  & > h2 {
+    margin-bottom: 0;
+  }
+  & > ul {
+    margin: 0;
+    list-style-type: disc;
+    list-style-image: none;
+  }
+}
+
 legend {
   font-weight: bold;
 }

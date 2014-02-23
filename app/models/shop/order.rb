@@ -5,12 +5,10 @@ class Shop::Order
 
   before_save :update_prices
 
-  PAYMENT_TYPES = ['Credit card', 'Cash']
-
   embeds_many :items, class_name: 'Shop::OrderItem', inverse_of: :order
   accepts_nested_attributes_for :items
   belongs_to :user, touch: true
-  has_one :address, validate: true
+  has_one :address
 
   field :message, type: String
   field :payment, type: String
@@ -23,7 +21,7 @@ class Shop::Order
   def add_item(cart_item)
     product = cart_item.product
     vat = product.value_added_tax || Shop::ValueAddedTax.new(value: 0)
-    items << Shop::OrderItem.new( product_id: product.id, product_name: product.name, product_price: product.discounted_price, options: cart_item.selected_option, tax: vat.add_percentage)
+    items << Shop::OrderItem.new(product_id: product.id, product_name: product.name, product_price: product.discounted_price, options: cart_item.selected_option, tax: vat.add_percentage)
   end
 
   def update_prices
@@ -39,4 +37,11 @@ class Shop::Order
     end
   end
 
+  def self.build(order_params, cart_items, user, address)
+    order = self.new(order_params)
+    order.add(cart_items)
+    order.user = user
+    order.address = address
+    return order
+  end
 end

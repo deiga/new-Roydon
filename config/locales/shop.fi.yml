@@ -1,7 +1,7 @@
 fi:
   shop:
     shop: 'Kauppa'
-    checkout: 'Osta tuotteet'
+    checkout: 'Siirry kassalle'
     confirm: 'Oletko varma?'
     overall: 'Yhteensä'
     search:
@@ -10,6 +10,9 @@ fi:
       page: 'Sivu'
     action:
       search: 'Hae'
+    user:
+      greet: 'Hei'
+      unknown: 'sinä.'
     cart:
       empty: 'Ei tuotteita'
       action:
@@ -32,3 +35,7 @@ fi:
         overall: 'Yhteensä'
     product:
       newest: 'Uusimmat tuotteet'
+    session:
+      sign_in: 'Kirjaudu sisään'
+      sign_up: 'Rekisteröidy'
+      continue_order: 'Jatka tilausta'
