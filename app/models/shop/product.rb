@@ -35,6 +35,7 @@ class Shop::Product
 
   validates :name, presence: true, length: { minimum: 1 }
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1_000_000, message: 'Only amounts in the range 0 to 10000.00 are allowed.'  }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   scope :active, where(passive: false)
   scope :category_products, ->(category) { where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }

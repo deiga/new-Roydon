@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '~> 3.2.16'
+gem 'rails', '~> 3.2'
 
-gem 'mongoid', '~> 3.0' # MongoDB
+gem 'mongoid', '~> 3.1' # MongoDB
 gem 'mongoid-ancestry', '~> 0.3' # tree structure of categories
-gem 'mongoid-paperclip', '~> 0.0', :require => 'mongoid_paperclip' # attaching images
-gem 'paperclip', '< 3.5.3'
+gem 'mongoid-paperclip', git: 'https://github.com/meskyanichi/mongoid-paperclip.git', :require => 'mongoid_paperclip' # attaching images
 gem 'mongo_session_store-rails3' # Mongoid SessionStore
 
-gem 'devise', '~> 3.1' # User control
+gem 'devise', '~> 3.2' # User control
 gem 'devise-i18n'
 gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.3' # WYSIWYG for admin view
@@ -20,7 +19,7 @@ gem "rack-timeout" # Timeout requests
 
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
-  gem 'dalli', '~> 2.5'
+  gem 'dalli', '~> 2.7'
   gem 'memcachier'
 end
 
@@ -70,7 +69,7 @@ group :assets do
   gem 'compass-rails'
   gem 'compass-h5bp'
   gem 'yui-compressor'
-  gem 'haml-rails', "< 0.5"
+  gem 'haml-rails'
   gem 'jquery-rails'
   gem 'html5-rails'
 end

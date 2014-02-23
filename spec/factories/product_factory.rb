@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   trait :test_file do
-    image { fixture_file_upload 'spec/fixtures/files/test%image 1.jpg' }
+    image { fixture_file_upload('spec/fixtures/files/test%image 1.jpg', 'image/jpg') }
 
     after(:create) do |product, proxy|
       proxy.image.close
