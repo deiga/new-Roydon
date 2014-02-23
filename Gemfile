@@ -62,17 +62,15 @@ group :test do
   gem 'coveralls', :require => false
 end
 
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'compass-rails'
-  gem 'compass-h5bp'
-  gem 'yui-compressor'
-  gem 'haml-rails'
-  gem 'jquery-rails'
-  gem 'html5-rails'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'compass-rails'
+gem 'compass-h5bp'
+gem 'yui-compressor'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'html5-rails'
 
 gem 'strong_parameters' # Emulate Strong parameters for Rails 4
 
