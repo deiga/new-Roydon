@@ -12,7 +12,7 @@ describe Shop::GroupDiscount do
     subject(:with_scheme) { FactoryGirl.create(:group_discount) }
     it { should be_valid }
 
-    specify { with_scheme.apply_discount_on(cart).should be_nil }
+    specify { with_scheme.apply_discount_on(cart.products).should be_nil }
     let(:scheme_threshold) {with_scheme.scheme.keys.sort.first.to_i}
 
     context "cart with multiple products" do
@@ -22,17 +22,17 @@ describe Shop::GroupDiscount do
       end
       specify "group discount should return new price and old price reduction with even products" do
         1.upto(5) { cart.add product }
-        with_scheme.apply_discount_on(cart).should eq [Money.new(1000), product.price*scheme_threshold]
+        with_scheme.apply_discount_on(cart.products).should eq [Money.new(1000), product.price*scheme_threshold]
       end
 
       specify "group discount should return new price and old price reduction with uneven products" do
         1.upto(7) { cart.add product }
-        with_scheme.apply_discount_on(cart).should eq [Money.new(1000), product.price*scheme_threshold]
+        with_scheme.apply_discount_on(cart.products).should eq [Money.new(1000), product.price*scheme_threshold]
       end
 
       specify "group discount should return new price and old price reduction with multiple of threshold" do
         1.upto(10) { cart.add product }
-        with_scheme.apply_discount_on(cart).should eq [Money.new(2000), product.price*scheme_threshold*2]
+        with_scheme.apply_discount_on(cart.products).should eq [Money.new(2000), product.price*scheme_threshold*2]
       end
     end
 

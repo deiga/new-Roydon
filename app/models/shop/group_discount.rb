@@ -11,8 +11,8 @@ class Shop::GroupDiscount
 
   validates :name, :scheme, presence: true
 
-  def apply_discount_on(cart)
-    discountable_products = cart.products.select { |item| products.include?(item) }
+  def apply_discount_on(cart_products)
+    discountable_products = cart_products.select { |item| products.include?(item) }
     product_count = discountable_products.count
     return nil if product_count < discount_tiers.first.to_i
 
