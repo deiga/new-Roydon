@@ -4,7 +4,7 @@ Roydon::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  # Show full error reports and disable caching
+  # Show full error reports and disable caching.
   config.consider_all_requests_local = true
 
   # Do not compress assets
@@ -19,5 +19,6 @@ Roydon::Application.configure do
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
+  # Do not eager load code on boot.
   config.eager_load = false
 end

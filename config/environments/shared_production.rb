@@ -3,7 +3,7 @@ Roydon::Application.configure do
 
   # Compress JavaScripts and CSS
   config.assets.js_compressor = :uglifier
-  config.assets.css_compressor = :yui
+  config.assets.css_compressor = :sass
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -12,6 +12,9 @@ Roydon::Application.configure do
   config.assets.precompile += %w( polyfills.js )
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
+
+  # Generate digests for assets URLs.
+  config.assets.digest = true
 
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -55,10 +58,15 @@ Roydon::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-
   config.eager_load = true
 
   # Setup for S3
   config.paperclip_defaults = {:storage => :s3, :s3_credentials => {access_key_id: ENV['S3_ACCESS'], secret_access_key: ENV['S3_SECRET']}, bucket: "roydon-prod", path: ":attachment/:id/:style.:extension", url: ":s3_domain_url"}
   Paperclip.options[:log] = false
+
+  # Disable Rails's static asset server (Apache or nginx will already do this).
+  config.serve_static_assets = false
+
+   # Use default logging formatter so that PID and timestamp are not suppressed.
+   config.log_formatter = ::Logger::Formatter.new
 end

@@ -5,6 +5,9 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 
 load(File.expand_path('../heroku_env.rb', __FILE__))
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
 module Roydon
@@ -41,9 +44,6 @@ module Roydon
     config.i18n.default_locale = :fi
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
-    # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
-
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -53,7 +53,7 @@ module Roydon
     config.assets.initialize_on_precompile = false
 
     config.generators do |g|
-      g.hidden_namespaces << :test_unit << :erb
+      g.hidden_namespaces << :test_unit << :erb << :active_record
       g.template_engine :haml
       g.test_framework :rspec, :fixture => true, :views => false, :fixture_replacement => :factory_girl, :view_specs => false
       g.view_specs false
@@ -61,10 +61,14 @@ module Roydon
       g.helper false
     end
 
+    # Prepend all log lines with the following tags.
+    # config.log_tags = [ :subdomain, :uuid ]
+
     config.exceptions_app = self.routes
     # 404 catcher
     config.after_initialize do |app|
       app.routes.append{ match '*a', :to => 'errors#no_route' } unless config.consider_all_requests_local
     end
   end
+
 end
