@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/deiga/mongoid-ancestry.git
-  revision: e45920ddc1d13cf7f19e40cab462b3b3f0da63c6
-  branch: mongoid4
+  revision: f568ff51a6db2f5cfe200a275234158a58fefb06
+  branch: hotfix/mongoid-version-check
   specs:
-    mongoid-ancestry (0.3.2)
+    mongoid-ancestry (0.4.0)
       mongoid
 
 GIT
@@ -258,6 +258,10 @@ GEM
       activesupport (>= 3.0)
       money (~> 6.0.0)
       railties (>= 3.0)
+    mongoid-rspec (1.10.0)
+      mongoid (>= 3.0.1)
+      rake
+      rspec (>= 2.14)
     moped (2.0.0.beta6)
       bson (~> 2.2)
       connection_pool (~> 1.2)
@@ -526,6 +530,7 @@ DEPENDENCIES
   mongoid!
   mongoid-ancestry!
   mongoid-paperclip!
+  mongoid-rspec
   newrelic_rpm
   nokogiri
   poltergeist

@@ -67,7 +67,7 @@ module Roydon
     config.exceptions_app = self.routes
     # 404 catcher
     config.after_initialize do |app|
-      app.routes.append{ match '*a', :to => 'errors#no_route' } unless config.consider_all_requests_local
+      app.routes.append{ match '*a', :to => 'errors#no_route', via: [:get, :post] } unless config.consider_all_requests_local
     end
   end
 

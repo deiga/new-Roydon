@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'rails', '~> 4.0'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry', github: 'deiga/mongoid-ancestry', branch: 'mongoid4' # tree structure of categories
+gem 'mongoid-ancestry', github: 'deiga/mongoid-ancestry', branch: 'hotfix/mongoid-version-check' # tree structure of categories
 gem 'mongoid-paperclip', git: 'https://github.com/meskyanichi/mongoid-paperclip.git', :require => 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
@@ -55,6 +55,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'timecop'
   gem 'coveralls', :require => false
+  gem 'mongoid-rspec'
 end
 
 gem 'sass-rails'
