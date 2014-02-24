@@ -20,6 +20,6 @@ class ShowsController < ApplicationController
 
     def skip_if_cached
       year = params[:year].nil? ? Date.today.year : params[:year]
-      return render :index if fragment_exists?([Show.cache_key, year])
+      return render :index if fragment_exist?([Show.cache_key, year])
     end
 end
