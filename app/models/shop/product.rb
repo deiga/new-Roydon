@@ -63,7 +63,6 @@ class Shop::Product
         help 'Example: 35,00'
       end
       field :description, :wysihtml5
-      end
       field :image, :paperclip
       field :passive
       field :suggestion
