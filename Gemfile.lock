@@ -82,9 +82,6 @@ GEM
       terminal-table (~> 1.4)
     bson (2.2.1)
     builder (3.1.4)
-    bullet (4.8.0)
-      activesupport
-      uniform_notifier (>= 1.4.0)
     byebug (2.6.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
@@ -477,7 +474,6 @@ GEM
     unicorn-rails (1.1.0)
       rack
       unicorn
-    uniform_notifier (1.4.0)
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -500,7 +496,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-wysihtml5-rails (~> 0.0)
   brakeman
-  bullet
   capybara
   ccsv
   coffee-rails

@@ -1,6 +1,6 @@
 group :development do
   gem 'unicorn-rails'
-  gem 'bullet'
+  # gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
 end
 

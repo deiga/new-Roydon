@@ -35,6 +35,7 @@ Scenario: Unregistered user can make order
     | Testi 3 | 7.0   |
     When I follow "Ostoskori"
     And I follow "Siirry kassalle"
+    Then I should be on the new shop order page
     Then fill in the order form
     And I submit the form "Create Tilaus"
     And I should be on the shop page
