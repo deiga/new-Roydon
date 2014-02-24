@@ -1,20 +1,20 @@
 !!! 5
 / http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither
-- html_tag :class => "no-js", :lang => I18n.locale.to_s do
-  = render "head"
+- html_tag :class => 'no-js', :lang => I18n.locale.to_s do
+  = render 'head'
 
   %body
-    = render "chromeframe"
+    = render 'chromeframe'
     = cache 'header' do
-      = render "header"
+      = render 'header'
 
-    #content.shadow{ :role => "main", :class => "#{ controller.controller_name }" }
-      = render "flashes"
+    #content.shadow{ :role => 'main', :class => "#{ controller.controller_name }" }
+      = render 'flashes'
       = content_for?(:content) ? yield(:content) : yield
 
     = cache 'footer' do
-      = render "footer"
+      = render 'footer'
 
     -# Javascript at the bottom for fast page loading
-    = render "javascripts"
+    = render 'javascripts'
     = debug(params) if Rails.env.development? or Rails.env.development_remote?

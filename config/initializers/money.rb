@@ -23,7 +23,7 @@ MoneyRails.configure do |config|
   # To handle the inclusion of validations for monetized fields
   # The default value is true
   #
-  #config.include_validations = true
+  # config.include_validations = true
 
   # Default ActiveRecord migration configuration values for columns:
   #
@@ -59,5 +59,12 @@ MoneyRails.configure do |config|
   #   :thousands_separator => ".",
   #   :decimal_mark        => ","
   # }
+  #
+  # Set money formatted output globally.
+  # Default value is nil meaning "ignore this option".
+  # Options are nil, true, false.
+  #
+  # config.no_cents_if_whole = nil
+  # config.symbol = nil
 
 end
