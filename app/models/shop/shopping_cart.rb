@@ -72,4 +72,10 @@ class Shop::ShoppingCart
       items.reduce([]) { |memo, item| (memo << item.product) * item.quantity }
     end
   end
+
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
 end

@@ -13,13 +13,11 @@ class Show
 
 	index date: 1
 
-	scope :active, ->() { where(passive: false) }
-	scope :upcoming, ->() { where(:date.gte => Date.today).active }
-  scope :range, (->(from, to) do
-      where(:date.gte => from, :date.lt => to).active
-    end)
-  scope :earlier_this_year, ->() { range(Date.today.beginning_of_year, Date.today) }
-	default_scope asc(:date)
+	scope :active, -> { where(passive: false) }
+	scope :upcoming, -> { where(:date.gte => Date.today).active }
+  scope :range, ->(from, to) { where(:date.gte => from, :date.lt => to).active }
+  scope :earlier_this_year, -> { range(Date.today.beginning_of_year, Date.today) }
+	default_scope -> { asc(:date) }
 
 	# Validations
 	url_regex = /\Ahttp\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\z/i
@@ -40,5 +38,15 @@ class Show
 		end
 		date_string
 	end
+
+  rails_admin do
+    list do
+        exclude_fields :_type, :_id, :created_at, :updated_at
+        sort_by :date
+        sort_reverse true
+        # filters [:id, :name]  # Array of field names which filters should be shown by default in the table header
+        # items_per_page 100    # Override default_items_per_page
+      end
+  end
 
 end

@@ -21,4 +21,9 @@ class Shop::Promotion
   validates :start_date, :date_time => { :in_future => true }
   validates :end_date, :date_time => { :after => :start_date }
 
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
 end

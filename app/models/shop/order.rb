@@ -44,4 +44,20 @@ class Shop::Order
     order.address = address
     return order
   end
+
+  rails_admin do
+    configure :price, :decimal do
+      pretty_value do
+        humanized_money value + ' €'
+      end
+    end
+    configure :untaxed_price, :decimal do
+      pretty_value do
+        humanized_money value + ' €'
+      end
+    end
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
 end

@@ -21,4 +21,10 @@ class Shop::OrderItem
     product_price * quantity
   end
 
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
+
 end

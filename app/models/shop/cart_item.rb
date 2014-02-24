@@ -8,7 +8,7 @@ class Shop::CartItem
   belongs_to :cart, class_name: 'Shop::ShoppingCart', inverse_of: 'items', dependent: :nullify, touch: true
   belongs_to :product, class_name: 'Shop::Product'
 
-  scope :with_product, includes(:product)
+  scope :with_product, -> { includes(:product) }
 
   field :selected_option, type: Array, default: []
   field :quantity, type: Integer, default: 1
@@ -19,6 +19,12 @@ class Shop::CartItem
 
   def price
     single_price * quantity
+  end
+
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
   end
 
   private

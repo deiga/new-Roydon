@@ -37,7 +37,7 @@ class Shop::Product
   validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1_000_000, message: 'Only amounts in the range 0 to 10000.00 are allowed.'  }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  scope :active, where(passive: false)
+  scope :active, -> { where(passive: false) }
   scope :category_products, ->(category) { where(:category_ids.in => (category.children << category)).asc('name').active.includes(:options) }
 
   def self.search(term)
@@ -46,6 +46,31 @@ class Shop::Product
 
   def discounted_price
     discount.present? ? price * discount.subtract_percentage : price
+  end
+
+  rails_admin do
+    configure :price, :decimal do
+      pretty_value do
+        humanized_money value + ' €'
+      end
+    end
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+    edit do
+      field :name, :string
+      field :price do
+        help 'Example: 35,00'
+      end
+      field :description, :wysihtml5
+      end
+      field :image, :paperclip
+      field :passive
+      field :suggestion
+      field :categories
+      field :options
+      field :value_added_tax
+    end
   end
 
   private

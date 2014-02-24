@@ -16,4 +16,10 @@ class Shop::PriceModification
   def subtract_percentage
     (100-self.value)/100
   end
+
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
 end

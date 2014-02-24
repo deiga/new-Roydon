@@ -19,9 +19,9 @@ class Shop::Category
   validates :name, :presence => true, :length => { :minimum => 2 }
   validates :permalink, uniqueness: true
 
-  scope :active, where(passive: false)
-  scope :with_products, includes(:products)
-  scope :top_categories, ->() { where(ancestry: nil) }
+  scope :active, -> { where(passive: false) }
+  scope :with_products, -> { includes(:products) }
+  scope :top_categories, -> { where(ancestry: nil) }
 
   def all_products
     Shop::Product.category_products(self)
@@ -41,6 +41,25 @@ class Shop::Category
 
   def products_cache_key
     Digest::MD5.hexdigest "#{Shop::Product.category_products(self).max(:updated_at)}.try(:to_i)-#{Shop::Product.category_products(self).count}"
+  end
+
+  rails_admin do
+    configure :ancestry, :enum do
+      label 'Parent'
+      enum do
+        Shop::Category.where(:id.ne => bindings[:object].id).map { |c| [c.name, c.id]}
+      end
+    end
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at, :products
+    end
+    edit do
+      field :name
+      field :ancestry
+      field :products
+      field :passive
+      exclude_fields :permalink
+    end
   end
 
   private

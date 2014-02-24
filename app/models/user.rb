@@ -85,6 +85,12 @@ class User
     super(request) unless admin?
   end
 
+  rails_admin do
+    list do
+      exclude_fields :_type, :_id, :created_at, :updated_at
+    end
+  end
+
   private
 
     def migrate_data
