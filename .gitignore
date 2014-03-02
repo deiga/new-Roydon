@@ -40,3 +40,6 @@ heroku.yml
 robot/report/*
 .rbenv-vars
 .env*
+report.html
+log.html
+output.xml
