@@ -20,10 +20,10 @@ Roydon::Application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
+  client = Dalli::Client.new
   config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => URI.encode("file:#{Rails.root}/tmp/cache/rack/body"),
-    :allow_reload => false
+    :metastore    => client,
+    :entitystore  => client
   }
 
   # Use a different cache store in production
