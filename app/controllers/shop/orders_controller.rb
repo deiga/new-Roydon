@@ -3,7 +3,7 @@ class Shop::OrdersController < Shop::ShopController
   respond_to :html, :js
 
   def new
-    puts "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.inspect}\n"
+    puts "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
     if @cart.empty?
       redirect_to shop_url, notice: 'Your cart is empty'
       return

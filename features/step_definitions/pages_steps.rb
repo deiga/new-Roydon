@@ -34,8 +34,8 @@ Then(/^I should be on the (.*) page$/) do |page_name|
   object_id = current_path.match(BSON_ID_REGEX).to_s
   path_name = page_name.split(/\s+/).push('path').join('_').to_sym
   if object_id.present?
-    current_path.should eq send(path_name, object_id)
+    expect(current_path).to eq send(path_name, object_id)
   else
-    current_path.should eq send(path_name)
+    expect(current_path).to eq send(path_name)
   end
 end
