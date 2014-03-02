@@ -2,6 +2,10 @@ group :development do
   gem 'unicorn-rails'
   # gem 'bullet'
   gem 'sextant' # see routes at /rails/routes
+  gem 'rack-mini-profiler'
+  gem 'rails-footnotes', github: 'josevalim/rails-footnotes'
+  gem 'traceroute'
+  gem 'brakeman', :require => false
 end
 
 group :development, :test do
@@ -9,13 +13,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'guard-bundler'
-  gem 'rb-fsevent', :require => false
   gem 'ruby_gntp'
   gem 'guard-rails_best_practices'
-  gem 'traceroute'
-  gem 'brakeman', :require => false
-  gem 'rack-mini-profiler'
-  gem 'rails-footnotes', github: 'josevalim/rails-footnotes'
 end
 
 group :test do

@@ -548,7 +548,6 @@ DEPENDENCIES
   rails-footnotes!
   rails_12factor
   rails_admin
-  rb-fsevent
   redis-rails
   rspec-rails
   ruby_gntp
