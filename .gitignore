@@ -43,3 +43,4 @@ robot/report/*
 report.html
 log.html
 output.xml
+brakeman.html
