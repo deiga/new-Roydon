@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '~> 4.0'
 
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'env_bang-rails'
+
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-ancestry' # tree structure of categories
 gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', :require => 'mongoid_paperclip' # attaching images
@@ -19,7 +22,9 @@ gem "rack-timeout" # Timeout requests
 
 group :production, :staging do
   gem 'newrelic_rpm' # Statistics
-  gem 'dalli', '~> 2.0'
+  gem 'rack-cache'
+  gem 'dalli'
+  gem 'kgio'
   gem 'memcachier'
 end
 
@@ -67,8 +72,6 @@ gem 'yui-compressor'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'html5-rails'
-
-gem 'env_bang-rails'
 
 if File.exists?('gemfiles/Gemfile.devel') then
   eval File.read('gemfiles/Gemfile.devel'), nil, 'Gemfile.devel' unless ENV['CI']
