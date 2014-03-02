@@ -34,7 +34,6 @@ gem 'kaminari', '~> 0.0' # Pagination
 # gem "money"#, "~> 6.0.1.beta3"
 gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
-gem 'rack-pjax'
 gem 'formtastic'
 
 group :development_remote, :production, :staging do
