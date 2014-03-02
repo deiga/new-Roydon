@@ -4,7 +4,7 @@ python:
 - '2.7'
 env:
   matrix:
-  - CI=true DISPLAY=:99.0
+  - CI=true DISPLAY=:99.0 SECRET_TOKEN=NhUVfDTMNAUCt5Gt39GKj2w98KQ
   global:
   - secure: e8Mm50pdxH5oDeGCRIBRYhhiwSM1Ly9vdIrWnKhmiepo+5kmxgcH8I+qFxNjLscC0Kw6KTwRpep+hh58Go7DjPrV+9Dca1I4rpLymQGnR71gP6mY3Of5rGpSKm5d89Y4zlvVpB0snNWhSZiQn+AOH8tztSRXnWG/UOOa1JWR90I=
   - secure: Hoc+7DWKaqvq3b1C9WA3IWpJw04GEzIlK0rXPBgtQNr8c6+PJWN/A7hhoLSrzusz2o+s/hL7efdg9q4IkSNtQlaQW+u5OHce7tbgl5uiopBfnGPmlL1tf56xc5ayXUDG3dvV8OWGM/NT+RsTKAZDlKJRVFNPNFA/jiV/zQwimUg=
