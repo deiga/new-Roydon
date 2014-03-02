@@ -4,7 +4,7 @@ ruby '2.0.0'
 gem 'rails', '~> 4.0'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry', github: 'skyeagle/mongoid-ancestry' # tree structure of categories
+gem 'mongoid-ancestry' # tree structure of categories
 gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', :require => 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
@@ -67,6 +67,8 @@ gem 'yui-compressor'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'html5-rails'
+
+gem 'env_bang-rails'
 
 if File.exists?('gemfiles/Gemfile.devel') then
   eval File.read('gemfiles/Gemfile.devel'), nil, 'Gemfile.devel' unless ENV['CI']
