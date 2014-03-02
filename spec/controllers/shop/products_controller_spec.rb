@@ -8,14 +8,14 @@ describe Shop::ProductsController do
       response.should be_success
     end
     it "should return http success with category" do
-      get :index, :category => 'hakit'
+      get :index, category: 'hakit'
       response.should be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show', :id => BSON::ObjectId.new
+      get 'show', id: BSON::ObjectId.new
       response.should_not be_success
     end
   end

@@ -64,7 +64,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
     def item_response(message)
       respond_to do |format|
         format.html { redirect_to(request.referer || shop_path) and return }
-        format.js { render :json => { message: message } }
+        format.js { render json: { message: message } }
       end
     end
 

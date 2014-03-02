@@ -8,7 +8,7 @@ Roydon::Application.routes.draw do
   end
   resources :users, only: [:show], constraints: { id: BSON_ID_REGEX }
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine, at: '/admin', as: 'rails_admin'
 
   resources :stories, only: [:index], path: :news, constraints: { id: BSON_ID_REGEX }
 

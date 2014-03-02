@@ -24,7 +24,7 @@
           %td{colspan: 3}= "#{t 'shop.overall'}:"
           %td=raw "#{humanized_money @cart.price} #{currency_symbol}"
     = f.submit
-  = link_to t('shop.cart.action.empty'), shop_shopping_cart_path(@cart.id), data: { confirm: t('shop.confirm') }, :method => :delete
+  = link_to t('shop.cart.action.empty'), shop_shopping_cart_path(@cart.id), data: { confirm: t('shop.confirm') }, method: :delete
 - else
   %p= t 'shop.cart.empty'
 

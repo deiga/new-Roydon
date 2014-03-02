@@ -3,8 +3,8 @@ class Shop::PriceModification
   include Mongoid::Timestamps
   include ActiveModel::ForbiddenAttributesProtection
 
-  field :name, :type => String
-  field :value, :type => Float, default: 0.0
+  field :name, type: String
+  field :value, type: Float, default: 0.0
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :value, numericality: { minimum: 0.0, maximum: 100.0 }

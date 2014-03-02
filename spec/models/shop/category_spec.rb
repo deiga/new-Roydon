@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Shop::Category do
   before :each do
-    @attr = { :name => 'Test category'}
-    @product_attr = { :name => 'Test product', :price => '1.23'}
+    @attr = { name: 'Test category'}
+    @product_attr = { name: 'Test product', price: '1.23'}
   end
 
   it "should create a new Shop::Category given valid attributes" do
@@ -17,7 +17,7 @@ describe Shop::Category do
   end
 
   it "should not accept zero length name" do
-    no_name_category = Shop::Category.new(@attr.merge(:name => ''))
+    no_name_category = Shop::Category.new(@attr.merge(name: ''))
     no_name_category.should_not be_valid
   end
 

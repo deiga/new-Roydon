@@ -4,11 +4,11 @@ class Show
 	include ActiveModel::ForbiddenAttributesProtection
   extend Shop::Caching
 
-	field :title, 		:type => String
-	field :url, 			:type => String
-	field :location, 	:type => String
-	field :duration, 	:type => Integer, :default => 1
-	field :date, 			:type => Date
+	field :title, 		type: String
+	field :url, 			type: String
+	field :location, 	type: String
+	field :duration, 	type: Integer, default: 1
+	field :date, 			type: Date
 	field :passive,		type: Boolean, default: false
 
 	index date: 1
@@ -21,9 +21,9 @@ class Show
 
 	# Validations
 	url_regex = /\Ahttp\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?\z/i
-	validates :title, :location, :date, :presence => true
-	validates :duration, :numericality => { :interger_only => true, :greater_than_or_equal_to => 1 }
-	validates :url , :format => { :with => url_regex, :allow_nil => true }
+	validates :title, :location, :date, presence: true
+	validates :duration, numericality: { interger_only: true, greater_than_or_equal_to: 1 }
+	validates :url , format: { with: url_regex, allow_nil: true }
 
 	def format_date
 		time = Date.parse(self.date.to_s)

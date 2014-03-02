@@ -12,8 +12,8 @@ class Shop::OrderItem
   field :options, type: Array
   field :tax, type: Float, default: 0.0
 
-  validates :product_name, :presence => true, :length => { :minimum => 1 }
-  validates :quantity, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :product_name, presence: true, length: { minimum: 1 }
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
   validates :product_price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000000, message: "Only amounts in the range 0 to 10000.00 are allowed."  }
   validates :tax, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 2.0}
 

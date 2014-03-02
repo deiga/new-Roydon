@@ -8,12 +8,12 @@ puts "Seeding for env '#{Rails.env}'"
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
-    parent = Shop::Category.new(:name => top_category)
+    parent = Shop::Category.new(name: top_category)
     parent.save!
 
     unless category_list.nil?
       category_list.each do |category|
-        parent.children.create(:name => category)
+        parent.children.create(name: category)
       end
     end
   end
@@ -33,8 +33,8 @@ def create_shows
       url = line[-1]
     end
     date = Date.strptime(line[1], '%Y-%m-%d')
-    Show.create!(:location => line[0], :date => date,
-      :duration => line[2], :title => line[3], :url => url)
+    Show.create!(location: line[0], date: date,
+      duration: line[2], title: line[3], url: url)
   end
 end
 
@@ -42,17 +42,17 @@ def create_stories
   Ccsv.foreach('db/seed/news.csv') do |line|
     line.each { |str| str.gsub!(/\"/,'').gsub!(/;/,',') }
     date = Date.strptime(line[0], '%Y-%m-%d')
-    Story.create!(:date => date, :title => line[1],
-      :content => line[2])
-    Story.create!(:date => date, :title => line[3],
-      :content => line[4], :language => 'en')
+    Story.create!(date: date, title: line[1],
+      content: line[2])
+    Story.create!(date: date, title: line[3],
+      content: line[4], language: 'en')
   end
-  Story.create!(:date => Date.today, :title => 'Test news',
-    :content => 'Testing. 1 2 3. <br /> BÖÖ!!\n Return')
+  Story.create!(date: Date.today, title: 'Test news',
+    content: 'Testing. 1 2 3. <br /> BÖÖ!!\n Return')
 end
 
-breeder = Shop::UserGroup.create!( :name => :breeder )
-groomer = Shop::UserGroup.create!( :name => :groomer )
+breeder = Shop::UserGroup.create!( name: :breeder )
+groomer = Shop::UserGroup.create!( name: :groomer )
 admin = Shop::UserGroup.create! name: :admin
 
 if Rails.env.development?
@@ -62,25 +62,25 @@ if Rails.env.development?
   admin.users.create!(admins['Timo'])
 end
 
-User.create!(:email => 'test@tester.com', :password => 'foofoofoo',
-  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
-  :last_name => 'Test')
+User.create!(email: 'test@tester.com', password: 'foofoofoo',
+  password_confirmation: 'foofoofoo', first_name: 'Tester',
+  last_name: 'Test')
 
-breeder.users.create!(:email => 'test2@tester.com', :password => 'foofoofoo',
-  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
-  :last_name => 'Test')
+breeder.users.create!(email: 'test2@tester.com', password: 'foofoofoo',
+  password_confirmation: 'foofoofoo', first_name: 'Tester',
+  last_name: 'Test')
 
-breeder.users.create!(:email => 'test3@tester.com', :password => 'foofoofoo',
-  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
-  :last_name => 'Test')
+breeder.users.create!(email: 'test3@tester.com', password: 'foofoofoo',
+  password_confirmation: 'foofoofoo', first_name: 'Tester',
+  last_name: 'Test')
 
-groomer.users.create!(:email => '1test@tester.com', :password => 'foofoofoo',
-  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
-  :last_name => 'Test')
+groomer.users.create!(email: '1test@tester.com', password: 'foofoofoo',
+  password_confirmation: 'foofoofoo', first_name: 'Tester',
+  last_name: 'Test')
 
-groomer.users.create!(:email => '2test@tester.com', :password => 'foofoofoo',
-  :password_confirmation => 'foofoofoo', :first_name => 'Tester',
-  :last_name => 'Test')
+groomer.users.create!(email: '2test@tester.com', password: 'foofoofoo',
+  password_confirmation: 'foofoofoo', first_name: 'Tester',
+  last_name: 'Test')
 
 p "Creating categories"
 create_categories()
@@ -97,11 +97,11 @@ colour = Shop::Option.create!(name: 'Colour', values: ['Grey', 'Red', 'Brown', '
 
 p "Creating dummy products"
 1.upto(15) do |i|
-  test_product = Shop::Product.create!(:name => 'Kevytmetallihäkki L', :price => Money.new(6500), :description =>
+  test_product = Shop::Product.create!(name: 'Kevytmetallihäkki L', price: Money.new(6500), description:
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
     image_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
   test_product.options << colour
-  test_product.categories << Shop::Category.any_in(:name => ['Häkit'])
+  test_product.categories << Shop::Category.any_in(name: ['Häkit'])
 end
 
 p "All done!"

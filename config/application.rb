@@ -52,7 +52,7 @@ module Roydon
     config.generators do |g|
       g.hidden_namespaces << :test_unit << :erb << :active_record
       g.template_engine :haml
-      g.test_framework :rspec, :fixture => true, :views => false, :fixture_replacement => :factory_girl, :view_specs => false
+      g.test_framework :rspec, fixture: true, views: false, fixture_replacement: :factory_girl, view_specs: false
       g.view_specs false
       g.helper_specs false
       g.helper false
@@ -64,7 +64,7 @@ module Roydon
     config.exceptions_app = self.routes
     # 404 catcher
     config.after_initialize do |app|
-      app.routes.append{ match '*a', :to => 'errors#no_route', via: [:get, :post] } unless config.consider_all_requests_local
+      app.routes.append{ match '*a', to: 'errors#no_route', via: [:get, :post] } unless config.consider_all_requests_local
     end
   end
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Shop::Product do
   subject { FactoryGirl.build(:product) }
-  let(:no_name) { FactoryGirl.build(:product, :name => '') }
+  let(:no_name) { FactoryGirl.build(:product, name: '') }
   let(:negative_price) { FactoryGirl.build(:product, price: Money.new(-550)) }
   let(:with_options) { FactoryGirl.create(:product_with_options) }
 
@@ -25,8 +25,8 @@ describe Shop::Product do
   specify { subject.categories.should be_empty }
 
   it "should normalize filename" do
-    Shop::Product.any_instance.stub(:save_attached_files => true)
-    Paperclip::Attachment.any_instance.stub(:post_process => true)
+    Shop::Product.any_instance.stub(save_attached_files: true)
+    Paperclip::Attachment.any_instance.stub(post_process: true)
     FactoryGirl.create(:product_with_image).image_file_name.should eql("test_image_1.jpg")
   end
 

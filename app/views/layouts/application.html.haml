@@ -1,6 +1,6 @@
 !!! 5
 / http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither
-- html_tag :class => 'no-js', :lang => I18n.locale.to_s do
+- html_tag class: 'no-js', lang: I18n.locale.to_s do
   = render 'head'
 
   %body
@@ -8,7 +8,7 @@
     = cache 'header' do
       = render 'header'
 
-    #content.shadow{ :role => 'main', :class => "#{ controller.controller_name }" }
+    #content.shadow{ role: 'main', class: "#{ controller.controller_name }" }
       = render_flash
       = content_for?(:content) ? yield(:content) : yield
 

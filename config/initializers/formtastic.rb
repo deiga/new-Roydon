@@ -51,7 +51,7 @@
 
 # Specifies if labels/hints for input fields automatically be looked up using I18n.
 # Default value: true. Overridden for specific fields by setting value to true,
-# i.e. :label => true, or :hint => true (or opposite depending on initialized value)
+# i.e. label: true, or hint: true (or opposite depending on initialized value)
 # Formtastic::FormBuilder.i18n_lookups_by_default = false
 
 # Specifies if I18n lookups of the default I18n Localizer should be cached to improve performance.
@@ -66,7 +66,7 @@
 # specifying that class here.  Defaults to Formtastic::FormBuilder.
 # Formtastic::Helpers::FormHelper.builder = MyCustomBuilder
 
-# You can opt-in to Formtastic's use of the HTML5 `required` attribute on `<input>`, `<select>` 
+# You can opt-in to Formtastic's use of the HTML5 `required` attribute on `<input>`, `<select>`
 # and `<textarea>` tags by setting this to false (defaults to true).
 # Formtastic::FormBuilder.use_required_attribute = true
 

@@ -1,5 +1,5 @@
 %h2 You're almost done! Now create a password to securely access your account.
-= form_for(resource, :as => resource_name, :url => confirm_path) do |form|
+= form_for(resource, as: resource_name, url: confirm_path) do |form|
   = devise_error_messages!
   .field
     = f.label :password

@@ -9,7 +9,7 @@ gem 'env_bang-rails'
 
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-ancestry' # tree structure of categories
-gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', :require => 'mongoid_paperclip' # attaching images
+gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
 gem 'devise', '~> 3.2' # User control
@@ -56,10 +56,10 @@ group :test do
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails', :require => false
-  gem 'simplecov', :require => false
+  gem 'cucumber-rails', require: false
+  gem 'simplecov', require: false
   gem 'timecop'
-  gem 'coveralls', :require => false
+  gem 'coveralls', require: false
   gem 'mongoid-rspec'
 end
 

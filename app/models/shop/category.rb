@@ -10,13 +10,13 @@ class Shop::Category
   has_ancestry
   has_and_belongs_to_many :products, class_name: 'Shop::Product'
 
-  field :name, :type => String, default: ''
-  field :passive, :type => Boolean, :default => false
-  field :permalink, :type => String
+  field :name, type: String, default: ''
+  field :passive, type: Boolean, default: false
+  field :permalink, type: String
 
   index permalink: 1
 
-  validates :name, :presence => true, :length => { :minimum => 2 }
+  validates :name, presence: true, length: { minimum: 2 }
   validates :permalink, uniqueness: true
 
   scope :active, -> { where(passive: false) }

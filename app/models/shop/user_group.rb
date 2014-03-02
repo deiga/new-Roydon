@@ -4,7 +4,7 @@ class Shop::UserGroup
 
   # GROUP_TYPES = ['admin', 'breeder', 'groomer'] # TODO refactor these types somewhere else..
 
-  field :name, :type => String
+  field :name, type: String
 
   validates :name, presence: true, uniqueness: true
 

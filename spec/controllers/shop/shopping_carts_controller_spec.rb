@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Shop::ShoppingCartsController do
 
   subject(:cart) { FactoryGirl.create(:cart) }
-  let(:product) { FactoryGirl.create(:product, :name => "Test product", price: 5.3) }
+  let(:product) { FactoryGirl.create(:product, name: "Test product", price: 5.3) }
 
   describe "GET 'edit'" do
     it "returns http success" do

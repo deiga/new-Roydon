@@ -6,7 +6,7 @@ class Shop::ShoppingCart
 
   has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart, dependent: :destroy
 
-  delegate :empty?, :to => :items
+  delegate :empty?, to: :items
 
   accepts_nested_attributes_for :items
 
