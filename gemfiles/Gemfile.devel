@@ -15,8 +15,7 @@ group :development, :test do
   gem 'traceroute'
   gem 'brakeman', :require => false
   gem 'rack-mini-profiler'
-  gem 'railroady'
-  gem 'rails-footnotes'
+  gem 'rails-footnotes', github: 'josevalim/rails-footnotes'
 end
 
 group :test do
