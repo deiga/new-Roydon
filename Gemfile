@@ -4,8 +4,8 @@ ruby '2.0.0'
 gem 'rails', '~> 4.0'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry', github: 'deiga/mongoid-ancestry', branch: 'hotfix/mongoid-version-check' # tree structure of categories
-gem 'mongoid-paperclip', git: 'https://github.com/meskyanichi/mongoid-paperclip.git', :require => 'mongoid_paperclip' # attaching images
+gem 'mongoid-ancestry', github: 'skyeagle/mongoid-ancestry' # tree structure of categories
+gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', :require => 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
 gem 'devise', '~> 3.2' # User control

@@ -1,14 +1,13 @@
 GIT
-  remote: git://github.com/deiga/mongoid-ancestry.git
-  revision: f568ff51a6db2f5cfe200a275234158a58fefb06
-  branch: hotfix/mongoid-version-check
+  remote: git://github.com/meskyanichi/mongoid-paperclip.git
+  revision: 2ca1f39a090a6a12783d72987e880c9f602e7a7e
   specs:
-    mongoid-ancestry (0.4.0)
-      mongoid
+    mongoid-paperclip (0.0.8)
+      paperclip (>= 2.3.6)
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: c8af8d0836b086cebc4a609037a97747e9f3359b
+  revision: bde8ac1b0f16aaad7e343073ce8c5b5b9c9ffc5b
   specs:
     mongoid (4.0.0.beta1)
       activemodel (>= 4.0.0)
@@ -17,11 +16,11 @@ GIT
       tzinfo (>= 0.3.37)
 
 GIT
-  remote: https://github.com/meskyanichi/mongoid-paperclip.git
-  revision: 2ca1f39a090a6a12783d72987e880c9f602e7a7e
+  remote: git://github.com/skyeagle/mongoid-ancestry.git
+  revision: 11a974a3c65a8808c385f8f54df0c02e2f82571b
   specs:
-    mongoid-paperclip (0.0.8)
-      paperclip (>= 2.3.6)
+    mongoid-ancestry (0.4.0)
+      mongoid
 
 GEM
   remote: https://rubygems.org/
@@ -52,13 +51,13 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
     arel (4.0.2)
-    atomic (1.1.14)
+    atomic (1.1.15)
     awesome_print (1.2.0)
-    aws-sdk (1.34.1)
+    aws-sdk (1.35.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bcrypt (3.1.6)
+    bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
     better_errors (1.1.0)
@@ -82,7 +81,7 @@ GEM
       terminal-table (~> 1.4)
     bson (2.2.1)
     builder (3.1.4)
-    byebug (2.6.0)
+    byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
     callsite (0.0.11)
@@ -145,12 +144,12 @@ GEM
     dalli (2.7.0)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
-    debugger (1.6.5)
+    debugger (1.6.6)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.1)
+      debugger-ruby_core_source (~> 1.3.2)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.1)
+    debugger-ruby_core_source (1.3.2)
     devise (3.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -165,7 +164,7 @@ GEM
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.4.0)
+    factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     fastercsv (1.5.5)
@@ -181,9 +180,9 @@ GEM
     fssm (0.2.10)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    guard (2.4.0)
+    guard (2.5.1)
       formatador (>= 0.2.4)
-      listen (~> 2.1)
+      listen (~> 2.6)
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
@@ -229,7 +228,7 @@ GEM
     kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
-    listen (2.6.0)
+    listen (2.6.2)
       celluloid (>= 0.15.2)
       celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
@@ -288,8 +287,8 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry-byebug (1.3.1)
-      byebug (~> 2.6)
+    pry-byebug (1.3.2)
+      byebug (~> 2.7)
       pry (~> 0.9.12)
     pry-debugger (0.2.2)
       debugger (~> 1.3)
@@ -401,7 +400,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.7)
+    rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
@@ -452,8 +451,8 @@ GEM
       tins (~> 1.0)
     terminal-table (1.4.5)
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thread_safe (0.2.0)
+      atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timecop (0.7.1)
     timers (1.1.0)
