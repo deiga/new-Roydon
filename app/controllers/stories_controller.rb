@@ -3,7 +3,6 @@ class StoriesController < ApplicationController
   respond_to :html
 
   def index
-    # debugger
     @all_news = Story.active.desc(:Date)
     # TODO: Add filtering by current language
     if stale? @all_news.first

@@ -1,0 +1,4 @@
+#flash
+  .wrapper
+    %div{title: "#{flash[:type].to_s.humanize}", class: "#{flash[:type].to_s} rounded"}
+      = render flash_path, object: flash_object

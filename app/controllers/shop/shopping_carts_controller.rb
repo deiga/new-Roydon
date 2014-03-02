@@ -25,7 +25,7 @@ class Shop::ShoppingCartsController < Shop::ShopController
     else
       flash[:error] = t 'shop.cart.update.failure'
     end
-    redirect_to [:edit, @cart] #edit_shop_shopping_cart_path(@cart.id)
+    redirect_to [:edit, @cart]  and return #edit_shop_shopping_cart_path(@cart.id)
   end
 
   def remove_item
@@ -56,14 +56,14 @@ class Shop::ShoppingCartsController < Shop::ShopController
 
   def destroy
     @cart.destroy
-    redirect_to shop_path
+    redirect_to shop_path and return
   end
 
   private
 
     def item_response(message)
       respond_to do |format|
-        format.html { redirect_to(request.referer || shop_path) }
+        format.html { redirect_to(request.referer || shop_path) and return }
         format.js { render :json => { message: message } }
       end
     end

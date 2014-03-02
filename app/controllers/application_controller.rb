@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
   after_filter :flash_to_headers
   after_filter :store_location
 
@@ -26,6 +26,14 @@ class ApplicationController < ActionController::Base
   # def not_found
   #   raise ActionController::RoutingError.new('Not Found')
   # end
+
+  def set_flash(type, object: nil)
+    flash[:from] = controller_path
+    flash[:action] = action_name
+    flash[:type] = type
+    flash[:object_type] =  object.nil? ? nil : object.class.name
+    flash[:object_id] = object.nil? ? nil : object.id
+  end
 
   private
 

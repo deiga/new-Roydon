@@ -20,10 +20,16 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         current_user.addresses << @address
-        format.html { redirect_to user_path(current_user.id), notice: 'Address created' }
+        format.html do
+          set_flash :success, object: @address
+          redirect_to user_path(current_user.id) and return
+        end
         format.json { render json: @address, status: :created, location: @address }
       else
-        format.html { render :new }
+        format.html do
+          set_flash :error, object: @address
+          render :new
+        end
         format.json { render json: @address.errors, status: 'Failure' }
       end
     end

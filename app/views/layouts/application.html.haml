@@ -9,7 +9,7 @@
       = render 'header'
 
     #content.shadow{ :role => 'main', :class => "#{ controller.controller_name }" }
-      = render 'flashes'
+      = render_flash
       = content_for?(:content) ? yield(:content) : yield
 
     = cache 'footer' do

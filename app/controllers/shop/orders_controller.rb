@@ -5,8 +5,8 @@ class Shop::OrdersController < Shop::ShopController
   def new
     puts "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
     if @cart.empty?
-      redirect_to shop_url, notice: 'Your cart is empty'
-      return
+      set_flash :error
+      redirect_to shop_url and return
     end
 
     @order = Shop::Order.new
@@ -34,10 +34,16 @@ class Shop::OrdersController < Shop::ShopController
         @cart.destroy
         session[:cart_id] = nil
         # TODO Email order confirmation
-        format.html { redirect_to shop_url, notice: 'Thank you for your order.' }
+        format.html do
+          set_flash :success, @order
+          redirect_to shop_url  and return
+        end
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { render :new }
+        format.html do
+          set_flash :error, @order
+          render :new
+        end
         format.json { render json: @order.errors, status: 'Failure' }
       end
     end
