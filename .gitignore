@@ -39,3 +39,4 @@ heroku.yml
 
 robot/report/*
 .rbenv-vars
+.env*

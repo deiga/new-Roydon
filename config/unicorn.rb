@@ -4,7 +4,7 @@
 if ENV["RAILS_ENV"] == "development"
   worker_processes 1
 else
-  worker_processes Integer(ENV["UNICORN_WORKERS"] || 3)
+  worker_processes Integer(ENV.fetch('UNICORN_WORKERS', 3))
 end
 
 # Load your app into the master before forking
