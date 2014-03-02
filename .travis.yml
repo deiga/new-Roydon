@@ -8,9 +8,6 @@ env:
   global:
     - secure: e8Mm50pdxH5oDeGCRIBRYhhiwSM1Ly9vdIrWnKhmiepo+5kmxgcH8I+qFxNjLscC0Kw6KTwRpep+hh58Go7DjPrV+9Dca1I4rpLymQGnR71gP6mY3Of5rGpSKm5d89Y4zlvVpB0snNWhSZiQn+AOH8tztSRXnWG/UOOa1JWR90I=
     - secure: Hoc+7DWKaqvq3b1C9WA3IWpJw04GEzIlK0rXPBgtQNr8c6+PJWN/A7hhoLSrzusz2o+s/hL7efdg9q4IkSNtQlaQW+u5OHce7tbgl5uiopBfnGPmlL1tf56xc5ayXUDG3dvV8OWGM/NT+RsTKAZDlKJRVFNPNFA/jiV/zQwimUg=
-rvm:
-  - 2.0.0
-  - ruby-head
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -30,5 +27,7 @@ matrix:
   include:
     - rvm: 2.0.0
       gemfile: Gemfile
-    - rvm: ruby-head
+    - rvm: 2.1.1
       gemfile: gemfiles/2.1.gemfile
+    - rvm: ruby-head
+      gemfile: gemfiles/2.2.gemfile
