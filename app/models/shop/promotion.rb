@@ -1,7 +1,7 @@
 class DateTimeValidator < ActiveModel::EachValidator
   def validate_each(object, attribute, value)
-    puts "\nDTV - self: #{self.inspect}\n"
-    puts "\nDTV - options: #{options.inspect}\n"
+    Rails.logger.debug "\nDTV - self: #{self.inspect}\n"
+    Rails.logger.debug "\nDTV - options: #{options.inspect}\n"
     false
   end
 end

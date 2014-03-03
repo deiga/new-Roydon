@@ -3,7 +3,7 @@ class Shop::OrdersController < Shop::ShopController
   respond_to :html, :js
 
   def new
-    puts "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
+    logger.debug "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
     if @cart.empty?
       set_flash :error
       redirect_to(shop_url) and return
@@ -60,7 +60,7 @@ class Shop::OrdersController < Shop::ShopController
 
     def order_params
       begin
-        puts "\nOC#order_params - params: #{params}\n"
+        logger.debug "\nOC#order_params - params: #{params}\n"
         params.require(:shop_order).permit(:message, :payment)
       rescue ActionController::ParameterMissing
         nil
