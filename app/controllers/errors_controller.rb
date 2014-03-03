@@ -10,7 +10,7 @@ class ErrorsController < ApplicationController
   end
 
   def server_error
-    render_500
+    render_500(params[:ex])
   end
 
   def no_route
@@ -30,10 +30,10 @@ class ErrorsController < ApplicationController
       @message = message
 
       if exception
-        Rails.logger.fatal "\n#{exception.class.to_s} (#{exception.message})"
-        Rails.logger.fatal exception.backtrace.join("\n")
+        logger.fatal "\n#{exception.class.to_s} (#{exception.message})"
+        logger.fatal exception.backtrace.join("\n")
       else
-        Rails.logger.fatal "No route matches [#{env['REQUEST_METHOD']}] #{env['PATH_INFO'].inspect}"
+        logger.fatal "No route matches [#{env['REQUEST_METHOD']}] #{env['PATH_INFO'].inspect}"
       end
 
       render :error #, formats: [:html], layout: 'application', status: @status
