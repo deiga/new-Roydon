@@ -71,6 +71,7 @@ gem 'yui-compressor'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'html5-rails'
+gem 'turbolinks'
 
 if File.exists?('gemfiles/Gemfile.devel') then
   eval File.read('gemfiles/Gemfile.devel'), nil, 'Gemfile.devel' unless ENV['CI']

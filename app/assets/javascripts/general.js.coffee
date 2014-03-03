@@ -10,7 +10,7 @@ $ ->
   $(document).on 'click', 'a[data-remote="true"]', ->
     console.log "RemoteLinkClick:", this
     console.log 'Url: ' + this.href
-    history.pushState(null, '', this.href)
+    # history.pushState(null, '', this.href)
 
   # Track jquery links in google analytics
   $(document).ajaxSend (event, xhr, settings) ->

@@ -6,5 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require h5bp
 //= require_tree .
