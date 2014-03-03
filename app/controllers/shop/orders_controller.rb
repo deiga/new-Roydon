@@ -6,7 +6,7 @@ class Shop::OrdersController < Shop::ShopController
     puts "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
     if @cart.empty?
       set_flash :error
-      redirect_to shop_url and return
+      redirect_to(shop_url) and return
     end
 
     @order = Shop::Order.new
@@ -36,7 +36,7 @@ class Shop::OrdersController < Shop::ShopController
         # TODO Email order confirmation
         format.html do
           set_flash :success, @order
-          redirect_to shop_url  and return
+          redirect_to(shop_url)  and return
         end
         format.json { render json: @order, status: :created, location: @order }
       else
