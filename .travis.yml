@@ -17,8 +17,12 @@ before_install:
 services: mongodb
 before_script:
   - export SECRET_TOKEN=$(rake secret)
-  - RAILS_ENV=test bundle exec rake db:reset
-  - rails server -d -e test
+  - bundle exec rake db:reset
+  - echo $PATH
+  - which rails
+  - type rails
+  - whereis rails
+  - ruby -S rails server -d
 script:
   - ~/.local/bin/pybot robot/*.robot
   - bundle exec rake spec cucumber
