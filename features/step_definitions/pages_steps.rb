@@ -11,14 +11,14 @@ When(/^I follow "(.*?)"(?: in the selector "(.*?)")?$/) do |link_name, selector|
 end
 
 Then(/^I should see "(.*?)" in the title$/) do |expected|
-  page.should have_title(expected)
+  expect(page).to have_title(expected)
 end
 
 Then(/^I should see "(.*?)"(?: in the selector "(.*?)")?$/) do |expected, selector|
   if selector
-    page.should have_selector selector, text: expected
+    expect(page).to have_selector selector, text: expected
   else
-    page.should have_content expected
+    expect(page).to have_content expected
   end
 end
 

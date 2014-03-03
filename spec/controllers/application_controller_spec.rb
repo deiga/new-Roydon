@@ -12,29 +12,29 @@ describe ApplicationController do
 
   render_views
 
-  it { Rails.application.config.consider_all_requests_local.should be_false }
+  it { expect(Rails.application.config.consider_all_requests_local).to be_false }
 
   it "should render 500 on Exception" do
     controller.stub(:index).and_raise(Exception)
     get :index
-    response.status.should eq 500
+    expect(response.status).to eq 500
   end
 
   it "should render 404 on unknown controller" do
     controller.stub(:index).and_raise(ActionController::UnknownController)
     get :index
-    response.status.should eq 404
+    expect(response.status).to eq 404
   end
 
   it "should render 404 on action not found" do
     controller.stub(:index).and_raise(AbstractController::ActionNotFound)
     get :index
-    response.status.should eq 404
+    expect(response.status).to eq 404
   end
 
   it "should render 400 on parameter missing" do
     get :index
-    response.status.should eq 404
+    expect(response.status).to eq 404
   end
 
   #= Redirects to /500, why?
