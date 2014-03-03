@@ -30,4 +30,5 @@ Scenario: Shopping Cart contains a few products
 Scenario: Shopping cart is empty
   Given the shopping cart is empty
   When I follow "Ostoskori"
-  Then I should see "Ei tuotteita"
+  Then I should be on the edit shop shopping cart page
+  And I should see "Ei tuotteita"
