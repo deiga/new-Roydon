@@ -12,3 +12,15 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+gem 'mongoid-ancestry' # tree structure of categories
+gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
+gem 'kaminari', '~> 0.0' # Pagination
+gem 'money-rails' # Money objects
+gem 'formtastic'
+
+gem 'devise', '~> 3.2' # User control
+gem 'devise-i18n'
+
+gem 'rails_admin' # Admin view
+gem 'bootstrap-wysihtml5-rails', '~> 0.0' # WYSIWYG for admin view

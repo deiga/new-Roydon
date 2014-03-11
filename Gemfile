@@ -7,8 +7,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'env_bang-rails'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry' # tree structure of categories
-gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
 gem 'devise', '~> 3.2' # User control
@@ -30,9 +28,6 @@ end
 
 gem 'nokogiri'
 gem 'aws-sdk', '~> 1.0' # Online storage
-gem 'kaminari', '~> 0.0' # Pagination
-# gem "money"#, "~> 6.0.1.beta3"
-gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
 gem 'formtastic'
 
