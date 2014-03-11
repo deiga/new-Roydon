@@ -1,12 +1,4 @@
 Roydon::Application.routes.draw do
-  resources :addresses, except: [:index]
-
-  devise_for :users, controllers: {confirmations: 'confirmations'}
-
-  devise_scope :user do
-    patch "/confirm" => "confirmations#confirm"
-  end
-  resources :users, only: [:show], constraints: { id: BSON_ID_REGEX }
 
   mount RailsAdmin::Engine, at: '/admin', as: 'rails_admin'
 
