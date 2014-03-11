@@ -1,34 +1,35 @@
-class Shop::GroupDiscount
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include ActiveModel::ForbiddenAttributesProtection
+module Mall
+  class GroupDiscount
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    include ActiveModel::ForbiddenAttributesProtection
 
-  has_and_belongs_to_many :products, class_name: 'Shop::Product'
-  has_many :categories, class_name: 'Shop::Category'
+    has_and_belongs_to_many :products, class_name: 'Product'
+    has_many :categories, class_name: 'Category'
 
-  field :name, type: String
-  field :scheme, type: Hash
+    field :name, type: String
+    field :scheme, type: Hash
 
-  validates :name, :scheme, presence: true
+    validates :name, :scheme, presence: true
 
-  def apply_discount_on(cart_products)
-    discountable_products = cart_products.select { |item| products.include?(item) }
-    product_count = discountable_products.count
-    return nil if product_count < discount_tiers.first.to_i
+    def apply_discount_on(cart_products)
+      discountable_products = cart_products.select { |item| products.include?(item) }
+      product_count = discountable_products.count
+      return nil if product_count < discount_tiers.first.to_i
 
-    undiscounted_price = discountable_products.map(&:price).reduce(:+)
-    discounted_price, leftover_count = discounted_price_for(product_count)
-    undiscounted_price -= discountable_products.first.price * leftover_count
-    [discounted_price, undiscounted_price]
-  end
-
-  rails_admin do
-    list do
-      exclude_fields :_type, :_id, :created_at, :updated_at
+      undiscounted_price = discountable_products.map(&:price).reduce(:+)
+      discounted_price, leftover_count = discounted_price_for(product_count)
+      undiscounted_price -= discountable_products.first.price * leftover_count
+      [discounted_price, undiscounted_price]
     end
-  end
 
-  private
+    rails_admin do
+      list do
+        exclude_fields :_type, :_id, :created_at, :updated_at
+      end
+    end
+
+    private
 
     def discount_tiers
       scheme.keys.sort
@@ -55,4 +56,5 @@ class Shop::GroupDiscount
       [price, leftover_count]
     end
 
+  end
 end

@@ -1,40 +1,41 @@
-class Shop::ShoppingCart
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include ActiveModel::ForbiddenAttributesProtection
-  extend Shop::Caching
+module Mall
+  class ShoppingCart
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    include ActiveModel::ForbiddenAttributesProtection
+    extend Caching
 
-  has_many :items, class_name: 'Shop::CartItem', inverse_of: :cart, dependent: :destroy
+    has_many :items, class_name: 'CartItem', inverse_of: :cart, dependent: :destroy
 
-  delegate :empty?, to: :items
+    delegate :empty?, to: :items
 
-  accepts_nested_attributes_for :items
+    accepts_nested_attributes_for :items
 
-  def empty
-    self.items.clear
-  end
-
-  def size
-    self.items.inject(0) do|result, item|
-      result += item.quantity
+    def empty
+      self.items.clear
     end
-  end
 
-  def add(product, options = {})
-    options = {} if options.nil?
-    product = Shop::Product.find(product) unless product.class == Shop::Product
+    def size
+      self.items.inject(0) do|result, item|
+        result += item.quantity
+      end
+    end
+
+    def add(product, options = {})
+      options = {} if options.nil?
+      product = Product.find(product) unless product.class == Product
     new_options = options.inject([]) {|x,y| x << y.join(': ')} # Option array in the form ['Option name': 'Option value', ...]
     existing_item = self.items.to_a.find { |x| x.product == product && x.selected_option == new_options}
     if existing_item
       existing_item.inc(quantity: 1)
       self.items
     else
-      self.items << Shop::CartItem.create!(product: product, selected_option: new_options)
+      self.items << CartItem.create!(product: product, selected_option: new_options)
     end
   end
 
   def remove_item(cart_item_id)
-    item_to_remove = Shop::CartItem.find(cart_item_id) unless cart_item_id.blank?
+    item_to_remove = CartItem.find(cart_item_id) unless cart_item_id.blank?
     items.delete(item_to_remove)
   end
 
@@ -78,4 +79,5 @@ class Shop::ShoppingCart
       exclude_fields :_type, :_id, :created_at, :updated_at
     end
   end
+end
 end
