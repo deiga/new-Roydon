@@ -13,6 +13,7 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
+gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-ancestry' # tree structure of categories
 gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
 gem 'kaminari', '~> 0.0' # Pagination
@@ -24,3 +25,12 @@ gem 'devise-i18n'
 
 gem 'rails_admin' # Admin view
 gem 'bootstrap-wysihtml5-rails', '~> 0.0' # WYSIWYG for admin view
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'coveralls', require: false
+  gem 'mongoid-rspec'
+end
