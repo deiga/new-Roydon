@@ -5,6 +5,7 @@ module Mall
 
     before_validation :set_random_password
     after_initialize :migrate_data
+
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :confirmable,
@@ -39,9 +40,6 @@ module Mall
     has_many :addresses
     has_many :orders, class_name: 'Shop::Order'
 
-    ## Encryptable
-    # field :password_salt, type: String
-
     ## Confirmable
     field :confirmation_token,   type: String
     field :confirmed_at,         type: Time
@@ -54,9 +52,6 @@ module Mall
     # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
     # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
     # field :locked_at,       type: Time
-
-    ## Token authenticatable
-    # field :authentication_token, type: String
 
     def admin?
       user_groups.map(&:name).include?('admin')
