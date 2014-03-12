@@ -19,7 +19,11 @@ PATH
   remote: .
   specs:
     mall (0.0.1)
+      kaminari
       money-rails
+      mongoid
+      mongoid-ancestry
+      mongoid-paperclip
       rails (~> 4.0.3)
 
 GEM
@@ -250,10 +254,8 @@ DEPENDENCIES
   factory_girl_rails
   formtastic
   haml-rails
-  kaminari (~> 0.0)
   mall!
   mongoid!
-  mongoid-ancestry
   mongoid-paperclip!
   mongoid-rspec
   rails_admin
