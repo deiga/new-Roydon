@@ -1,5 +1,6 @@
 Roydon::Application.routes.draw do
 
+  devise_for :admins
   mount RailsAdmin::Engine, at: '/admin', as: 'rails_admin'
 
   resources :stories, only: [:index], path: :news, constraints: { id: BSON_ID_REGEX }
