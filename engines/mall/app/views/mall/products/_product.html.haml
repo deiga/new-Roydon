@@ -1,7 +1,7 @@
 .product.box{ id: "product-#{product.name.parameterize}"}
   .product-title
-    %strong= link_to product.name, shop_product_path(product.id)
-  .product-image= link_to image_tag(product.image.url(:thumb)), shop_product_path(product.id)
+    %strong= link_to product.name, product_path(product.id)
+  .product-image= link_to image_tag(product.image.url(:thumb)), product_path(product.id)
   .product-price
     =raw "#{humanized_money product.price} #{currency_symbol}"
   .product-description= raw(product.description)
@@ -9,6 +9,6 @@
     .product-options
       Vaihtoehtoja:
       = product.options.map(&:name).to_sentence
-    .product-link= link_to 'Katso lisää', shop_product_path(product.id)
+    .product-link= link_to 'Katso lisää', product_path(product.id)
   - else
-    .product-link= link_to 'Lisää ostoskoriin', shop_shopping_cart_add_item_path(cart.id,product.id),  method: :post, remote: true, 'data-no-turbolink' => true, class: 'add-to-cart', "data-type" => :json
+    .product-link= link_to 'Lisää ostoskoriin', shopping_cart_add_item_path(cart.id,product.id),  method: :post, remote: true, 'data-no-turbolink' => true, class: 'add-to-cart', "data-type" => :json
