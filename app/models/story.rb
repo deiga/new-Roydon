@@ -2,7 +2,7 @@ class Story
 	include Mongoid::Document
 	include Mongoid::Timestamps
 	include ActiveModel::ForbiddenAttributesProtection
-  extend Shop::Caching
+  extend Caching
 
 	field :title, 		type: String
 	field :date, 		type: Date, 		default: Date.today

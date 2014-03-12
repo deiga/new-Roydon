@@ -8,7 +8,7 @@ puts "Seeding for env '#{Rails.env}'"
 def create_categories
   categories_yaml = YAML.load_file('db/seed/categories.yml')
   categories_yaml.each do |top_category, category_list|
-    parent = Shop::Category.new(name: top_category)
+    parent = Mall::Category.new(name: top_category)
     parent.save!
 
     unless category_list.nil?
@@ -51,9 +51,9 @@ def create_stories
     content: 'Testing. 1 2 3. <br /> BÖÖ!!\n Return')
 end
 
-breeder = Shop::UserGroup.create!( name: :breeder )
-groomer = Shop::UserGroup.create!( name: :groomer )
-admin = Shop::UserGroup.create! name: :admin
+breeder = Mall::UserGroup.create!( name: :breeder )
+groomer = Mall::UserGroup.create!( name: :groomer )
+admin = Mall::UserGroup.create! name: :admin
 
 if Rails.env.development?
   p "Creating admins"
@@ -90,18 +90,18 @@ p "Creating stories"
 create_stories()
 
 p "Creating VAT"
-vat23 = Shop::ValueAddedTax.create!(value: 23.0, name: 'FI ALV 23%')
+vat23 = Mall::ValueAddedTax.create!(value: 23.0, name: 'FI ALV 23%')
 
 p "Creating Options"
-colour = Shop::Option.create!(name: 'Colour', values: ['Grey', 'Red', 'Brown', 'Blue'])
+colour = Mall::Option.create!(name: 'Colour', values: ['Grey', 'Red', 'Brown', 'Blue'])
 
 p "Creating dummy products"
 1.upto(15) do |i|
-  test_product = Shop::Product.create!(name: 'Kevytmetallihäkki L', price: Money.new(6500), description:
+  test_product = Mall::Product.create!(name: 'Kevytmetallihäkki L', price: Money.new(6500), description:
     "Paino: 5kg<br />93p 57l 62k<br />2-ovinen, muovipohja<br />Saatavana 7 eri värissä.",
     image_url: "http://www.tujomakauppa.net/kuvat/TU4135.jpg", value_added_tax: vat23)
   test_product.options << colour
-  test_product.categories << Shop::Category.any_in(name: ['Häkit'])
+  test_product.categories << Mall::Category.any_in(name: ['Häkit'])
 end
 
 p "All done!"
