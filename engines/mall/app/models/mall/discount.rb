@@ -1,9 +1,9 @@
 module Mall
   class Discount < PriceModification
-    has_many :products, class_name: 'Product'
-    has_many :categories, class_name: 'Category'
-    belongs_to :user_group, class_name: 'UserGroup'
-    belongs_to :promotion, class_name: 'Promotion'
+    has_many :products
+    has_many :categories
+    belongs_to :user_group
+    belongs_to :promotion
 
     rails_admin do
       list do

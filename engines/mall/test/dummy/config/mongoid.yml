@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: roydon_develop
+      hosts:
+        - localhost:27017

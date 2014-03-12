@@ -1,7 +1,7 @@
 module Mall
   class ValueAddedTax < PriceModification
 
-    has_many :products, class_name: 'Product'
+    has_many :products
 
     rails_admin do
       list do
