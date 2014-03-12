@@ -1,5 +1,5 @@
 module Mall
-  class UsersController < Mall::ApplicationController
+  class UsersController < BaseController
 
     before_filter :authenticate_user!
     respond_to :html

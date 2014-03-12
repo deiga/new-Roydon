@@ -1,5 +1,5 @@
 module Mall
-  class ShopController < Mall::ApplicationController
+  class ShopController < BaseController
     def index
       @newest_products = Product.active.desc(:updated_at).includes(:options).limit(9)
     end

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 module Mall
-  class ShoppingCartsController < Mall::ApplicationController
+  class ShoppingCartsController < BaseController
     before_filter :set_cart, except: [:remove_item, :add_item]
     before_filter :set_modify_cart, only: [:remove_item, :add_item]
 
