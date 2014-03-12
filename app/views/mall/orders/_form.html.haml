@@ -23,7 +23,7 @@
     = f.text_field :phone, size: 40
   .field
     = f.label :payment
-    = f.select :payment, Shop::Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
+    = f.select :payment, Order::PAYMENT_TYPES, prompt: 'Select a payment method', required: 'required'
   .actions
     = f.submit 'Place order'
 
