@@ -1,0 +1,21 @@
+%section#shopping-cart.box.first-box
+  %strong= link_to 'Ostoskori', edit_shop_shopping_cart_path(cart.id), class: 'fontawesome-shopping-cart'
+  - unless cart.blank?
+    %table
+      %tbody
+        - cart.latest_items.each do |item|
+          %tr
+            %td
+              %small= link_to item.product.name, shop_product_path(item.product.id)
+            %td
+              %small=raw " #{humanized_money item.price} #{currency_symbol}"
+    %span#total>
+      = "Tuotteita: #{cart.size}kpl"
+      %span#price>
+        =raw "#{humanized_money cart.price} #{currency_symbol}"
+    = link_to t('shop.checkout'), new_shop_order_path, method: :get
+  - else
+    %span#total>
+      = t 'shop.cart.empty'
+      %span#price>
+        =raw "0 #{currency_symbol}"

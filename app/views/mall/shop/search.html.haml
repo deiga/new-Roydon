@@ -1,0 +1,8 @@
+%section#search-results
+  %h2= t 'shop.search.title'
+  - unless @products.blank?
+    = paginate @products
+    #products
+      = render @products, cart: @cart
+  - else
+    %p Ei tuloksia haulle

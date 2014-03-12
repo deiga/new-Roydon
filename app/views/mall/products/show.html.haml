@@ -1,0 +1,19 @@
+#product-wrapper
+  #left
+    = form_for @product, remote: true, url: shop_shopping_cart_add_item_path(@cart.id, @product.id), html: {:'data-type' => :json, id: 'add-product-to-cart', method: :post} do |f|
+      %h2= @product.name
+
+      %p>
+      =raw "Hinta: #{humanized_money @product.price} #{currency_symbol}"
+      %p>
+        Lisätietoja:
+        %br
+        = raw(@product.description)
+      - unless @product.options.empty?
+        Vaihtoehtoja:
+        - @product.options.each do |x|
+          = collection_select :options, x.name, x.values, 'html_safe', 'humanize', {include_blank: true}, {required: 'required'}
+      %br
+      = f.submit 'Lisää ostoskoriin', class: 'add-to-cart'
+  #right
+    .product-image= image_tag(@product.image.url(:show))

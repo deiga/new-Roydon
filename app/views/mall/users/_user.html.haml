@@ -1,0 +1,17 @@
+%h2= user.name
+%p= "E-Mail: #{user.email}"
+%p= "Groups: #{user.user_groups.map(&:name).join(', ')}"
+- unless user.addresses.blank?
+  %p Addresses:
+  %ul
+    - user.addresses.each do |addr|
+      %li= link_to addr.name, address_path(addr)
+    %li= link_to 'Add...', new_address_path
+- else
+  = raw "You have not added any addresses yet. #{link_to 'Add...', new_address_path}"
+
+- unless user.orders.blank?
+  %p Orders:
+  %ul
+    - user.orders.each do |order|
+      %li= link_to raw("#{order.created_at.strftime("%d.%m.%Y")}, #{humanized_money order.price} #{currency_symbol}"), shop_order_path(order)

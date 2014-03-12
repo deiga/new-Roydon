@@ -1,0 +1,4 @@
+%h2= t 'shop.product.newest'
+- unless @newest_products.nil?
+  = cache [@newest_products, 'newest'] do
+    = render @newest_products, cart: @cart
