@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'mongoid-ancestry'
   s.add_dependency 'kaminari'
   s.add_dependency 'mongoid'
-  s.add_dependency 'mongoid-paperclip'
+
+  s.add_runtime_dependency 'mongoid-paperclip'
 
   s.add_development_dependency "haml-rails"
 end
