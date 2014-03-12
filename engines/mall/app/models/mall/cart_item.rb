@@ -1,3 +1,5 @@
+require 'money'
+
 module Mall
   class CartItem
     include Mongoid::Document
