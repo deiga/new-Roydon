@@ -1,6 +1,6 @@
 Mall::Engine.routes.draw do
 
-  devise_for :users, controllers: {confirmations: 'confirmations'}, :class_name => "Mall::User"
+  devise_for :users, controllers: {confirmations: 'confirmations'}, class_name: "Mall::User"
 
   devise_scope :user do
     patch "/confirm" => "confirmations#confirm"
