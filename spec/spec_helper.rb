@@ -27,6 +27,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
+  Paperclip.options[:log] = false
+
   # Clean up the database
   require 'database_cleaner'
   config.before(:suite) do
