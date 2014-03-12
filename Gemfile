@@ -14,9 +14,7 @@ gemspec
 # gem 'debugger'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry' # tree structure of categories
 gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
-gem 'kaminari', '~> 0.0' # Pagination
 gem 'formtastic'
 
 gem 'devise', '~> 3.2' # User control
