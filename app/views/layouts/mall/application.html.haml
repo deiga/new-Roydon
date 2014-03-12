@@ -1,0 +1,15 @@
+- content_for :content do
+  = cache ['top-categories', @top_categories] do
+    = render 'shop/layouts/top_menu', top_categories: @top_categories
+  %section#sub-navigation-sidebar
+    = render 'shop/layouts/search'
+    - unless @categories.nil?
+      = cache ['sub-categories', @categories] do
+        = render 'shop/layouts/category_menu', categories: @categories
+  %section#shop-details
+    = content_for?(:shop_content) ? yield(:shop_content) : yield
+  %section#sidebar
+    = render 'devise/menu/login_items'
+    = render 'shop/layouts/shopping_cart', cart: @cart
+    / = render 'shop/layouts/advertisement'
+= render template: 'layouts/application'
