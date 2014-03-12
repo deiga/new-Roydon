@@ -2,8 +2,6 @@
 if defined?(::MoneyRails)
   MoneyRails.configure do |config|
 
-    Money.silence_core_extensions_deprecations = true # Remove deprecation
-
     # To set the default currency
     #
     config.default_currency = :eur
@@ -56,10 +54,10 @@ if defined?(::MoneyRails)
     #   :symbol_first        => true,
     #   :subunit             => "Subcent",
     #   :subunit_to_unit     => 10000,
-    #   thousands_separator: ".",
+    #   :thousands_separator => ".",
     #   :decimal_mark        => ","
     # }
-    #
+
     # Set money formatted output globally.
     # Default value is nil meaning "ignore this option".
     # Options are nil, true, false.
