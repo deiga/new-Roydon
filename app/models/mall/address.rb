@@ -4,7 +4,7 @@ module Mall
     include Mongoid::Timestamps
 
     belongs_to :user, inverse_of: :addresses, touch: true
-    belongs_to :order, class_name: 'Order', inverse_of: :address
+    belongs_to :order, inverse_of: :address
 
     before_save :set_name
 

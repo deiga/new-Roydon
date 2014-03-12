@@ -6,7 +6,7 @@ module Mall
 
     before_save :update_prices
 
-    embeds_many :items, class_name: 'OrderItem', inverse_of: :order
+    embeds_many :items, class_name: OrderItem.to_s, inverse_of: :order
     accepts_nested_attributes_for :items
     belongs_to :user, touch: true
     has_one :address

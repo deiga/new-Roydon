@@ -16,7 +16,7 @@ module Mall
     field :end_date, type: DateTime
     field :passive, type: Boolean, default: false
 
-    has_one :discount, class_name: 'Discount'
+    has_one :discount
 
     validates :name, presence: true, length: { minimum: 1}
     validates :start_date, date_time: { in_future: true }

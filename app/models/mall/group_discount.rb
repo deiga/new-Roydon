@@ -4,8 +4,8 @@ module Mall
     include Mongoid::Timestamps
     include ActiveModel::ForbiddenAttributesProtection
 
-    has_and_belongs_to_many :products, class_name: 'Product'
-    has_many :categories, class_name: 'Category'
+    has_and_belongs_to_many :products
+    has_many :categories
 
     field :name, type: String
     field :scheme, type: Hash

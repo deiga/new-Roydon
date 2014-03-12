@@ -10,11 +10,11 @@ module Mall
 
     before_validation { self.image.clear if self.delete_image == '1' }
 
-    has_and_belongs_to_many :categories, class_name: 'Category'
-    has_and_belongs_to_many :options, class_name: 'Option', inverse_of: nil
-    has_and_belongs_to_many :group_discounts, class_name: 'GroupDiscount'
-    belongs_to :discount, class_name: 'Discount'
-    belongs_to :value_added_tax, class_name: 'ValueAddedTax'
+    has_and_belongs_to_many :categories
+    has_and_belongs_to_many :options, class_name: Option.to_s, inverse_of: nil
+    has_and_belongs_to_many :group_discounts
+    belongs_to :discount
+    belongs_to :value_added_tax
 
     attr_accessor :image, :delete_image
     attr_accessor :image_url
