@@ -13,18 +13,18 @@
         = f.fields_for :items, @cart_items do |items_fields|
           %tr
             %td<
-              = link_to items_fields.object.product.name, shop_product_path(items_fields.object.product.id)
+              = link_to items_fields.object.product.name, product_path(items_fields.object.product.id)
               %br
               = "(#{items_fields.object.selected_option.join(', ')})" if items_fields.object.selected_option.size > 0
             %td= items_fields.text_field :quantity # TODO add number_field
             %td=raw " #{humanized_money items_fields.object.single_price} #{currency_symbol}"
             %td=raw " #{humanized_money items_fields.object.price} #{currency_symbol}"
-            %td= link_to '', shop_shopping_cart_remove_item_path(@cart.id,items_fields.object), class: 'fontawesome-remove', method: :delete, data: { confirm: t('shop.confirm') }
+            %td= link_to '', shopping_cart_remove_item_path(@cart.id,items_fields.object), class: 'fontawesome-remove', method: :delete, data: { confirm: t('shop.confirm') }
         %tr#price
           %td{colspan: 3}= "#{t 'shop.overall'}:"
           %td=raw "#{humanized_money @cart.price} #{currency_symbol}"
     = f.submit
-  = link_to t('shop.cart.action.empty'), shop_shopping_cart_path(@cart.id), data: { confirm: t('shop.confirm') }, method: :delete
+  = link_to t('shop.cart.action.empty'), shopping_cart_path(@cart.id), data: { confirm: t('shop.confirm') }, method: :delete
 - else
   %p= t 'shop.cart.empty'
 

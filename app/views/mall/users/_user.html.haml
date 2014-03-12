@@ -14,4 +14,4 @@
   %p Orders:
   %ul
     - user.orders.each do |order|
-      %li= link_to raw("#{order.created_at.strftime("%d.%m.%Y")}, #{humanized_money order.price} #{currency_symbol}"), shop_order_path(order)
+      %li= link_to raw("#{order.created_at.strftime("%d.%m.%Y")}, #{humanized_money order.price} #{currency_symbol}"), order_path(order)

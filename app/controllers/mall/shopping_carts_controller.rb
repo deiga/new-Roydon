@@ -26,7 +26,7 @@ module Mall
       else
         flash[:error] = t 'shop.cart.update.failure'
       end
-    redirect_to([:edit, @cart]) and return #edit_shop_shopping_cart_path(@cart.id)
+    redirect_to([:edit, @cart]) and return #edit_shopping_cart_path(@cart.id)
   end
 
   def remove_item
