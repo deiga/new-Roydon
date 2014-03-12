@@ -21,7 +21,6 @@ Roydon::Application.configure do
   # Stops specs and features from funning twice
   config.assets.debug = false
 
-  Paperclip.options[:log] = false
   Rails.logger = Logger.new(STDOUT)
   Mongoid.logger = nil
   Moped.logger = nil
