@@ -9,7 +9,7 @@ module Mall
     before_validation :generate_permalink
 
     has_ancestry
-    has_and_belongs_to_many :products, class_name: 'Product'
+    has_and_belongs_to_many :products
 
     field :name, type: String, default: ''
     field :passive, type: Boolean, default: false

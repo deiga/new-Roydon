@@ -34,9 +34,9 @@ module Mall
     field :last_name,   type: String
 
     ## Relations
-    has_and_belongs_to_many :user_groups, class_name: 'UserGroup'
+    has_and_belongs_to_many :user_groups
     has_many :addresses
-    has_many :orders, class_name: 'Order'
+    has_many :orders
 
     ## Confirmable
     field :confirmation_token,   type: String

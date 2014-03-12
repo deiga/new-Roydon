@@ -4,7 +4,7 @@ module Mall
     include Mongoid::Timestamps
     include ActiveModel::ForbiddenAttributesProtection
 
-    embedded_in :order, class_name: 'Order'
+    embedded_in :order
 
     field :product_id, type: BSON::ObjectId
     field :product_name, type: String

@@ -5,7 +5,7 @@ module Mall
     include ActiveModel::ForbiddenAttributesProtection
     extend Caching
 
-    has_many :items, class_name: 'CartItem', inverse_of: :cart, dependent: :destroy
+    has_many :items, class_name: CartItem.to_s, inverse_of: :cart, dependent: :destroy
 
     delegate :empty?, to: :items
 

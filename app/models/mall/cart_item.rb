@@ -6,8 +6,8 @@ module Mall
 
     before_save :destroy_on_empty, :set_price
 
-    belongs_to :cart, class_name: 'ShoppingCart', inverse_of: 'items', dependent: :nullify, touch: true
-    belongs_to :product, class_name: 'Product'
+    belongs_to :cart, class_name: ShoppingCart.to_s, inverse_of: 'items', dependent: :nullify, touch: true
+    belongs_to :product
 
     scope :with_product, -> { includes(:product) }
 

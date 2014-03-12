@@ -19,3 +19,4 @@ config/initializers/secret_token.rb
 .bundle/
 log/*.log
 pkg/
+test/dummy/tmp
