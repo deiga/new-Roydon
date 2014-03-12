@@ -1,11 +1,5 @@
 module Mall
   class ShopController < Mall::ApplicationController
-    layout 'shop'
-    before_filter :set_cart
-    before_filter :load_top_menu
-    before_filter :load_side_menu
-    before_filter :set_title
-
     def index
       @newest_products = Product.active.desc(:updated_at).includes(:options).limit(9)
     end
@@ -13,39 +7,5 @@ module Mall
     def search
       @products = Product.search(params[:search]).page(params[:page])
     end
-
-    private
-
-    def set_cart
-      begin
-        @cart = (session[:shopping_cart_id].nil? && ShoppingCart.create!) || ShoppingCart.find(session[:shopping_cart_id])
-      rescue Mongoid::Errors::DocumentNotFound
-        @cart = ShoppingCart.create!
-      end
-      session[:shopping_cart_id] = @cart.id.to_s
-    end
-
-    def set_title
-      if params[:search]
-        @title = "#{t('shop.search.action')}`#{params[:search]}`"
-      else
-        @title = @top_category.present? ? "#{@top_category.name.capitalize}" : ''
-      end
-      @title += params[:page] ? " #{t('shop.search.page')} #{params[:page]}" : ''
-      @title += "#{@title.present? ? ' | ' : ''}#{t 'shop.shop'}"
-    end
-
-    def load_top_menu
-      @top_categories = Category.top_categories
-    end
-
-    def load_side_menu
-      unless params[:category].nil?
-        @category = Category.active.where(permalink: params[:category])
-        @top_category = Category.active.where(permalink: params[:category].split('~').first).first
-        @categories = @top_category.children.active unless @top_category.nil?
-      end
-    end
-
   end
 end
