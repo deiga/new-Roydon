@@ -1,5 +1,5 @@
 module Mall
-  class ProductsController < Mall::ShopController
+  class ProductsController < Mall::ApplicationController
 
     def index
       category_params = params[:category] || ''

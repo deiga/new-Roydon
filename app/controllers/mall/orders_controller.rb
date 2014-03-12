@@ -1,5 +1,5 @@
 module Mall
-  class OrdersController < Mall::ShopController
+  class OrdersController < Mall::ApplicationController
 
     respond_to :html, :js
 
