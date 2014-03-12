@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 257c027072f41c5fb4bcd0da870b95db944cc7ab
+  revision: 164755a9d038e00faaffc054894c3390d17b1345
   specs:
     mongoid (4.0.0.beta1)
       activemodel (>= 4.0.0)
@@ -19,6 +19,7 @@ PATH
   remote: .
   specs:
     mall (0.0.1)
+      money-rails
       rails (~> 4.0.3)
 
 GEM
@@ -251,7 +252,6 @@ DEPENDENCIES
   haml-rails
   kaminari (~> 0.0)
   mall!
-  money-rails
   mongoid!
   mongoid-ancestry
   mongoid-paperclip!

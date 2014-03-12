@@ -17,5 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.3"
 
+  s.add_dependency "money-rails"
+
   s.add_development_dependency "haml-rails"
 end
