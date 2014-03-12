@@ -1,5 +1,5 @@
 module Mall
-  class AddressesController < Mall::ApplicationController
+  class AddressesController < BaseController
 
     respond_to :html, :js
 
