@@ -7,7 +7,7 @@ module Mall
       logger.debug "\nOC#new: cart:#{@cart.inspect}, cart items: #{@cart.items.size}\n"
       if @cart.empty?
         set_flash :error
-        redirect_to(shop_url) and return
+        return redirect_to(shop_url)
       end
 
       @order = Order.new
@@ -37,7 +37,7 @@ module Mall
         # TODO Email order confirmation
         format.html do
           set_flash :success, @order
-          redirect_to(shop_url)  and return
+          return redirect_to(shop_url)
         end
         format.json { render json: @order, status: :created, location: @order }
       else

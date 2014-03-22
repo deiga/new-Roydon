@@ -23,7 +23,7 @@ module Mall
           current_user.addresses << @address
           format.html do
             set_flash :success, object: @address
-            redirect_to(user_path(current_user.id)) and return
+            return redirect_to(user_path(current_user.id))
           end
           format.json { render json: @address, status: :created, location: @address }
         else

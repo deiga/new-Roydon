@@ -26,7 +26,7 @@ module Mall
       else
         flash[:error] = t 'shop.cart.update.failure'
       end
-    redirect_to([:edit, @cart]) and return #edit_shopping_cart_path(@cart.id)
+    return redirect_to([:edit, @cart]) #edit_shop_shopping_cart_path(@cart.id)
   end
 
   def remove_item
@@ -57,14 +57,14 @@ module Mall
 
   def destroy
     @cart.destroy
-    redirect_to(shop_path) and return
+    return redirect_to(shop_path)
   end
 
   private
 
   def item_response(message)
     respond_to do |format|
-      format.html { redirect_to(request.referer || shop_path) and return }
+      format.html { return redirect_to(request.referer || shop_path) }
       format.js { render json: { message: message } }
     end
   end
