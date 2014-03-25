@@ -22,7 +22,7 @@ before_script:
   - which rails
   - type rails
   - whereis rails
-  - ruby -S rails server -d
+  - ruby -S bundle exec rails server -d
 script:
   - ~/.local/bin/pybot robot/*.robot
   - bundle exec rake spec cucumber
