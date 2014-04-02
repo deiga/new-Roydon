@@ -47,11 +47,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails' # Moved here from :test, https://github.com/thoughtbot/factory_girl_rails/issues/89
-  gem 'poltergeist'
-  gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails', require: false
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'coveralls', require: false

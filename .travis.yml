@@ -25,7 +25,7 @@ before_script:
   - ruby -S bundle exec rails server -d
 script:
   - ~/.local/bin/pybot robot/*.robot
-  - bundle exec rake spec cucumber
+  - bundle exec rake spec
 matrix:
   include:
     - rvm: 2.0.0
