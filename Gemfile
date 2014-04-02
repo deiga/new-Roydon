@@ -59,6 +59,7 @@ group :test do
 end
 
 gem 'sass-rails'
+gem 'sprockets', '~> 2.11'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'compass-rails'
