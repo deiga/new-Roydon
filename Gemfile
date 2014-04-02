@@ -55,7 +55,7 @@ group :test do
   gem 'mongoid-rspec'
 end
 
-gem 'sass-rails'
+gem 'sass-rails', '>= 4.0.2'
 gem 'sprockets', '~> 2.11'
 gem 'coffee-rails'
 gem 'uglifier'
