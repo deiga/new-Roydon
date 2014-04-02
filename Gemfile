@@ -7,7 +7,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'env_bang-rails'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip'
+gem 'mongoid-paperclip', require: 'mongoid_paperclip'
 gem 'redis-rails' # Redis SessionStore
 
 gem 'devise', '~> 3.2' # User control

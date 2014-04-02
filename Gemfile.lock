@@ -1,18 +1,4 @@
 GIT
-  remote: git://github.com/josevalim/rails-footnotes.git
-  revision: a21cff4212001f6c62988c3b5d7350b66820b509
-  specs:
-    rails-footnotes (4.0.0)
-      rails (>= 3.2)
-
-GIT
-  remote: git://github.com/meskyanichi/mongoid-paperclip.git
-  revision: 18e9d2d50a337f347e01776201a5f36dda2934cb
-  specs:
-    mongoid-paperclip (0.0.9)
-      paperclip (>= 2.3.6)
-
-GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: dba1c17b1dba667e50347ab616aaf6f2e1bee094
   specs:
@@ -109,7 +95,7 @@ GEM
     chunky_png (1.3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.3)
+    cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.4)
       sexp_processor
@@ -253,6 +239,8 @@ GEM
       railties (>= 3.0)
     mongoid-ancestry (0.4.1)
       mongoid
+    mongoid-paperclip (0.0.9)
+      paperclip (>= 2.3.6)
     mongoid-rspec (1.10.0)
       mongoid (>= 3.0.1)
       rake
@@ -327,6 +315,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.4)
       sprockets-rails (~> 2.0.0)
+    rails-footnotes (4.0.0)
+      rails (>= 3.2)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -510,7 +500,7 @@ DEPENDENCIES
   memcachier
   meta_request
   mongoid!
-  mongoid-paperclip!
+  mongoid-paperclip
   mongoid-rspec
   newrelic_rpm
   nokogiri
@@ -520,7 +510,7 @@ DEPENDENCIES
   rack-cache
   rack-timeout
   rails (~> 4.0)
-  rails-footnotes!
+  rails-footnotes (>= 4.0.0, < 5)
   rails_12factor
   rails_admin
   redis-rails
