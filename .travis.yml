@@ -12,21 +12,15 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - gem update --system
   - gem --version
-  - pip install --user robotframework
-  - pip install --user robotframework-selenium2library
+  # - pip install --user robotframework
+  # - pip install --user robotframework-selenium2library
 services: mongodb
 before_script:
   - export SECRET_TOKEN=$(rake secret)
   - bundle exec rake db:reset
-  - echo $PATH
-  - which rails
-  - type rails
-  - whereis rails
-  - ls -l
-  - ls -l engines
-  - rails server -d
+  - rails s -d
 script:
-  - ~/.local/bin/pybot robot/*.robot
+  # - ~/.local/bin/pybot robot/*.robot
   - bundle exec rake spec
 matrix:
   include:
