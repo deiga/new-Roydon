@@ -12,12 +12,12 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - gem update --system
   - gem --version
-  - gem install psych -- --enable-bundled-libyaml
   # - pip install --user robotframework
   # - pip install --user robotframework-selenium2library
 services: mongodb
 before_script:
   - export SECRET_TOKEN=$(rake secret)
+  - gem install psych -- --enable-bundled-libyaml
     #- bundle exec rake db:reset
   - rails s -d
 script:

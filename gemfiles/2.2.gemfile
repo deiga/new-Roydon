@@ -8,7 +8,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'env_bang-rails'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'mongoid-ancestry' # tree structure of categories
 gem 'mongoid-paperclip', github: 'meskyanichi/mongoid-paperclip', require: 'mongoid_paperclip' # attaching images
 gem 'redis-rails' # Redis SessionStore
 
@@ -31,9 +30,6 @@ end
 
 gem 'nokogiri'
 gem 'aws-sdk', '~> 1.0' # Online storage
-gem 'kaminari', '~> 0.0' # Pagination
-# gem "money"#, "~> 6.0.1.beta3"
-gem 'money-rails' # Money objects
 gem 'ccsv' # Parsing of CSV
 gem 'formtastic'
 
@@ -60,7 +56,8 @@ group :test do
   gem 'mongoid-rspec'
 end
 
-gem 'sass-rails'
+gem 'sass-rails', '>= 4.0.2'
+gem 'sprockets', '~> 2.11'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'compass-rails'
@@ -70,6 +67,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'html5-rails'
 gem 'turbolinks'
+gem 'mall', path: 'engines/mall'
 
 if File.exists?('gemfiles/Gemfile.devel') then
   eval File.read('gemfiles/Gemfile.devel'), nil, 'Gemfile.devel' unless ENV['CI']
