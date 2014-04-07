@@ -17,7 +17,7 @@ before_install:
 services: mongodb
 before_script:
   - export SECRET_TOKEN=$(rake secret)
-  - bundle exec rake db:reset
+    #- bundle exec rake db:reset
   - rails s -d
 script:
   # - ~/.local/bin/pybot robot/*.robot
